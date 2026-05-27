@@ -4,45 +4,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yossika Putra Erlangga | CV</title>
+  <meta name="description" content="CV Profesional Yossika Putra Erlangga - Mahasiswa Teknik Informatika dengan pengalaman di networking, desain grafis, dan event management." />
+  <meta name="theme-color" content="#0A3D62" />
+  <title>Yossika Putra Erlangga | CV Profesional</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://unpkg.com/@tabler/icons@latest/dist/tabler-icons.min.js" defer></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234AACE8' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' fill='%230A3D62' text-anchor='middle'>Y</text></svg>" />
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner container">
       <a href="#hero" class="brand">Yossika</a>
-      <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="nav-menu" id="mainNav">
         <a class="nav-menu__link nav-menu__link--active" href="#hero">Home</a>
         <a class="nav-menu__link" href="#about">About</a>
-        <a class="nav-menu__link" href="#education">Education</a>
-        <a class="nav-menu__link" href="#experience">Experience</a>
+        <a class="nav-menu__link" href="#education">Pendidikan</a>
+        <a class="nav-menu__link" href="#experience">Pengalaman</a>
         <a class="nav-menu__link" href="#skills">Skills</a>
-        <a class="nav-menu__link" href="#certifications">Certifications</a>
-        <a class="nav-menu__link" href="#contact">Contact</a>
+        <a class="nav-menu__link" href="#certifications">Sertifikat</a>
+        <a class="nav-menu__link" href="#contact">Kontak</a>
       </nav>
+      <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
     </div>
   </header>
 
   <main>
     <section class="hero section hero--full" id="hero">
+      <div class="hero__background"></div>
       <div class="hero__content container">
         <article class="hero__copy reveal">
-          <p class="eyebrow">Personal CV | Teknik Informatika</p>
-          <h1>Yossika Putra Erlangga</h1>
-          <p class="hero__subtitle">Mahasiswa Teknik Informatika yang kreatif, teliti, dan siap berkembang dalam bidang jaringan serta desain digital.</p>
+          <p class="eyebrow">Welcome to my professional portfolio</p>
+          <h1 class="hero__title">Yossika Putra Erlangga</h1>
+          <p class="hero__subtitle">Mahasiswa Teknik Informatika yang passionate dalam networking, desain digital, dan problem solving. Siap berkontribusi pada proyek teknologi yang meaningful.</p>
+          <div class="hero__stats">
+            <div class="stat-item">
+              <span class="stat-number">6+</span>
+              <span class="stat-label">Pengalaman</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Sertifikat</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Skills</span>
+            </div>
+          </div>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="assets/cv.pdf" target="_blank" rel="noopener">Download CV</a>
-            <a class="btn btn--secondary" href="#contact">Get in Touch</a>
+            <a class="btn btn--primary" href="assets/cv.pdf" target="_blank" rel="noopener">📥 Download CV</a>
+            <a class="btn btn--secondary" href="#contact">💬 Hubungi Saya</a>
           </div>
         </article>
 
         <figure class="hero__visual reveal">
-          <img src="assets/img/photo.jpg" alt="Photo of Yossika Putra Erlangga" class="hero__photo" />
+          <img src="assets/img/FOTO JAS FRESH.jpeg" alt="Yossika Putra Erlangga" class="hero__photo" loading="lazy" />
+          <div class="hero__glow"></div>
         </figure>
       </div>
     </section>
