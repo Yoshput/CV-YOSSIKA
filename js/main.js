@@ -18,11 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeTheme() {
     const storedTheme = localStorage.getItem("siteTheme");
-    if (storedTheme) {
-      applyTheme(storedTheme);
-    } else {
-      applyTheme(prefersDark.matches ? "dark" : "light");
-    }
+    // Force light theme as default unless explicitly stored
+    applyTheme(storedTheme || "light");
   }
 
   themeToggle.addEventListener("click", function () {
