@@ -118,7 +118,7 @@ p { margin: 0; color: var(--color-text-muted); }
 .cert-image--clickable { cursor: pointer; }
 .cert-image-placeholder { cursor: default; }
 
-/* Lightbox Modal */
+/* Lightbox Modal - Interactive Certificate Zoom */
 .lightbox {
   display: none;
   position: fixed;
