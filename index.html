@@ -42,18 +42,18 @@
         <article class="hero__copy reveal">
           <p class="eyebrow">Welcome to my professional portfolio</p>
           <h1 class="hero__title">Yossika Putra Erlangga</h1>
-          <p class="hero__subtitle">Mahasiswa Teknik Informatika yang passionate dalam networking, desain digital, dan problem solving. Siap berkontribusi pada proyek teknologi yang meaningful.</p>
+          <p class="hero__subtitle">Mahasiswa S1 Teknik Informatika yang menjembatani infrastruktur jaringan kuat dengan sentuhan desain digital kreatif. Fokus pada troubleshooting sistem, efisiensi jaringan, dan penyelesaian masalah berbasis teknologi modern.</p>
           <div class="hero__stats">
-            <div class="stat-item">
-              <span class="stat-number">6+</span>
+            <div class="stat-card">
+              <span class="stat-number counter" data-target="6">0</span><span style="font-size: 1.2rem;">+</span>
               <span class="stat-label">Pengalaman</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">6</span>
+            <div class="stat-card">
+              <span class="stat-number counter" data-target="7">0</span>
               <span class="stat-label">Sertifikat</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">10+</span>
+            <div class="stat-card">
+              <span class="stat-number counter" data-target="11">0</span><span style="font-size: 1.2rem;">+</span>
               <span class="stat-label">Skills</span>
             </div>
           </div>
@@ -160,34 +160,24 @@
       <div class="container">
         <span class="section-label">Skills</span>
         <h2>Technical & Creative Skills</h2>
-        <div class="skills__grid reveal">
-          <div class="skills__panel">
-            <h3>Technical Skills</h3>
-            <div class="skill-bar">
-              <span class="skill-bar__label">Debian / Ubuntu</span>
-              <div class="skill-bar__track"><span class="skill-bar__fill" data-skill="90"></span></div>
-            </div>
-            <div class="skill-bar">
-              <span class="skill-bar__label">MikroTik / Docker</span>
-              <div class="skill-bar__track"><span class="skill-bar__fill" data-skill="80"></span></div>
-            </div>
-            <div class="skill-bar">
-              <span class="skill-bar__label">Cisco Packet Tracer</span>
-              <div class="skill-bar__track"><span class="skill-bar__fill" data-skill="85"></span></div>
-            </div>
-            <div class="skill-bar">
-              <span class="skill-bar__label">HTML / CSS</span>
-              <div class="skill-bar__track"><span class="skill-bar__fill" data-skill="75"></span></div>
+        <div class="skills__container reveal">
+          <div class="skill-group">
+            <h3>Networking & Systems</h3>
+            <div class="skill-badges">
+              <span class="skill-badge">Debian / Ubuntu</span>
+              <span class="skill-badge">MikroTik / Docker</span>
+              <span class="skill-badge">Cisco Packet Tracer</span>
+              <span class="skill-badge">HTML / CSS</span>
             </div>
           </div>
-          <div class="skills__panel">
-            <h3>Tools & Design</h3>
-            <div class="tool-grid">
-              <span class="tool-badge">Adobe Illustrator</span>
-              <span class="tool-badge">Photoshop</span>
-              <span class="tool-badge">Premiere Pro</span>
-              <span class="tool-badge">Filmora</span>
-              <span class="tool-badge">Canva</span>
+          <div class="skill-group">
+            <h3>Tools & Creative Design</h3>
+            <div class="skill-badges">
+              <span class="skill-badge">Adobe Illustrator</span>
+              <span class="skill-badge">Photoshop</span>
+              <span class="skill-badge">Premiere Pro</span>
+              <span class="skill-badge">Filmora</span>
+              <span class="skill-badge">Canva</span>
             </div>
           </div>
         </div>
@@ -224,20 +214,13 @@
             <h3>Cisco Packet Tracer</h3>
             <p>Dasar Jaringan</p>
           </article>
-          <article class="cert-card">
-            <img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Infentra Certificate" class="cert-image" loading="lazy">
+          <article class="cert-card" data-image="assets/sertifikat/CERTIFIKAT INFENTRA.png">
+            <img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Infentra Certificate" class="cert-image cert-image--clickable" loading="lazy">
             <h3>Administrasi Jaringan</h3>
             <p>Infentra Telkom University</p>
           </article>
-          <article class="cert-card">
-            <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC Certificate" class="cert-image" loading="lazy">
-            <h3>TULC Achievement</h3>
-            <p>Tel-U Leadermind Competition</p>
-          </article>
-        </div>
-          </article>
-          <article class="cert-card">
-            <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC Certificate" class="cert-image" loading="lazy">
+          <article class="cert-card" data-image="assets/sertifikat/CERTIFIKAT TULC.png">
+            <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC Certificate" class="cert-image cert-image--clickable" loading="lazy">
             <h3>TULC Achievement</h3>
             <p>Tel-U Leadermind Competition</p>
           </article>
@@ -292,6 +275,12 @@
       <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
+
+  <!-- Lightbox Modal for Certificate Images -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox__close">&times;</span>
+    <img class="lightbox__image" src="" alt="Certificate" />
+  </div>
 
   <script src="js/main.js"></script>
 </body>

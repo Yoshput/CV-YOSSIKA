@@ -5,8 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const topBtn = document.getElementById("topBtn");
   const navLinks = document.querySelectorAll(".nav-menu__link");
   const sections = document.querySelectorAll("main section[id]");
-  const skillBars = document.querySelectorAll(".skill-bar__fill");
   const revealElements = document.querySelectorAll(".reveal");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.querySelector(".lightbox__image");
+  const lightboxClose = document.querySelector(".lightbox__close");
+  const certImages = document.querySelectorAll(".cert-image--clickable");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
 
   // ====== DARK MODE TOGGLE ======
@@ -18,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeTheme() {
     const storedTheme = localStorage.getItem("siteTheme");
-    // Force light theme as default unless explicitly stored
     applyTheme(storedTheme || "light");
   }
 
@@ -50,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ====== REVEAL ON SCROLL ======
+  // ====== REVEAL ON SCROLL WITH FADE-IN-UP ======
   function revealOnScroll(entries, observer) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -60,17 +62,67 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ====== SKILL BARS ANIMATION ======
-  function animateSkillBars(entries, observer) {
+  // ====== COUNTER ANIMATION ======
+  function animateCounters(entries, observer) {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      skillBars.forEach((bar) => {
-        const percentage = bar.getAttribute("data-skill");
-        bar.style.width = `${percentage}%`;
+      
+      const counters = entry.target.querySelectorAll(".counter");
+      counters.forEach((counter) => {
+        const target = parseInt(counter.getAttribute("data-target"));
+        let current = 0;
+        const increment = Math.ceil(target / 50); // Animate over ~50 steps
+        const duration = 1200; // 1.2 seconds
+        const stepTime = duration / (target / increment);
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            counter.textContent = target;
+            clearInterval(timer);
+          } else {
+            counter.textContent = current;
+          }
+        }, stepTime);
       });
+      
       observer.unobserve(entry.target);
     });
   }
+
+  // ====== LIGHTBOX FUNCTIONALITY ======
+  function openLightbox(imageSrc) {
+    lightboxImage.src = imageSrc;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  certImages.forEach((img) => {
+    img.addEventListener("click", function () {
+      const imageSrc = this.getAttribute("src");
+      openLightbox(imageSrc);
+    });
+  });
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Close lightbox with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightbox.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
 
   // ====== OBSERVERS SETUP ======
   const sectionObserver = new IntersectionObserver(updateNavActive, {
@@ -84,15 +136,18 @@ document.addEventListener("DOMContentLoaded", function () {
     threshold: 0.18,
   });
 
-  const skillObserver = new IntersectionObserver(animateSkillBars, {
+  const counterObserver = new IntersectionObserver(animateCounters, {
     root: null,
     threshold: 0.3,
   });
 
   sections.forEach((section) => sectionObserver.observe(section));
   revealElements.forEach((element) => revealObserver.observe(element));
-  if (skillBars.length) {
-    skillObserver.observe(document.querySelector(".skills__grid") || document.body);
+  
+  // Observe hero stats for counter animation
+  const heroStats = document.querySelector(".hero__stats");
+  if (heroStats) {
+    counterObserver.observe(heroStats);
   }
 
   // ====== SCROLL TO TOP BUTTON ======
