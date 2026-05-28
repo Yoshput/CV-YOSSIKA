@@ -178,5 +178,77 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // ====== FEEDBACK FORM HANDLER ======
+  const feedbackForm = document.getElementById("feedbackForm");
+  const feedbackStatus = document.getElementById("feedbackStatus");
+  
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+      const name = document.getElementById("feedbackName").value.trim() || "Anonymous";
+      const email = document.getElementById("feedbackEmail").value.trim();
+      const message = document.getElementById("feedbackMessage").value.trim();
+      
+      // Validation
+      if (!message) {
+        feedbackStatus.textContent = "⚠️ Pesan tidak boleh kosong!";
+        feedbackStatus.className = "feedback__status error";
+        return;
+      }
+      
+      if (email && !isValidEmail(email)) {
+        feedbackStatus.textContent = "⚠️ Format email tidak valid!";
+        feedbackStatus.className = "feedback__status error";
+        return;
+      }
+      
+      // Submit via Formspree (free service)
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("message", message);
+      formData.append("_captcha", "false"); // Disable captcha for now
+      
+      feedbackStatus.textContent = "📤 Mengirim...";
+      feedbackStatus.className = "feedback__status";
+      
+      // Send to Formspree
+      fetch("https://formspree.io/f/xldvkyza", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          feedbackStatus.textContent = "✅ Pesan terkirim! Terima kasih atas feedback Anda.";
+          feedbackStatus.className = "feedback__status success";
+          feedbackForm.reset();
+          
+          // Clear status after 5 seconds
+          setTimeout(() => {
+            feedbackStatus.textContent = "";
+            feedbackStatus.className = "feedback__status";
+          }, 5000);
+        } else {
+          throw new Error("Gagal mengirim pesan");
+        }
+      })
+      .catch(error => {
+        feedbackStatus.textContent = "❌ Gagal mengirim. Silakan coba lagi atau hubungi via email.";
+        feedbackStatus.className = "feedback__status error";
+        console.error("Form submission error:", error);
+      });
+    });
+  }
+  
+  // Email validation helper
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 });
 

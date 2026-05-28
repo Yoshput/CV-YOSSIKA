@@ -29,6 +29,7 @@
         <a class="nav-menu__link" href="#experience">Pengalaman</a>
         <a class="nav-menu__link" href="#skills">Skills</a>
         <a class="nav-menu__link" href="#certifications">Sertifikat</a>
+        <a class="nav-menu__link" href="#feedback">Feedback</a>
         <a class="nav-menu__link" href="#contact">Kontak</a>
       </nav>
       <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
@@ -234,8 +235,8 @@
         <h2>Let’s Connect</h2>
         <p>Siap berdiskusi tentang peluang kerja, proyek teknologi, atau kolaborasi kreatif.</p>
         <div class="contact__grid">
-          <a class="contact__item" href="mailto:yossikaputraerlangga@gmail.com">
-            <span class="contact__icon">📧</span>
+          <a class="contact__item contact__item--email" href="mailto:yossikaputraerlangga@gmail.com">
+            <img src="assets/img/gmaillogo.png" alt="Gmail" class="contact__logo" loading="lazy">
             <div>
               <strong>Email</strong>
               <p>yossikaputraerlangga@gmail.com</p>
@@ -263,6 +264,30 @@
             </div>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="section feedback" id="feedback">
+      <div class="container feedback__wrapper reveal">
+        <span class="section-label">Feedback</span>
+        <h2>Kirim Saran atau Pesan</h2>
+        <p class="feedback__subtitle">Anda bisa mengirimkan feedback anonim, saran, atau pertanyaan tentang proyek saya. Saya akan berusaha merespon secepat mungkin!</p>
+        <form class="feedback__form" id="feedbackForm">
+          <div class="form-group">
+            <input type="text" id="feedbackName" name="name" placeholder="Nama (opsional)" class="form-input" />
+            <label for="feedbackName" class="form-label">Nama</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="feedbackEmail" name="email" placeholder="Email (untuk reply)" class="form-input" />
+            <label for="feedbackEmail" class="form-label">Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="feedbackMessage" name="message" placeholder="Tulis pesan Anda di sini..." class="form-textarea" rows="6" required></textarea>
+            <label for="feedbackMessage" class="form-label">Pesan</label>
+          </div>
+          <button type="submit" class="btn btn--primary feedback__submit">📤 Kirim Pesan</button>
+          <p class="feedback__status" id="feedbackStatus"></p>
+        </form>
       </div>
     </section>
   </main>
