@@ -184,8 +184,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackStatus = document.getElementById("feedbackStatus");
   
   if (feedbackForm) {
-    feedbackForm.addEventListener("submit", function (e) {
-      e.preventDefault();
+    // Attach submit handler with proper event handling
+    const handleFormSubmit = function (e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
       
       const name = document.getElementById("feedbackName").value.trim() || "Anonymous";
       const email = document.getElementById("feedbackEmail").value.trim();
@@ -195,28 +200,25 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!message) {
         feedbackStatus.textContent = "⚠️ Pesan tidak boleh kosong!";
         feedbackStatus.className = "feedback__status error";
-        return;
+        return false;
       }
       
       if (email && !isValidEmail(email)) {
         feedbackStatus.textContent = "⚠️ Format email tidak valid!";
         feedbackStatus.className = "feedback__status error";
-        return;
+        return false;
       }
       
       feedbackStatus.textContent = "📤 Mengirim...";
       feedbackStatus.className = "feedback__status";
       
-      // Try sending via Formspree first (requires setup at formspree.io)
+      // Try sending via Formspree first
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
       formData.append("message", message);
       formData.append("_captcha", "false");
       
-      // TODO: Replace with your Formspree endpoint ID
-      // Go to https://formspree.io → Create account → Create form → Copy form ID
-      // Then update URL: https://formspree.io/f/YOUR_FORM_ID
       fetch("https://formspree.io/f/xldvkyza", {
         method: "POST",
         body: formData,
@@ -229,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
           saveFeedbackLocally(name, email, message);
           feedbackForm.reset();
           
-          // Clear status after 5 seconds
           setTimeout(() => {
             feedbackStatus.textContent = "";
             feedbackStatus.className = "feedback__status";
@@ -239,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .catch(error => {
-        // Fallback: save locally if Formspree fails
         console.warn("Formspree failed, saving locally:", error);
         saveFeedbackLocally(name, email, message);
         feedbackStatus.textContent = "✅ Pesan disimpan! (Setup Formspree untuk pengiriman email)";
@@ -251,7 +251,13 @@ document.addEventListener("DOMContentLoaded", function () {
           feedbackStatus.className = "feedback__status";
         }, 5000);
       });
-    });
+      
+      return false;
+    };
+    
+    // Attach with removeEventListener to clear any duplicates
+    feedbackForm.removeEventListener('submit', handleFormSubmit);
+    feedbackForm.addEventListener('submit', handleFormSubmit, false);
   }
   
   // Helper: Save feedback to localStorage
