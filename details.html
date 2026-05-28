@@ -3,576 +3,879 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Detail Portofolio Yossika - Dokumentasi Project, Sertifikat, dan Event yang telah diikuti" />
+  <meta name="description" content="Detail Portofolio Yossika - Dokumentasi Project, Sertifikat, dan Event" />
   <meta name="theme-color" content="#0D7BA8" />
   <title>Detail Portofolio | Yossika Putra Erlangga</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/details.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234AACE8' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' fill='%230A3D62' text-anchor='middle'>Y</text></svg>" />
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --bg2: #0f1525;
+      --bg3: #141c30;
+      --surface: #1a2238;
+      --surface2: #1f2a42;
+      --border: #2a3550;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --accent3: #fb923c;
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --text3: #64748b;
+      --green: #34d399;
+    }
+    [data-theme="light"] {
+      --bg: #f0f4ff;
+      --bg2: #e8eeff;
+      --bg3: #f8faff;
+      --surface: #ffffff;
+      --surface2: #eef2ff;
+      --border: #c7d2fe;
+      --text: #1e293b;
+      --text2: #475569;
+      --text3: #94a3b8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* HEADER */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,14,26,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+    }
+    [data-theme="light"] .site-header { background: rgba(240,244,255,0.92); }
+    .site-header__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.4rem;
+      color: var(--accent); text-decoration: none;
+    }
+    .nav-menu {
+      display: flex; gap: 0.15rem; margin-left: auto; flex-wrap: wrap;
+    }
+    .nav-menu__link {
+      color: var(--text2); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 0.4rem 0.7rem; border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-menu__link:hover, .nav-menu__link--active {
+      color: var(--accent); background: rgba(56,189,248,0.08);
+    }
+    .toggle-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); cursor: pointer; border-radius: 8px;
+      padding: 0.4rem 0.6rem; font-size: 1rem; transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 4px; flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px; transition: all 0.3s;
+    }
+
+    /* HERO */
+    .detail-hero {
+      padding: 7rem 0 3.5rem;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+      position: relative; overflow: hidden;
+    }
+    .detail-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 700px 350px at 50% 100%, rgba(56,189,248,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .detail-hero__content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .detail-hero__text { margin-bottom: 2rem; }
+    .section-label {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.75rem;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid rgba(56,189,248,0.2);
+      padding: 0.22rem 0.7rem; border-radius: 100px;
+    }
+    .detail-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .detail-hero p { color: var(--text2); max-width: 600px; font-size: 1rem; margin-bottom: 1.5rem; }
+    .detail-hero__buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 10px;
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: 0.88rem; text-decoration: none;
+      border: none; cursor: pointer; transition: all 0.25s;
+    }
+    .btn--primary { background: var(--accent); color: #0a0e1a; }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56,189,248,0.35); }
+    .btn--secondary {
+      background: var(--surface); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn--secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* CONTAINER */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* SECTION */
+    .section { padding: 5rem 0; }
+    .section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 800; margin-bottom: 0.5rem;
+    }
+    .section-intro {
+      color: var(--text2); max-width: 660px; margin-bottom: 3rem; font-size: 0.97rem;
+    }
+    .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+    /* ══ GALLERY BLOCKS ══ */
+    .gallery-wrapper { display: flex; flex-direction: column; gap: 4.5rem; }
+
+    .gallery-block { }
+    .gallery-block__header {
+      display: flex; align-items: flex-start; gap: 1.1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .gallery-block__icon {
+      width: 50px; height: 50px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.45rem; flex-shrink: 0;
+      background: var(--surface2); border: 1px solid var(--border);
+    }
+    .gallery-block__meta { flex: 1; min-width: 0; }
+    .gallery-block__tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 0.25rem;
+    }
+    .gallery-block h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem; font-weight: 800;
+      margin-bottom: 0.2rem; color: var(--text);
+    }
+    .gallery-block__desc { color: var(--text2); font-size: 0.88rem; }
+    .gallery-block__count {
+      font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+      color: var(--text3); background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.28rem 0.7rem; border-radius: 100px;
+      align-self: center; white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* Photo Grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 0.8rem;
+    }
+    .photo-grid--2 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+
+    .photo-card {
+      position: relative; overflow: hidden;
+      border-radius: 12px; aspect-ratio: 4/3;
+      cursor: zoom-in;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .photo-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease; display: block;
+    }
+    .photo-card:hover img { transform: scale(1.06); }
+    .photo-card__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 0.8rem;
+    }
+    .photo-card:hover .photo-card__overlay { opacity: 1; }
+    .photo-card__label { color: #fff; font-size: 0.78rem; font-weight: 500; }
+    .photo-card__zoom {
+      position: absolute; top: 0.6rem; right: 0.6rem;
+      background: rgba(0,0,0,0.5); color: #fff;
+      width: 30px; height: 30px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; opacity: 0; transition: opacity 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .photo-card:hover .photo-card__zoom { opacity: 1; }
+    .photo-card__fallback {
+      display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.5rem; height: 100%;
+      font-size: 0.78rem; color: var(--text3); padding: 1rem; text-align: center;
+    }
+    .photo-card__fallback .fi { font-size: 2rem; }
+
+    /* ══ CERTIFICATES ══ */
+    #sertifikat { background: var(--bg2); }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+    .cert-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .cert-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+      border-color: var(--accent2);
+    }
+    .cert-card__img-wrap {
+      height: 185px; overflow: hidden; background: var(--surface2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: zoom-in; position: relative;
+    }
+    .cert-card__img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .cert-card:hover .cert-card__img-wrap img { transform: scale(1.04); }
+    .cert-card__placeholder { font-size: 2.8rem; display: none; }
+    .cert-card__body { padding: 1.1rem 1.3rem; }
+    .cert-card__badge {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 100px;
+      background: rgba(129,140,248,0.12); color: var(--accent2);
+      border: 1px solid rgba(129,140,248,0.2); margin-bottom: 0.55rem;
+    }
+    .cert-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.97rem; font-weight: 700; margin-bottom: 0.2rem;
+    }
+    .cert-card p { color: var(--text2); font-size: 0.82rem; }
+
+    /* ══ PROJECTS ══ */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.4rem;
+    }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.6rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 28px rgba(56,189,248,0.1);
+    }
+    .project-card__icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; margin-bottom: 0.9rem;
+      background: var(--surface2);
+    }
+    .project-card h3 {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .project-card__meta { color: var(--accent); font-size: 0.76rem; font-weight: 600; margin-bottom: 0.7rem; }
+    .project-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .project-card li { font-size: 0.84rem; color: var(--text2); display: flex; align-items: flex-start; gap: 0.45rem; }
+    .project-card li::before { content: '▸'; color: var(--green); flex-shrink: 0; }
+
+    /* ══ SKILLS ══ */
+    #skills { background: var(--bg2); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.3rem;
+    }
+    .skill-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.4rem;
+    }
+    .skill-block h3 {
+      font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700;
+      margin-bottom: 0.9rem; color: var(--text2);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .skill-tag {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text2); font-size: 0.78rem;
+      padding: 0.28rem 0.75rem; border-radius: 100px; transition: all 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(56,189,248,0.06); }
+
+    /* ══ CTA ══ */
+    .detail-cta {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--bg2) 100%);
+      padding: 5rem 0; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .detail-cta h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin-bottom: 1rem;
+    }
+    .detail-cta p { color: var(--text2); max-width: 500px; margin: 0 auto 2rem; }
+    .detail-cta__buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ══ LIGHTBOX ══ */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.93);
+      display: none; align-items: center; justify-content: center;
+      padding: 1rem; backdrop-filter: blur(8px);
+    }
+    .lightbox.active { display: flex; }
+    .lightbox__close {
+      position: absolute; top: 1.1rem; right: 1.4rem;
+      font-size: 1.8rem; color: #fff; cursor: pointer;
+      background: rgba(255,255,255,0.1); border: none;
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox__close:hover { background: rgba(255,255,255,0.22); }
+    .lightbox img {
+      max-width: 90vw; max-height: 88vh; object-fit: contain;
+      border-radius: 12px; box-shadow: 0 28px 70px rgba(0,0,0,0.55);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 1.8rem 0; text-align: center;
+    }
+    .site-footer p { color: var(--text3); font-size: 0.83rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .gallery-block { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .gallery-block.visible { opacity: 1; transform: none; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; margin-left: auto; }
+      .nav-menu {
+        display: none; position: absolute; top: 100%;
+        left: 0; right: 0; background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: 0.75rem; gap: 0.2rem;
+      }
+      .nav-menu.open { display: flex; }
+      .toggle-btn { order: 10; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-block__header { flex-wrap: wrap; }
+      .gallery-block__count { order: -1; }
+    }
+  </style>
 </head>
 <body>
+
   <header class="site-header">
     <div class="site-header__inner container">
       <a href="index.html" class="brand">Yossika</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
       <nav class="nav-menu" id="mainNav">
-        <a class="nav-menu__link" href="index.html#hero">Home</a>
-        <a class="nav-menu__link" href="index.html#about">About</a>
-        <a class="nav-menu__link" href="details.html#projects" class="nav-menu__link--active">Project</a>
-        <a class="nav-menu__link" href="details.html#certificates">Sertifikat</a>
-        <a class="nav-menu__link" href="details.html#events">Event & Activity</a>
-        <a class="nav-menu__link" href="index.html#feedback">Feedback</a>
+        <a class="nav-menu__link" href="index.html">🏠 Home</a>
+        <a class="nav-menu__link" href="#dokumentasi">📷 Dokumentasi</a>
+        <a class="nav-menu__link" href="#sertifikat">🏆 Sertifikat</a>
+        <a class="nav-menu__link" href="#projects">💻 Projects</a>
+        <a class="nav-menu__link" href="#skills">⚡ Skills</a>
+        <a class="nav-menu__link" href="index.html#feedback">💬 Feedback</a>
       </nav>
-      <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="toggle-btn" id="themeToggle">🌙</button>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION -->
+
+    <!-- HERO -->
     <section class="detail-hero">
-      <div class="container detail-hero__content">
-        <div class="detail-hero__text reveal">
+      <div class="detail-hero__content">
+        <div class="detail-hero__text">
           <span class="section-label">Portfolio Details</span>
-          <h1>Dokumentasi & Showcase</h1>
-          <p>Jelajahi dokumentasi lengkap dari project, sertifikat, event, dan bukti coding yang telah saya kerjakan. Setiap karya menceritakan journey pembelajaran dan pengembangan skill saya.</p>
+          <h1>Dokumentasi &amp; Showcase</h1>
+          <p>Koleksi lengkap foto kegiatan, sertifikat, project teknis, dan perjalanan pembelajaran Yossika Putra Erlangga — tersusun rapi per kategori kegiatan.</p>
         </div>
         <div class="detail-hero__buttons">
           <a href="index.html" class="btn btn--secondary">← Kembali ke Home</a>
-          <a href="assets/CV%20Detail%20-%20Yossika%20Putra%20Erlangga.pdf" class="btn btn--primary" target="_blank" rel="noopener">📄 CV Lengkap PDF</a>
+          <a href="https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf" class="btn btn--primary" target="_blank" rel="noopener">📥 Download CV</a>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section class="section detail-section" id="projects">
-      <div class="container">
-        <span class="section-label">Projects</span>
-        <h2>Coding & Technical Projects</h2>
-        <div class="detail-grid reveal">
-          
-          <!-- PROJECT 1: Java -->
-          <article class="detail-card">
-            <div class="detail-card__header">
-              <div class="detail-card__icon">☕</div>
-              <h3>Java Programming</h3>
-            </div>
-            <div class="detail-card__content">
-              <p class="detail-card__meta">Object-Oriented Programming • Desktop Application</p>
-              <ul class="detail-card__list">
-                <li>✅ Core Java fundamentals & OOP concepts</li>
-                <li>✅ GUI development dengan Swing/AWT</li>
-                <li>✅ Database connectivity dengan JDBC</li>
-                <li>✅ Project: Application Management System</li>
-              </ul>
-            </div>
-            <div class="detail-card__media">
-              <div class="media-placeholder">📸 Project Screenshots</div>
-            </div>
-          </article>
+    <div class="sep"></div>
 
-          <!-- PROJECT 2: Python -->
-          <article class="detail-card">
-            <div class="detail-card__header">
-              <div class="detail-card__icon">🐍</div>
-              <h3>Python Development</h3>
-            </div>
-            <div class="detail-card__content">
-              <p class="detail-card__meta">Scripting • Automation • Web Basics</p>
-              <ul class="detail-card__list">
-                <li>✅ CodeCombat Intro to Computer Science course complete</li>
-                <li>✅ Automation scripts & data processing</li>
-                <li>✅ Web scraping & API integration</li>
-                <li>✅ Problem solving & algorithm implementation</li>
-              </ul>
-            </div>
-            <div class="detail-card__media">
-              <div class="media-placeholder">📸 CodeCombat Achievements</div>
-            </div>
-          </article>
-
-          <!-- PROJECT 3: Web Development -->
-          <article class="detail-card">
-            <div class="detail-card__header">
-              <div class="detail-card__icon">🌐</div>
-              <h3>Web Development</h3>
-            </div>
-            <div class="detail-card__content">
-              <p class="detail-card__meta">HTML • CSS • JavaScript • Responsive Design</p>
-              <ul class="detail-card__list">
-                <li>✅ Responsive & modern web design</li>
-                <li>✅ Interactive UI/UX components</li>
-                <li>✅ Performance optimization</li>
-                <li>✅ Portfolio website (halaman ini!)</li>
-              </ul>
-            </div>
-            <div class="detail-card__media">
-              <div class="media-placeholder">📸 Website Development</div>
-            </div>
-          </article>
-
-          <!-- PROJECT 4: Docker & Containers -->
-          <article class="detail-card">
-            <div class="detail-card__header">
-              <div class="detail-card__icon">🐳</div>
-              <h3>Docker Fundamentals</h3>
-            </div>
-            <div class="detail-card__content">
-              <p class="detail-card__meta">Containerization • DevOps • Infrastructure</p>
-              <ul class="detail-card__list">
-                <li>✅ Docker basics & container concepts</li>
-                <li>✅ Dockerfile creation & image building</li>
-                <li>✅ Container orchestration fundamentals</li>
-                <li>✅ Deployment best practices</li>
-              </ul>
-            </div>
-            <div class="detail-card__media">
-              <div class="media-placeholder">📸 Docker Labs</div>
-            </div>
-          </article>
-
-          <!-- PROJECT 5: Networking -->
-          <article class="detail-card">
-            <div class="detail-card__header">
-              <div class="detail-card__icon">🌍</div>
-              <h3>Network Administration</h3>
-            </div>
-            <div class="detail-card__content">
-              <p class="detail-card__meta">Cisco • MikroTik • Network Design</p>
-              <ul class="detail-card__list">
-                <li>✅ Cisco Packet Tracer network simulation</li>
-                <li>✅ MikroTik MTCNA certified</li>
-                <li>✅ LAN/WAN configuration & troubleshooting</li>
-                <li>✅ Security & firewall management</li>
-              </ul>
-            </div>
-            <div class="detail-card__media">
-              <div class="media-placeholder">📸 Network Design</div>
-            </div>
-          </article>
-
-          <!-- PROJECT 6: Graphic Design -->
-          <article class="detail-card">
-            <div class="detail-card__header">
-              <div class="detail-card__icon">🎨</div>
-              <h3>Graphic Design</h3>
-            </div>
-            <div class="detail-card__content">
-              <p class="detail-card__meta">UI/UX • Brand Design • Creative Assets</p>
-              <ul class="detail-card__list">
-                <li>✅ Digital design & creative tools</li>
-                <li>✅ Brand identity & visual consistency</li>
-                <li>✅ Marketing & promotional materials</li>
-                <li>✅ UI mockups & prototyping</li>
-              </ul>
-            </div>
-            <div class="detail-card__media">
-              <div class="media-placeholder">📸 Design Portfolio</div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES SECTION -->
-    <section class="section detail-section" id="certificates">
-      <div class="container">
-        <span class="section-label">Certifications</span>
-        <h2>Certificate Documentation</h2>
-        <div class="certificates-gallery reveal">
-          
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" type="image/jpeg">
-                <img src="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" alt="Docker Fundamental" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>Docker Fundamental</h3>
-              <p class="cert-issuer">Btech Academy</p>
-              <p class="cert-desc">Sertifikat menyelesaikan kursus Docker Fundamental mencakup containerization, image building, dan best practices deployment.</p>
-              <span class="cert-badge">🐳 DevOps</span>
-            </div>
-          </div>
-
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" type="image/jpeg">
-                <img src="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" alt="CodeCombat Python" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>CodeCombat Python</h3>
-              <p class="cert-issuer">Intro to Computer Science</p>
-              <p class="cert-desc">Menyelesaikan kursus programming interaktif CodeCombat dengan fokus pada Python dan problem solving fundamentals.</p>
-              <span class="cert-badge">🐍 Programming</span>
-            </div>
-          </div>
-
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" type="image/jpeg">
-                <img src="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" alt="PKL Telkom Akses" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>Sertifikat Praktik Kerja Lapangan (PKL)</h3>
-              <p class="cert-issuer">PT Telkom Akses • No. 1034/PS000/TA-0204/10-2023</p>
-              <p class="cert-desc">Internship di PT Telkom Akses selama 2 bulan dengan fokus pada network infrastructure dan technical support.</p>
-              <span class="cert-badge">🌐 Internship</span>
-            </div>
-          </div>
-
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/CERTIFIKAT INFENTRA.png" type="image/png">
-                <img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Administrasi Jaringan" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>Administrasi Jaringan</h3>
-              <p class="cert-issuer">Infentra • Telkom University Purwokerto</p>
-              <p class="cert-desc">Pelatihan dasar administrasi jaringan mencakup konfigurasi server, user management, dan network maintenance.</p>
-              <span class="cert-badge">🔧 Networking</span>
-            </div>
-          </div>
-
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/SERTIFIKAT MTCNA.jpg" type="image/jpeg">
-                <img src="assets/sertifikat/SERTIFIKAT MTCNA.jpg" alt="MikroTik MTCNA" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>MikroTik MTCNA</h3>
-              <p class="cert-issuer">MikroTik • Certified Network Associate</p>
-              <p class="cert-desc">Certified Network Associate dari MikroTik dengan pemahaman mendalaman tentang routing, firewall, dan wireless networking.</p>
-              <span class="cert-badge">⚙️ MikroTik</span>
-            </div>
-          </div>
-
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/CERTIFIKAT TULC.png" type="image/png">
-                <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC Leadership" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>Tel-U Leadermind (TULC)</h3>
-              <p class="cert-issuer">TULC Achievement • Season II</p>
-              <p class="cert-desc">Program kepemimpinan Tel-U Leadermind fokus pada pengembangan soft skills, leadership, dan team collaboration.</p>
-              <span class="cert-badge">🏆 Leadership</span>
-            </div>
-          </div>
-
-          <div class="cert-detail">
-            <div class="cert-detail__image">
-              <picture>
-                <source srcset="assets/sertifikat/SERTIFIKAT WPI.png" type="image/png">
-                <img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI Certificate" loading="lazy" onclick="openCertModal(this.src)">
-              </picture>
-            </div>
-            <div class="cert-detail__info">
-              <h3>Workshop & Professional Initiative</h3>
-              <p class="cert-issuer">WPI • Telkom University Purwokerto</p>
-              <p class="cert-desc">Partisipasi aktif dalam workshop dan inisiatif profesional untuk pengembangan skill teknis dan soft skills.</p>
-              <span class="cert-badge">📚 Workshop</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- EVENTS & ACTIVITIES SECTION -->
-    <section class="section detail-section" id="events">
-      <div class="container">
-        <span class="section-label">Experience</span>
-        <h2>Events & Activities Participation</h2>
-        <div class="events-timeline reveal">
-          
-          <div class="event-item">
-            <div class="event-item__marker"></div>
-            <div class="event-item__content">
-              <h3>Praktik Kerja Lapangan (PKL)</h3>
-              <p class="event-date">Oktober - November 2023</p>
-              <p class="event-location">🏢 PT Telkom Akses, Solo</p>
-              <div class="event-description">
-                <p>Internship berdurasi 6 bulan di departemen Technical Support & Network Infrastructure. Pengalaman langsung dalam troubleshooting jaringan, maintenance sistem, dan customer service teknis.</p>
-                <ul>
-                  <li>✅ Troubleshooting network issues dan fiber optic connections</li>
-                  <li>✅ Dokumentasi teknis dan laporan maintenance</li>
-                  <li>✅ Koordinasi dengan tim senior engineers</li>
-                  <li>✅ Field work dan on-site support</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-item">
-            <div class="event-item__marker"></div>
-            <div class="event-item__content">
-              <h3>TULC (Telkom University Leadermind Camp)</h3>
-              <p class="event-date">2024</p>
-              <p class="event-location">🎓 Telkom University Purwokerto</p>
-              <div class="event-description">
-                <p>Program pengembangan kepemimpinan tingkat universitas dengan fokus pada soft skills, team building, dan leadership qualities. Terpilih sebagai salah satu peserta terbaik di season II.</p>
-                <ul>
-                  <li>✅ Leadership development & critical thinking</li>
-                  <li>✅ Team collaboration & communication skills</li>
-                  <li>✅ Personal development & goal setting</li>
-                  <li>✅ Networking dengan peers & mentors</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-item">
-            <div class="event-item__marker"></div>
-            <div class="event-item__content">
-              <h3>Infentra Training Program</h3>
-              <p class="event-date">2024</p>
-              <p class="event-location">🔧 Infentra • Telkom University Purwokerto</p>
-              <div class="event-description">
-                <p>Program pelatihan networking komprehensif mencakup administrasi jaringan, server management, dan practical labs dengan peralatan industri.</p>
-                <ul>
-                  <li>✅ Network administration fundamentals</li>
-                  <li>✅ Server configuration & management</li>
-                  <li>✅ Hands-on lab exercises</li>
-                  <li>✅ Industry-relevant tools & technologies</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-item">
-            <div class="event-item__marker"></div>
-            <div class="event-item__content">
-              <h3>University Workshops & Seminars</h3>
-              <p class="event-date">Ongoing</p>
-              <p class="event-location">🎓 Telkom University Purwokerto</p>
-              <div class="event-description">
-                <p>Partisipasi aktif dalam berbagai workshop, seminar, dan training sessions yang diselenggarakan oleh universitas dan organisasi industri.</p>
-                <ul>
-                  <li>✅ Technical workshops (Cisco, Linux, etc.)</li>
-                  <li>✅ Professional development seminars</li>
-                  <li>✅ Career guidance & industry talks</li>
-                  <li>✅ Skill enhancement programs</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- EVENT DOCUMENTATION GALLERY SECTION -->
-    <section class="section detail-section" id="event-gallery">
+    <!-- ══════ DOKUMENTASI KEGIATAN ══════ -->
+    <section class="section" id="dokumentasi">
       <div class="container">
         <span class="section-label">Documentation</span>
-        <h2>Dokumentasi Kegiatan & Event</h2>
-        <p class="section-intro">Koleksi lengkap foto dari berbagai kegiatan, event, dan program yang telah saya ikuti selama perjalanan akademik.</p>
+        <h2>Dokumentasi Kegiatan</h2>
+        <p class="section-intro">Foto-foto dari semua kegiatan, event, dan program yang telah diikuti — dikategorikan berdasarkan masing-masing kegiatan dengan judul yang jelas.</p>
 
-        <!-- INFENTRA SECTION -->
-        <div class="gallery-category reveal">
-          <h3 class="gallery-category__title">🔧 Kegiatan INFENTRA</h3>
-          <p class="gallery-category__desc">Pelatihan dan praktik administrasi jaringan di Infentra Telkom University Purwokerto</p>
-          <div class="event-photos-grid">
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg" alt="Dokumentasi INFENTRA 1" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+        <div class="gallery-wrapper">
+
+          <!-- 1. INFENTRA -->
+          <div class="gallery-block">
+            <div class="gallery-block__header">
+              <div class="gallery-block__icon">🔧</div>
+              <div class="gallery-block__meta">
+                <div class="gallery-block__tag">Networking Training · 2024</div>
+                <h3>Kegiatan INFENTRA</h3>
+                <p class="gallery-block__desc">Pelatihan dan praktik administrasi jaringan di <strong>Infentra Telkom University Purwokerto</strong> — konfigurasi server, network management, dan hands-on labs industri.</p>
+              </div>
+              <span class="gallery-block__count">4 Foto</span>
             </div>
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/01-INFENTRA/02-Dokumentasi-Kegiatan.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/01-INFENTRA/02-Dokumentasi-Kegiatan.jpg" alt="Dokumentasi Kegiatan INFENTRA" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
-            </div>
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/01-INFENTRA/03-Foto-Bersama.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/01-INFENTRA/03-Foto-Bersama.jpg" alt="Foto Bersama INFENTRA" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
-            </div>
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/01-INFENTRA/04-Group-Photo.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/01-INFENTRA/04-Group-Photo.jpg" alt="Group Photo INFENTRA" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+            <div class="photo-grid">
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg"
+                     alt="Dokumentasi INFENTRA 1" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Dokumentasi INFENTRA</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🔧</span>Dokumentasi INFENTRA 1</div>
+              </div>
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/01-INFENTRA/02-Dokumentasi-Kegiatan.jpg"
+                     alt="Dokumentasi Kegiatan INFENTRA" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Dokumentasi Kegiatan</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">📸</span>Dokumentasi Kegiatan</div>
+              </div>
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/01-INFENTRA/03-Foto-Bersama.jpg"
+                     alt="Foto Bersama INFENTRA" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Foto Bersama Tim</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">👥</span>Foto Bersama Tim</div>
+              </div>
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/01-INFENTRA/04-Group-Photo.jpg"
+                     alt="Group Photo INFENTRA" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Group Photo</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">👥</span>Group Photo INFENTRA</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- TULC SECTION -->
-        <div class="gallery-category reveal">
-          <h3 class="gallery-category__title">🏆 Kegiatan TULC (Telkom University Leadermind Camp)</h3>
-          <p class="gallery-category__desc">Program kepemimpinan dan pengembangan soft skills Tel-U Leadermind Season II</p>
-          <div class="event-photos-grid">
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/02-TULC/01-Foto-Bersama.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/02-TULC/01-Foto-Bersama.jpg" alt="Foto Bersama TULC" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+          <!-- 2. TULC -->
+          <div class="gallery-block">
+            <div class="gallery-block__header">
+              <div class="gallery-block__icon">🏆</div>
+              <div class="gallery-block__meta">
+                <div class="gallery-block__tag">Leadership Program · 2024</div>
+                <h3>Kegiatan TULC — Tel-U Leadermind Camp</h3>
+                <p class="gallery-block__desc">Program pengembangan kepemimpinan <strong>Tel-U Leadermind Season II</strong> — fokus pada leadership, soft skills, critical thinking, dan team building di Telkom University Purwokerto.</p>
+              </div>
+              <span class="gallery-block__count">2 Foto</span>
             </div>
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/02-TULC/02-Kegiatan.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/02-TULC/02-Kegiatan.jpg" alt="Kegiatan TULC" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+            <div class="photo-grid photo-grid--2">
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/02-TULC/01-Foto-Bersama.jpg"
+                     alt="Foto Bersama TULC" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Foto Bersama TULC</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🏆</span>Foto Bersama TULC</div>
+              </div>
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/02-TULC/02-Kegiatan.jpg"
+                     alt="Kegiatan TULC" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Kegiatan TULC</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🏆</span>Kegiatan TULC</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- PKL TELKOM SECTION -->
-        <div class="gallery-category reveal">
-          <h3 class="gallery-category__title">🏢 Praktik Kerja Lapangan (PKL) - PT Telkom Akses</h3>
-          <p class="gallery-category__desc">Dokumentasi internship di PT Telkom Akses, Solo - Network Infrastructure & Technical Support</p>
-          <div class="event-photos-grid">
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/03-PKL_Telkom/01-Dokumentasi-PKL.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/03-PKL_Telkom/01-Dokumentasi-PKL.jpg" alt="Dokumentasi PKL Telkom" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+          <!-- 3. PKL TELKOM -->
+          <div class="gallery-block">
+            <div class="gallery-block__header">
+              <div class="gallery-block__icon">🏢</div>
+              <div class="gallery-block__meta">
+                <div class="gallery-block__tag">Internship / PKL · Apr–Sep 2023</div>
+                <h3>PKL — PT Telkom Akses, Karanganyar Solo</h3>
+                <p class="gallery-block__desc">Praktik Kerja Lapangan di <strong>PT Telkom Akses, Solo</strong> selama 6 bulan — instalasi perangkat WiFi, troubleshooting jaringan, penarikan kabel, dan splicing Fiber Optic di lapangan.</p>
+              </div>
+              <span class="gallery-block__count">1 Foto</span>
+            </div>
+            <div class="photo-grid photo-grid--2">
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/03-PKL_Telkom/01-Dokumentasi-PKL.jpg"
+                     alt="Dokumentasi PKL Telkom" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Dokumentasi PKL Telkom Akses</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🏢</span>Dokumentasi PKL Telkom</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- WISATA / TRAVEL SECTION -->
-        <div class="gallery-category reveal">
-          <h3 class="gallery-category__title">✈️ Wisata & Travel Memories</h3>
-          <p class="gallery-category__desc">Koleksi foto dari perjalanan dan wisata yang pernah dilakukan</p>
-          <div class="event-photos-grid">
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/04-Wisata/01-Candi-Arjuna.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/04-Wisata/01-Candi-Arjuna.jpg" alt="Candi Arjuna" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+          <!-- 4. WISATA -->
+          <div class="gallery-block">
+            <div class="gallery-block__header">
+              <div class="gallery-block__icon">✈️</div>
+              <div class="gallery-block__meta">
+                <div class="gallery-block__tag">Wisata &amp; Travel</div>
+                <h3>Wisata — Candi Arjuna &amp; Telaga Menjer</h3>
+                <p class="gallery-block__desc">Koleksi foto dari perjalanan wisata ke <strong>Candi Arjuna</strong> (Dieng, Wonosobo) dan <strong>Telaga Menjer</strong> — dokumentasi kenangan perjalanan.</p>
+              </div>
+              <span class="gallery-block__count">2 Foto</span>
             </div>
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/04-Wisata/02-Telaga-Menjer.jpg" type="image/jpeg">
-                <img src="assets/img/foto kegiatan/04-Wisata/02-Telaga-Menjer.jpg" alt="Telaga Menjer" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+            <div class="photo-grid photo-grid--2">
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/04-Wisata/01-Candi-Arjuna.jpg"
+                     alt="Candi Arjuna" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Candi Arjuna, Dieng</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🏛️</span>Candi Arjuna</div>
+              </div>
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/04-Wisata/02-Telaga-Menjer.jpg"
+                     alt="Telaga Menjer" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Telaga Menjer, Wonosobo</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🌊</span>Telaga Menjer</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- PROJECT / TECHNICAL WORK SECTION -->
-        <div class="gallery-category reveal">
-          <h3 class="gallery-category__title">💻 Project & Technical Work</h3>
-          <p class="gallery-category__desc">Dokumentasi project cinematik dan teknis networking yang telah dikerjakan</p>
-          <div class="event-photos-grid">
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp" type="image/webp">
-                <img src="assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp" alt="KK5 Cinematic Project" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+          <!-- 5. PROJECT TEKNIS -->
+          <div class="gallery-block">
+            <div class="gallery-block__header">
+              <div class="gallery-block__icon">💻</div>
+              <div class="gallery-block__meta">
+                <div class="gallery-block__tag">Technical Project</div>
+                <h3>Project &amp; Technical Work</h3>
+                <p class="gallery-block__desc">Dokumentasi project teknis — <strong>KK5 Cinematic Project</strong> (video/produksi kreatif) dan konfigurasi jaringan <strong>Routing OSPF</strong> di Cisco Packet Tracer.</p>
+              </div>
+              <span class="gallery-block__count">2 Foto</span>
             </div>
-            <div class="event-photo-item">
-              <picture>
-                <source srcset="assets/img/foto kegiatan/05-Project/02-Routing-OSPF.png" type="image/png">
-                <img src="assets/img/foto kegiatan/05-Project/02-Routing-OSPF.png" alt="Routing OSPF Network" loading="lazy" class="event-photo" onclick="openPhotoModal(this.src)">
-              </picture>
+            <div class="photo-grid photo-grid--2">
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp"
+                     alt="KK5 Cinematic Project" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">KK5 Cinematic Project</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🎬</span>KK5 Cinematic Project</div>
+              </div>
+              <div class="photo-card" onclick="openLightbox(this)">
+                <img src="assets/img/foto kegiatan/05-Project/02-Routing-OSPF.png"
+                     alt="Routing OSPF Network" loading="lazy" onerror="imgErr(this)">
+                <div class="photo-card__overlay"><span class="photo-card__label">Routing OSPF — Cisco Packet Tracer</span></div>
+                <div class="photo-card__zoom">🔍</div>
+                <div class="photo-card__fallback"><span class="fi">🌐</span>Routing OSPF</div>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
 
-    <!-- PHOTO MODAL -->
-    <div id="photoModal" class="photo-modal">
-      <div class="photo-modal__content">
-        <button class="photo-modal__close" onclick="closePhotoModal()" aria-label="Close modal">&times;</button>
-        <img id="photoModalImage" src="" alt="Full size photo" class="photo-modal__image">
-      </div>
-    </div>
+    <div class="sep"></div>
 
-    <!-- SKILLS MATRIX SECTION -->
-    <section class="section detail-section bg-secondary">
+    <!-- ══════ SERTIFIKAT ══════ -->
+    <section class="section" id="sertifikat">
+      <div class="container">
+        <span class="section-label">Certifications</span>
+        <h2>Sertifikat &amp; Pencapaian</h2>
+        <p class="section-intro">Kumpulan sertifikat dari pelatihan teknis, program kepemimpinan, dan pengalaman profesional yang telah diraih. Klik gambar untuk memperbesar.</p>
+        <div class="cert-grid reveal">
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" alt="Docker Fundamental" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">🐳</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">DevOps</span>
+              <h3>Docker Fundamental</h3>
+              <p>Btech Academy — Containerization &amp; DevOps</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" alt="CodeCombat Python" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">🐍</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">Programming</span>
+              <h3>CodeCombat Python</h3>
+              <p>Intro to Computer Science</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" alt="PKL Telkom Akses" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">📜</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">Internship</span>
+              <h3>Sertifikat PKL</h3>
+              <p>PT Telkom Akses · No. 1034/PS000/TA-0204/10-2023</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Administrasi Jaringan INFENTRA" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">🔧</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">Networking</span>
+              <h3>Administrasi Jaringan</h3>
+              <p>Infentra · Telkom University Purwokerto</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/SERTIFIKAT MTCNA.jpg" alt="MikroTik MTCNA" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">⚙️</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">MikroTik</span>
+              <h3>MikroTik MTCNA</h3>
+              <p>Certified Network Associate</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC Leadership" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">🏆</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">Leadership</span>
+              <h3>Tel-U Leadermind (TULC)</h3>
+              <p>TULC Achievement · Season II</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" onclick="openLightboxSrc(this.querySelector('img').src)">
+              <img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI Certificate" loading="lazy" onerror="certImgErr(this)">
+              <div class="cert-card__placeholder">🎓</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">Workshop</span>
+              <h3>Sertifikat WPI</h3>
+              <p>Workshop &amp; Professional Initiative · Tel-U Purwokerto</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__img-wrap" style="cursor:default;">
+              <div class="cert-card__placeholder" style="display:flex;align-items:center;justify-content:center;height:100%;font-size:2.8rem">🌐</div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__badge">Networking</span>
+              <h3>Cisco Packet Tracer</h3>
+              <p>Dasar Jaringan &amp; Networking Fundamentals</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ══════ PROJECTS ══════ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <span class="section-label">Projects</span>
+        <h2>Coding &amp; Technical Projects</h2>
+        <p class="section-intro">Project teknis dan coding yang telah dikerjakan — dari pemrograman, networking, hingga web development dan containerization.</p>
+        <div class="projects-grid reveal">
+
+          <div class="project-card">
+            <div class="project-card__icon">☕</div>
+            <h3>Java Programming</h3>
+            <p class="project-card__meta">Object-Oriented Programming · Desktop App</p>
+            <ul>
+              <li>Core Java fundamentals &amp; OOP concepts</li>
+              <li>GUI development dengan Swing/AWT</li>
+              <li>Database connectivity dengan JDBC</li>
+              <li>Application Management System</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card__icon">🐍</div>
+            <h3>Python Development</h3>
+            <p class="project-card__meta">Scripting · Automation · Web Basics</p>
+            <ul>
+              <li>CodeCombat Intro to CS — selesai penuh</li>
+              <li>Automation scripts &amp; data processing</li>
+              <li>Web scraping &amp; API integration</li>
+              <li>Algorithm implementation &amp; problem solving</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card__icon">🌐</div>
+            <h3>Web Development</h3>
+            <p class="project-card__meta">HTML · CSS · JavaScript · Responsive</p>
+            <ul>
+              <li>Responsive &amp; modern web design</li>
+              <li>Interactive UI/UX components</li>
+              <li>Performance optimization</li>
+              <li>Portfolio website (halaman ini!)</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card__icon">🐳</div>
+            <h3>Docker Fundamentals</h3>
+            <p class="project-card__meta">Containerization · DevOps · Infrastructure</p>
+            <ul>
+              <li>Docker basics &amp; container concepts</li>
+              <li>Dockerfile creation &amp; image building</li>
+              <li>Container orchestration fundamentals</li>
+              <li>Deployment best practices</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card__icon">🌍</div>
+            <h3>Network Administration</h3>
+            <p class="project-card__meta">Cisco · MikroTik · Network Design</p>
+            <ul>
+              <li>Routing OSPF di Cisco Packet Tracer</li>
+              <li>MikroTik MTCNA certified</li>
+              <li>LAN/WAN config &amp; troubleshooting</li>
+              <li>Firewall &amp; security management</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card__icon">🎨</div>
+            <h3>Graphic Design</h3>
+            <p class="project-card__meta">UI/UX · Brand Design · Creative Assets</p>
+            <ul>
+              <li>Adobe Illustrator, Photoshop, Canva</li>
+              <li>Brand identity &amp; visual consistency</li>
+              <li>Marketing &amp; promotional materials</li>
+              <li>UI mockups &amp; prototyping</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ══════ SKILLS ══════ -->
+    <section class="section" id="skills">
       <div class="container">
         <span class="section-label">Expertise</span>
         <h2>Technical Skills Matrix</h2>
-        <div class="skills-matrix reveal">
-          <div class="skill-category">
-            <h3 class="skill-category__title">🌐 Networking & Infrastructure</h3>
+        <p class="section-intro">Rangkuman lengkap keahlian teknis dan soft skills yang telah dikuasai selama perjalanan akademik dan profesional.</p>
+        <div class="skills-grid reveal">
+          <div class="skill-block">
+            <h3>🌐 Networking &amp; Infrastructure</h3>
             <div class="skill-tags">
               <span class="skill-tag">Cisco Packet Tracer</span>
               <span class="skill-tag">MikroTik RouterOS</span>
               <span class="skill-tag">Network Security</span>
               <span class="skill-tag">Firewall Management</span>
               <span class="skill-tag">LAN/WAN Configuration</span>
-              <span class="skill-tag">Routing & Switching</span>
+              <span class="skill-tag">Routing &amp; Switching</span>
+              <span class="skill-tag">Fiber Optic Splicing</span>
             </div>
           </div>
-
-          <div class="skill-category">
-            <h3 class="skill-category__title">💻 Programming Languages</h3>
+          <div class="skill-block">
+            <h3>💻 Programming Languages</h3>
             <div class="skill-tags">
               <span class="skill-tag">Java (OOP)</span>
               <span class="skill-tag">Python</span>
-              <span class="skill-tag">HTML/CSS/JS</span>
+              <span class="skill-tag">HTML / CSS / JS</span>
               <span class="skill-tag">SQL</span>
-              <span class="skill-tag">Bash/Shell Script</span>
+              <span class="skill-tag">Bash / Shell Script</span>
             </div>
           </div>
-
-          <div class="skill-category">
-            <h3 class="skill-category__title">🛠️ DevOps & Tools</h3>
+          <div class="skill-block">
+            <h3>🛠️ DevOps &amp; Tools</h3>
             <div class="skill-tags">
               <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Linux/Ubuntu</span>
-              <span class="skill-tag">Git & Version Control</span>
+              <span class="skill-tag">Linux / Ubuntu</span>
+              <span class="skill-tag">Git &amp; Version Control</span>
               <span class="skill-tag">Database Admin</span>
               <span class="skill-tag">System Administration</span>
             </div>
           </div>
-
-          <div class="skill-category">
-            <h3 class="skill-category__title">🎨 Design & Creative</h3>
+          <div class="skill-block">
+            <h3>🎨 Design &amp; Creative</h3>
             <div class="skill-tags">
-              <span class="skill-tag">Graphic Design</span>
+              <span class="skill-tag">Adobe Illustrator</span>
+              <span class="skill-tag">Adobe Photoshop</span>
+              <span class="skill-tag">Canva</span>
               <span class="skill-tag">UI/UX Design</span>
               <span class="skill-tag">Responsive Web Design</span>
-              <span class="skill-tag">Brand Identity</span>
             </div>
           </div>
-
-          <div class="skill-category">
-            <h3 class="skill-category__title">🗣️ Soft Skills</h3>
+          <div class="skill-block">
+            <h3>🗣️ Soft Skills</h3>
             <div class="skill-tags">
               <span class="skill-tag">Leadership</span>
               <span class="skill-tag">Team Collaboration</span>
               <span class="skill-tag">Problem Solving</span>
               <span class="skill-tag">Communication</span>
-              <span class="skill-tag">Project Management</span>
+              <span class="skill-tag">Event Management</span>
+              <span class="skill-tag">Security Coordination</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA SECTION -->
+    <!-- CTA -->
     <section class="detail-cta">
-      <div class="container detail-cta__content reveal">
+      <div class="container">
         <h2>Tertarik untuk Berkolaborasi?</h2>
-        <p>Jika Anda tertarik dengan portfolio dan pengalaman saya, saya terbuka untuk diskusi tentang peluang kerja, proyek kolaboratif, atau sekadar berbagi pengalaman.</p>
+        <p>Terbuka untuk diskusi peluang kerja, proyek kolaboratif, atau sekadar berbagi pengalaman di bidang teknologi dan networking.</p>
         <div class="detail-cta__buttons">
           <a href="index.html#contact" class="btn btn--primary">📧 Hubungi Saya</a>
           <a href="index.html" class="btn btn--secondary">← Kembali ke Home</a>
@@ -582,157 +885,99 @@
 
   </main>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLB(event)">
+    <button class="lightbox__close" onclick="closeLB({target:{id:'lightbox'}})">×</button>
+    <img id="lbImg" src="" alt="Full view" />
+  </div>
+
   <footer class="site-footer">
-    <div class="container footer__content">
-      <p>&copy; 2026 Yossika Putra Erlangga. Semua hak dilindungi.</p>
-      <p>Built with ❤️ • Last Updated: May 28, 2026</p>
+    <div class="container">
+      <p>© 2026 Yossika Putra Erlangga &nbsp;·&nbsp; Built with ❤️ &nbsp;·&nbsp; Last Updated: May 28, 2026</p>
     </div>
   </footer>
 
-  <!-- CERTIFICATE MODAL -->
-  <div class="cert-modal" id="certModal">
-    <span class="cert-modal__close" onclick="closeCertModal()">×</span>
-    <img class="cert-modal__image" src="" alt="Certificate Full View" />
-  </div>
-
   <script>
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement;
-
-    themeToggle?.addEventListener('click', () => {
-      const isDark = htmlElement.getAttribute('data-theme') === 'dark';
-      const newTheme = isDark ? 'light' : 'dark';
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      themeToggle.textContent = isDark ? '🌙' : '☀️';
+    // THEME
+    const themeBtn = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+    themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
+    themeBtn.addEventListener('click', () => {
+      const d = html.getAttribute('data-theme') === 'dark';
+      const n = d ? 'light' : 'dark';
+      html.setAttribute('data-theme', n);
+      localStorage.setItem('theme', n);
+      themeBtn.textContent = n === 'dark' ? '☀️' : '🌙';
     });
 
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-    // Mobile Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const mainNav = document.getElementById('mainNav');
-
-    hamburger?.addEventListener('click', () => {
-      mainNav.classList.toggle('nav-menu--active');
-      hamburger.classList.toggle('hamburger--active');
+    // HAMBURGER
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('open');
     });
+    document.querySelectorAll('.nav-menu__link').forEach(l =>
+      l.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'))
+    );
 
-    // Close menu on link click
-    document.querySelectorAll('.nav-menu__link').forEach(link => {
-      link.addEventListener('click', () => {
-        mainNav.classList.remove('nav-menu--active');
-        hamburger.classList.remove('hamburger--active');
-      });
-    });
+    // IMAGE ERROR HANDLERS
+    function imgErr(img) {
+      img.style.display = 'none';
+      const fb = img.closest('.photo-card')?.querySelector('.photo-card__fallback');
+      if (fb) fb.style.display = 'flex';
+    }
+    function certImgErr(img) {
+      img.style.display = 'none';
+      const ph = img.nextElementSibling;
+      if (ph && ph.classList.contains('cert-card__placeholder')) {
+        ph.style.display = 'flex';
+        ph.style.alignItems = 'center';
+        ph.style.justifyContent = 'center';
+        ph.style.height = '100%';
+      }
+    }
 
-    // Certificate Modal Functions
-    function openCertModal(imageSrc) {
-      const modal = document.getElementById('certModal');
-      const modalImage = modal.querySelector('.cert-modal__image');
-      modalImage.src = imageSrc;
-      modal.classList.add('cert-modal--active');
+    // LIGHTBOX
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      if (!img || img.style.display === 'none') return;
+      document.getElementById('lbImg').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-
-    function closeCertModal() {
-      const modal = document.getElementById('certModal');
-      modal.classList.remove('cert-modal--active');
-      document.body.style.overflow = 'auto';
+    function openLightboxSrc(src) {
+      if (!src) return;
+      document.getElementById('lbImg').src = src;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-
-    // Close modal on backdrop click
-    document.getElementById('certModal')?.addEventListener('click', (e) => {
-      if (e.target.id === 'certModal') {
-        closeCertModal();
-      }
+    function closeLB(e) {
+      if (e && e.target && e.target.id !== 'lightbox' && !e.target.classList.contains('lightbox__close')) return;
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
     });
 
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeCertModal();
-      }
-    });
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal, .gallery-block').forEach(el => observer.observe(el));
 
-    // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, revealOptions);
-
-    revealElements.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-
-    // Active nav link on scroll
-    const sections = document.querySelectorAll('[id]');
-    const navLinks = document.querySelectorAll('.nav-menu__link');
-
+    // ACTIVE NAV
     window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 200) {
-          current = section.getAttribute('id');
-        }
+      let cur = '';
+      document.querySelectorAll('section[id], div[id]').forEach(s => {
+        if (window.scrollY >= s.offsetTop - 220) cur = s.id;
       });
-
-      navLinks.forEach(link => {
-        link.classList.remove('nav-menu__link--active');
-        if (link.getAttribute('href').includes(current)) {
-          link.classList.add('nav-menu__link--active');
-        }
+      document.querySelectorAll('.nav-menu__link').forEach(l => {
+        const href = l.getAttribute('href') || '';
+        l.classList.toggle('nav-menu__link--active', cur && href.includes('#' + cur));
       });
-    });
-
-    // Photo Modal Functions
-    function openPhotoModal(imageSrc) {
-      const modal = document.getElementById('photoModal');
-      const modalImage = document.getElementById('photoModalImage');
-      modalImage.src = imageSrc;
-      modal.classList.add('photo-modal--active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePhotoModal() {
-      const modal = document.getElementById('photoModal');
-      modal.classList.remove('photo-modal--active');
-      document.body.style.overflow = 'auto';
-    }
-
-    // Close photo modal on backdrop click
-    document.getElementById('photoModal')?.addEventListener('click', (e) => {
-      if (e.target.id === 'photoModal') {
-        closePhotoModal();
-      }
-    });
-
-    // Close modals on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeCertModal();
-        closePhotoModal();
-      }
     });
   </script>
+
 </body>
 </html>
