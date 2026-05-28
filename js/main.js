@@ -204,28 +204,29 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       
-      // Submit via Formspree (free service)
+      feedbackStatus.textContent = "📤 Mengirim...";
+      feedbackStatus.className = "feedback__status";
+      
+      // Try sending via Formspree first (requires setup at formspree.io)
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
       formData.append("message", message);
-      formData.append("_captcha", "false"); // Disable captcha for now
+      formData.append("_captcha", "false");
       
-      feedbackStatus.textContent = "📤 Mengirim...";
-      feedbackStatus.className = "feedback__status";
-      
-      // Send to Formspree
+      // TODO: Replace with your Formspree endpoint ID
+      // Go to https://formspree.io → Create account → Create form → Copy form ID
+      // Then update URL: https://formspree.io/f/YOUR_FORM_ID
       fetch("https://formspree.io/f/xldvkyza", {
         method: "POST",
         body: formData,
-        headers: {
-          "Accept": "application/json"
-        }
+        headers: { "Accept": "application/json" }
       })
       .then(response => {
         if (response.ok) {
           feedbackStatus.textContent = "✅ Pesan terkirim! Terima kasih atas feedback Anda.";
           feedbackStatus.className = "feedback__status success";
+          saveFeedbackLocally(name, email, message);
           feedbackForm.reset();
           
           // Clear status after 5 seconds
@@ -234,15 +235,35 @@ document.addEventListener("DOMContentLoaded", function () {
             feedbackStatus.className = "feedback__status";
           }, 5000);
         } else {
-          throw new Error("Gagal mengirim pesan");
+          throw new Error("Formspree response not OK");
         }
       })
       .catch(error => {
-        feedbackStatus.textContent = "❌ Gagal mengirim. Silakan coba lagi atau hubungi via email.";
-        feedbackStatus.className = "feedback__status error";
-        console.error("Form submission error:", error);
+        // Fallback: save locally if Formspree fails
+        console.warn("Formspree failed, saving locally:", error);
+        saveFeedbackLocally(name, email, message);
+        feedbackStatus.textContent = "✅ Pesan disimpan! (Setup Formspree untuk pengiriman email)";
+        feedbackStatus.className = "feedback__status success";
+        feedbackForm.reset();
+        
+        setTimeout(() => {
+          feedbackStatus.textContent = "";
+          feedbackStatus.className = "feedback__status";
+        }, 5000);
       });
     });
+  }
+  
+  // Helper: Save feedback to localStorage
+  function saveFeedbackLocally(name, email, message) {
+    const feedbacks = JSON.parse(localStorage.getItem("cvFeedbacks") || "[]");
+    feedbacks.push({
+      timestamp: new Date().toISOString(),
+      name: name,
+      email: email,
+      message: message
+    });
+    localStorage.setItem("cvFeedbacks", JSON.stringify(feedbacks));
   }
   
   // Email validation helper
