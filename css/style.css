@@ -256,9 +256,9 @@ p { margin: 0; color: var(--color-text-muted); }
   
   /* Certifications */
   .certifications__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .cert-card { min-height: 240px; padding: 1.5rem; }
-  .cert-image { height: 140px; object-fit: cover; }
-  .cert-image-placeholder { font-size: 3rem; height: 140px; display: flex; align-items: center; justify-content: center; }
+  .cert-card { min-height: 220px; padding: 1.5rem; }
+  .cert-image { height: 120px; object-fit: cover; }
+  .cert-image-placeholder { font-size: 2.5rem; height: 120px; display: flex; align-items: center; justify-content: center; }
   
   /* Contact Section */
   .contact__grid { grid-template-columns: 1fr; gap: 1.5rem; }
