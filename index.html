@@ -1,92 +1,576 @@
-<!-- Deploy: push to main branch, enable GitHub Pages in repo settings -->
-<!-- Last updated: 2026-05-28 -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CV Profesional Yossika Putra Erlangga - Mahasiswa Teknik Informatika dengan pengalaman di networking, desain grafis, dan event management." />
+  <meta name="description" content="CV Profesional Yossika Putra Erlangga - Mahasiswa Teknik Informatika, networking, desain grafis, event management." />
   <meta name="theme-color" content="#0D7BA8" />
   <title>Yossika Putra Erlangga | CV Profesional</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234AACE8' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' fill='%230A3D62' text-anchor='middle'>Y</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2338bdf8' width='100' height='100'/><text x='50' y='68' font-size='62' font-weight='bold' fill='%230a0e1a' text-anchor='middle' font-family='sans-serif'>Y</text></svg>" />
+
+  <style>
+  /* ════════════════════════════════════
+     DESIGN TOKENS
+  ════════════════════════════════════ */
+  :root {
+    /* Dark palette */
+    --bg:        #080d18;
+    --bg-2:      #0c1220;
+    --bg-3:      #101828;
+    --surface:   #161f32;
+    --surface-2: #1c2840;
+    --border:    #253047;
+    --border-2:  #1e2d46;
+
+    /* Accent — steel blue */
+    --accent:    #38bdf8;
+    --accent-dim:#1e8fbf;
+    --accent-bg: rgba(56,189,248,.09);
+    --accent-border: rgba(56,189,248,.22);
+
+    /* Text */
+    --txt:   #dce7f3;
+    --txt-2: #8fa3be;
+    --txt-3: #4e6580;
+
+    /* Status */
+    --green: #34d399;
+    --amber: #fbbf24;
+    --violet:#818cf8;
+
+    /* Spacing */
+    --r-sm:  8px;
+    --r-md:  12px;
+    --r-lg:  16px;
+    --r-xl:  20px;
+  }
+
+  [data-theme="light"] {
+    --bg:        #f1f5fb;
+    --bg-2:      #e8eef8;
+    --bg-3:      #fafcff;
+    --surface:   #ffffff;
+    --surface-2: #edf2fb;
+    --border:    #cdd8ee;
+    --border-2:  #dce6f5;
+    --accent-bg: rgba(56,189,248,.07);
+    --accent-border: rgba(56,189,248,.25);
+    --txt:   #0f1c2e;
+    --txt-2: #3d5472;
+    --txt-3: #8fa3be;
+  }
+
+  /* ════════════════════════════════════
+     RESET + BASE
+  ════════════════════════════════════ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--txt);
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  ul { list-style: none; }
+
+  /* ════════════════════════════════════
+     TYPOGRAPHY SCALE
+  ════════════════════════════════════ */
+  h1,h2,h3,h4 { font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(2.1rem, 5.5vw, 3.4rem); font-weight: 800; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  h3 { font-size: 1.05rem; font-weight: 700; }
+  p  { font-size: 0.95rem; color: var(--txt-2); }
+
+  /* ════════════════════════════════════
+     LAYOUT HELPERS
+  ════════════════════════════════════ */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+  .section    { padding: 5.5rem 0; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-bg); border: 1px solid var(--accent-border);
+    padding: 0.22rem 0.75rem; border-radius: 100px; margin-bottom: 0.75rem;
+  }
+  .section-title { margin-bottom: 0.4rem; }
+  .section-sub   { color: var(--txt-2); max-width: 580px; margin-bottom: 3rem; font-size: 0.95rem; }
+
+  .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+  /* ════════════════════════════════════
+     BUTTONS
+  ════════════════════════════════════ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.65rem 1.35rem; border-radius: var(--r-md);
+    font-family: inherit; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; border: none; transition: all .22s ease;
+    white-space: nowrap; text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: #070c16;
+  }
+  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(56,189,248,.28); }
+
+  .btn-ghost {
+    background: transparent; color: var(--txt);
+    border: 1.5px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* ════════════════════════════════════
+     HEADER / NAV
+  ════════════════════════════════════ */
+  .site-header {
+    position: fixed; inset: 0 0 auto;
+    z-index: 200;
+    background: rgba(8,13,24,.88);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .3s;
+  }
+  [data-theme="light"] .site-header { background: rgba(241,245,251,.9); }
+
+  .site-header__inner {
+    display: flex; align-items: center; gap: 1rem; padding: 0.85rem 1.5rem;
+    max-width: 1160px; margin: 0 auto;
+  }
+
+  .brand {
+    font-size: 1.15rem; font-weight: 800; color: var(--accent);
+    letter-spacing: -0.03em; flex-shrink: 0;
+  }
+
+  .nav {
+    display: flex; align-items: center; gap: 0.1rem;
+    margin-left: auto; flex-wrap: wrap;
+  }
+  .nav a {
+    font-size: 0.82rem; font-weight: 500; color: var(--txt-2);
+    padding: 0.38rem 0.65rem; border-radius: var(--r-sm);
+    transition: color .2s, background .2s;
+  }
+  .nav a:hover, .nav a.active { color: var(--accent); background: var(--accent-bg); }
+
+  .theme-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--txt-2); cursor: pointer; border-radius: var(--r-sm);
+    padding: 0.38rem 0.6rem; font-size: 0.95rem; transition: all .2s;
+    flex-shrink: 0; line-height: 1;
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px; margin-left: auto;
+  }
+  .hamburger span {
+    display: block; width: 21px; height: 2px;
+    background: var(--txt); border-radius: 2px; transition: all .3s;
+  }
+
+  /* ════════════════════════════════════
+     HERO
+  ════════════════════════════════════ */
+  .hero {
+    min-height: 100svh;
+    display: flex; align-items: center;
+    padding: 7rem 0 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero__glow {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 55% at 70% 50%, rgba(56,189,248,.07) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(129,140,248,.05) 0%, transparent 60%);
+  }
+  .hero__inner {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 4rem;
+    position: relative;
+  }
+
+  .hero__eyebrow { margin-bottom: 1.2rem; }
+  .hero__title   { margin-bottom: 1rem; }
+  .hero__desc    { font-size: 1rem; max-width: 500px; margin-bottom: 2rem; line-height: 1.7; }
+
+  .hero__stats {
+    display: flex; gap: 2rem; margin-bottom: 2.2rem;
+  }
+  .stat { }
+  .stat__num {
+    font-size: 1.75rem; font-weight: 800;
+    color: var(--accent); letter-spacing: -0.04em; line-height: 1;
+  }
+  .stat__lbl { font-size: 0.75rem; font-weight: 500; color: var(--txt-3); margin-top: 0.2rem; }
+
+  .hero__actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+  /* Photo */
+  .hero__photo-wrap {
+    flex-shrink: 0; position: relative;
+  }
+  .hero__photo {
+    width: 260px; height: 310px; object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  }
+  .hero__photo-ring {
+    position: absolute; inset: -8px; border-radius: 26px;
+    border: 1.5px solid var(--accent-border);
+    pointer-events: none;
+  }
+
+  /* ════════════════════════════════════
+     ABOUT
+  ════════════════════════════════════ */
+  #about { background: var(--bg-2); }
+  .about__grid {
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about__photo {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    border-radius: var(--r-xl);
+    border: 2px solid var(--border);
+  }
+  .about__details {
+    margin-top: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.55rem;
+  }
+  .about__details li {
+    display: flex; gap: 0.6rem;
+    font-size: 0.88rem; color: var(--txt-2);
+  }
+  .about__details strong {
+    color: var(--txt); font-weight: 600;
+    min-width: 70px; flex-shrink: 0;
+  }
+
+  /* ════════════════════════════════════
+     TIMELINE (Education + Experience)
+  ════════════════════════════════════ */
+  .timeline__list {
+    display: flex; flex-direction: column; gap: 0;
+    position: relative; padding-left: 1.8rem;
+  }
+  .timeline__list::before {
+    content: ''; position: absolute;
+    left: 6px; top: 6px; bottom: 6px; width: 1.5px;
+    background: linear-gradient(180deg, var(--accent), var(--border), transparent);
+  }
+  .timeline__item {
+    position: relative; padding: 0 0 2.2rem 1.5rem;
+  }
+  .timeline__item::before {
+    content: ''; position: absolute;
+    left: -1.8rem; top: 7px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg-2); border: 2px solid var(--border);
+    transition: border-color .2s;
+  }
+  .timeline__item:hover::before { border-color: var(--accent); }
+  .timeline__item--accent::before { background: var(--accent); border-color: var(--accent); }
+
+  .timeline__date {
+    display: inline-block; font-size: 0.72rem; font-weight: 700;
+    color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 0.35rem; background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    padding: 0.15rem 0.6rem; border-radius: 100px;
+  }
+  .timeline__item h3 { font-size: 0.98rem; margin-bottom: 0.2rem; }
+  .timeline__item > p { font-size: 0.85rem; color: var(--txt-2); margin-bottom: 0.5rem; }
+  .timeline__item ul { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.5rem; }
+  .timeline__item li { font-size: 0.83rem; color: var(--txt-2); padding-left: 1rem; position: relative; }
+  .timeline__item li::before { content: '–'; position: absolute; left: 0; color: var(--txt-3); }
+
+  /* ════════════════════════════════════
+     SKILLS
+  ════════════════════════════════════ */
+  #skills { background: var(--bg-2); }
+  .skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+  .skill-group {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 1.4rem;
+  }
+  .skill-group h3 { font-size: 0.85rem; font-weight: 700; color: var(--txt-2); margin-bottom: 0.9rem; }
+  .skill-badges { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .skill-badge {
+    background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--txt-2); font-size: 0.78rem; font-weight: 500;
+    padding: 0.28rem 0.75rem; border-radius: 100px;
+    transition: all .2s;
+  }
+  .skill-badge:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+
+  /* ════════════════════════════════════
+     CERTIFICATIONS
+  ════════════════════════════════════ */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  .cert-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-lg); overflow: hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .cert-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--violet);
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  }
+  .cert-img-wrap {
+    height: 150px; background: var(--surface-2);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; cursor: zoom-in;
+  }
+  .cert-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s;
+  }
+  .cert-card:hover .cert-img-wrap img { transform: scale(1.04); }
+  .cert-img-wrap .cert-icon { font-size: 2.2rem; display: none; }
+  .cert-body { padding: 1rem 1.1rem; }
+  .cert-badge {
+    font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--violet);
+    background: rgba(129,140,248,.1); border: 1px solid rgba(129,140,248,.2);
+    padding: 0.18rem 0.55rem; border-radius: 100px;
+    display: inline-block; margin-bottom: 0.5rem;
+  }
+  .cert-body h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .cert-body p  { font-size: 0.78rem; color: var(--txt-2); }
+
+  /* ════════════════════════════════════
+     CONTACT
+  ════════════════════════════════════ */
+  #contact { background: var(--bg-2); }
+  .contact__card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-xl); padding: 3rem;
+    max-width: 780px; margin: 0 auto;
+  }
+  .contact__grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem; margin-top: 2rem;
+  }
+  .contact__item {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 1.1rem 1.3rem;
+    transition: all .2s; text-decoration: none; color: var(--txt);
+  }
+  .contact__item:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact__logo { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
+  .contact__icon { font-size: 1.5rem; flex-shrink: 0; }
+  .contact__item strong { font-size: 0.85rem; font-weight: 700; display: block; }
+  .contact__item p { font-size: 0.8rem; color: var(--txt-2); margin: 0; }
+
+  /* ════════════════════════════════════
+     FEEDBACK
+  ════════════════════════════════════ */
+  .feedback__wrapper {
+    max-width: 640px; margin: 0 auto;
+  }
+  .feedback__subtitle { margin-bottom: 2rem; font-size: 0.92rem; }
+  .form-group { position: relative; margin-bottom: 1.1rem; }
+  .form-input, .form-textarea {
+    width: 100%; background: var(--surface); border: 1.5px solid var(--border);
+    color: var(--txt); font-family: inherit; font-size: 0.9rem;
+    padding: 0.8rem 1rem; border-radius: var(--r-md);
+    transition: border-color .2s; outline: none;
+    resize: vertical;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--txt-3); }
+  .feedback__submit { margin-top: 0.5rem; }
+  .feedback__status { font-size: 0.85rem; margin-top: 0.75rem; color: var(--green); min-height: 1.2em; }
+
+  /* ════════════════════════════════════
+     LIGHTBOX
+  ════════════════════════════════════ */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,.92); backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center; padding: 1rem;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox__close {
+    position: absolute; top: 1rem; right: 1.3rem;
+    background: rgba(255,255,255,.1); border: none; color: #fff;
+    width: 40px; height: 40px; border-radius: 50%;
+    font-size: 1.6rem; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; transition: background .2s;
+  }
+  .lightbox__close:hover { background: rgba(255,255,255,.2); }
+  .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: var(--r-lg); }
+
+  /* ════════════════════════════════════
+     BACK TO TOP
+  ════════════════════════════════════ */
+  .top-btn {
+    position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 90;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--accent); color: #070c16;
+    border: none; font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s, transform .3s;
+    box-shadow: 0 4px 16px rgba(56,189,248,.3);
+  }
+  .top-btn.visible { opacity: 1; pointer-events: auto; }
+  .top-btn:hover { transform: translateY(-3px); }
+
+  /* ════════════════════════════════════
+     FOOTER
+  ════════════════════════════════════ */
+  .site-footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 1.8rem 0; text-align: center;
+  }
+  .site-footer__inner { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .site-footer p { font-size: 0.82rem; color: var(--txt-3); }
+  .site-footer a { font-size: 0.82rem; color: var(--txt-3); transition: color .2s; }
+  .site-footer a:hover { color: var(--accent); }
+
+  /* ════════════════════════════════════
+     SCROLL REVEAL
+  ════════════════════════════════════ */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ════════════════════════════════════
+     COUNTER
+  ════════════════════════════════════ */
+  /* handled by JS */
+
+  /* ════════════════════════════════════
+     MOBILE
+  ════════════════════════════════════ */
+  @media (max-width: 800px) {
+    .hamburger { display: flex; }
+    .nav {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg-2); border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 0.75rem; gap: 0.15rem;
+      align-items: stretch;
+    }
+    .nav.open { display: flex; }
+    .nav a { font-size: 0.88rem; padding: 0.55rem 0.75rem; }
+    .hero__inner { grid-template-columns: 1fr; }
+    .hero__photo-wrap { display: none; }
+    .about__grid { grid-template-columns: 1fr; }
+    .about__photo { width: 180px; }
+    .contact__card { padding: 2rem 1.25rem; }
+  }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header__inner container">
+
+  <!-- ══ HEADER ══ -->
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
       <a href="#hero" class="brand">Yossika</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      <nav class="nav-menu" id="mainNav">
-        <a class="nav-menu__link nav-menu__link--active" href="#hero">Home</a>
-        <a class="nav-menu__link" href="#about">About</a>
-        <a class="nav-menu__link" href="#education">Pendidikan</a>
-        <a class="nav-menu__link" href="#experience">Pengalaman</a>
-        <a class="nav-menu__link" href="#skills">Skills</a>
-        <a class="nav-menu__link" href="#certifications">Sertifikat</a>
-        <a class="nav-menu__link" href="details.html">📂 Detail Portofolio</a>
-        <a class="nav-menu__link" href="#feedback">Feedback</a>
-        <a class="nav-menu__link" href="#contact">Kontak</a>
+      <nav class="nav" id="mainNav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Pendidikan</a>
+        <a href="#experience">Pengalaman</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Sertifikat</a>
+        <a href="details.html">📂 Portofolio</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#contact">Kontak</a>
       </nav>
-      <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </div>
   </header>
 
   <main>
-    <section class="hero section hero--full" id="hero">
-      <div class="hero__background"></div>
-      <div class="hero__content container">
-        <article class="hero__copy reveal">
-          <p class="eyebrow">Welcome to my professional portfolio</p>
-          <h1 class="hero__title">Yossika Putra Erlangga</h1>
-          <p class="hero__subtitle">Mahasiswa S1 Teknik Informatika yang menjembatani infrastruktur jaringan kuat dengan sentuhan desain digital kreatif. Fokus pada troubleshooting sistem, efisiensi jaringan, dan penyelesaian masalah berbasis teknologi modern.</p>
-          <div class="hero__stats">
-            <div class="stat-card">
-              <span class="stat-number counter" data-target="6">0</span><span style="font-size: 1.2rem;">+</span>
-              <span class="stat-label">Pengalaman</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number counter" data-target="7">0</span>
-              <span class="stat-label">Sertifikat</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number counter" data-target="11">0</span><span style="font-size: 1.2rem;">+</span>
-              <span class="stat-label">Skills</span>
-            </div>
-          </div>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf" target="_blank" rel="noopener">📥 Download CV</a>
-            <a class="btn btn--secondary" href="details.html">📂 Lihat Portofolio</a>
-            <a class="btn btn--secondary" href="#contact">💬 Hubungi Saya</a>
-          </div>
-        </article>
 
-        <figure class="hero__visual reveal">
-          <img src="assets/img/FOTO JAS FRESH.jpeg" alt="Yossika Putra Erlangga" class="hero__photo" loading="lazy" />
-          <div class="hero__glow"></div>
-        </figure>
+    <!-- ══ HERO ══ -->
+    <section class="hero section" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__inner">
+          <article>
+            <div class="hero__eyebrow">
+              <span class="section-label">Welcome to my portfolio</span>
+            </div>
+            <h1 class="hero__title reveal">Yossika Putra<br>Erlangga</h1>
+            <p class="hero__desc reveal">Mahasiswa S1 Teknik Informatika yang menjembatani infrastruktur jaringan kuat dengan sentuhan desain digital kreatif. Fokus pada troubleshooting sistem, efisiensi jaringan, dan penyelesaian masalah berbasis teknologi modern.</p>
+            <div class="hero__stats reveal">
+              <div class="stat">
+                <div class="stat__num"><span class="counter" data-target="6">0</span>+</div>
+                <div class="stat__lbl">Pengalaman</div>
+              </div>
+              <div class="stat">
+                <div class="stat__num"><span class="counter" data-target="7">0</span></div>
+                <div class="stat__lbl">Sertifikat</div>
+              </div>
+              <div class="stat">
+                <div class="stat__num"><span class="counter" data-target="11">0</span>+</div>
+                <div class="stat__lbl">Skills</div>
+              </div>
+            </div>
+            <div class="hero__actions reveal">
+              <a class="btn btn-primary" href="https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf" target="_blank" rel="noopener">📥 Download CV</a>
+              <a class="btn btn-ghost" href="details.html">📂 Lihat Portofolio</a>
+              <a class="btn btn-ghost" href="#contact">💬 Kontak</a>
+            </div>
+          </article>
+
+          <div class="hero__photo-wrap reveal">
+            <img src="assets/img/FOTO JAS FRESH.jpeg" alt="Yossika Putra Erlangga" class="hero__photo" loading="eager" />
+            <div class="hero__photo-ring" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="about section" id="about">
+    <div class="sep"></div>
+
+    <!-- ══ ABOUT ══ -->
+    <section class="section" id="about">
       <div class="container about__grid">
-        <figure class="about__image reveal">
-          <img src="assets/img/FOTO JAS FRESH.jpeg" alt="Portrait of Yossika" />
+        <figure class="reveal">
+          <img src="assets/img/FOTO JAS FRESH.jpeg" alt="Yossika" class="about__photo" loading="lazy" />
         </figure>
-        <article class="about__content reveal">
+        <article class="reveal">
           <span class="section-label">About Me</span>
-          <h2>Professional profile</h2>
-          <p>Saya adalah mahasiswa S1 Teknik Informatika di Universitas Telkom Purwokerto yang memiliki pengalaman di bidang jaringan, desain grafis, dan manajemen keamanan acara. Saya berfokus pada karya teknis yang rapi, komunikasi yang efektif, dan pemahaman mendalam tentang sistem jaringan.</p>
+          <h2 class="section-title">Professional Profile</h2>
+          <p>Saya adalah mahasiswa S1 Teknik Informatika di Universitas Telkom Purwokerto dengan pengalaman di bidang jaringan, desain grafis, dan manajemen keamanan acara. Fokus pada karya teknis yang rapi, komunikasi efektif, dan pemahaman mendalam tentang sistem jaringan.</p>
           <ul class="about__details">
-            <li><strong>Born</strong> Banyumas, 11 November 2005</li>
-            <li><strong>Address</strong> Sokaraja, Banyumas, Jawa Tengah</li>
-            <li><strong>Phone</strong> +62 877-7868-3766</li>
+            <li><strong>Lahir</strong> Banyumas, 11 November 2005</li>
+            <li><strong>Alamat</strong> Sokaraja, Banyumas, Jawa Tengah</li>
+            <li><strong>Telepon</strong> +62 877-7868-3766</li>
             <li><strong>Email</strong> yossikaputraerlangga@gmail.com</li>
             <li><strong>Instagram</strong> @_yosput</li>
           </ul>
@@ -94,13 +578,16 @@
       </div>
     </section>
 
-    <section class="section timeline" id="education">
+    <div class="sep"></div>
+
+    <!-- ══ EDUCATION ══ -->
+    <section class="section" id="education">
       <div class="container">
         <span class="section-label">Education</span>
-        <h2>Academic Journey</h2>
+        <h2 class="section-title">Academic Journey</h2>
         <div class="timeline__list reveal">
           <article class="timeline__item">
-            <span class="timeline__date">2024 – now</span>
+            <span class="timeline__date">2024 – Sekarang</span>
             <h3>S1 Teknik Informatika</h3>
             <p>Universitas Telkom Purwokerto</p>
           </article>
@@ -113,21 +600,26 @@
       </div>
     </section>
 
-    <section class="section timeline" id="experience">
+    <div class="sep"></div>
+
+    <!-- ══ EXPERIENCE ══ -->
+    <section class="section" id="experience">
       <div class="container">
         <span class="section-label">Experience</span>
-        <h2>Professional Experience</h2>
+        <h2 class="section-title">Professional Experience</h2>
         <div class="timeline__list reveal">
+
           <article class="timeline__item timeline__item--accent">
             <span class="timeline__date">Apr – Sep 2023</span>
-            <h3>Teknisi Servis (PKL)</h3>
-            <p>PT Telkom Akses Karanganyar Solo</p>
+            <h3>Teknisi Servis — PKL</h3>
+            <p>PT Telkom Akses Karanganyar, Solo</p>
             <ul>
-              <li>Instalasi & servis perangkat WiFi di lokasi pelanggan</li>
-              <li>Troubleshooting jaringan & perangkat di lapangan</li>
-              <li>Menarik kabel, splicing Fiber Optic</li>
+              <li>Instalasi &amp; servis perangkat WiFi di lokasi pelanggan</li>
+              <li>Troubleshooting jaringan &amp; perangkat di lapangan</li>
+              <li>Penarikan kabel, splicing Fiber Optic</li>
             </ul>
           </article>
+
           <article class="timeline__item">
             <span class="timeline__date">Mei – Des 2023</span>
             <h3>Desainer Grafis</h3>
@@ -136,46 +628,66 @@
               <li>Poster, pamflet, konten visual menggunakan Adobe Illustrator, Photoshop, Canva</li>
             </ul>
           </article>
+
           <article class="timeline__item">
             <span class="timeline__date">Sep – Nov 2025</span>
             <h3>Staff Keamanan</h3>
             <p>Tel-U Leadermind Competition Season II</p>
           </article>
+
           <article class="timeline__item">
             <span class="timeline__date">Okt – Des 2025</span>
             <h3>Staff Keamanan</h3>
             <p>Infentra Telkom University Purwokerto</p>
           </article>
+
           <article class="timeline__item">
-            <span class="timeline__date">Jan 2026 – now</span>
-            <h3>Staff Departemen Kaderisasi dan Keanggotaan</h3>
+            <span class="timeline__date">Jan 2026 – Sekarang</span>
+            <h3>Staff Dep. Kaderisasi &amp; Keanggotaan</h3>
             <p>HIPMI PT Telkom University Purwokerto</p>
           </article>
+
           <article class="timeline__item">
-            <span class="timeline__date">Apr 2026 – now</span>
+            <span class="timeline__date">Apr 2026 – Sekarang</span>
             <h3>Koordinator Keamanan</h3>
             <p>Market Day Telkom University Purwokerto</p>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section class="section skills" id="skills">
+    <div class="sep"></div>
+
+    <!-- ══ SKILLS ══ -->
+    <section class="section" id="skills">
       <div class="container">
         <span class="section-label">Skills</span>
-        <h2>Technical & Creative Skills</h2>
-        <div class="skills__container reveal">
+        <h2 class="section-title">Technical &amp; Creative Skills</h2>
+        <div class="skills__grid reveal">
           <div class="skill-group">
-            <h3>Networking & Systems</h3>
+            <h3>🌐 Networking &amp; Systems</h3>
             <div class="skill-badges">
               <span class="skill-badge">Debian / Ubuntu</span>
-              <span class="skill-badge">MikroTik / Docker</span>
+              <span class="skill-badge">MikroTik</span>
+              <span class="skill-badge">Docker</span>
               <span class="skill-badge">Cisco Packet Tracer</span>
-              <span class="skill-badge">HTML / CSS</span>
+              <span class="skill-badge">Fiber Optic</span>
+              <span class="skill-badge">LAN / WAN</span>
             </div>
           </div>
           <div class="skill-group">
-            <h3>Tools & Creative Design</h3>
+            <h3>💻 Programming</h3>
+            <div class="skill-badges">
+              <span class="skill-badge">HTML / CSS / JS</span>
+              <span class="skill-badge">Java (OOP)</span>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">SQL</span>
+              <span class="skill-badge">Bash / Shell</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>🎨 Design &amp; Creative</h3>
             <div class="skill-badges">
               <span class="skill-badge">Adobe Illustrator</span>
               <span class="skill-badge">Photoshop</span>
@@ -184,173 +696,310 @@
               <span class="skill-badge">Canva</span>
             </div>
           </div>
+          <div class="skill-group">
+            <h3>🗣️ Soft Skills</h3>
+            <div class="skill-badges">
+              <span class="skill-badge">Leadership</span>
+              <span class="skill-badge">Team Collaboration</span>
+              <span class="skill-badge">Problem Solving</span>
+              <span class="skill-badge">Event Management</span>
+              <span class="skill-badge">Communication</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section certifications" id="certifications">
+    <div class="sep"></div>
+
+    <!-- ══ CERTIFICATIONS ══ -->
+    <section class="section" id="certifications">
       <div class="container">
         <span class="section-label">Certifications</span>
-        <h2>Verified Credentials & Achievements</h2>
-        <div class="certifications__grid reveal">
+        <h2 class="section-title">Verified Credentials &amp; Achievements</h2>
+        <div class="cert-grid reveal">
+
           <article class="cert-card">
-            <div class="cert-image-placeholder">🎖️</div>
-            <h3>MikroTik MTCNA</h3>
-            <p>MikroTik Certified Network Associate</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" alt="Docker" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">🐳</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">DevOps</span>
+              <h3>Docker Fundamental</h3>
+              <p>Btech Academy</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" type="image/jpeg">
-              <img src="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" alt="Docker Fundamental Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">🐳</div>
-            <h3>Docker Fundamental</h3>
-            <p>Btech Academy</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" alt="CodeCombat" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">🐍</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">Programming</span>
+              <h3>CodeCombat Python</h3>
+              <p>Intro to CS</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" type="image/jpeg">
-              <img src="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" alt="CodeCombat Python Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">🐍</div>
-            <h3>CodeCombat Python</h3>
-            <p>Intro to Computer Science</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" alt="PKL" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">📜</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">Internship</span>
+              <h3>Sertifikat PKL</h3>
+              <p>PT Telkom Akses</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" type="image/jpeg">
-              <img src="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" alt="PKL Telkom Akses Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">📜</div>
-            <h3>Sertifikat PKL</h3>
-            <p>PT Telkom Akses • No. 1034/PS000/TA-0204/10-2023</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="INFENTRA" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">🔧</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">Networking</span>
+              <h3>Administrasi Jaringan</h3>
+              <p>Infentra · Tel-U Purwokerto</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <div class="cert-image-placeholder">🌐</div>
-            <h3>Cisco Packet Tracer</h3>
-            <p>Dasar Jaringan & Networking Fundamentals</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/SERTIFIKAT MTCNA.jpg" alt="MTCNA" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">⚙️</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">MikroTik</span>
+              <h3>MikroTik MTCNA</h3>
+              <p>Certified Network Associate</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/CERTIFIKAT INFENTRA.png" type="image/png">
-              <img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Administrasi Jaringan Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">🔧</div>
-            <h3>Administrasi Jaringan</h3>
-            <p>Infentra Telkom University Purwokerto</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">🏆</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">Leadership</span>
+              <h3>Tel-U Leadermind</h3>
+              <p>TULC Season II</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/SERTIFIKAT MTCNA.jpg" type="image/jpeg">
-              <img src="assets/sertifikat/SERTIFIKAT MTCNA.jpg" alt="MikroTik MTCNA Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">⚙️</div>
-            <h3>MikroTik MTCNA</h3>
-            <p>Certified Network Associate</p>
+            <div class="cert-img-wrap" onclick="openLB(this.querySelector('img'))">
+              <img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI" loading="lazy" onerror="certErr(this)">
+              <span class="cert-icon">🎓</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">Workshop</span>
+              <h3>Sertifikat WPI</h3>
+              <p>Tel-U Purwokerto</p>
+            </div>
           </article>
+
           <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/CERTIFIKAT TULC.png" type="image/png">
-              <img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC Leadership Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">🏆</div>
-            <h3>Tel-U Leadermind</h3>
-            <p>TULC Achievement • Season II</p>
+            <div class="cert-img-wrap" style="cursor:default;">
+              <span class="cert-icon" style="display:flex;align-items:center;justify-content:center;height:100%;font-size:2.2rem;">🌐</span>
+            </div>
+            <div class="cert-body">
+              <span class="cert-badge">Networking</span>
+              <h3>Cisco Packet Tracer</h3>
+              <p>Networking Fundamentals</p>
+            </div>
           </article>
-          <article class="cert-card">
-            <picture>
-              <source srcset="assets/sertifikat/SERTIFIKAT WPI.png" type="image/png">
-              <img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI Certificate" class="cert-image cert-image--clickable" loading="lazy" onerror="this.style.display='none'">
-            </picture>
-            <div class="cert-image-placeholder" style="display: none;">🎓</div>
-            <h3>Sertifikat WPI</h3>
-            <p>Workshop & Professional Initiative</p>
-          </article>
+
         </div>
       </div>
     </section>
 
-    <section class="section contact" id="contact">
-      <div class="container contact__card reveal">
-        <span class="section-label">Contact</span>
-        <h2>Let’s Connect</h2>
-        <p>Siap berdiskusi tentang peluang kerja, proyek teknologi, atau kolaborasi kreatif.</p>
-        <div class="contact__grid">
-          <a class="contact__item contact__item--email" href="mailto:yossikaputraerlangga@gmail.com">
-            <img src="assets/img/gmaillogo.png" alt="Gmail" class="contact__logo" loading="lazy">
-            <div>
-              <strong>Email</strong>
-              <p>yossikaputraerlangga@gmail.com</p>
-            </div>
-          </a>
-          <a class="contact__item" href="tel:+62877786837­66">
-            <span class="contact__icon">📱</span>
-            <div>
-              <strong>Telepon</strong>
-              <p>+62 877-7868-3766</p>
-            </div>
-          </a>
-          <a class="contact__item" href="https://instagram.com/_yosput" target="_blank" rel="noopener">
-            <img src="assets/img/instagramlogo.png" alt="Instagram" class="contact__logo" loading="lazy">
-            <div>
-              <strong>Instagram</strong>
-              <p>@_yosput</p>
-            </div>
-          </a>
-          <a class="contact__item" href="https://wa.me/6287778683766" target="_blank" rel="noopener">
-            <img src="assets/img/whatsapplogo.png" alt="WhatsApp" class="contact__logo" loading="lazy">
-            <div>
-              <strong>WhatsApp</strong>
-              <p>+62 877-7868-3766</p>
-            </div>
-          </a>
+    <div class="sep"></div>
+
+    <!-- ══ CONTACT ══ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact__card reveal">
+          <span class="section-label">Contact</span>
+          <h2 class="section-title">Let's Connect</h2>
+          <p>Siap berdiskusi tentang peluang kerja, proyek teknologi, atau kolaborasi kreatif.</p>
+          <div class="contact__grid">
+            <a class="contact__item" href="mailto:yossikaputraerlangga@gmail.com">
+              <img src="assets/img/gmaillogo.png" alt="Gmail" class="contact__logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+              <span class="contact__icon" style="display:none">📧</span>
+              <div><strong>Email</strong><p>yossikaputraerlangga@gmail.com</p></div>
+            </a>
+            <a class="contact__item" href="tel:+6287778683766">
+              <span class="contact__icon">📱</span>
+              <div><strong>Telepon</strong><p>+62 877-7868-3766</p></div>
+            </a>
+            <a class="contact__item" href="https://instagram.com/_yosput" target="_blank" rel="noopener">
+              <img src="assets/img/instagramlogo.png" alt="Instagram" class="contact__logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+              <span class="contact__icon" style="display:none">📸</span>
+              <div><strong>Instagram</strong><p>@_yosput</p></div>
+            </a>
+            <a class="contact__item" href="https://wa.me/6287778683766" target="_blank" rel="noopener">
+              <img src="assets/img/whatsapplogo.png" alt="WhatsApp" class="contact__logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+              <span class="contact__icon" style="display:none">💬</span>
+              <div><strong>WhatsApp</strong><p>+62 877-7868-3766</p></div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section feedback" id="feedback">
+    <div class="sep"></div>
+
+    <!-- ══ FEEDBACK ══ -->
+    <section class="section" id="feedback">
       <div class="container feedback__wrapper reveal">
         <span class="section-label">Feedback</span>
-        <h2>Kirim Saran atau Pesan</h2>
-        <p class="feedback__subtitle">Anda bisa mengirimkan feedback anonim, saran, atau pertanyaan tentang proyek saya. Saya akan berusaha merespon secepat mungkin!</p>
-        <form class="feedback__form" id="feedbackForm">
+        <h2 class="section-title">Kirim Saran atau Pesan</h2>
+        <p class="feedback__subtitle">Kirimkan feedback anonim, saran, atau pertanyaan tentang proyek saya. Saya akan merespons secepat mungkin!</p>
+        <form id="feedbackForm">
           <div class="form-group">
             <input type="text" id="feedbackName" name="name" placeholder="Nama (opsional)" class="form-input" />
-            <label for="feedbackName" class="form-label">Nama</label>
           </div>
           <div class="form-group">
-            <input type="email" id="feedbackEmail" name="email" placeholder="Email (untuk reply)" class="form-input" />
-            <label for="feedbackEmail" class="form-label">Email</label>
+            <input type="email" id="feedbackEmail" name="email" placeholder="Email (untuk balasan)" class="form-input" />
           </div>
           <div class="form-group">
-            <textarea id="feedbackMessage" name="message" placeholder="Tulis pesan Anda di sini..." class="form-textarea" rows="6" required></textarea>
-            <label for="feedbackMessage" class="form-label">Pesan</label>
+            <textarea id="feedbackMessage" name="message" placeholder="Tulis pesan Anda di sini…" class="form-textarea" rows="6" required></textarea>
           </div>
-          <button type="submit" class="btn btn--primary feedback__submit">📤 Kirim Pesan</button>
+          <button type="submit" class="btn btn-primary feedback__submit">📤 Kirim Pesan</button>
           <p class="feedback__status" id="feedbackStatus"></p>
         </form>
       </div>
     </section>
+
   </main>
 
+  <!-- BACK TO TOP -->
   <button class="top-btn" id="topBtn" aria-label="Back to top">↑</button>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLB(event)">
+    <button class="lightbox__close" onclick="closeLB({force:true})">×</button>
+    <img id="lbImg" src="" alt="" />
+  </div>
+
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container site-footer__inner">
+    <div class="site-footer__inner container">
       <p>© 2026 Yossika Putra Erlangga. Built for GitHub Pages.</p>
-      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/yoshput" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
 
-  <!-- Lightbox Modal for Certificate Images -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox__close">&times;</span>
-    <img class="lightbox__image" src="" alt="Certificate" />
-  </div>
+  <script>
+  /* ─── THEME ─── */
+  const themeBtn = document.getElementById('themeToggle');
+  const htmlEl   = document.documentElement;
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  htmlEl.setAttribute('data-theme', savedTheme);
+  themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
-  <script src="js/main.js"></script>
+  themeBtn.addEventListener('click', () => {
+    const d = htmlEl.getAttribute('data-theme') === 'dark';
+    const n = d ? 'light' : 'dark';
+    htmlEl.setAttribute('data-theme', n);
+    localStorage.setItem('theme', n);
+    themeBtn.textContent = n === 'dark' ? '☀️' : '🌙';
+  });
+
+  /* ─── HAMBURGER ─── */
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('mainNav');
+  ham.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  /* ─── CERT IMAGE ERROR ─── */
+  function certErr(img) {
+    img.style.display = 'none';
+    const icon = img.nextElementSibling;
+    if (icon) { icon.style.display = 'flex'; icon.style.alignItems = 'center'; icon.style.justifyContent = 'center'; icon.style.height = '100%'; }
+  }
+
+  /* ─── LIGHTBOX ─── */
+  function openLB(img) {
+    if (!img || img.style.display === 'none') return;
+    document.getElementById('lbImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB(e) {
+    if (e && !e.force && e.target && e.target.id !== 'lightbox' && !e.target.classList.contains('lightbox__close')) return;
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB({force:true}); });
+
+  /* ─── SCROLL REVEAL ─── */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  /* ─── COUNTER ─── */
+  function runCounter(el) {
+    const target = +el.dataset.target;
+    let current  = 0;
+    const step   = Math.ceil(target / 40);
+    const timer  = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = current;
+    }, 35);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { runCounter(e.target); counterObs.unobserve(e.target); } });
+  });
+  document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+  /* ─── BACK TO TOP ─── */
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ─── ACTIVE NAV ─── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+  const activeNav = () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) cur = s.id; });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  };
+  window.addEventListener('scroll', activeNav, { passive: true });
+
+  /* ─── FEEDBACK FORM ─── */
+  document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = document.getElementById('feedbackStatus');
+    const data = {
+      name:    document.getElementById('feedbackName').value,
+      email:   document.getElementById('feedbackEmail').value,
+      message: document.getElementById('feedbackMessage').value,
+    };
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      status.textContent = res.ok ? '✅ Pesan terkirim! Terima kasih.' : '⚠️ Gagal mengirim, coba lagi.';
+      if (res.ok) e.target.reset();
+    } catch {
+      status.textContent = '⚠️ Tidak dapat terhubung ke server.';
+    }
+  });
+  </script>
+
 </body>
 </html>
-
- 
- 
