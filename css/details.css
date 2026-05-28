@@ -45,17 +45,58 @@
   letter-spacing: -1px;
 }
 
+.detail-hero__text .section-label {
+  color: white;
+  opacity: 1;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.detail-hero__text h1 {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: none;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
 .detail-hero__text p {
   font-size: 1.1rem;
   line-height: 1.6;
-  opacity: 0.95;
+  color: white;
+  opacity: 1;
   margin-bottom: 1.5rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .detail-hero__buttons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.detail-hero__buttons .btn--secondary {
+  background: white;
+  border: 2px solid white;
+  color: var(--color-primary);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.detail-hero__buttons .btn--secondary:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.detail-hero__buttons .btn--primary {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.detail-hero__buttons .btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
