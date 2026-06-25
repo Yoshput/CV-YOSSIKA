@@ -24,6 +24,63 @@
     --txt: #eef2ff; --txt2: rgba(238,242,255,0.65); --txt3: rgba(238,242,255,0.38);
     --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-2xl:24px;
   }
+
+  /* ══ LIGHT THEME (Light Pink / Soft Pastel) ══ */
+  [data-theme="light"] {
+    --bg:      #fff5f7;
+    --bg2:     #ffe3e8;
+    --bg3:     #ffd1db;
+    --surface: rgba(0, 0, 0, 0.04);
+    --surface2:rgba(0, 0, 0, 0.07);
+    --border:  rgba(0, 0, 0, 0.08);
+    --border2: rgba(0, 0, 0, 0.14);
+    --txt:     #2c151f;
+    --txt2:    rgba(44, 21, 31, 0.75);
+    --txt3:    rgba(44, 21, 31, 0.48);
+  }
+
+  .theme-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
+    color: var(--txt);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    font-size: 1.1rem;
+    transition: all 0.25s;
+    margin-left: 10px;
+    padding: 0;
+    z-index: 100;
+  }
+  .theme-btn:hover {
+    background: var(--surface2);
+    transform: scale(1.1);
+  }
+  [data-theme="light"] .theme-btn {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  /* Ambient adaptions for light theme */
+  [data-theme="light"] .orb-1 { background: #ffb7c5; opacity: 0.25; }
+  [data-theme="light"] .orb-2 { background: #ffd1dc; opacity: 0.25; }
+  [data-theme="light"] .orb-3 { background: #b3e5fc; opacity: 0.22; }
+  [data-theme="light"] .orb-4 { background: #f8bbd0; opacity: 0.25; }
+  [data-theme="light"] .grid-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  }
+  [data-theme="light"] .id-card-body {
+    background: rgba(255, 255, 255, 0.65);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 50px rgba(224, 178, 190, 0.4);
+  }
+  [data-theme="light"] .card-name { color: #2c151f; }
+  [data-theme="light"] .card-nim { color: rgba(44, 21, 31, 0.8); }
+  [data-theme="light"] .card-uni { color: rgba(44, 21, 31, 0.7); }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;font-size:16px}
   body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
@@ -546,6 +603,10 @@
     .nav-links.open{display:flex}
     .nav-links a{font-size:14px;padding:10px 14px}
     .nav-cta{display:none}
+    .theme-btn {
+      margin-left: auto;
+      margin-right: 15px;
+    }
     .hero-stats{gap:1.5rem}
     .section{padding:4rem 0}
     .contact-inner{padding:2rem 1.25rem}
@@ -611,6 +672,7 @@
       <a href="#contact">Kontak</a>
     </nav>
     <a href="https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf" target="_blank" class="btn btn-grad nav-cta" style="font-size:13px;padding:9px 18px;">📥 CV</a>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">☀️</button>
   </div>
 </header>
 
@@ -1352,6 +1414,20 @@ function drawParticles() {
   requestAnimationFrame(drawParticles);
 }
 drawParticles();
+
+/* ─── THEME TOGGLE ─── */
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+});
 
 /* ─── NAV ─── */
 const navWrap = document.getElementById('navWrap');
