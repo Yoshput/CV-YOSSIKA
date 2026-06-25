@@ -26,9 +26,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;font-size:16px}
-  body, a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo {
-    cursor: none;
-  }
+  body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
   ::-webkit-scrollbar{width:4px}
   ::-webkit-scrollbar-track{background:var(--bg)}
   ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--a1),var(--a2));border-radius:4px}
@@ -39,15 +37,8 @@
   /* ══ CUSTOM CURSOR ══ */
   #cursor-dot{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--a1);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,background 0.2s;mix-blend-mode:screen}
   #cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:2px solid rgba(139,92,246,0.6);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.12s ease-out}
-  #cursor-dot.hovered {
-    transform: translate(-50%,-50%) scale(2.5);
-    background: var(--a3);
-  }
-  #cursor-ring.hovered {
-    width: 52px;
-    height: 52px;
-    border-color: rgba(244, 114, 182, 0.5);
-  }
+  body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot{transform:translate(-50%,-50%) scale(2.5);background:var(--a3)}
+  body:has(a:hover) #cursor-ring,body:has(button:hover) #cursor-ring{width:52px;height:52px;border-color:rgba(244,114,182,0.5)}
 
   /* ══ PARTICLES CANVAS ══ */
   #particle-canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.7}
@@ -550,9 +541,6 @@
     .contact-inner{padding:2rem 1.25rem}
     body{cursor:auto}
     #cursor-dot,#cursor-ring{display:none}
-    a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo {
-      cursor: pointer !important;
-    }
   }
   </style>
 </head>
@@ -1220,10 +1208,10 @@
       <!-- Honeypot: Jebakan Bot (harus kosong saat submit) -->
       <input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
       <div class="form-row">
-        <input type="text" name="name" placeholder="Nama Anda" class="form-field" id="fbName" required autocomplete="name"/>
-        <input type="email" name="email" placeholder="Email Anda" class="form-field" id="fbEmail" required autocomplete="email"/>
+        <input type="text" placeholder="Nama (opsional)" class="form-field" id="fbName"/>
+        <input type="email" placeholder="Email (untuk balasan)" class="form-field" id="fbEmail"/>
       </div>
-      <textarea name="message" placeholder="Tulis pesan kamu di sini…" class="form-field" rows="6" id="fbMsg" autocomplete="off" required></textarea>
+      <textarea placeholder="Tulis pesan kamu di sini…" class="form-field" rows="6" id="fbMsg" required></textarea>
       <div>
         <button type="submit" class="btn btn-grad">📤 Kirim Pesan</button>
         <p id="fbStatus" style="font-size:13px;margin-top:10px;color:var(--green);min-height:1.4em;"></p>
@@ -1295,18 +1283,6 @@ function animRing() {
   requestAnimationFrame(animRing);
 }
 animRing();
-
-/* ─── CUSTOM CURSOR HOVER EFFECTS ─── */
-document.addEventListener('mouseover', e => {
-  const target = e.target.closest('a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo');
-  if (target) {
-    dot.classList.add('hovered');
-    ring.classList.add('hovered');
-  } else {
-    dot.classList.remove('hovered');
-    ring.classList.remove('hovered');
-  }
-});
 
 /* ─── PARTICLE TRAIL ─── */
 const canvas = document.getElementById('particle-canvas');
@@ -1626,95 +1602,24 @@ const topBtn = document.getElementById('topBtn');
 window.addEventListener('scroll', () => topBtn.classList.toggle('show', window.scrollY > 400), {passive:true});
 topBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 
-/* ─── PROFANITY FILTER ─── */
-function containsProfanity(text) {
-  if (!text) return false;
-  // Normalisasi teks: lowercase dan ganti angka dengan huruf sejenis
-  let normalized = text.toLowerCase()
-    .replace(/0/g, 'o')
-    .replace(/1/g, 'i')
-    .replace(/3/g, 'e')
-    .replace(/4/g, 'a')
-    .replace(/5/g, 's')
-    .replace(/7/g, 't')
-    .replace(/8/g, 'b');
-  
-  // Hapus karakter spesial (untuk menangkap bypass k.o.n.t.o.l)
-  let cleanText = normalized.replace(/[^a-z\s]/g, ' ');
-  
-  // Pecah teks menjadi array kata
-  const words = cleanText.split(/\s+/);
-  
-  // Daftar kata kasar yang dicocokkan secara persis (untuk mencegah false positive seperti "lanjut" pada "anj")
-  const exactBadWords = ['anj', 'ajg', 'kntl', 'asu', 'tll', 'gblk', 'mmk', 'babi', 'pntk', 'plr', 'lnt', 'jnck', 'bgst'];
-  
-  // Daftar kata kasar umum (cocok dengan substring/exact)
-  const generalBadWords = ['kontol', 'memek', 'ngentot', 'ngentod', 'anjing', 'bangsat', 'goblok', 'tolol', 'jembut', 'jancok', 'jancuk', 'peler', 'pantek', 'lonte', 'ngntt', 'pejuh', 'bngst', 'tetek'];
-
-  // Cek kecocokan kata persis
-  for (let word of words) {
-    if (exactBadWords.includes(word) || generalBadWords.includes(word)) {
-      return true;
-    }
-  }
-
-  // Cek kecocokan substring pada teks yang rapat (tanpa spasi) untuk menangkap pengulangan huruf (misal: anjingggg)
-  const noSpaceText = normalized.replace(/\s+/g, '');
-  for (let bad of generalBadWords) {
-    let patternStr = bad.split('').map(char => char + '+').join('');
-    let regex = new RegExp(patternStr, 'i');
-    if (regex.test(noSpaceText)) {
-      return true;
-    }
-  }
-  
-  return false;
-}
-
 /* ─── FEEDBACK ─── */
 document.getElementById('feedbackForm').addEventListener('submit', async e => {
   e.preventDefault();
   const status = document.getElementById('fbStatus');
-  status.style.color = '';
 
   // 🛱 Honeypot check — jika field _gotcha terisi, kemungkinan bot
   const honeypot = document.getElementById('_gotcha');
   if (honeypot && honeypot.value.trim() !== '') {
+    // Diam-diam abaikan (jangan kasih tahu bot bahwa dia gagal)
     status.textContent = '✅ Pesan terkirim! Terima kasih 🎉';
-    status.style.color = 'var(--green)';
     e.target.reset();
     return;
   }
 
-  const name    = document.getElementById('fbName').value.trim();
+  status.textContent = '⏳ Mengirim...';
+  const name    = document.getElementById('fbName').value.trim() || 'Anonim';
   const email   = document.getElementById('fbEmail').value.trim();
   const message = document.getElementById('fbMsg').value.trim();
-
-  // 1. Validasi Wajib Isi
-  if (!name || !email || !message) {
-    status.textContent = '⚠️ Nama, email, dan pesan wajib diisi!';
-    status.style.color = '#f87171';
-    return;
-  }
-
-  // 2. Validasi Format Email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    status.textContent = '⚠️ Format email tidak valid!';
-    status.style.color = '#f87171';
-    return;
-  }
-
-  // 3. Penyaring Kata Kasar (Profanity Filter)
-  if (containsProfanity(name) || containsProfanity(message)) {
-    alert('Mohon gunakan kata-kata yang baik ya anak muda... gunakan bahasa yang baik yaa! 😊');
-    status.textContent = '⚠️ Gagal mengirim: Gunakan bahasa yang baik yaa anak muda.';
-    status.style.color = '#f87171';
-    return;
-  }
-
-  status.textContent = '⏳ Mengirim...';
-  status.style.color = '';
 
   const body = {
     name,
