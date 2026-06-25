@@ -26,6 +26,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;font-size:16px}
+  body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
   body, a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo {
     cursor: none;
   }
@@ -1705,7 +1706,23 @@ document.getElementById('feedbackForm').addEventListener('submit', async e => {
     return;
   }
 
-  // 3. Penyaring Kata Kasar (Profanity Filter)
+  // 3. Deteksi Spam & Email Palsu
+  const tempEmailDomains = ['example.com', 'mailinator.com', 'yopmail.com', 'tempmail.com', 'test.com'];
+  const emailDomain = email.split('@')[1]?.toLowerCase() || '';
+  if (tempEmailDomains.includes(emailDomain) || name.toLowerCase().includes('pengujian') || name.toLowerCase().includes('test')) {
+    status.textContent = '⚠️ Gagal mengirim: Domain email / nama pengujian tidak diperbolehkan.';
+    status.style.color = '#f87171';
+    return;
+  }
+
+  // Deteksi spam karakter berulang (misal AAAAAAAAAAAAA)
+  if (/([^.\s])\1{4,}/.test(message) || /([^.\s])\1{4,}/.test(name)) {
+    status.textContent = '⚠️ Gagal mengirim: Terdeteksi spam karakter berulang.';
+    status.style.color = '#f87171';
+    return;
+  }
+
+  // 4. Penyaring Kata Kasar (Profanity Filter)
   if (containsProfanity(name) || containsProfanity(message)) {
     alert('Mohon gunakan kata-kata yang baik ya anak muda... gunakan bahasa yang baik yaa! 😊');
     status.textContent = '⚠️ Gagal mengirim: Gunakan bahasa yang baik yaa anak muda.';
