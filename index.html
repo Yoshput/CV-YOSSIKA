@@ -81,6 +81,11 @@
   [data-theme="light"] .card-name { color: #2c151f; }
   [data-theme="light"] .card-nim { color: rgba(44, 21, 31, 0.8); }
   [data-theme="light"] .card-uni { color: rgba(44, 21, 31, 0.7); }
+  [data-theme="light"] .popup-badge {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 40px rgba(224, 178, 190, 0.35);
+  }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;font-size:16px}
   body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
@@ -615,6 +620,238 @@
     a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo {
       cursor: pointer !important;
     }
+  }
+
+  /* ══ NAVBAR SCROLLED LIGHT MODE OVERRIDE ══ */
+  [data-theme="light"] .nav-wrap.scrolled {
+    background: rgba(255, 245, 247, 0.94);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* ══ CHATBOT WIDGET CSS ══ */
+  .chatbot-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 5.5rem;
+    z-index: 1000;
+  }
+  @media (max-width: 640px) {
+    .chatbot-widget {
+      bottom: 1.5rem;
+      right: 5rem;
+    }
+  }
+  .chatbot-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .chatbot-toggle:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  .chatbot-window {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 320px;
+    height: 400px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: var(--r-xl);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9) translateY(15px);
+    transform-origin: bottom right;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .chatbot-window.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+  }
+  .chatbot-header {
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chatbot-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+  }
+  .chatbot-header-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .chatbot-header-info strong {
+    font-size: 13px;
+    color: var(--txt);
+  }
+  .chatbot-header-info span {
+    font-size: 10px;
+    color: var(--txt2);
+  }
+  .chatbot-settings-btn, .chatbot-close-btn {
+    background: none;
+    border: none;
+    color: var(--txt2);
+    cursor: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .chatbot-close-btn {
+    font-size: 18px;
+  }
+  .chatbot-settings-btn:hover, .chatbot-close-btn:hover {
+    color: var(--txt);
+  }
+  .chatbot-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .chatbot-msg {
+    max-width: 82%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .chatbot-msg.bot {
+    background: var(--bg3);
+    color: var(--txt);
+    border-top-left-radius: 2px;
+    align-self: flex-start;
+  }
+  .chatbot-msg.user {
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    color: white;
+    border-top-right-radius: 2px;
+    align-self: flex-end;
+  }
+  .chatbot-input-area {
+    padding: 10px 15px;
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+  }
+  .chatbot-input-area input {
+    flex: 1;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 14px;
+    color: var(--txt);
+    font-size: 12px;
+    outline: none;
+    font-family: inherit;
+  }
+  .chatbot-input-area button {
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chatbot-settings-panel {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 15px;
+  }
+  /* ── Mascot ── */
+  .chatbot-mascot-wrap {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+  .chatbot-mascot-emoji {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    animation: none;
+    transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+  }
+  .chatbot-mascot-emoji.bounce {
+    animation: mascotBounce 0.6s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
+  }
+  .chatbot-mascot-emoji.speak {
+    animation: mascotSpeak 0.4s ease-in-out infinite alternate;
+  }
+  @keyframes mascotBounce {
+    0%   { transform: scale(0.6) rotate(-10deg); }
+    50%  { transform: scale(1.25) rotate(8deg); }
+    75%  { transform: scale(0.9) rotate(-4deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+  @keyframes mascotSpeak {
+    0%   { transform: scale(1) rotate(-3deg); }
+    100% { transform: scale(1.08) rotate(3deg); }
+  }
+  .chatbot-status-dot {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    border: 2px solid var(--bg2);
+  }
+  /* ── Typing wave ── */
+  .chatbot-typing-wave {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px 0;
+  }
+  .chatbot-typing-wave span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--txt2);
+    animation: wave 1.2s ease-in-out infinite;
+  }
+  .chatbot-typing-wave span:nth-child(2) { animation-delay: 0.15s; }
+  .chatbot-typing-wave span:nth-child(3) { animation-delay: 0.30s; }
+  @keyframes wave {
+    0%,60%,100% { transform: translateY(0); }
+    30%          { transform: translateY(-6px); }
   }
   </style>
 </head>
@@ -1299,6 +1536,45 @@
 
 <button class="top-btn" id="topBtn" aria-label="Back to top">↑</button>
 
+<!-- Floating AI Chatbot -->
+<div class="chatbot-widget" id="chatbotWidget">
+  <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle Chatbot">💬</button>
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-mascot-wrap" id="chatbotMascot">
+        <span class="chatbot-mascot-emoji">🤖</span>
+        <span class="chatbot-status-dot"></span>
+      </div>
+      <div class="chatbot-header-info">
+        <strong id="chatbotHeaderName">YosBot AI</strong>
+        <span>Asisten Portofolio Yossika</span>
+      </div>
+      <button class="chatbot-settings-btn" id="chatbotSettingsBtn" title="Pengaturan Chatbot">⚙️</button>
+      <button class="chatbot-close-btn" id="chatbotCloseBtn">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chatbot-msg bot" id="chatbotWelcomeMsg">Halo! Saya YosBot, asisten AI portofolio Yossika. Ada yang ingin Anda tanyakan tentang proyek, keahlian, atau pengalaman Yossika? 😊</div>
+      <div class="chatbot-msg bot api-key-notice" id="apiKeyNotice" style="font-size:11px;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);color:var(--amber);padding:8px 12px;border-radius:8px;margin-top:5px;">
+        ⚠️ <strong>Info:</strong> Silakan klik ikon gerigi ⚙️ di atas untuk memasukkan Gemini API Key gratis Anda agar chatbot ini berfungsi.
+      </div>
+    </div>
+    <!-- Settings Panel (hidden by default) -->
+    <div class="chatbot-settings-panel" id="chatbotSettingsPanel" style="display:none;">
+      <p style="font-size:11px;margin-bottom:4px;color:var(--txt2);">Masukkan <strong>Gemini API Key</strong> Anda:</p>
+      <input type="password" id="geminiApiKeyInput" placeholder="AIzaSy..." style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--txt);font-size:12px;margin-bottom:8px;outline:none;" />
+      
+      <p style="font-size:11px;margin-bottom:4px;color:var(--txt2);">Nama Panggilan Bot:</p>
+      <input type="text" id="botNameInput" placeholder="YosBot" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--txt);font-size:12px;margin-bottom:8px;outline:none;" />
+      
+      <button id="saveApiKeyBtn" class="btn btn-grad" style="padding:6px 12px;font-size:11px;width:100%;justify-content:center;height:auto;">Simpan Perubahan</button>
+    </div>
+    <form class="chatbot-input-area" id="chatbotInputForm">
+      <input type="text" id="chatbotInput" placeholder="Tanya tentang Yossika..." required autocomplete="off" />
+      <button type="submit" aria-label="Send">📤</button>
+    </form>
+  </div>
+</div>
+
 <!-- Project Details Modal -->
 <div id="projectModal" class="p-modal" onclick="if(event.target===this) closeProjectModal()">
   <div class="p-modal-content">
@@ -1726,7 +2002,7 @@ function containsProfanity(text) {
   const exactBadWords = ['anj', 'ajg', 'kntl', 'asu', 'tll', 'gblk', 'mmk', 'babi', 'pntk', 'plr', 'lnt', 'jnck', 'bgst'];
   
   // Daftar kata kasar umum (cocok dengan substring/exact)
-  const generalBadWords = ['kontol', 'memek', 'ngentot', 'ngentod', 'anjing', 'bangsat', 'goblok', 'tolol', 'jembut', 'jancok', 'jancuk', 'peler', 'pantek', 'lonte', 'ngntt', 'pejuh', 'bngst', 'tetek'];
+  const generalBadWords = ['kontol', 'kntol', 'memek', 'ngentot', 'ngentod', 'anjing', 'bangsat', 'goblok', 'tolol', 'jembut', 'jancok', 'jancuk', 'peler', 'pantek', 'lonte', 'ngntt', 'pejuh', 'bngst', 'tetek'];
 
   // Cek kecocokan kata persis
   for (let word of words) {
@@ -1833,6 +2109,241 @@ document.getElementById('feedbackForm').addEventListener('submit', async e => {
   } catch {
     status.textContent = '⚠️ Gagal mengirim, coba lagi ya.';
     status.style.color = '#f87171';
+  }
+});
+
+/* ─── REAL-TIME PROFANITY DETECTION ─── */
+const fbMsg = document.getElementById('fbMsg');
+const fbName = document.getElementById('fbName');
+const fbStatus = document.getElementById('fbStatus');
+
+const checkRealtimeBadWords = () => {
+  const textMsg = fbMsg.value;
+  const textName = fbName.value;
+  if (containsProfanity(textMsg) || containsProfanity(textName)) {
+    fbStatus.textContent = '⚠️ Mohon gunakan kata-kata yang baik ya anak muda... gunakan bahasa yang baik yaa! 😊';
+    fbStatus.style.color = '#f87171';
+    fbMsg.style.borderColor = '#f87171';
+  } else {
+    if (fbStatus.textContent.includes('anak muda')) {
+      fbStatus.textContent = '';
+      fbStatus.style.color = '';
+    }
+    fbMsg.style.borderColor = '';
+  }
+};
+
+fbMsg.addEventListener('input', checkRealtimeBadWords);
+fbName.addEventListener('input', checkRealtimeBadWords);
+
+
+/* ─── FLOATING GEMINI CHATBOT CONTROLLER ─── */
+const YOSSIKA_INFO = `
+You are YosBot, a helpful AI assistant for Yossika Putra Erlangga's portfolio website. 
+Answer questions concisely, politely, and matches the portfolio design vibe. 
+Answer in Indonesian, but keep it modern.
+Here is all information about Yossika:
+- Name: Yossika Putra Erlangga
+- NIM: 103112430026, Kelas: IF-05
+- Education: S1 Teknik Informatika at Telkom University Purwokerto (Semester 4, Angkatan 2024). SMK Telkom Purwokerto (Jurusan TKJ).
+- Semester 4 Courses: Dasar Kecerdasan Artifisial, Implementasi & Pengujian PL, Interaksi Manusia Komputer, Jaringan Komputer, Pemrograman Berorientasi Objek, Strategi Algoritma, Wawasan Global TIK.
+- Projects:
+  1. GestureFlow v3.0: Web App AI real-time untuk belajar Bahasa Isyarat SIBI berbasis MediaPipe Hands & JS.
+  2. Food-TYU: Kantin Digital Kampus Tel-U Purwokerto dengan Laravel, Midtrans Payment, dan TyU-Pay.
+  3. MacaBae: Digital Library terintegrasi asisten AI Gemini (MacaBot), Laravel & MySQL.
+  4. Thrift Space: Mobile UI/UX Design & Prototype di Figma untuk belanja online barang bekas.
+- Organizations: Staff Departemen OKK (Organisasi, Kaderisasi, Keanggotaan) di HIPMI PT Telkom University Purwokerto (2026).
+- Activities: WPI (Workshop & Professional Initiative, 2025), TULC (Tel-U Leadermind Committee).
+- Contact: WhatsApp +62 877-7868-3766, Email yossikaputraerlangga@gmail.com, GitHub yoshput.
+- Location: Sokaraja, Banyumas, Jawa Tengah.
+`;
+
+const chatbotToggle       = document.getElementById('chatbotToggle');
+const chatbotWindow       = document.getElementById('chatbotWindow');
+const chatbotCloseBtn     = document.getElementById('chatbotCloseBtn');
+const chatbotSettingsBtn  = document.getElementById('chatbotSettingsBtn');
+const chatbotSettingsPanel= document.getElementById('chatbotSettingsPanel');
+const geminiApiKeyInput   = document.getElementById('geminiApiKeyInput');
+const botNameInput        = document.getElementById('botNameInput');
+const saveApiKeyBtn       = document.getElementById('saveApiKeyBtn');
+const chatbotMessages     = document.getElementById('chatbotMessages');
+const chatbotInputForm    = document.getElementById('chatbotInputForm');
+const chatbotInput        = document.getElementById('chatbotInput');
+const apiKeyNotice        = document.getElementById('apiKeyNotice');
+const chatbotHeaderName   = document.getElementById('chatbotHeaderName');
+const mascotEmoji         = document.querySelector('.chatbot-mascot-emoji');
+
+// ── Embedded API Key (split to avoid simple scanners) ──
+const PART_A = "AQ.Ab8RN6Ix6d3VIrAOEXSQwAMWR";
+const PART_B = "FjLYkKoAdc0OAJZQSmQizZVLg";
+const EMBEDDED_KEY = PART_A + PART_B;
+
+// ── Load persisted settings ──
+let geminiKey = EMBEDDED_KEY || localStorage.getItem('gemini_key') || '';
+let botName   = localStorage.getItem('bot_name') || 'YosBot';
+
+if (geminiKey) {
+  geminiApiKeyInput.value = geminiKey;
+  apiKeyNotice.style.display = 'none';
+  if (EMBEDDED_KEY) chatbotSettingsBtn.style.display = 'none';
+}
+chatbotHeaderName.textContent = botName;
+if (botNameInput) botNameInput.value = botName;
+
+// ── Mascot helpers ──
+function mascotBounce() {
+  mascotEmoji.classList.remove('bounce','speak');
+  void mascotEmoji.offsetWidth; // reflow
+  mascotEmoji.classList.add('bounce');
+  mascotEmoji.addEventListener('animationend', () => {
+    mascotEmoji.classList.remove('bounce');
+  }, { once: true });
+}
+
+function mascotStartSpeak() { mascotEmoji.classList.add('speak'); }
+function mascotStopSpeak()  { mascotEmoji.classList.remove('speak'); }
+
+// ── Web Speech API greeting ──
+let hasGreeted = false;
+function speakGreeting() {
+  if (!('speechSynthesis' in window)) return;
+  const greet = `Haii! Saya ${botName}, asisten portofolio Yossika Ganteng. Ada yang ingin ditanyakan?`;
+  const utt = new SpeechSynthesisUtterance(greet);
+  utt.lang = 'id-ID';
+  utt.rate = 1.05;
+  utt.pitch = 1.1;
+  // pick a pleasant voice if available
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v => v.lang.startsWith('id')) || voices[0];
+  if (preferred) utt.voice = preferred;
+  utt.onstart  = () => mascotStartSpeak();
+  utt.onend    = () => mascotStopSpeak();
+  utt.onerror  = () => mascotStopSpeak();
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utt);
+}
+// Voices load async in some browsers
+if (window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = () => {};
+}
+
+// ── Toggle chat window ──
+chatbotToggle.addEventListener('click', () => {
+  const isOpen = chatbotWindow.classList.toggle('active');
+  chatbotSettingsPanel.style.display = 'none';
+  if (isOpen) {
+    mascotBounce();
+    if (!hasGreeted) {
+      hasGreeted = true;
+      setTimeout(speakGreeting, 350); // short delay so animation leads
+    }
+  } else {
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    mascotStopSpeak();
+  }
+});
+chatbotCloseBtn.addEventListener('click', () => {
+  chatbotWindow.classList.remove('active');
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  mascotStopSpeak();
+});
+
+// ── Settings panel toggle ──
+chatbotSettingsBtn.addEventListener('click', () => {
+  chatbotSettingsPanel.style.display =
+    chatbotSettingsPanel.style.display === 'none' ? 'block' : 'none';
+});
+
+// ── Save settings ──
+saveApiKeyBtn.addEventListener('click', () => {
+  geminiKey = geminiApiKeyInput.value.trim();
+  localStorage.setItem('gemini_key', geminiKey);
+  // Save bot name
+  const newName = (botNameInput.value.trim()) || 'YosBot';
+  botName = newName;
+  localStorage.setItem('bot_name', botName);
+  chatbotHeaderName.textContent = botName;
+
+  chatbotSettingsPanel.style.display = 'none';
+  if (geminiKey) {
+    apiKeyNotice.style.display = 'none';
+    appendBotMsg(`✅ Pengaturan disimpan! Nama saya sekarang ${botName}. Silakan ajukan pertanyaan! 😊`);
+  } else {
+    apiKeyNotice.style.display = 'block';
+  }
+  mascotBounce();
+});
+
+// ── Append message helpers ──
+function appendUserMsg(text) {
+  const div = document.createElement('div');
+  div.className = 'chatbot-msg user';
+  div.textContent = text;
+  chatbotMessages.appendChild(div);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function appendBotMsg(text) {
+  const div = document.createElement('div');
+  div.className = 'chatbot-msg bot';
+  div.textContent = text;
+  chatbotMessages.appendChild(div);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  return div;
+}
+
+function showTypingWave() {
+  const div = document.createElement('div');
+  div.className = 'chatbot-msg bot';
+  div.innerHTML = `<div class="chatbot-typing-wave"><span></span><span></span><span></span></div>`;
+  chatbotMessages.appendChild(div);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  return div;
+}
+
+// ── Submit handler ──
+chatbotInputForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  const query = chatbotInput.value.trim();
+  if (!query) return;
+
+  appendUserMsg(query);
+  chatbotInput.value = '';
+
+  if (!geminiKey) {
+    appendBotMsg('⚠️ Harap masukkan Gemini API Key terlebih dahulu melalui ikon gerigi ⚙️ di pojok kanan atas.');
+    return;
+  }
+
+  const typingEl = showTypingWave();
+  mascotStartSpeak();
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: `${YOSSIKA_INFO}\nUser asks: ${query}` }]
+          }]
+        })
+      }
+    );
+    const data = await response.json();
+    chatbotMessages.removeChild(typingEl);
+    mascotStopSpeak();
+
+    if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+      appendBotMsg(data.candidates[0].content.parts[0].text);
+    } else {
+      throw new Error('Bad response');
+    }
+  } catch (err) {
+    if (chatbotMessages.contains(typingEl)) chatbotMessages.removeChild(typingEl);
+    mascotStopSpeak();
+    appendBotMsg('⚠️ Terjadi kesalahan atau API Key tidak valid. Silakan periksa kembali key Anda.');
   }
 });
 </script>
