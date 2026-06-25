@@ -1605,7 +1605,7 @@ document.getElementById('feedbackForm').addEventListener('submit', async e => {
   status.textContent = '⏳ Mengirim...';
   const body = { name: document.getElementById('fbName').value, email: document.getElementById('fbEmail').value, message: document.getElementById('fbMsg').value };
   try {
-    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    const res = await fetch('https://formspree.io/f/xaqgewoy', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
     status.textContent = res.ok ? '✅ Pesan terkirim! Terima kasih 🎉' : '⚠️ Gagal mengirim, coba lagi.';
     if (res.ok) e.target.reset();
   } catch { status.textContent = '⚠️ Tidak dapat terhubung ke server.'; }

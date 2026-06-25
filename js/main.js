@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("message", message);
       formData.append("_captcha", "false");
       
-      fetch("https://formspree.io/f/xldvkyza", {
+      fetch("https://formspree.io/f/xaqgewoy", {
         method: "POST",
         body: formData,
         headers: { "Accept": "application/json" }
