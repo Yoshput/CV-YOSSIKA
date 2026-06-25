@@ -853,6 +853,159 @@
     0%,60%,100% { transform: translateY(0); }
     30%          { transform: translateY(-6px); }
   }
+
+  /* ════════════════════════════════════════
+     @MEDIA PRINT — Clean PDF Output
+     Ctrl+P atau Save as PDF akan tampil rapi
+  ════════════════════════════════════════ */
+  @media print {
+    /* Force color & background printing */
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* Page setup */
+    @page {
+      size: A4 portrait;
+      margin: 15mm 12mm 15mm 12mm;
+    }
+
+    /* Hide non-printable elements */
+    #cursor-dot, #cursor-ring,
+    #particle-canvas,
+    .nav-wrap,
+    .chatbot-widget,
+    .lightbox,
+    .scroll-top-btn,
+    .sep,
+    .popup-badge,
+    .p-modal,
+    .site-footer .footer-links a[href^="mailto"]:after { display: none !important; }
+
+    /* Reset body for print */
+    html, body {
+      background: #ffffff !important;
+      color: #1a1a2e !important;
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    /* Sections layout */
+    section {
+      padding: 18pt 0 !important;
+      page-break-inside: avoid;
+    }
+
+    /* Headings */
+    .section-title {
+      color: #1a1a2e !important;
+      font-size: 18pt !important;
+      margin-bottom: 8pt !important;
+    }
+    .eyebrow {
+      color: #6366f1 !important;
+      font-size: 8pt !important;
+      letter-spacing: 2px;
+    }
+    .section-sub {
+      color: #4b5563 !important;
+      font-size: 10pt !important;
+    }
+
+    /* Hero section */
+    .hero-section {
+      min-height: auto !important;
+      padding: 20pt 0 16pt !important;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%) !important;
+      color: #fff !important;
+    }
+    .hero-name { color: #fff !important; font-size: 28pt !important; }
+    .hero-subtitle, .hero-desc { color: rgba(255,255,255,0.85) !important; }
+    .btn { display: none !important; }
+    .hero-avatar img {
+      border-radius: 50% !important;
+      width: 90pt !important;
+      height: 90pt !important;
+      object-fit: cover;
+    }
+
+    /* Cards & surfaces */
+    .project-card, .skill-card, .cert-card, .contact-card, .about-detail-card {
+      background: #f8faff !important;
+      border: 1px solid #e0e7ff !important;
+      box-shadow: none !important;
+      page-break-inside: avoid;
+    }
+
+    /* Project cards grid */
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10pt !important;
+    }
+    .project-title { color: #1a1a2e !important; font-size: 11pt !important; }
+    .project-desc  { color: #374151 !important; font-size: 9.5pt !important; }
+    .tech-badge { background: #e0e7ff !important; color: #3730a3 !important; border: 1px solid #c7d2fe !important; }
+    .project-links { display: none !important; }
+
+    /* Skills section */
+    .skills-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8pt !important; }
+    .skill-tag { background: #f1f5f9 !important; color: #1e293b !important; border-color: #cbd5e1 !important; }
+    .skill-cat { color: #1e293b !important; }
+
+    /* Timeline */
+    .timeline-item { page-break-inside: avoid; }
+    .timeline-title { color: #1a1a2e !important; font-size: 11pt !important; }
+    .timeline-org { color: #4b5563 !important; }
+    .timeline-date { color: #6366f1 !important; }
+    .timeline-line { background: #e0e7ff !important; }
+    .timeline-dot { background: #6366f1 !important; box-shadow: none !important; }
+
+    /* Documentation / gallery */
+    .doc-section .doc-gallery { display: none !important; } /* hide photos in print */
+    .doc-desc { background: #f8faff !important; border-color: #e0e7ff !important; color: #374151 !important; }
+    .doc-cat-title { color: #1a1a2e !important; }
+    .doc-cat-badge { background: #e0e7ff !important; color: #3730a3 !important; border-color: #c7d2fe !important; }
+
+    /* Certificates — show 2 columns, keep images */
+    .certs-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 8pt !important;
+    }
+    .cert-card {
+      page-break-inside: avoid;
+      cursor: default;
+    }
+    .cert-title { color: #1a1a2e !important; }
+    .cert-issuer { color: #4b5563 !important; }
+    .cert-tag { background: #e0e7ff !important; color: #3730a3 !important; }
+
+    /* Contact */
+    .contact-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8pt !important; }
+    .contact-icon { background: #e0e7ff !important; color: #4f46e5 !important; }
+    .contact-label { color: #6b7280 !important; }
+    .contact-val { color: #1a1a2e !important; }
+    .feedback-form { display: none !important; }
+
+    /* Footer */
+    .site-footer {
+      background: #1e1b4b !important;
+      color: #fff !important;
+      padding: 12pt 0 !important;
+      page-break-inside: avoid;
+    }
+    .site-footer p { color: rgba(255,255,255,0.8) !important; }
+
+    /* Ensure reveal animations don't hide content */
+    .reveal { opacity: 1 !important; transform: none !important; }
+
+    /* Misc fixes */
+    .about-detail-label { color: #6b7280 !important; }
+    .about-detail-val { color: #1a1a2e !important; }
+    .live-dot { display: none !important; }
+    a { text-decoration: none !important; color: inherit !important; }
+  }
   </style>
 </head>
 <body>
@@ -888,7 +1041,7 @@
 </div>
 <div class="popup-badge" id="pop4">
   <span class="pb-icon">🔥</span>
-  <div class="pb-text">HIPMI PT Tel-U Purwokerto <small>Dep. Kaderisasi & Keanggotaan</small></div>
+  <div class="pb-text">UKM HIPMI PT Tel-U Purwokerto <small>Dep. Kaderisasi & Keanggotaan</small></div>
 </div>
 
 <!-- NAV -->
@@ -1187,7 +1340,7 @@
             <div class="timeline-dot"></div>
             <span class="timeline-date">Jan 2026 – Sekarang</span>
             <div class="timeline-title">Staff Dep. Kaderisasi & Keanggotaan</div>
-            <div class="timeline-org">HIPMI PT Telkom University Purwokerto</div>
+            <div class="timeline-org">UKM HIPMI PT Telkom University Purwokerto</div>
             <ul class="timeline-bullets">
               <li>Rekrutmen & kaderisasi anggota baru</li>
               <li>Koordinasi kegiatan organisasi mahasiswa wirausaha</li>
@@ -1197,7 +1350,11 @@
             <div class="timeline-dot"></div>
             <span class="timeline-date">Apr 2026 – Sekarang</span>
             <div class="timeline-title">Koordinator Keamanan</div>
-            <div class="timeline-org">Market Day Telkom University Purwokerto</div>
+            <div class="timeline-org">Market Day 4.0 — Telkom University Purwokerto</div>
+            <ul class="timeline-bullets">
+              <li>Persiapan kepanitiaan sejak April 2026</li>
+              <li>Acara berlangsung 2 Mei 2026</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1220,10 +1377,11 @@
       <div class="reveal">
         <div class="doc-cat-title">
           🔧 INFENTRA — Administrasi Jaringan
-          <span class="doc-cat-badge" style="color:#93c5fd;background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">Networking · Tel-U Purwokerto</span>
+          <span class="doc-cat-badge" style="color:#93c5fd;background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">Networking · Tel-U Purwokerto · 2024</span>
         </div>
         <div class="doc-desc">
-          Kegiatan pelatihan dan sertifikasi administrasi jaringan komputer yang diselenggarakan oleh Telkom University Purwokerto. Peserta mendapatkan materi konfigurasi server, manajemen jaringan, dan praktik langsung di laboratorium jaringan kampus.
+          Pelatihan dan sertifikasi administrasi jaringan komputer (INFENTRA 2024) yang diselenggarakan oleh Telkom University Purwokerto. Peserta mendapatkan materi konfigurasi server, manajemen jaringan, dan praktik langsung di laboratorium jaringan kampus.
+          <br><br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Kompetensi Administrasi Jaringan — INFENTRA, Telkom University Purwokerto (2024).
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg','INFENTRA - Dokumentasi Kegiatan')">
@@ -1248,11 +1406,12 @@
       <!-- TULC -->
       <div class="reveal">
         <div class="doc-cat-title">
-          🏆 TULC — Tel-U Leadermind Challenge
-          <span class="doc-cat-badge" style="color:#c4b5fd;background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.3)">Leadership · Season II</span>
+          🏆 TULC — Tel-U Leadermind Committee
+          <span class="doc-cat-badge" style="color:#c4b5fd;background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.3)">Leadership · Season II · 2025</span>
         </div>
         <div class="doc-desc">
-          Tel-U Leadermind Challenge Season II adalah program pengembangan kepemimpinan mahasiswa Telkom University Purwokerto. Program ini melatih soft skill kepemimpinan, komunikasi, dan kerja tim melalui serangkaian tantangan dan simulasi nyata.
+          Tel-U Leadermind Committee (TULC) Season II adalah program pengembangan kepemimpinan mahasiswa Telkom University Purwokerto yang dilaksanakan pada tahun 2025. Program ini melatih soft skill kepemimpinan, komunikasi, dan kerja tim melalui serangkaian tantangan dan simulasi nyata.
+          <br><br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Tel-U Leadermind Committee (TULC) Season II — Telkom University Purwokerto (2025).
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/02-TULC/01-Foto-Bersama.jpg','TULC - Foto Bersama')">
@@ -1333,10 +1492,10 @@
         </div>
       </div>
 
-      <!-- HIPMI -->
+      <!-- UKM HIPMI -->
       <div class="reveal">
         <div class="doc-cat-title">
-          🚀 HIPMI PT — Himpunan Pengusaha Muda Indonesia
+          🚀 UKM HIPMI PT — Himpunan Pengusaha Muda Indonesia
           <span class="doc-cat-badge" style="color:#f9a8d4;background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.3)">Organisasi · Jan 2026–Sekarang</span>
         </div>
         <div class="doc-desc">
@@ -1448,11 +1607,11 @@
       </div>
       <div class="cert-card" onclick="openLB('assets/sertifikat/CERTIFIKAT INFENTRA.png','Administrasi Jaringan')">
         <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Infentra" loading="lazy" onerror="certImgErr(this)"><span class="cert-img-icon" style="display:none">🔧</span></div>
-        <div class="cert-body"><span class="cert-tag">Networking</span><div class="cert-title">Administrasi Jaringan</div><div class="cert-issuer">Infentra · Tel-U Purwokerto</div></div>
+        <div class="cert-body"><span class="cert-tag">Networking</span><div class="cert-title">Sertifikat Administrasi Jaringan</div><div class="cert-issuer">INFENTRA · Tel-U Purwokerto · 2024</div></div>
       </div>
-      <div class="cert-card" onclick="openLB('assets/sertifikat/CERTIFIKAT TULC.png','Tel-U Leadermind')">
+      <div class="cert-card" onclick="openLB('assets/sertifikat/CERTIFIKAT TULC.png','Tel-U Leadermind Committee Season II')">
         <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC" loading="lazy" onerror="certImgErr(this)"><span class="cert-img-icon" style="display:none">🏆</span></div>
-        <div class="cert-body"><span class="cert-tag">Leadership</span><div class="cert-title">Tel-U Leadermind</div><div class="cert-issuer">TULC Season II</div></div>
+        <div class="cert-body"><span class="cert-tag">Leadership</span><div class="cert-title">Tel-U Leadermind Committee</div><div class="cert-issuer">TULC Season II · 2025</div></div>
       </div>
       <div class="cert-card" onclick="openLB('assets/sertifikat/SERTIFIKAT WPI.png','Sertifikat WPI')">
         <div class="cert-img"><img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI" loading="lazy" onerror="certImgErr(this)"><span class="cert-img-icon" style="display:none">🎓</span></div>
