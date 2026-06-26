@@ -1,0 +1,18 @@
+{
+  "name": "Yossika Putra Erlangga - Portfolio",
+  "short_name": "Yossika Port",
+  "description": "Portofolio Profesional Yossika Putra Erlangga",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#050510",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/img/foto kegiatan/06-HIPMI/Foto Profile Yossika-Kaderisasi dan Keanggotaan.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

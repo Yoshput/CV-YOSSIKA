@@ -9,7 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%238b5cf6'/></linearGradient></defs><rect fill='url(%23g)' width='100' height='100' rx='20'/><text x='50' y='68' font-size='60' font-weight='800' fill='white' text-anchor='middle' font-family='sans-serif'>Y</text></svg>"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#8b5cf6"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <link rel="apple-touch-icon" href="assets/img/foto kegiatan/06-HIPMI/Foto Profile Yossika-Kaderisasi dan Keanggotaan.jpg"/>
   <style>
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
   /* ══ TOKENS ══ */
   :root {
     --bg:      #0e1525;
@@ -292,6 +301,10 @@
   .doc-photo-wrap:hover img{transform:scale(1.06)}
   .doc-photo-caption{position:absolute;bottom:0;left:0;right:0;padding:10px 12px 8px;background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,transparent 100%);font-size:11px;color:rgba(255,255,255,.8);font-weight:500}
   .doc-desc{font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:1rem;max-width:700px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);border-left:3px solid var(--a1)}
+  .doc-media-row{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}
+  .doc-video-card{flex:1;min-width:280px;border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .doc-video-card:hover{transform:translateY(-4px)}
+  @media(max-width:600px){.doc-media-row{flex-direction:column}.doc-video-card{min-width:unset;width:100%}}
 
   /* ══ SKILLS ══ */
   .skills-outer{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
@@ -1009,6 +1022,8 @@
   </style>
 </head>
 <body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" style="position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg, #3b82f6, #8b5cf6, #f472b6);width:0%;z-index:999999;transition:width 0.1s ease-out;"></div>
 
 <!-- CUSTOM CURSOR -->
 <div id="cursor-dot"></div>
@@ -1338,22 +1353,57 @@
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <span class="timeline-date">Jan 2026 – Sekarang</span>
-            <div class="timeline-title">Staff Dep. Kaderisasi & Keanggotaan</div>
-            <div class="timeline-org">UKM HIPMI PT Telkom University Purwokerto</div>
+            <span class="timeline-date">Jul – Sep 2025</span>
+            <div class="timeline-title">Staff Keamanan</div>
+            <div class="timeline-org">Welcoming Party Informatics — Telkom University Purwokerto</div>
             <ul class="timeline-bullets">
-              <li>Rekrutmen & kaderisasi anggota baru</li>
-              <li>Koordinasi kegiatan organisasi mahasiswa wirausaha</li>
+              <li>Menjaga keamanan dan kelancaran acara penyambutan mahasiswa baru</li>
+              <li>Mengatur arus pengunjung dan memastikan protokol keselamatan</li>
+              <li>Bekerja sama dengan tim untuk mengatasi masalah keamanan</li>
             </ul>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <span class="timeline-date">Apr 2026 – Sekarang</span>
+            <span class="timeline-date">Sep – Nov 2025</span>
+            <div class="timeline-title">Staff Keamanan</div>
+            <div class="timeline-org">Tel-U Leadermind TULC Season II</div>
+            <ul class="timeline-bullets">
+              <li>Menjaga keamanan dan kelancaran acara kompetisi kepemimpinan skala universitas</li>
+              <li>Mengatur arus pengunjung dan memastikan protokol keselamatan dijalankan</li>
+              <li>Koordinasi tim dalam menangani potensi masalah keamanan</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">Okt – Des 2025</span>
+            <div class="timeline-title">Staff Keamanan</div>
+            <div class="timeline-org">INFENTRA — Telkom University Purwokerto</div>
+            <ul class="timeline-bullets">
+              <li>Menjaga keamanan dan kelancaran pelaksanaan acara Informatics Event &amp; Karya</li>
+              <li>Mengatur alur pengunjung dan memastikan protokol keselamatan area pameran</li>
+              <li>Bekerja sama dalam tim untuk mengatasi masalah keamanan lapangan</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">Jan 2026 – Sekarang</span>
+            <div class="timeline-title">Staff Dep. Kaderisasi &amp; Keanggotaan</div>
+            <div class="timeline-org">UKM HIPMI PT Telkom University Purwokerto</div>
+            <ul class="timeline-bullets">
+              <li>Mengelola dan mengembangkan program kaderisasi dan keanggotaan</li>
+              <li>Menjalin hubungan dengan anggota untuk meningkatkan partisipasi dan komitmen</li>
+              <li>Membantu dalam proses perekrutan dan pelatihan anggota baru</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">Mei 2026 – Sekarang (Persiapan sejak Apr 2026)</span>
             <div class="timeline-title">Koordinator Keamanan</div>
             <div class="timeline-org">Market Day 4.0 — Telkom University Purwokerto</div>
             <ul class="timeline-bullets">
-              <li>Persiapan kepanitiaan sejak April 2026</li>
-              <li>Acara berlangsung 2 Mei 2026</li>
+              <li>Memimpin tim keamanan dalam memastikan ketertiban dan kelancaran acara</li>
+              <li>Menyusun strategi penempatan personel keamanan di area acara</li>
+              <li>Berkoordinasi dengan panitia utama terkait prosedur keselamatan acara</li>
             </ul>
           </div>
         </div>
@@ -1369,26 +1419,33 @@
   <div class="container">
     <span class="eyebrow">Dokumentasi</span>
     <h2 class="section-title">Galeri Kegiatan & Pengalaman</h2>
-    <p class="section-sub">Rekam jejak perjalanan dari SMK hingga kuliah — mulai dari pelatihan jaringan, kepemimpinan, internship, wisata edukasi, hingga organisasi HIPMI.</p>
+    <p class="section-sub">Rekam jejak perjalanan dari SMK hingga kuliah — mulai dari pelatihan jaringan, kepemimpinan, internship, wisata edukasi, kepanitiaan event kampus, hingga organisasi HIPMI.</p>
 
     <div class="doc-categories">
 
       <!-- INFENTRA -->
       <div class="reveal">
         <div class="doc-cat-title">
-          🔧 INFENTRA — Administrasi Jaringan
-          <span class="doc-cat-badge" style="color:#93c5fd;background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">Networking · Tel-U Purwokerto · 2024</span>
+          🛡️ INFENTRA — Informatics Event &amp; Karya
+          <span class="doc-cat-badge" style="color:#93c5fd;background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">Staff Keamanan · Tel-U Purwokerto · 2025</span>
         </div>
         <div class="doc-desc">
-          Pelatihan dan sertifikasi administrasi jaringan komputer (INFENTRA 2024) yang diselenggarakan oleh Telkom University Purwokerto. Peserta mendapatkan materi konfigurasi server, manajemen jaringan, dan praktik langsung di laboratorium jaringan kampus.
-          <br><br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Kompetensi Administrasi Jaringan — INFENTRA, Telkom University Purwokerto (2024).
+          <strong>INFENTRA (Informatics Event &amp; Karya)</strong> hadir sebagai ruang baru yang membawa semangat kolaborasi, kreativitas, dan gerak bersama. Dengan mengusung tema <em>“Synergy in Motion”</em>, acara ini menjadi titik temu bagi generasi muda yang ingin berkembang, berkompetisi, dan menunjukkan potensi terbaik mereka. INFENTRA menghadirkan suasana yang menggabungkan teknologi, inovasi, dan sportivitas dalam satu aliran sinergi yang hidup. Ini bukan sekadar event biasa, tetapi sebuah perjalanan baru yang membuka peluang, memperkuat karakter, dan memantik kreativitas di tengah perubahan zaman yang terus bergerak.
+          <br><br>
+          Dalam kepanitiaan event kampus ini, saya bertugas sebagai <strong>Staff Keamanan</strong> (Oktober – Desember 2025) dengan kewajiban:
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+            <li>Menjaga kondusifitas area pameran karya teknologi serta mengontrol ketertiban penonton kompetisi.</li>
+            <li>Mengatur alur keluar masuk peserta dan pengunjung guna menghindari penumpukan di pintu masuk.</li>
+            <li>Mengawasi keamanan aset pameran dan kelengkapan instalasi lab komputer yang digunakan.</li>
+          </ul>
+          <br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Kompetensi Administrasi Jaringan — INFENTRA, Telkom University Purwokerto (2024).
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg','INFENTRA - Dokumentasi Kegiatan')">
             <img src="assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg" alt="INFENTRA Dokumentasi" loading="lazy">
             <div class="doc-photo-caption">📸 Dokumentasi Kegiatan</div>
           </div>
-          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/01-INFENTRA/02-Dokumentasi-Kegiatan.jpg','INFENTRA - Kegiatan Pelatihan')">
+          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/01-INFENTRA/02-Dokumentasi-Kegiatan.jpg','INFENTRA - Sesi Pelatihan Jaringan')">
             <img src="assets/img/foto kegiatan/01-INFENTRA/02-Dokumentasi-Kegiatan.jpg" alt="INFENTRA Kegiatan" loading="lazy">
             <div class="doc-photo-caption">🖥️ Sesi Pelatihan Jaringan</div>
           </div>
@@ -1406,12 +1463,19 @@
       <!-- TULC -->
       <div class="reveal">
         <div class="doc-cat-title">
-          🏆 TULC — Tel-U Leadermind Committee
-          <span class="doc-cat-badge" style="color:#c4b5fd;background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.3)">Leadership · Season II · 2025</span>
+          🏆 Tel-U Leadermind TULC Season II
+          <span class="doc-cat-badge" style="color:#c4b5fd;background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.3)">Staff Keamanan · Tel-U Purwokerto · 2025</span>
         </div>
         <div class="doc-desc">
-          Tel-U Leadermind Committee (TULC) Season II adalah program pengembangan kepemimpinan mahasiswa Telkom University Purwokerto yang dilaksanakan pada tahun 2025. Program ini melatih soft skill kepemimpinan, komunikasi, dan kerja tim melalui serangkaian tantangan dan simulasi nyata.
-          <br><br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Tel-U Leadermind Committee (TULC) Season II — Telkom University Purwokerto (2025).
+          <strong>Tel-U Leadermind TULC Season II</strong> adalah program pengembangan kepemimpinan mahasiswa sekaligus kompetisi kepemimpinan tahunan di Telkom University Purwokerto. Program ini melatih soft skill kepemimpinan taktis, komunikasi, manajemen krisis, dan kerja tim melalui simulasi tantangan kepemimpinan nyata di area kampus.
+          <br><br>
+          Berperan aktif sebagai <strong>Staff Keamanan</strong> (September – November 2025) dengan tugas kepanitiaan:
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+            <li>Menjaga keamanan area karantina materi kepemimpinan dan stabilitas zona simulasi krisis.</li>
+            <li>Mengoordinasikan sirkulasi peserta kompetisi agar alur kegiatan berjalan lancar dan tertib.</li>
+            <li>Mencegah gangguan keamanan dari luar area kegiatan demi kelancaran fokus peserta pelatihan.</li>
+          </ul>
+          <br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Tel-U Leadermind TULC Season II — Telkom University Purwokerto (2025).
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/02-TULC/01-Foto-Bersama.jpg','TULC - Foto Bersama')">
@@ -1422,13 +1486,17 @@
             <img src="assets/img/foto kegiatan/02-TULC/02-Kegiatan.jpg" alt="TULC Kegiatan" loading="lazy">
             <div class="doc-photo-caption">💪 Sesi Leadership Challenge</div>
           </div>
+          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/02-TULC/Dokumentasi Rapat TULC.jpeg','TULC - Dokumentasi Rapat Kepanitiaan')">
+            <img src="assets/img/foto kegiatan/02-TULC/Dokumentasi Rapat TULC.jpeg" alt="Dokumentasi Rapat TULC" loading="lazy">
+            <div class="doc-photo-caption">📝 Dokumentasi Rapat Kepanitiaan</div>
+          </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/02-TULC/Feed Foto TULC.jpg','TULC - Feed Instagram')">
             <img src="assets/img/foto kegiatan/02-TULC/Feed Foto TULC.jpg" alt="TULC Feed Instagram" loading="lazy">
             <div class="doc-photo-caption">🎨 Feed Instagram TULC</div>
           </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/02-TULC/YOSSIKA PUTRA ERLANGGA.JPG','TULC - Dokumentasi Personal')">
             <img src="assets/img/foto kegiatan/02-TULC/YOSSIKA PUTRA ERLANGGA.JPG" alt="TULC Yossika" loading="lazy">
-            <div class="doc-photo-caption">👥 Dokumentasi Personal</div>
+            <div class="doc-photo-caption">👤 Dokumentasi Personal</div>
           </div>
         </div>
       </div>
@@ -1440,7 +1508,12 @@
           <span class="doc-cat-badge" style="color:#86efac;background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.3)">Internship · Apr–Sep 2023</span>
         </div>
         <div class="doc-desc">
-          Praktek Kerja Lapangan di PT Telkom Akses Karanganyar selama 6 bulan. Bertugas sebagai teknisi lapangan untuk instalasi perangkat WiFi pelanggan, troubleshooting jaringan, dan splicing fiber optic. Pengalaman langsung di industri telekomunikasi nyata.
+          Praktek Kerja Lapangan (PKL) di <strong>PT Telkom Akses Karanganyar</strong> selama 6 bulan. Berperan sebagai teknisi lapangan yang berkontribusi dalam implementasi jaringan telekomunikasi dengan tanggung jawab:
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+            <li>Melakukan instalasi baru perangkat WiFi IndiHome dan layanan telekomunikasi di area perumahan pelanggan.</li>
+            <li>Mendeteksi kerusakan (troubleshooting) jaringan transmisi kabel dan pemeliharaan kualitas koneksi pelanggan.</li>
+            <li>Mempelajari dan mempraktikkan proses penyambungan (splicing) serta pengukuran redaman kabel serat optik (Fiber Optic).</li>
+          </ul>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/03-PKL_Telkom/01-Dokumentasi-PKL.jpg','PKL PT Telkom Akses - Dokumentasi')">
@@ -1499,7 +1572,12 @@
           <span class="doc-cat-badge" style="color:#f9a8d4;background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.3)">Organisasi · Jan 2026–Sekarang</span>
         </div>
         <div class="doc-desc">
-          Aktif sebagai Staff Departemen Kaderisasi & Keanggotaan di HIPMI PT Telkom University Purwokerto. Bertanggung jawab atas rekrutmen anggota baru, program kaderisasi, dan pengembangan ekosistem wirausaha mahasiswa di lingkungan kampus.
+          Aktif sebagai <strong>Staff Departemen Kaderisasi &amp; Keanggotaan</strong> di <strong>UKM HIPMI PT Telkom University Purwokerto</strong> sejak Januari 2026. Berperan strategis dalam pengembangan ekosistem kewirausahaan mahasiswa di lingkungan kampus dengan tanggung jawab:
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+            <li>Merancang dan mengeksekusi program rekrutmen terbuka serta alur penerimaan anggota baru organisasi.</li>
+            <li>Mengoordinasikan program kaderisasi terstruktur untuk menyebarkan nilai-nilai wirausaha kreatif kepada mahasiswa.</li>
+            <li>Mengelola database keanggotaan dan memfasilitasi komunikasi serta sinergi antar anggota aktif.</li>
+          </ul>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/Foto Profile Yossika-Kaderisasi dan Keanggotaan.jpg','HIPMI - Foto Profil Yossika')">
@@ -1508,7 +1586,15 @@
           </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/FOTO DEPARTEMEN KADERISASI DAN KEANGGOTAAN.jpg','HIPMI - Departemen Kaderisasi')">
             <img src="assets/img/foto kegiatan/06-HIPMI/FOTO DEPARTEMEN KADERISASI DAN KEANGGOTAAN.jpg" alt="HIPMI Departemen" loading="lazy">
-            <div class="doc-photo-caption">🤝 Foto Departemen Kaderisasi HIPMI</div>
+            <div class="doc-photo-caption">🤝 Foto Departemen Kaderisasi</div>
+          </div>
+          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/Foto Departement OKK.jpeg','HIPMI - Foto Departemen OKK')">
+            <img src="assets/img/foto kegiatan/06-HIPMI/Foto Departement OKK.jpeg" alt="HIPMI Departemen OKK" loading="lazy">
+            <div class="doc-photo-caption">📣 Foto Departemen OKK HIPMI</div>
+          </div>
+          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/Foto 0,5 Dokumentasi .jpeg','HIPMI - Dokumentasi Kegiatan')">
+            <img src="assets/img/foto kegiatan/06-HIPMI/Foto 0,5 Dokumentasi .jpeg" alt="HIPMI Dokumentasi" loading="lazy">
+            <div class="doc-photo-caption">📸 Dokumentasi Kegiatan HIPMI</div>
           </div>
         </div>
       </div>
@@ -1516,16 +1602,118 @@
       <!-- WPI -->
       <div class="reveal">
         <div class="doc-cat-title">
-          🎓 WPI — Workshop & Professional Initiative
+          🎓 WPI — Workshop &amp; Professional Initiative
           <span class="doc-cat-badge" style="color:#a7f3d0;background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)">Workshop · Okt 2025</span>
         </div>
         <div class="doc-desc">
-          Mengikuti Workshop & Professional Initiative (WPI) di Telkom University Purwokerto untuk pengembangan kompetensi karir profesional, inisiatif industri, dan keterampilan praktis.
+          Mengikuti <strong>Workshop &amp; Professional Initiative (WPI)</strong> di Telkom University Purwokerto. Program ini dirancang untuk membekali mahasiswa dengan keterampilan kerja profesional, pemahaman dinamika industri modern, personal branding, serta kesiapan transisi karir akademis ke dunia profesional.
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/07-WPI/Feed Ig WPI.jpg','WPI - Feed Instagram')">
             <img src="assets/img/foto kegiatan/07-WPI/Feed Ig WPI.jpg" alt="WPI Feed Instagram" loading="lazy">
             <div class="doc-photo-caption">🎨 Feed Instagram WPI</div>
+          </div>
+          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/07-WPI/Cocard Foto P.jpeg','WPI - ID Card / Co-Card Kepanitiaan')">
+            <img src="assets/img/foto kegiatan/07-WPI/Cocard Foto P.jpeg" alt="WPI Co-Card" loading="lazy">
+            <div class="doc-photo-caption">📛 Co-Card & ID Card Peserta</div>
+          </div>
+          <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/07-WPI/Foto Bersama Hari H WPI.jpeg','WPI - Foto Bersama Hari H')">
+            <img src="assets/img/foto kegiatan/07-WPI/Foto Bersama Hari H WPI.jpeg" alt="WPI Foto Bersama" loading="lazy">
+            <div class="doc-photo-caption">👥 Foto Bersama Peserta & Panitia</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARKET DAY -->
+      <div class="reveal">
+        <div class="doc-cat-title">
+          🛒 Market Day 4.0 — Koordinator Keamanan
+          <span class="doc-cat-badge" style="color:#fb923c;background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.3)">Koordinator Keamanan · Mei 2026</span>
+        </div>
+        <div class="doc-desc">
+          <strong>Market Day 4.0</strong> adalah bazar kewirausahaan mahasiswa tahunan Telkom University Purwokerto yang berlangsung pada <strong>2 Mei 2026</strong>. Sebagai <strong>Koordinator Keamanan</strong>, bertugas memimpin tim keamanan, menyusun strategi penempatan personel, dan berkoordinasi dengan panitia utama untuk memastikan kelancaran acara.
+          <br><br>Saksikan highlight acara dan dokumentasi kegiatan di bawah ini — termasuk video drone eksklusif dari udara! 🚁
+        </div>
+
+        <!-- VIDEO SECTION -->
+        <div class="doc-media-row" style="display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0;">
+
+          <!-- YouTube Card -->
+          <div class="doc-video-card" style="flex:1;min-width:280px;background:rgba(15,15,30,.6);border:1px solid rgba(239,68,68,.3);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(239,68,68,.2);">
+            <div style="background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(185,28,28,.1));padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(239,68,68,.2);">
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M19.6 2.18A2.5 2.5 0 0017.83.4C16.28 0 10 0 10 0S3.72 0 2.17.4A2.5 2.5 0 00.4 2.18 26.3 26.3 0 000 7a26.3 26.3 0 00.4 4.82A2.5 2.5 0 002.17 13.6C3.72 14 10 14 10 14s6.28 0 7.83-.4a2.5 2.5 0 001.77-1.78A26.3 26.3 0 0020 7a26.3 26.3 0 00-.4-4.82z" fill="#EF4444"/><path d="M8 10l5.2-3L8 4v6z" fill="white"/></svg>
+              <span style="font-size:.8rem;font-weight:700;color:#fca5a5;letter-spacing:.5px;">YOUTUBE · DOKUMENTASI ACARA</span>
+            </div>
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+              <iframe
+                src="https://www.youtube.com/embed/QmTBfSt-bv0?rel=0&modestbranding=1&color=white"
+                title="Market Day 4.0 Telkom University Purwokerto"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              ></iframe>
+            </div>
+            <div style="padding:.6rem 1rem;font-size:.75rem;color:rgba(252,165,165,.7);display:flex;align-items:center;gap:.4rem;">
+              <span>▶</span> Market Day 4.0 — Official Documentation Video
+            </div>
+          </div>
+
+          <!-- Instagram Reel Card -->
+          <div class="doc-video-card" style="flex:1;min-width:280px;background:rgba(15,15,30,.6);border:1px solid rgba(168,85,247,.3);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(168,85,247,.2);display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(219,39,119,.1));padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(168,85,247,.2);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#igGrad)" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="url(#igGrad)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#igGrad)"/><defs><linearGradient id="igGrad" x1="2" y1="2" x2="22" y2="22"><stop stop-color="#F58529"/><stop offset=".5" stop-color="#DD2A7B"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs></svg>
+              <span style="font-size:.8rem;font-weight:700;background:linear-gradient(90deg,#F58529,#DD2A7B,#8134AF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.5px;">INSTAGRAM REELS · DRONE VIEW</span>
+            </div>
+            <div style="flex:1;position:relative;height:0;padding-bottom:56.25%;overflow:hidden;background:#000;">
+              <!-- Kita gunakan padding-bottom 56.25% (16:9) agar tingginya pas & sejajar presisi dengan YouTube Card di sebelahnya -->
+              <iframe
+                src="https://www.instagram.com/reel/DZcO3EEpvqR/embed/"
+                title="Market Day 4.0 - Drone Highlight Instagram Reel"
+                frameborder="0"
+                scrolling="no"
+                allowtransparency="true"
+                allowfullscreen
+                loading="lazy"
+                style="position:absolute;top:-45px;left:0;width:100%;height:calc(100% + 90px);border:none;"
+              ></iframe>
+            </div>
+            <div style="padding:.6rem 1rem;font-size:.75rem;color:rgba(216,180,254,.7);display:flex;align-items:center;gap:.4rem;background:rgba(15,15,30,.6);">
+              <span>🚁</span> Highlight Hari H — Drone View Market Day 4.0
+            </div>
+          </div>
+
+        </div>
+
+        <!-- MARKET DAY PHOTOS -->
+        <div class="doc-gallery">
+          <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Foto Dokumentasi Acara Market Day.JPG','Market Day 4.0 - Dokumentasi Acara')">
+            <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto Dokumentasi Acara Market Day.JPG" alt="Dokumentasi Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
+            <div class="doc-photo-caption">📸 Dokumentasi Acara Hari H</div>
+          </div>
+          <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Potong Pita Pembukaan Market Day 2026.JPG','Market Day 4.0 - Potong Pita Pembukaan')">
+            <img src="assets/img/foto kegiatan/08-MARKET DAY/Potong Pita Pembukaan Market Day 2026.JPG" alt="Potong Pita Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
+            <div class="doc-photo-caption">✂️ Potong Pita Pembukaan Resmi</div>
+          </div>
+          <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Foto Bersama Market Day.JPG','Market Day 4.0 - Foto Bersama Panitia')">
+            <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto Bersama Market Day.JPG" alt="Foto Bersama Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
+            <div class="doc-photo-caption">🤝 Foto Bersama Tim Panitia</div>
+          </div>
+          <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Foto-Market Day Hari H.jpeg','Market Day 4.0 - Suasana Hari H')">
+            <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto-Market Day Hari H.jpeg" alt="Suasana Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
+            <div class="doc-photo-caption">🏪 Suasana Hari H Market Day</div>
+          </div>
+          <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Feed Instagram on marketday.tup as a Koor Keamanan on Market Day 2026.png','Market Day 4.0 - Feed Instagram - Koor Keamanan')">
+            <img src="assets/img/foto kegiatan/08-MARKET DAY/Feed Instagram on marketday.tup as a Koor Keamanan on Market Day 2026.png" alt="Feed Instagram Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
+            <div class="doc-photo-caption">📱 Feed Instagram — Koor Keamanan</div>
+          </div>
+          <div class="doc-photo-wrap" style="position:relative;overflow:hidden;cursor:pointer;border-radius:12px;background:rgba(15,15,30,.8);border:1px solid rgba(249,115,22,.3);display:flex;align-items:center;justify-content:center;min-height:160px;" onclick="this.innerHTML='<video src=\'assets/img/foto kegiatan/08-MARKET DAY/Take Konten-Panitia Market Day.mp4\' autoplay controls style=\'width:100%;height:100%;object-fit:cover;\' playsinline></video>'">
+            <div style="text-align:center;color:#fb923c;padding:1rem;">
+              <div style="font-size:2.5rem;">🎬</div>
+              <div style="font-weight:700;font-size:.9rem;margin-top:.5rem;">Take Konten Panitia</div>
+              <div style="font-size:.75rem;opacity:.7;margin-top:.25rem;">Tap untuk play video</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1609,9 +1797,9 @@
         <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Infentra" loading="lazy" onerror="certImgErr(this)"><span class="cert-img-icon" style="display:none">🔧</span></div>
         <div class="cert-body"><span class="cert-tag">Networking</span><div class="cert-title">Sertifikat Administrasi Jaringan</div><div class="cert-issuer">INFENTRA · Tel-U Purwokerto · 2024</div></div>
       </div>
-      <div class="cert-card" onclick="openLB('assets/sertifikat/CERTIFIKAT TULC.png','Tel-U Leadermind Committee Season II')">
+      <div class="cert-card" onclick="openLB('assets/sertifikat/CERTIFIKAT TULC.png','Tel-U Leadermind TULC Season II')">
         <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC" loading="lazy" onerror="certImgErr(this)"><span class="cert-img-icon" style="display:none">🏆</span></div>
-        <div class="cert-body"><span class="cert-tag">Leadership</span><div class="cert-title">Tel-U Leadermind Committee</div><div class="cert-issuer">TULC Season II · 2025</div></div>
+        <div class="cert-body"><span class="cert-tag">Leadership</span><div class="cert-title">Tel-U Leadermind TULC Season II</div><div class="cert-issuer">Telkom University Purwokerto · 2025</div></div>
       </div>
       <div class="cert-card" onclick="openLB('assets/sertifikat/SERTIFIKAT WPI.png','Sertifikat WPI')">
         <div class="cert-img"><img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI" loading="lazy" onerror="certImgErr(this)"><span class="cert-img-icon" style="display:none">🎓</span></div>
@@ -2311,8 +2499,15 @@ Here is all information about Yossika:
   2. Food-TYU: Kantin Digital Kampus Tel-U Purwokerto dengan Laravel, Midtrans Payment, dan TyU-Pay.
   3. MacaBae: Digital Library terintegrasi asisten AI Gemini (MacaBot), Laravel & MySQL.
   4. Thrift Space: Mobile UI/UX Design & Prototype di Figma untuk belanja online barang bekas.
-- Organizations: Staff Departemen OKK (Organisasi, Kaderisasi, Keanggotaan) di HIPMI PT Telkom University Purwokerto (2026).
-- Activities: WPI (Workshop & Professional Initiative, 2025), TULC (Tel-U Leadermind Committee).
+- Organizations: Staff Dep. Kaderisasi &amp; Keanggotaan di UKM HIPMI PT Telkom University Purwokerto (Januari 2026 – Sekarang).
+- Experiences &amp; Events (Chronological):
+  1. Teknisi Servis (PKL) di PT Telkom Akses Karanganyar (Apr – Sep 2023) — instalasi WiFi IndiHome, troubleshooting jaringan, splicing fiber optic.
+  2. Desainer Grafis di Tim Kreatif SMK Telkom Purwokerto (Mei – Des 2023) — poster, pamflet, konten visual sekolah.
+  3. Staff Keamanan di Welcoming Party Informatics — Telkom University Purwokerto (Jul – Sep 2025) — menjaga keamanan acara penyambutan mahasiswa baru, mengatur arus pengunjung.
+  4. Staff Keamanan di Tel-U Leadermind TULC Season II (Sep – Nov 2025) — menjaga keamanan kompetisi kepemimpinan skala universitas, mengatur arus pengunjung, koordinasi tim.
+  5. Staff Keamanan di INFENTRA (Informatics Event &amp; Karya, tema "Synergy in Motion") — Telkom University Purwokerto (Okt – Des 2025) — menjaga ketertiban pameran karya teknologi dan arena kompetisi.
+  6. Koordinator Keamanan di Market Day 4.0 — Telkom University Purwokerto (Persiapan Apr 2026, acara Hari H 2 Mei 2026) — memimpin tim keamanan, menyusun strategi penempatan personel, koordinasi dengan panitia. Ada video YouTube dan Instagram Reels drone di portofolio.
+- Activities: WPI (Workshop &amp; Professional Initiative, Okt 2025).
 - Contact: WhatsApp +62 877-7868-3766, Email yossikaputraerlangga@gmail.com, GitHub yoshput.
 - Location: Sokaraja, Banyumas, Jawa Tengah.
 `;
@@ -2505,6 +2700,138 @@ chatbotInputForm.addEventListener('submit', async e => {
     appendBotMsg('⚠️ Terjadi kesalahan atau API Key tidak valid. Silakan periksa kembali key Anda.');
   }
 });
+
+/* ════════════════════════════════════════════════════════════
+   🛠️ FITUR MAINTENANCE MODE
+   Ubah nilai UNDER_MAINTENANCE ke true untuk mengaktifkan.
+   Bypass mode dengan membuka url: domainanda.com/?admin=true
+   ════════════════════════════════════════════════════════════ */
+const UNDER_MAINTENANCE = true; // Set ke true untuk mengaktifkan layar maintenance saat di-deploy
+
+(function() {
+  // Cek apakah dibuka di localhost atau 127.0.0.1
+  const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' || 
+                        window.location.protocol === 'file:';
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const isAdmin = urlParams.get('admin') === 'true' || localStorage.getItem('portfolio_bypass_maintenance') === 'true';
+  
+  if (isAdmin || isLocalhost) {
+    if (isAdmin) {
+      localStorage.setItem('portfolio_bypass_maintenance', 'true');
+    }
+    return; // Bypass layar maintenance jika di localhost ATAU membuka via ?admin=true
+  }
+
+  if (UNDER_MAINTENANCE) {
+    // Tambahkan style tag khusus untuk overlay
+    const style = document.createElement('style');
+    style.innerHTML = `
+      #maintenance-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at center, #0f1026 0%, #050510 100%);
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #e2e8f0;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      .m-glow {
+        font-size: 5rem;
+        animation: mPulse 2s infinite ease-in-out;
+        filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
+      }
+      .m-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 1.5rem 0 0.5rem;
+        background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .m-text {
+        color: #94a3b8;
+        font-size: 1rem;
+        max-width: 450px;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .m-badge {
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        color: #c084fc;
+        padding: 0.4rem 1rem;
+        border-radius: 99px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      @keyframes mPulse {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.8)); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Buat element overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'maintenance-overlay';
+    overlay.innerHTML = `
+      <div class="m-badge">⚙️ PORTFOLIO UPDATE</div>
+      <div class="m-glow" style="margin-top: 1rem;">🚀</div>
+      <h1 class="m-title">Under Construction</h1>
+      <p class="m-text">
+        Halo! Portofolio Yossika sedang diperbarui untuk menambahkan dokumentasi, video, dan sertifikat terbaru agar lebih sempurna. Silakan kembali beberapa saat lagi!
+      </p>
+      <div style="font-size: 0.75rem; color: #475569;">
+        © ${new Date().getFullYear()} Yossika Putra Erlangga · Powered by Antigravity
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    // Hentikan scroll body
+    document.body.style.overflow = 'hidden';
+  }
+})();
+
+// Register PWA Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((reg) => console.log('PWA Service Worker registered successfully!', reg))
+      .catch((err) => console.error('Service Worker registration failed:', err));
+  });
+}
+
+// Throttled Scroll Progress Indicator
+(function() {
+  const progressBar = document.getElementById('scroll-progress');
+  if (!progressBar) return;
+  
+  let ticking = false;
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        progressBar.style.width = scrolled + '%';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
