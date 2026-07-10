@@ -136,22 +136,65 @@
   .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:56px 56px}
   @keyframes orbF{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-45px) scale(1.06)}66%{transform:translateY(28px) scale(0.96)}}
 
-  /* ══ FLOATING POPUPS ══ */
-  .popup-badge{
-    position:fixed;z-index:50;display:flex;align-items:center;gap:10px;
-    background:rgba(15,23,42,0.88);backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,0.14);border-radius:16px;
-    padding:12px 18px;font-size:13px;font-weight:600;color:var(--txt);
-    box-shadow:0 20px 60px rgba(0,0,0,0.5);
-    pointer-events:none;
+  /* ══ FLOATING POPUPS (ANTI-GRAVITY GLASSMORPHISM) ══ */
+  .popup-badge {
+    position: fixed;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1.5px solid rgba(139, 92, 246, 0.2);
+    border-radius: 18px;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--txt);
+    /* Layered mathematically clean soft violet shadows */
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 20px 40px -15px rgba(139, 92, 246, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    pointer-events: auto; /* enable interactive custom cursor effects */
+    will-change: transform;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
   }
-  .popup-badge .pb-icon{font-size:20px}
-  .popup-badge .pb-text small{display:block;font-size:10px;color:var(--txt3);font-weight:400}
-  #pop1{left:2%;top:28%;animation:popFloat 6s ease-in-out infinite}
-  #pop2{right:2%;top:38%;animation:popFloat 7s ease-in-out infinite 1.5s}
-  #pop3{left:3%;bottom:30%;animation:popFloat 8s ease-in-out infinite 3s}
-  #pop4{right:3%;bottom:22%;animation:popFloat 5.5s ease-in-out infinite 0.8s}
-  @keyframes popFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .popup-badge:hover {
+    border-color: rgba(244, 114, 182, 0.4);
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05),
+      0 30px 50px -10px rgba(244, 114, 182, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-8px) translateZ(25px) rotateX(4deg) rotateY(-4deg) !important;
+  }
+  .popup-badge .pb-icon {
+    font-size: 20px;
+    transform: translateZ(10px);
+  }
+  .popup-badge .pb-text {
+    transform: translateZ(8px);
+  }
+  .popup-badge .pb-text small {
+    display: block;
+    font-size: 10px;
+    color: var(--txt3);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  #pop1 { left: 3%; top: 26%; animation: popFloat 7s ease-in-out infinite; }
+  #pop2 { right: 3%; top: 32%; animation: popFloat 8s ease-in-out infinite 1.5s; }
+  #pop3 { left: 4%; bottom: 25%; animation: popFloat 9s ease-in-out infinite 3s; }
+  #pop4 { right: 4%; bottom: 18%; animation: popFloat 6.5s ease-in-out infinite 0.8s; }
+  @keyframes popFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(1deg); }
+  }
 
   /* ══ LAYOUT ══ */
   .container{max-width:1180px;margin:0 auto;padding:0 2rem}
@@ -561,88 +604,129 @@
     }
   }
   /* ══ BISNIS & ENTREPRENEURSHIP SECTION ══ */
-  .bisnis-featured {
-    background: linear-gradient(135deg, rgba(252, 211, 77, 0.05) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(17, 24, 39, 0.4) 100%);
-    border: 1px solid rgba(252, 211, 77, 0.25);
-    border-radius: var(--r-2xl);
-    padding: 3rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(252,211,77,0.08);
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .bisnis-featured::before {
-    content: '';
-    position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(252, 211, 77, 0.12) 0%, rgba(16, 185, 129, 0.06) 50%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .bisnis-featured:hover {
-    border-color: rgba(252, 211, 77, 0.45);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 40px rgba(252, 211, 77, 0.08);
-  }
-  .bisnis-featured-inner {
+  /* ══ BENTO GRID BISNIS (MANGO NYENI) ══ */
+  .bento-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    perspective: 1200px;
+    transform-style: preserve-3d;
   }
-  .bisnis-info { max-width: 560px; }
-  .bisnis-tagline {
-    font-size: 1.1rem;
+  
+  .bento-grid .popup-badge {
+    position: relative;
+    inset: auto !important;
+    animation: none !important;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+  }
+
+  .bento-grid .popup-badge:hover {
+    border-color: rgba(252, 211, 77, 0.45);
+    box-shadow: 
+      0 30px 60px -10px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(252, 211, 77, 0.15);
+  }
+
+  .bento-mod-1 {
+    grid-column: 1;
+    grid-row: span 2;
+    padding: 2.2rem !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, rgba(252, 211, 77, 0.08) 0%, rgba(17, 24, 39, 0.7) 100%) !important;
+  }
+
+  .bento-mod-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .bento-mod-3 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .bento-mod-4 {
+    grid-column: 3;
+    grid-row: span 2;
+  }
+
+  .bento-info {
+    transform-style: preserve-3d;
+  }
+  .bento-info > * {
+    transform: translateZ(25px);
+  }
+  .bento-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--txt);
+    margin-bottom: 6px;
+  }
+  .bento-tagline {
+    font-size: 1rem;
     color: #fbbf24;
     font-weight: 600;
-    margin-bottom: 14px;
-    letter-spacing: -.01em;
+    margin-bottom: 12px;
   }
-  .bisnis-gallery { display: flex; align-items: center; justify-content: center; }
-  .bisnis-gallery-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
+  .bento-desc {
+    font-size: 0.9rem;
+    color: var(--txt2);
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  .bento-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .bento-img-wrap {
     width: 100%;
-    max-width: 420px;
-  }
-  .bisnis-img {
-    border-radius: var(--r-lg);
-    overflow: hidden;
+    height: 100%;
     position: relative;
-    background: rgba(0,0,0,0.3);
-    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    overflow: hidden;
+    transform-style: preserve-3d;
   }
-  .bisnis-img:hover { transform: scale(1.03); }
-  .bisnis-img-main {
-    grid-row: span 2;
-    max-height: 320px;
-  }
-  .bisnis-img img {
+  
+  .bento-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    min-height: 130px;
+    transition: transform 0.5s ease;
   }
-  .bisnis-img-main img { min-height: 300px; }
-  .bisnis-img-label {
+
+  .bento-grid .popup-badge:hover .bento-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .bento-img-overlay {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 6px 10px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    padding: 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
     color: #fff;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: .5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     text-align: center;
+    transform: translateZ(15px);
+    transition: transform 0.3s ease;
   }
 
   /* Business stat cards */
@@ -680,23 +764,31 @@
   }
 
   @media (max-width: 960px) {
-    .bisnis-featured-inner {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-    .bisnis-info { max-width: 100%; text-align: center; }
-    .bisnis-roles { justify-content: center; }
-    .bisnis-featured .btn { margin: 0 auto; display: block; width: fit-content; }
-    .bisnis-gallery { justify-content: center; }
-    .bisnis-gallery-grid { max-width: 360px; }
-  }
-  @media (max-width: 600px) {
-    .bisnis-gallery-grid {
+    .bento-grid {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
+      gap: 1rem;
     }
-    .bisnis-img-main { grid-row: span 1; }
-    .bisnis-img img, .bisnis-img-main img { min-height: 100px; }
+    .bento-mod-1 {
+      grid-column: span 2;
+      grid-row: auto;
+      padding: 1.8rem !important;
+    }
+    .bento-mod-2 {
+      grid-column: 1;
+      grid-row: auto;
+      height: 220px;
+    }
+    .bento-mod-3 {
+      grid-column: 2;
+      grid-row: auto;
+      height: 220px;
+    }
+    .bento-mod-4 {
+      grid-column: span 2;
+      grid-row: auto;
+      height: 280px;
+    }
   }
 
 
@@ -1917,44 +2009,58 @@
     <h2 class="section-title">Bisnis &amp; Usaha</h2>
     <p class="section-sub">Pengalaman nyata membangun dan mengoperasikan usaha F&amp;B dari nol — produksi, pemasaran, pelayanan, dan pengantaran, semua dikerjakan sendiri.</p>
 
-    <!-- Mango Nyeni Featured Business Card -->
-    <div class="bisnis-featured reveal" onclick="openProject('mango_nyeni')" style="cursor:pointer;">
-      <div class="bisnis-featured-inner">
-        <div class="bisnis-info">
-          <div class="project-featured" style="position:static;display:inline-flex;align-items:center;gap:7px;margin-bottom:16px;">
+    <!-- Bento Box Grid Container (Mango Nyeni) -->
+    <div class="bento-grid reveal" id="mango-bento-group">
+      
+      <!-- Modul 1: Info & Deskripsi (Kiri - spans 2 rows) -->
+      <div class="popup-badge bento-mod-1" onclick="openProject('mango_nyeni')">
+        <div class="bento-info">
+          <div class="project-featured" style="margin-bottom: 12px; display: inline-flex; align-items: center; gap: 6px; position: static;">
             <span>🍋</span> Owner &amp; Founder
           </div>
-          <h3 class="featured-title" style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:12px;">Mango Nyeni</h3>
-          <p class="bisnis-tagline" style="font-size:1.1rem;color:var(--a1);font-weight:600;margin-bottom:14px;">Minuman Sago Premium · Mango · Strawberry · Buah Naga</p>
-          <p class="featured-desc">Usaha minuman sago premium yang saya rintis bersama kakak saya. Mulai dari produksi, packaging, edit konten feed Instagram, pelayanan pelanggan, hingga delivery — semuanya saya handle mandiri.</p>
-          <div class="bisnis-roles" style="display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 24px;">
-            <span class="pill pill-amber">🧑‍🍳 Owner &amp; Co-Founder</span>
-            <span class="pill pill-green">🛵 Delivery Service</span>
-            <span class="pill pill-pink">📸 Content Creator</span>
-            <span class="pill pill-cyan">💬 Customer Service</span>
+          <h3 class="bento-title">Mango Nyeni</h3>
+          <p class="bento-tagline">Minuman Sago Premium · Mango · Strawberry · Buah Naga</p>
+          <p class="bento-desc">Usaha minuman sago premium yang saya rintis bersama kakak saya. Mulai dari produksi, packaging, branding feed Instagram, pelayanan pelanggan, hingga delivery — semuanya dikerjakan mandiri.</p>
+          <div class="bento-roles" style="margin-bottom: 20px;">
+            <span class="pill pill-amber">🧑‍🍳 Owner</span>
+            <span class="pill pill-green">🛵 Delivery</span>
+            <span class="pill pill-pink">📸 Content</span>
+            <span class="pill pill-cyan">💬 Admin</span>
           </div>
-          <button class="btn btn-grad" style="cursor:pointer;">Lihat Galeri Bisnis 📸</button>
+          <button class="btn btn-grad" style="cursor: pointer; padding: 10px 20px; font-size: 12px;">Lihat Galeri Bisnis 📸</button>
         </div>
-        <div class="bisnis-gallery">
-          <div class="bisnis-gallery-grid">
-            <div class="bisnis-img bisnis-img-main">
-              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-01.jpg" alt="Mango Nyeni Instagram Feed">
-            </div>
-            <div class="bisnis-img">
-              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Mango-Sago.jpg" alt="Mango Sago">
-              <div class="bisnis-img-label">Mango Sago</div>
-            </div>
-            <div class="bisnis-img">
-              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Strawberry-Sago.jpg" alt="Strawberry Sago">
-              <div class="bisnis-img-label">Strawberry Sago</div>
-            </div>
-            <div class="bisnis-img">
-              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Buah-Naga-Sago.jpg" alt="Buah Naga Sago">
-              <div class="bisnis-img-label">Buah Naga Sago</div>
-            </div>
+      </div>
+
+      <!-- Modul 2: IG Profile (Tengah Atas) -->
+      <div class="popup-badge bento-mod-2" onclick="openProject('mango_nyeni')">
+        <div class="bento-img-wrap">
+          <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Profile-IG.jpg" alt="Instagram Profile">
+          <div class="bento-img-overlay">
+            <span>Profile Instagram</span>
           </div>
         </div>
       </div>
+
+      <!-- Modul 3: Mango Sago (Tengah Bawah) -->
+      <div class="popup-badge bento-mod-3" onclick="openProject('mango_nyeni')">
+        <div class="bento-img-wrap">
+          <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Mango-Sago.jpg" alt="Mango Sago">
+          <div class="bento-img-overlay">
+            <span>Mango Sago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modul 4: Strawberry Sago Vertikal (Kanan - spans 2 rows) -->
+      <div class="popup-badge bento-mod-4" onclick="openProject('mango_nyeni')">
+        <div class="bento-img-wrap">
+          <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Strawberry-Sago.jpg" alt="Strawberry Sago">
+          <div class="bento-img-overlay">
+            <span>Strawberry Sago</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Business stats row -->
@@ -3167,10 +3273,12 @@ const projectData = {
       "Penggunaan ornamen pelengkap seperti jarum pin merah dan daun pinus"
     ],
     images: [
-      "assets/img/project-web/Selected Graphic Designs/gunung.jpg"
+      "assets/img/project-web/Selected Graphic Designs/gunung.jpg",
+      "assets/img/project-web/Selected Graphic Designs/bukti hasil-gunung.png"
     ],
     actions: [
-      { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/gunung.jpg", primary: true }
+      { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/gunung.jpg", primary: true },
+      { text: "📸 Bukti Hasil", link: "assets/img/project-web/Selected Graphic Designs/bukti hasil-gunung.png", primary: false }
     ]
   },
   merch_telkom: {
@@ -3965,8 +4073,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      /* Featured Showcase & Business Featured tilt (gentler for large card) */
-      document.querySelectorAll('.featured-showcase, .bisnis-featured').forEach(card => {
+      /* Featured Showcase tilt (gentler for large card, handled by GSAP) */
+      document.querySelectorAll('.featured-showcase').forEach(card => {
         card.style.transformStyle = 'preserve-3d';
         card.style.willChange = 'transform';
         const quickX = gsap.quickTo(card, 'rotationY', { duration: 0.7, ease: 'power3.out' });
@@ -4045,6 +4153,37 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.gsap) boot();
   else window.addEventListener('load', boot);
 })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+<script>
+  // Inisialisasi Vanilla Tilt pada Widget Samping (.popup-badge) dan Bento Grid Bisnis (.bento-grid)
+  document.addEventListener("DOMContentLoaded", () => {
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!isTouch && !reduceMotion) {
+      // Hanya tilt widget mengapung di Hero (bukan yang di dalam Bento grid)
+      const floatingBadges = Array.from(document.querySelectorAll(".popup-badge")).filter(badge => !badge.closest(".bento-grid"));
+      VanillaTilt.init(floatingBadges, {
+        max: 15,
+        speed: 400,
+        scale: 1.04,
+        perspective: 900,
+        transition: true
+      });
+
+      // Tilt Bento Grid secara berkelompok (semua modul miring seirama)
+      VanillaTilt.init(document.querySelectorAll(".bento-grid"), {
+        max: 5,
+        speed: 500,
+        scale: 1.01,
+        perspective: 1400,
+        glare: true,
+        "max-glare": 0.06,
+        transition: true
+      });
+    }
+  });
 </script>
 </body>
 </html>
