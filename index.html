@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%238b5cf6'/></linearGradient></defs><rect fill='url(%23g)' width='100' height='100' rx='20'/><text x='50' y='68' font-size='60' font-weight='800' fill='white' text-anchor='middle' font-family='sans-serif'>Y</text></svg>"/>
   <link rel="manifest" href="manifest.json"/>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <meta name="theme-color" content="#8b5cf6"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -175,17 +177,109 @@
   .btn-glass:hover{background:rgba(255,255,255,.12);transform:translateY(-3px);border-color:rgba(255,255,255,.25)}
   .sep{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
 
-  /* ══ NAVBAR ══ */
-  .nav-wrap{position:fixed;inset:0 0 auto;z-index:200;padding:.8rem 2rem;transition:background .3s,border-color .3s}
-  .nav-wrap.scrolled{background:rgba(14,21,37,.94);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
-  .nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:1rem}
-  .nav-logo{font-size:1.2rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0}
-  .nav-links{display:flex;align-items:center;gap:2px;margin-left:auto}
-  .nav-links a{font-size:13px;font-weight:500;color:var(--txt2);padding:6px 12px;border-radius:var(--r-sm);transition:color .2s,background .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--a1);background:rgba(59,130,246,.1)}
-  .nav-cta{margin-left:.5rem}
-  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
-  .hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s}
+  /* ══ NAVBAR (FLOATING GLASSMORPHIC CAPSULE) ══ */
+  .nav-wrap {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1080px;
+    z-index: 200;
+    background: rgba(14, 21, 37, 0.4);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: .6rem 2rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  }
+  .nav-wrap.scrolled {
+    background: rgba(14, 21, 37, 0.75);
+    border-color: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.1);
+  }
+  .nav-wrap.nav-hidden {
+    transform: translate(-50%, -120px) scale(0.95);
+  }
+  .nav-inner {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+  }
+  .nav-links a {
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--txt2);
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: color .3s, background .3s;
+  }
+  .nav-links a:hover {
+    color: var(--txt);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .nav-links a.active {
+    color: var(--a1);
+    background: rgba(59, 130, 246, 0.1);
+  }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--a1);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--a1);
+    animation: activePulse 1.5s infinite alternate;
+  }
+  @keyframes activePulse {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.7; }
+    100% { transform: translateX(-50%) scale(1.6); opacity: 1; box-shadow: 0 0 12px var(--a1); }
+  }
+  .nav-cta {
+    margin-left: .5rem;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: auto;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--txt);
+    border-radius: 2px;
+    transition: all .3s;
+  }
 
   /* ══ HERO ══ */
   .hero{min-height:100svh;display:flex;align-items:center;padding:7rem 0 4rem;position:relative;z-index:2}
@@ -274,7 +368,338 @@
   .project-more-btn{font-size:12.5px;font-weight:600;color:var(--a1);transition:all 0.2s}
   .project-card:hover .project-more-btn{color:var(--a3);padding-left:4px}
 
-  /* ══ EXPERIENCE TIMELINE ══ */
+  /* ══ 3D CARD TILT EFFECT & SELECTED GRAPHIC DESIGNS ══ */
+  .project-card, .cert-card, .graphic-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s;
+  }
+  .project-card .project-preview, .project-card .project-body,
+  .cert-card .cert-img, .cert-card .cert-body,
+  .graphic-card .graphic-preview, .graphic-card .graphic-body {
+    transform: translateZ(30px);
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .project-card .project-featured {
+    transform: translateZ(50px);
+  }
+
+  /* Dompetku side-by-side featured section */
+  .featured-showcase {
+    background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(17, 24, 39, 0.4) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: var(--r-2xl);
+    padding: 3rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-showcase::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .featured-showcase-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .featured-info {
+    max-width: 580px;
+  }
+  .featured-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    color: var(--txt);
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+  }
+  .featured-desc {
+    font-size: 1.05rem;
+    color: var(--txt2);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .featured-mockup {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    perspective: 1500px;
+  }
+  .featured-mockup img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: var(--r-xl);
+    transform: rotateY(-18deg) rotateX(12deg) rotateZ(3deg) scale(1.05);
+    box-shadow: -20px 25px 50px rgba(0, 0, 0, 0.6), 5px -5px 20px rgba(139, 92, 246, 0.25);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .featured-showcase:hover .featured-mockup img {
+    transform: rotateY(-10deg) rotateX(8deg) rotateZ(1deg) scale(1.08);
+    box-shadow: -25px 30px 60px rgba(0, 0, 0, 0.7), 8px -8px 25px rgba(139, 92, 246, 0.35);
+  }
+  
+  /* Selected Graphic Designs Grid */
+  .graphic-title-wrap {
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .graphic-title-wrap h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--txt);
+    white-space: nowrap;
+  }
+  .graphic-title-wrap .line {
+    height: 1px;
+    flex-grow: 1;
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.3), transparent);
+  }
+  
+  .graphics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .graphic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .graphic-card:hover {
+    border-color: var(--border2);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+  .graphic-preview {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    background: #090e18;
+  }
+  .graphic-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.78;
+    transition: transform 0.5s ease;
+  }
+  .graphic-card:hover .graphic-preview img {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  .graphic-overlay-glow {
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 21, 37, 0.4);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .graphic-card:hover .graphic-overlay-glow {
+    opacity: 1;
+  }
+  .graphic-body {
+    padding: 1.2rem;
+  }
+  .graphic-type {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--a1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .graphic-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .graphic-card-desc {
+    font-size: 12.5px;
+    color: var(--txt2);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 960px) {
+    .featured-showcase-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .featured-info {
+      max-width: 100%;
+      text-align: center;
+    }
+    .featured-mockup img {
+      transform: none;
+      max-width: 100%;
+    }
+    .featured-showcase:hover .featured-mockup img {
+      transform: scale(1.02);
+    }
+  }
+  /* ══ BISNIS & ENTREPRENEURSHIP SECTION ══ */
+  .bisnis-featured {
+    background: linear-gradient(135deg, rgba(252, 211, 77, 0.05) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(17, 24, 39, 0.4) 100%);
+    border: 1px solid rgba(252, 211, 77, 0.25);
+    border-radius: var(--r-2xl);
+    padding: 3rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(252,211,77,0.08);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .bisnis-featured::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(252, 211, 77, 0.12) 0%, rgba(16, 185, 129, 0.06) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bisnis-featured:hover {
+    border-color: rgba(252, 211, 77, 0.45);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 40px rgba(252, 211, 77, 0.08);
+  }
+  .bisnis-featured-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .bisnis-info { max-width: 560px; }
+  .bisnis-tagline {
+    font-size: 1.1rem;
+    color: #fbbf24;
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: -.01em;
+  }
+  .bisnis-gallery { display: flex; align-items: center; justify-content: center; }
+  .bisnis-gallery-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    width: 100%;
+    max-width: 420px;
+  }
+  .bisnis-img {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    position: relative;
+    background: rgba(0,0,0,0.3);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .bisnis-img:hover { transform: scale(1.03); }
+  .bisnis-img-main {
+    grid-row: span 2;
+    max-height: 320px;
+  }
+  .bisnis-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 130px;
+  }
+  .bisnis-img-main img { min-height: 300px; }
+  .bisnis-img-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 6px 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-align: center;
+  }
+
+  /* Business stat cards */
+  .bisnis-stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 1.6rem 1.2rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .bisnis-stat-card:hover {
+    border-color: rgba(252, 211, 77, 0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 24px rgba(252,211,77,0.08);
+  }
+  .bisnis-stat-icon { font-size: 2rem; margin-bottom: 10px; }
+  .bisnis-stat-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    color: #fbbf24;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .bisnis-stat-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--txt);
+    margin-bottom: 4px;
+  }
+  .bisnis-stat-sub {
+    font-size: 11px;
+    color: var(--txt2);
+  }
+
+  @media (max-width: 960px) {
+    .bisnis-featured-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .bisnis-info { max-width: 100%; text-align: center; }
+    .bisnis-roles { justify-content: center; }
+    .bisnis-featured .btn { margin: 0 auto; display: block; width: fit-content; }
+    .bisnis-gallery { justify-content: center; }
+    .bisnis-gallery-grid { max-width: 360px; }
+  }
+  @media (max-width: 600px) {
+    .bisnis-gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .bisnis-img-main { grid-row: span 1; }
+    .bisnis-img img, .bisnis-img-main img { min-height: 100px; }
+  }
+
+
   .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
   .timeline{position:relative;padding-left:2rem}
   .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(180deg,var(--a1),var(--a2) 50%,rgba(255,255,255,.05))}
@@ -637,9 +1062,35 @@
   }
   @media(max-width:640px){
     .hamburger{display:flex}
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(14,21,37,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-direction:column;padding:.75rem;gap:2px;align-items:stretch}
-    .nav-links.open{display:flex}
-    .nav-links a{font-size:14px;padding:10px 14px}
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: rgba(14, 21, 37, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      flex-direction: column;
+      padding: .75rem;
+      gap: 2px;
+      align-items: stretch;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    .nav-links.open {
+      display: flex;
+    }
+    .nav-links a {
+      font-size: 14px;
+      padding: 12px 18px;
+      border-radius: 16px;
+    }
+    [data-theme="light"] .nav-links {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
     .nav-cta{display:none}
     .theme-btn {
       margin-left: auto;
@@ -656,9 +1107,24 @@
   }
 
   /* ══ NAVBAR SCROLLED LIGHT MODE OVERRIDE ══ */
+  [data-theme="light"] .nav-wrap {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
   [data-theme="light"] .nav-wrap.scrolled {
-    background: rgba(255, 245, 247, 0.94);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+  [data-theme="light"] .nav-links a:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  [data-theme="light"] .nav-links a {
+    color: #4b5563;
+  }
+  [data-theme="light"] .nav-links a:hover {
+    color: #111827;
   }
 
   /* ══ CHATBOT WIDGET CSS ══ */
@@ -1090,6 +1556,8 @@
       <a href="#hero">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#graphic-designs">Designs</a>
+      <a href="#bisnis">Bisnis</a>
       <a href="#experience">Pengalaman</a>
       <a href="#dokumentasi">Dokumentasi</a>
       <a href="#skills">Skills</a>
@@ -1135,7 +1603,7 @@
         <div class="hero-stats reveal reveal-delay-3">
           <div><div class="stat-num"><span class="counter" data-to="6">0</span>+</div><div class="stat-lbl">Pengalaman</div></div>
           <div><div class="stat-num"><span class="counter" data-to="7">0</span></div><div class="stat-lbl">Sertifikat</div></div>
-          <div><div class="stat-num"><span class="counter" data-to="4">0</span></div><div class="stat-lbl">Projects</div></div>
+          <div><div class="stat-num"><span class="counter" data-to="6">0</span></div><div class="stat-lbl">Projects</div></div>
           <div><div class="stat-num"><span class="counter" data-to="4">0</span></div><div class="stat-lbl">Semester</div></div>
         </div>
       </article>
@@ -1308,6 +1776,213 @@
         </div>
       </div>
 
+      <!-- Ngertiin Dia -->
+      <div class="project-card reveal reveal-delay-1" onclick="openProject('ngertiindia')">
+        <div class="project-featured">🆕 Baru</div>
+        <div class="project-preview">
+          <img src="assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Landing.png" class="preview-ss" alt="Ngertiin Dia" onerror="this.style.display='none'">
+          <div class="project-overlay-glow">
+            <span class="view-btn">Lihat Detail 👁️</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tech">
+            <span class="pill pill-pink">Next.js 14</span>
+            <span class="pill pill-purple">Gemini API</span>
+            <span class="pill pill-cyan">PWA</span>
+          </div>
+          <div class="project-title">Ngertiin Dia — Self-Care & Couple Sync</div>
+          <div class="project-desc">Aplikasi interaktif untuk mood tracking, daily check-in, dan time capsule letter — merawat kesehatan mental pribadi sekaligus keharmonisan pasangan.</div>
+          <div class="project-footer">
+            <span class="project-more-btn">Lihat Detail &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gym Planner -->
+      <div class="project-card reveal reveal-delay-2" onclick="openProject('gymplanner')">
+        <div class="project-featured">🆕 Baru</div>
+        <div class="project-preview">
+          <img src="assets/img/project-web/Gym Planner/Gym Planner-Landing.png" class="preview-ss" alt="Gym Planner" onerror="this.style.display='none'">
+          <div class="project-overlay-glow">
+            <span class="view-btn">Lihat Detail 👁️</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tech">
+            <span class="pill pill-green">PWA</span>
+            <span class="pill pill-amber">Supabase</span>
+            <span class="pill pill-blue">JavaScript</span>
+          </div>
+          <div class="project-title">Gym Planner — Workout PWA</div>
+          <div class="project-desc">Progressive Web App perencana latihan 7 hari dengan kalkulator TDEE, target nutrisi harian, dan mode offline — 100% privat tanpa login wajib.</div>
+          <div class="project-footer">
+            <span class="project-more-btn">Lihat Detail &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="graphic-designs">
+  <div class="container">
+    <span class="eyebrow">Design Portfolio</span>
+    <h2 class="section-title">Selected Graphic Designs & UI</h2>
+    <p class="section-sub">Koleksi karya desain grafis, merchandise, ilustrasi komik, dan rancangan UI/UX premium yang menggabungkan estetika visual dengan fungsionalitas.</p>
+
+    <!-- Gunung Featured Showcase -->
+    <div class="featured-showcase reveal" onclick="openProject('gunung')">
+      <div class="featured-showcase-inner">
+        <div class="featured-info">
+          <div class="project-featured" style="position:static; display:inline-block; margin-bottom:15px;">⭐ Featured Poster Design</div>
+          <h3 class="featured-title">Kolase Poster Gunung</h3>
+          <p class="featured-desc">Desain poster adventure dengan gaya kolase Polaroid retro — memadukan foto pendakian, tipografi bold, dan warna alam yang kuat untuk merayakan kebebasan alam pegunungan.</p>
+          <div class="project-tech" style="margin-bottom:25px;">
+            <span class="pill pill-amber">Poster Design</span>
+            <span class="pill pill-green">Adobe Illustrator</span>
+            <span class="pill pill-purple">Retro Collage</span>
+          </div>
+          <button class="btn btn-grad" style="cursor:pointer;">Lihat Detail Desain 👁️</button>
+        </div>
+        <div class="featured-mockup">
+          <img src="assets/img/project-web/Selected Graphic Designs/gunung.jpg" alt="Kolase Poster Gunung">
+        </div>
+      </div>
+    </div>
+
+    <!-- Graphic Title Separator -->
+    <div class="graphic-title-wrap reveal">
+      <h3>Karya Desain Grafis</h3>
+      <div class="line"></div>
+    </div>
+
+    <!-- Grid for Gunung, Merch Telkom, Komik Telkom -->
+    <div class="graphics-grid">
+      <!-- Gunung Poster -->
+      <div class="graphic-card reveal" onclick="openProject('gunung')">
+        <div class="graphic-preview">
+          <img src="assets/img/project-web/Selected Graphic Designs/gunung.jpg" alt="Poster Gunung">
+          <div class="graphic-overlay-glow">
+            <span class="view-btn">Lihat Detail 👁️</span>
+          </div>
+        </div>
+        <div class="graphic-body">
+          <div class="graphic-type">Poster Design</div>
+          <div class="graphic-card-title">Kolase Poster Gunung</div>
+          <div class="graphic-card-desc">Desain poster bertema petualangan alam bebas dengan gaya kolase Polaroid retro yang estetik.</div>
+        </div>
+      </div>
+
+      <!-- Merch Telkom -->
+      <div class="graphic-card reveal reveal-delay-1" onclick="openProject('merch_telkom')">
+        <div class="graphic-preview">
+          <img src="assets/img/project-web/Selected Graphic Designs/merch-telkom.png" alt="Design Merch Telkom">
+          <div class="graphic-overlay-glow">
+            <span class="view-btn">Lihat Detail 👁️</span>
+          </div>
+        </div>
+        <div class="graphic-body">
+          <div class="graphic-type">Merchandise Design</div>
+          <div class="graphic-card-title">Design Merch Telkom</div>
+          <div class="graphic-card-desc">Rancangan kaos STEMATEL Brave, logo HTML/Python, serta maskot kebudayaan Stematel.</div>
+        </div>
+      </div>
+
+      <!-- Komik Telkom -->
+      <div class="graphic-card reveal reveal-delay-2" onclick="openProject('komik_telkom')">
+        <div class="graphic-preview">
+          <img src="assets/img/project-web/Selected Graphic Designs/komik-telkom.png" alt="Komik Telkom">
+          <div class="graphic-overlay-glow">
+            <span class="view-btn">Lihat Detail 👁️</span>
+          </div>
+        </div>
+        <div class="graphic-body">
+          <div class="graphic-type">Comic & Banner</div>
+          <div class="graphic-card-title">Edukasi SMK Telkom Comic</div>
+          <div class="graphic-card-desc">Banner edukasi sekolah bergaya komik pop-art dengan karakter kartun ilustratif yang ceria.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ════ BISNIS & ENTREPRENEURSHIP ════ -->
+<section class="section" id="bisnis">
+  <div class="container">
+    <span class="eyebrow">Entrepreneurship</span>
+    <h2 class="section-title">Bisnis &amp; Usaha</h2>
+    <p class="section-sub">Pengalaman nyata membangun dan mengoperasikan usaha F&amp;B dari nol — produksi, pemasaran, pelayanan, dan pengantaran, semua dikerjakan sendiri.</p>
+
+    <!-- Mango Nyeni Featured Business Card -->
+    <div class="bisnis-featured reveal" onclick="openProject('mango_nyeni')" style="cursor:pointer;">
+      <div class="bisnis-featured-inner">
+        <div class="bisnis-info">
+          <div class="project-featured" style="position:static;display:inline-flex;align-items:center;gap:7px;margin-bottom:16px;">
+            <span>🍋</span> Owner &amp; Founder
+          </div>
+          <h3 class="featured-title" style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:12px;">Mango Nyeni</h3>
+          <p class="bisnis-tagline" style="font-size:1.1rem;color:var(--a1);font-weight:600;margin-bottom:14px;">Minuman Sago Premium · Mango · Strawberry · Buah Naga</p>
+          <p class="featured-desc">Usaha minuman sago premium yang saya rintis bersama kakak saya. Mulai dari produksi, packaging, edit konten feed Instagram, pelayanan pelanggan, hingga delivery — semuanya saya handle mandiri.</p>
+          <div class="bisnis-roles" style="display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 24px;">
+            <span class="pill pill-amber">🧑‍🍳 Owner &amp; Co-Founder</span>
+            <span class="pill pill-green">🛵 Delivery Service</span>
+            <span class="pill pill-pink">📸 Content Creator</span>
+            <span class="pill pill-cyan">💬 Customer Service</span>
+          </div>
+          <button class="btn btn-grad" style="cursor:pointer;">Lihat Galeri Bisnis 📸</button>
+        </div>
+        <div class="bisnis-gallery">
+          <div class="bisnis-gallery-grid">
+            <div class="bisnis-img bisnis-img-main">
+              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-01.jpg" alt="Mango Nyeni Instagram Feed">
+            </div>
+            <div class="bisnis-img">
+              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Mango-Sago.jpg" alt="Mango Sago">
+              <div class="bisnis-img-label">Mango Sago</div>
+            </div>
+            <div class="bisnis-img">
+              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Strawberry-Sago.jpg" alt="Strawberry Sago">
+              <div class="bisnis-img-label">Strawberry Sago</div>
+            </div>
+            <div class="bisnis-img">
+              <img src="assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Buah-Naga-Sago.jpg" alt="Buah Naga Sago">
+              <div class="bisnis-img-label">Buah Naga Sago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business stats row -->
+    <div class="bisnis-stats reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px;">
+      <div class="bisnis-stat-card">
+        <div class="bisnis-stat-icon">🍹</div>
+        <div class="bisnis-stat-num">3</div>
+        <div class="bisnis-stat-label">Varian Produk</div>
+        <div class="bisnis-stat-sub">Mango · Strawberry · Buah Naga</div>
+      </div>
+      <div class="bisnis-stat-card">
+        <div class="bisnis-stat-icon">🤝</div>
+        <div class="bisnis-stat-num">2</div>
+        <div class="bisnis-stat-label">Tim Kecil, Solid</div>
+        <div class="bisnis-stat-sub">Saya &amp; Kakak Saya</div>
+      </div>
+      <div class="bisnis-stat-card">
+        <div class="bisnis-stat-icon">📲</div>
+        <div class="bisnis-stat-num">100%</div>
+        <div class="bisnis-stat-label">Self-managed</div>
+        <div class="bisnis-stat-sub">Dari produksi hingga delivery</div>
+      </div>
+      <div class="bisnis-stat-card">
+        <div class="bisnis-stat-icon">📸</div>
+        <div class="bisnis-stat-num">IG</div>
+        <div class="bisnis-stat-label">Social Media</div>
+        <div class="bisnis-stat-sub">Feed &amp; konten dikelola sendiri</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1686,18 +2361,14 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#igGrad)" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="url(#igGrad)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#igGrad)"/><defs><linearGradient id="igGrad" x1="2" y1="2" x2="22" y2="22"><stop stop-color="#F58529"/><stop offset=".5" stop-color="#DD2A7B"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs></svg>
               <span style="font-size:.8rem;font-weight:700;background:linear-gradient(90deg,#F58529,#DD2A7B,#8134AF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.5px;">INSTAGRAM REELS · DRONE VIEW</span>
             </div>
-            <div style="flex:1;position:relative;height:0;padding-bottom:56.25%;overflow:hidden;background:#000;">
-              <!-- Kita gunakan padding-bottom 56.25% (16:9) agar tingginya pas & sejajar presisi dengan YouTube Card di sebelahnya -->
-              <iframe
-                src="https://www.instagram.com/reel/DZcO3EEpvqR/embed/"
-                title="Market Day 4.0 - Drone Highlight Instagram Reel"
-                frameborder="0"
-                scrolling="no"
-                allowtransparency="true"
-                allowfullscreen
-                loading="lazy"
-                style="position:absolute;top:-45px;left:0;width:100%;height:calc(100% + 90px);border:none;"
-              ></iframe>
+            <div class="ig-reel-facade" data-reel-url="https://www.instagram.com/reel/DZcO3EEpvqR/" style="flex:1;position:relative;height:0;padding-bottom:56.25%;overflow:hidden;background:linear-gradient(135deg,#1a0f2e,#2b0f24);cursor:none;">
+              <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto Dokumentasi Acara Market Day.JPG" alt="Preview Reel Drone Market Day" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55));">
+                <div class="ig-play-btn" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(168,85,247,.5);transition:transform .25s;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span style="font-size:.75rem;font-weight:700;color:#fff;letter-spacing:.3px;text-shadow:0 2px 8px rgba(0,0,0,.5);">Tap untuk putar Reel</span>
+              </div>
             </div>
             <div style="padding:.6rem 1rem;font-size:.75rem;color:rgba(216,180,254,.7);display:flex;align-items:center;gap:.4rem;background:rgba(15,15,30,.6);">
               <span>🚁</span> Highlight Hari H — Drone View Market Day 4.0
@@ -2004,7 +2675,7 @@ animRing();
 
 /* ─── CUSTOM CURSOR HOVER EFFECTS ─── */
 document.addEventListener('mouseover', e => {
-  const target = e.target.closest('a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo');
+  const target = e.target.closest('a, button, .project-card, .cert-card, .doc-photo-wrap, .photo-card, .p-modal-close, .p-slider-btn, .p-slider-dot, .hamburger, .top-btn, .lb-close, .nav-logo, .graphic-card, .featured-showcase');
   if (target) {
     dot.classList.add('hovered');
     ring.classList.add('hovered');
@@ -2014,30 +2685,203 @@ document.addEventListener('mouseover', e => {
   }
 });
 
-/* ─── PARTICLE TRAIL ─── */
+/* ─── PARTICLE TRAIL & 3D INTERACTIVE GRID ─── */
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => { 
+  w = canvas.width = window.innerWidth; 
+  h = canvas.height = window.innerHeight; 
+});
 
 const particles = [];
 const COLORS = ['#3b82f6','#8b5cf6','#f472b6','#06b6d4','#4ade80'];
 
+let mouseX = -1000;
+let mouseY = -1000;
+
 document.addEventListener('mousemove', e => {
-  for (let i = 0; i < 3; i++) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  
+  for (let i = 0; i < 2; i++) {
     particles.push({
       x: e.clientX, y: e.clientY,
-      vx: (Math.random() - 0.5) * 2.5,
-      vy: (Math.random() - 0.5) * 2.5 - 1,
-      life: 1, size: Math.random() * 5 + 2,
+      vx: (Math.random() - 0.5) * 2,
+      vy: (Math.random() - 0.5) * 2 - 0.5,
+      life: 1, size: Math.random() * 4 + 1.5,
       color: COLORS[Math.floor(Math.random() * COLORS.length)]
     });
   }
 });
 
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+document.addEventListener('mouseleave', () => {
+  mouseX = -1000;
+  mouseY = -1000;
+});
+
+// 3D Grid parameters
+const gridSpacing = 65;
+let gridTime = 0;
+let scrollSpeed = 0;
+let lastScrollTime = 0;
+
+window.addEventListener('scroll', () => {
+  const now = Date.now();
+  if (lastScrollTime > 0) {
+    const dt = now - lastScrollTime;
+    scrollSpeed = Math.min(15, scrollSpeed + 2);
+  }
+  lastScrollTime = now;
+}, { passive: true });
+
+function draw3DGrid() {
+  scrollSpeed *= 0.93;
+  gridTime += 0.012 + (scrollSpeed * 0.006);
+  
+  const fov = 400;
+  const centerX = w / 2;
+  const centerY = h / 2 + 80;
+  
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const isDark = currentTheme === 'dark';
+  
+  const cols = 28;
+  const rows = 16;
+  
+  const points = [];
+  
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const x3d = (c - cols / 2) * gridSpacing;
+      const z3d = (r + 1) * gridSpacing + 30;
+      
+      const distFromCenter = Math.sqrt(x3d*x3d + z3d*z3d);
+      let y3d = Math.sin(distFromCenter * 0.005 - gridTime) * 45;
+      y3d += Math.sin(x3d * 0.012 + gridTime * 1.5) * 20;
+      y3d += Math.sin((x3d + z3d) * 0.008 + gridTime * 3) * (scrollSpeed * 4);
+      
+      const scale = fov / (fov + z3d);
+      const px = centerX + x3d * scale;
+      const py = centerY + (y3d + 130) * scale;
+      
+      // depth-based alpha
+      const depthAlpha = 1 - (r / rows) * 0.7;
+      
+      points.push({ x: px, y: py, z: z3d, depth: depthAlpha, r, c });
+    }
+  }
+  
+  // === DRAW GRID LINES ===
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const idx = r * cols + c;
+      const p = points[idx];
+      
+      if (p.x < -50 || p.x > w + 50 || p.y < -50 || p.y > h + 50) continue;
+      
+      const baseAlpha = p.depth * (isDark ? 0.10 : 0.06);
+      
+      if (c < cols - 1) {
+        const pRight = points[idx + 1];
+        ctx.beginPath();
+        ctx.strokeStyle = isDark 
+          ? `rgba(139, 92, 246, ${baseAlpha})` 
+          : `rgba(100, 60, 220, ${baseAlpha})`;
+        ctx.lineWidth = 0.8;
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(pRight.x, pRight.y);
+        ctx.stroke();
+      }
+      
+      if (r < rows - 1) {
+        const pDown = points[idx + cols];
+        ctx.beginPath();
+        ctx.strokeStyle = isDark
+          ? `rgba(59, 130, 246, ${baseAlpha * 0.8})`
+          : `rgba(59, 80, 200, ${baseAlpha * 0.6})`;
+        ctx.lineWidth = 0.7;
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(pDown.x, pDown.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // === CURSOR MAGNETIC ZONE (Multi-tier) ===
+  if (mouseX > -500 && mouseY > -500) {
+    
+    // Outer soft zone — dim connection lines
+    ctx.beginPath();
+    ctx.strokeStyle = isDark ? 'rgba(59, 130, 246, 0.07)' : 'rgba(59, 100, 220, 0.05)';
+    ctx.lineWidth = 1;
+    points.forEach(p => {
+      const dx = p.x - mouseX, dy = p.y - mouseY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 280 && dist > 130) {
+        const alpha = (1 - dist / 280) * 0.6;
+        ctx.globalAlpha = alpha;
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouseX, mouseY);
+      }
+    });
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    
+    // Inner bright zone — vivid glowing lines
+    points.forEach(p => {
+      const dx = p.x - mouseX, dy = p.y - mouseY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      
+      if (dist < 130) {
+        const t = 1 - dist / 130;
+        
+        // Draw glowing connection line
+        ctx.save();
+        ctx.beginPath();
+        ctx.globalAlpha = t * 0.7;
+        ctx.strokeStyle = isDark ? `rgba(139, 92, 246, ${t})` : `rgba(99, 60, 200, ${t})`;
+        ctx.lineWidth = 1.5 * t;
+        ctx.shadowBlur = 12 * t;
+        ctx.shadowColor = isDark ? '#8b5cf6' : '#6d28d9';
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+        ctx.restore();
+        
+        // Draw glowing node dot at grid point
+        ctx.save();
+        ctx.beginPath();
+        ctx.globalAlpha = t * 0.9;
+        ctx.fillStyle = isDark ? '#a78bfa' : '#7c3aed';
+        ctx.shadowBlur = 15 * t;
+        ctx.shadowColor = isDark ? '#8b5cf6' : '#6d28d9';
+        ctx.arc(p.x, p.y, 2.5 * t, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    });
+    
+    // Cursor glow aura
+    ctx.save();
+    const grad = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 120);
+    grad.addColorStop(0, isDark ? 'rgba(139, 92, 246, 0.08)' : 'rgba(109, 40, 217, 0.06)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(mouseX - 120, mouseY - 120, 240, 240);
+    ctx.restore();
+  }
+}
+
+function drawScene() {
+  ctx.clearRect(0, 0, w, h);
+  
+  // Draw 3D Grid Wave
+  draw3DGrid();
+  
+  // Draw Particle Trail
   for (let i = particles.length - 1; i >= 0; i--) {
     const p = particles[i];
     p.x += p.vx; p.y += p.vy;
@@ -2054,9 +2898,10 @@ function drawParticles() {
     ctx.fill();
     ctx.restore();
   }
-  requestAnimationFrame(drawParticles);
+  
+  requestAnimationFrame(drawScene);
 }
-drawParticles();
+drawScene();
 
 /* ─── THEME TOGGLE ─── */
 const themeToggle = document.getElementById('themeToggle');
@@ -2072,13 +2917,33 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
 });
 
-/* ─── NAV ─── */
+/* ─── NAV & SCROLL SHOW/HIDE ─── */
 const navWrap = document.getElementById('navWrap');
 const navLinks = document.getElementById('navLinks');
 const hamburger = document.getElementById('hamburger');
-window.addEventListener('scroll', () => navWrap.classList.toggle('scrolled', window.scrollY > 50), {passive:true});
+
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  
+  // Background blur toggle when scrolled
+  navWrap.classList.toggle('scrolled', currentScrollY > 50);
+  
+  // Hide on scroll down, show on scroll up
+  if (currentScrollY > lastScrollY && currentScrollY > 150) {
+    navWrap.classList.add('nav-hidden');
+  } else {
+    navWrap.classList.remove('nav-hidden');
+  }
+  
+  lastScrollY = currentScrollY;
+}, { passive: true });
+
 hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+
+
 
 /* ─── ACTIVE NAV ─── */
 const sections = document.querySelectorAll('section[id]');
@@ -2208,6 +3073,165 @@ const projectData = {
     ],
     actions: [
       { text: "🎨 Figma Project Link", link: "https://figma.com", primary: true }
+    ]
+  },
+  ngertiindia: {
+    title: "Ngertiin Dia — Self-Care & Couple Sync",
+    tech: ["Next.js 14", "Tailwind CSS", "Framer Motion", "Gemini 2.5 Flash API", "PWA"],
+    techClasses: ["pill-pink", "pill-cyan", "pill-purple", "pill-blue", "pill-green"],
+    desc: "Ngertiin Dia adalah aplikasi interaktif yang dirancang khusus untuk membantu merawat kesehatan mental pribadi (Self-Care) sekaligus menyelaraskan komunikasi dan kebersamaan dengan pasangan (Couple Sync). Dibangun dengan Next.js 14 App Router dan diperkuat asisten AI bertenaga Gemini 2.5 Flash untuk merespons mood harian pengguna secara personal.",
+    features: [
+      "Daily Check-in & Mood Tracker (Senang, Sedih, Kesel, Manja, Capek) dengan progress harian",
+      "Time Capsule Letter — tulis surat harapan untuk dibuka di masa depan",
+      "Target Checklist harian (minum air, vitamin, skincare, journaling) dengan progress ring",
+      "Asisten AI (Antigravity) yang merespons kondisi emosional secara empatik",
+      "PWA Offline-ready — bisa diakses kapan saja tanpa koneksi internet"
+    ],
+    images: [
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Landing.png",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Mood-Tracker.jpg",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Daily-Checkin.jpg",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Time-Capsule.jpg",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-AI-Assistant.jpg",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Couple-Sync.jpg",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Target-Checklist.jpg",
+      "assets/img/project-web/Ngertiin Dia/Ngertiin Dia-Progress-Ring.jpg"
+    ],
+    actions: [
+      { text: "🔗 Live Demo", link: "https://ngertiin-dia.vercel.app/", primary: true },
+      { text: "🐙 GitHub", link: "https://github.com/Yoshput/sayang-app", primary: false }
+    ]
+  },
+  gymplanner: {
+    title: "Gym Planner — Workout Planner PWA",
+    tech: ["JavaScript", "PWA", "Supabase", "LocalStorage", "Rule-based Engine"],
+    techClasses: ["pill-blue", "pill-green", "pill-amber", "pill-purple", "pill-cyan"],
+    desc: "Gym Planner adalah Progressive Web App perencana latihan yang menyusun program 7 hari secara presisi sesuai target fisik pengguna — tanpa ribet daftar, tanpa iklan, dan sepenuhnya privat. Dilengkapi kalkulator TDEE pintar, target nutrisi harian, rekomendasi musik latihan, dan mode PWA offline agar tetap bisa diakses di gym tanpa kuota internet.",
+    features: [
+      "7-Day Custom Split — program latihan mingguan sesuai tingkat pengalaman pengguna",
+      "Kalkulator TDEE & BMI otomatis untuk kebutuhan kalori harian",
+      "Target Nutrisi Harian — rekomendasi porsi protein, karbohidrat, dan lemak ideal",
+      "Daily Checklist konsistensi (latihan fisik, protein, air, tidur, stretching) dengan skor pemulihan",
+      "Musik pendukung latihan terintegrasi & mode PWA Offline penuh"
+    ],
+    images: [
+      "assets/img/project-web/Gym Planner/Gym Planner-Landing.png",
+      "assets/img/project-web/Gym Planner/Gym Planner-Home-Dashboard.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Workout-Split.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Exercise-List.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-TDEE-Calculator.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Nutrition-Target.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Daily-Checklist.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Progress-Ring.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Week-Schedule.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Settings.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Mobile-View1.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Mobile-View2.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Mobile-View3.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Offline-Mode.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-Stats-Overview.jpg",
+      "assets/img/project-web/Gym Planner/Gym Planner-PWA-Install.jpg"
+    ],
+    actions: [
+      { text: "🔗 Live Demo", link: "https://gym-planner-beta.vercel.app", primary: true },
+      { text: "🐙 GitHub", link: "https://github.com/Yoshput/GYM-PLANNER", primary: false }
+    ]
+  },
+  dompetku: {
+    title: "Dompetku — Referensi Desain UI/UX Keuangan",
+    tech: ["UI/UX Inspiration", "Dark Glassmorphism", "Financial Dashboard", "Design Reference"],
+    techClasses: ["pill-purple", "pill-blue", "pill-pink", "pill-cyan"],
+    desc: "Referensi visual desain dashboard keuangan modern bertema dark glassmorphism dengan chart interaktif, pelacak pengeluaran, dan tampilan mobile-first yang elegan.",
+    features: [
+      "Dashboard keuangan dengan visualisasi chart tren pengeluaran",
+      "Tampilan kartu saldo & kategori yang bersih dan modern",
+      "Palet warna dark navy blue dengan aksen gradient ungu",
+      "Desain mobile-first yang responsif dan siap pakai"
+    ],
+    images: [
+      "assets/img/project-web/Selected Graphic Designs/dompetku.png"
+    ],
+    actions: [
+      { text: "👁️ Lihat Referensi", link: "assets/img/project-web/Selected Graphic Designs/dompetku.png", primary: true }
+    ]
+  },
+  gunung: {
+    title: "Gunung — Retro Polaroid Adventure Poster",
+    tech: ["Poster Design", "Adobe Illustrator", "Retro Collage", "Typography"],
+    techClasses: ["pill-amber", "pill-green", "pill-purple", "pill-blue"],
+    desc: "Desain poster bertema petualangan alam bebas dengan konsep kolase Polaroid retro. Proyek ini memadukan tipografi serif berkarakter ('GUNUNG') dengan grid layout asimetris yang berisi foto-foto esensial pendakian, camping, api unggun, dan keindahan alam pegunungan.",
+    features: [
+      "Gaya kolase Polaroid dengan bayangan halus untuk efek 3D kertas nyata",
+      "Palet warna terkurasi (Slate Blue, Forest Green, Amber Gold, Red Orange)",
+      "Penyusunan grid layout asimetris yang dinamis dan modern",
+      "Penggunaan ornamen pelengkap seperti jarum pin merah dan daun pinus"
+    ],
+    images: [
+      "assets/img/project-web/Selected Graphic Designs/gunung.jpg"
+    ],
+    actions: [
+      { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/gunung.jpg", primary: true }
+    ]
+  },
+  merch_telkom: {
+    title: "Design Merch Telkom — STEMATEL Apparel",
+    tech: ["Merchandise Design", "Vector Illustration", "Branding", "Adobe Illustrator"],
+    techClasses: ["pill-cyan", "pill-amber", "pill-purple", "pill-green"],
+    desc: "Koleksi rancangan desain merchandise resmi untuk komunitas SMK Telkom Purwokerto (STEMATEL). Proyek ini mencakup visual t-shirt bertema 'STEMATEL BRAVE' dengan patung klasik bersayap, grafis logo teknologi (HTML, Python), serta maskot TKJ.",
+    features: [
+      "Desain kaos STEMATEL BRAVE dengan visual seni patung Yunani klasik",
+      "Palet warna bertema Telkom (merah, emas, kuning, hitam, putih)",
+      "Desain ikon teknologi minimalis dengan pencahayaan neon/cyberpunk",
+      "Format desain siap cetak (screen printing & Direct-to-Garment)"
+    ],
+    images: [
+      "assets/img/project-web/Selected Graphic Designs/merch-telkom.png"
+    ],
+    actions: [
+      { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/merch-telkom.png", primary: true }
+    ]
+  },
+  komik_telkom: {
+    title: "Edukasi SMK Telkom Comic — Pop-art Banner",
+    tech: ["Comic & Banner", "Digital Illustration", "Pop Art", "Branding"],
+    techClasses: ["pill-pink", "pill-purple", "pill-cyan", "pill-amber"],
+    desc: "Desain banner publikasi edukasi interaktif untuk SMK Telkom Purwokerto dengan gaya komik pop-art. Proyek ini menampilkan maskot kartun yang ramah dikombinasikan dengan balon teks 'POW!', ornamen awan retro, dan latar belakang koridor sekolah nyata yang disunting dramatis.",
+    features: [
+      "Ilustrasi karakter kartun anak sekolah dengan pose ramah & ekspresif",
+      "Balon teks komik 'POW!' dan efek bayangan pop-art 2D",
+      "Teknik masking menggabungkan ilustrasi kartun dengan foto latar belakang nyata",
+      "Tata letak publikasi vertikal yang dioptimalkan untuk media sosial"
+    ],
+    images: [
+      "assets/img/project-web/Selected Graphic Designs/komik-telkom.png"
+    ],
+    actions: [
+      { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/komik-telkom.png", primary: true }
+    ]
+  },
+  mango_nyeni: {
+    title: "Mango Nyeni — Bisnis F&B Minuman Sago Premium",
+    tech: ["F&B Business", "Owner & Operator", "Social Media Marketing", "Content Creator"],
+    techClasses: ["pill-amber", "pill-green", "pill-pink", "pill-cyan"],
+    desc: "Mango Nyeni adalah usaha minuman sago premium yang saya rintis dan kelola sendiri bersama kakak saya. Mulai dari proses produksi, pengemasan, pemasaran di media sosial, pelayanan pelanggan, hingga pengantaran — semuanya dikerjakan mandiri. Bisnis ini menawarkan varian sago dengan bahan buah segar pilihan: Mango Sago, Strawberry Sago, dan Buah Naga Sago.",
+    features: [
+      "Owner, Co-Founder & Full Operator — mengelola seluruh operasional bisnis secara mandiri",
+      "3 Varian Unggulan: Mango Sago, Strawberry Sago, dan Buah Naga Sago",
+      "Manajemen konten & feed Instagram termasuk foto produk dan desain visual",
+      "Pelayanan pelanggan & sistem pengantaran door-to-door",
+      "Produksi harian dengan standar kebersihan dan kualitas bahan baku fresh"
+    ],
+    images: [
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-01.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-02.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-03.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Mango-Sago.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Strawberry-Sago.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Buah-Naga-Sago.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Profile-IG.jpg"
+    ],
+    actions: [
+      { text: "📸 Instagram Mango Nyeni", link: "https://instagram.com", primary: true }
     ]
   }
 };
@@ -2876,6 +3900,151 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* ─── IG REEL FACADE: load official embed only on click (fixes berat & kepotong) ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.ig-reel-facade').forEach(facade => {
+    facade.addEventListener('click', function loadReel() {
+      const url = facade.dataset.reelUrl;
+      facade.style.position = 'absolute';
+      facade.style.inset = '0';
+      facade.style.padding = '0';
+      facade.style.height = '100%';
+      facade.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${url}" data-instgrm-version="14" style="width:100%;height:100%;margin:0;background:#000;"></blockquote>`;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.instagram.com/embed.js';
+      s.onload = () => { if (window.instgrm) window.instgrm.Embeds.process(); };
+      document.body.appendChild(s);
+      facade.removeEventListener('click', loadReel);
+    }, { once: true });
+    facade.addEventListener('mouseenter', () => {
+      const btn = facade.querySelector('.ig-play-btn');
+      if (btn) btn.style.transform = 'scale(1.12)';
+    });
+    facade.addEventListener('mouseleave', () => {
+      const btn = facade.querySelector('.ig-play-btn');
+      if (btn) btn.style.transform = 'scale(1)';
+    });
+  });
+});
+
+/* ═══════════════════════════════════════════════════
+   GSAP 3D SHOWCASE LAYER — tilt cards, magnetic buttons,
+   3D scroll reveals, parallax ID card. Base color tokens
+   (var(--a1..a4), --bg, --txt) fully preserved.
+   ═══════════════════════════════════════════════════ */
+(function initGsap3D() {
+  function boot() {
+    if (!window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = window.matchMedia('(hover: none)').matches;
+
+    /* 1) 3D TILT ON PROJECT / CERT / GRAPHIC CARDS */
+    if (!reduceMotion && !isTouch) {
+      document.querySelectorAll('.project-card, .cert-card, .graphic-card').forEach(card => {
+        card.style.transformStyle = 'preserve-3d';
+        card.style.willChange = 'transform';
+        const strength = 10;
+        const quickX = gsap.quickTo(card, 'rotationY', { duration: 0.5, ease: 'power3.out' });
+        const quickY = gsap.quickTo(card, 'rotationX', { duration: 0.5, ease: 'power3.out' });
+        const quickTx = gsap.quickTo(card, 'z', { duration: 0.5, ease: 'power3.out' });
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          quickX(px * strength * 2);
+          quickY(-py * strength * 2);
+          quickTx(30);
+          gsap.to(card, { boxShadow: `${-px * 40}px ${-py * 40 + 20}px 60px rgba(0,0,0,.4)`, duration: 0.4 });
+        });
+        card.addEventListener('mouseleave', () => {
+          quickX(0); quickY(0); quickTx(0);
+          gsap.to(card, { boxShadow: '0 24px 60px rgba(0,0,0,.45)', duration: 0.6, ease: 'power3.out' });
+        });
+      });
+
+      /* Featured Showcase & Business Featured tilt (gentler for large card) */
+      document.querySelectorAll('.featured-showcase, .bisnis-featured').forEach(card => {
+        card.style.transformStyle = 'preserve-3d';
+        card.style.willChange = 'transform';
+        const quickX = gsap.quickTo(card, 'rotationY', { duration: 0.7, ease: 'power3.out' });
+        const quickY = gsap.quickTo(card, 'rotationX', { duration: 0.7, ease: 'power3.out' });
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          quickX(px * 6);
+          quickY(-py * 4);
+        });
+        card.addEventListener('mouseleave', () => { quickX(0); quickY(0); });
+      });
+
+      /* Perspective wrapper for grids so tilt reads as true 3D */
+      document.querySelectorAll('.projects-grid, .cert-grid, .graphics-grid').forEach(g => { g.style.perspective = '1200px'; });
+    }
+
+    /* 2) MAGNETIC PRIMARY BUTTONS */
+    if (!reduceMotion && !isTouch) {
+      document.querySelectorAll('.btn-grad, .btn-glass, .theme-btn').forEach(btn => {
+        const mx = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power3.out' });
+        const my = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power3.out' });
+        btn.addEventListener('mousemove', (e) => {
+          const r = btn.getBoundingClientRect();
+          mx((e.clientX - r.left - r.width / 2) * 0.25);
+          my((e.clientY - r.top - r.height / 2) * 0.25);
+        });
+        btn.addEventListener('mouseleave', () => { mx(0); my(0); });
+      });
+    }
+
+    /* 3) 3D FLIP-UP SCROLL REVEALS for section headers & doc cards */
+    gsap.utils.toArray('.doc-cat-title, .section-title, .eyebrow').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 40, rotationX: -35, transformOrigin: '50% 100%' }, {
+        opacity: 1, y: 0, rotationX: 0, duration: 0.9, ease: 'power4.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    gsap.utils.toArray('.doc-photo-wrap, .photo-card').forEach((el, i) => {
+      gsap.fromTo(el, { opacity: 0, y: 50, rotateX: 25, scale: 0.92, transformPerspective: 800 }, {
+        opacity: 1, y: 0, rotateX: 0, scale: 1, duration: 0.7, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 92%' }, delay: (i % 4) * 0.06
+      });
+    });
+
+    /* 4) FLOATING 3D PARALLAX ON HERO ID CARD (mouse-reactive, gentle) */
+    const idCard = document.querySelector('.id-card, .id-card-body, .hero-visual');
+    if (idCard && !reduceMotion && !isTouch) {
+      const wrap = idCard.closest('.hero-visual') || idCard.parentElement || idCard;
+      wrap.style.perspective = '1400px';
+      idCard.style.transformStyle = 'preserve-3d';
+      const rX = gsap.quickTo(idCard, 'rotationX', { duration: 0.6, ease: 'power3.out' });
+      const rY = gsap.quickTo(idCard, 'rotationY', { duration: 0.6, ease: 'power3.out' });
+      document.addEventListener('mousemove', (e) => {
+        const px = e.clientX / window.innerWidth - 0.5;
+        const py = e.clientY / window.innerHeight - 0.5;
+        rX(-py * 12);
+        rY(px * 16);
+      });
+      gsap.to(idCard, { y: '+=14', duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    }
+
+    /* 5) SUBTLE 3D DEPTH ON ORB BACKGROUND (parallax layers) */
+    document.querySelectorAll('.orb-1, .orb-2, .orb-3, .orb-4').forEach((orb, i) => {
+      const depth = (i + 1) * 12;
+      document.addEventListener('mousemove', (e) => {
+        const px = e.clientX / window.innerWidth - 0.5;
+        const py = e.clientY / window.innerHeight - 0.5;
+        gsap.to(orb, { x: px * depth, y: py * depth, duration: 1.2, ease: 'power2.out' });
+      });
+    });
+  }
+
+  if (window.gsap) boot();
+  else window.addEventListener('load', boot);
+})();
 </script>
 </body>
 </html>
