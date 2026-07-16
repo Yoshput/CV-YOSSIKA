@@ -970,16 +970,15 @@
     inset: 0;
     z-index: 1000;
     display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
     background: rgba(8, 12, 21, 0.85);
     backdrop-filter: blur(12px);
     opacity: 0;
     transition: opacity 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .p-modal.active {
-    display: flex;
+    display: block;
     opacity: 1;
   }
   .p-modal-content {
@@ -1140,11 +1139,52 @@
     padding: 3rem 10% 4rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
+  }
+  .p-modal-meta-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    margin: 10px 0;
+  }
+  @media (max-width: 768px) {
+    .p-modal-meta-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 16px 0;
+    }
+  }
+  .p-modal-meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .p-modal-meta-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--txt3);
+  }
+  .p-modal-meta-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--txt);
+  }
+  .p-modal-meta-val a {
+    color: var(--a1);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .p-modal-meta-val a:hover {
+    color: var(--a2);
   }
   @media (max-width: 768px) {
     .p-modal-details {
@@ -3018,11 +3058,33 @@
       </div>
       <div class="p-modal-details">
         <h3 id="modalTitle">Project Title</h3>
-        <div class="p-modal-tech" id="modalTech"></div>
-        <p id="modalDesc">Project description...</p>
-        <h4>Fitur Utama:</h4>
+        
+        <!-- Premium 4-Column Metadata Row -->
+        <div class="p-modal-meta-row">
+          <div class="p-modal-meta-col">
+            <span class="p-modal-meta-label">Role</span>
+            <span class="p-modal-meta-val" id="modalMetaRole">Developer</span>
+          </div>
+          <div class="p-modal-meta-col">
+            <span class="p-modal-meta-label">Year</span>
+            <span class="p-modal-meta-val" id="modalMetaYear">2026</span>
+          </div>
+          <div class="p-modal-meta-col">
+            <span class="p-modal-meta-label">Tech Stack</span>
+            <div class="p-modal-tech" id="modalTech" style="gap: 4px;"></div>
+          </div>
+          <div class="p-modal-meta-col">
+            <span class="p-modal-meta-label">Live Project</span>
+            <span class="p-modal-meta-val" id="modalMetaLive">
+              <span id="modalActions"></span>
+            </span>
+          </div>
+        </div>
+
+        <p id="modalDesc" style="font-size:14px; line-height:1.7; color:var(--txt2);">Project description...</p>
+        
+        <h4 style="margin-top: 1rem;">Fitur Utama:</h4>
         <ul class="p-modal-features" id="modalFeatures"></ul>
-        <div class="p-modal-actions" id="modalActions"></div>
       </div>
     </div>
     <!-- NEXT / PREV NAVIGATION -->
@@ -3397,9 +3459,6 @@ window.addEventListener('scroll', () => {
 hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-
-
-
 /* ─── ACTIVE NAV ─── */
 const sections = document.querySelectorAll('section[id]');
 const navAs = document.querySelectorAll('.nav-links a');
@@ -3431,6 +3490,8 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
 const projectData = {
   gesture: {
     title: "GestureFlow v3.0 — AI Bahasa Isyarat",
+    role: "AI / Web Developer",
+    year: "2026",
     tech: ["MediaPipe Hands", "JavaScript", "CSS Glassmorphism", "AI/ML"],
     techClasses: ["pill-blue", "pill-purple", "pill-pink", "pill-cyan"],
     desc: "GestureFlow v3.0 adalah aplikasi web berbasis Artificial Intelligence (AI) yang dirancang untuk membantu pengguna belajar Bahasa Isyarat Indonesia (SIBI) secara interaktif dan real-time langsung dari browser tanpa perlu menginstal aplikasi tambahan. Aplikasi ini memanfaatkan model machine learning Google MediaPipe Hands untuk mendeteksi posisi sendi tangan secara presisi melalui webcam.",
@@ -3456,6 +3517,8 @@ const projectData = {
   },
   food: {
     title: "Food-TYU — Kantin Digital Tel-U",
+    role: "Fullstack Developer",
+    year: "2025",
     tech: ["Laravel", "Midtrans Payment", "MySQL", "TailwindCSS"],
     techClasses: ["pill-green", "pill-amber", "pill-blue", "pill-purple"],
     desc: "Food-TYU adalah sebuah platform sistem pemesanan makanan digital (e-canteen) yang dirancang khusus untuk lingkungan kampus Telkom University Purwokerto. Platform ini bertujuan memodernisasi cara pemesanan di kantin, menghilangkan antrean panjang, dan menyediakan transaksi non-tunai yang aman.",
@@ -3479,6 +3542,8 @@ const projectData = {
   },
   macabae: {
     title: "MacaBae — Digital Library & Chatbot AI",
+    role: "Backend & AI Specialist",
+    year: "2025",
     tech: ["Laravel", "Google Gemini API", "MySQL", "PHPUnit (DUPL)"],
     techClasses: ["pill-pink", "pill-purple", "pill-blue", "pill-green"],
     desc: "MacaBae adalah sistem perpustakaan digital berbasis Laravel yang dilengkapi dengan asisten virtual pintar bernama MacaBot. Menggunakan integrasi Google Gemini API, MacaBot bertindak sebagai pustakawan cerdas yang merekomendasikan buku secara personal dan menjawab berbagai pertanyaan literatur pengguna secara real-time.",
@@ -3509,6 +3574,8 @@ const projectData = {
   },
   thrift: {
     title: "Thrift Space — Mobile UI/UX Design",
+    role: "UI/UX Designer",
+    year: "2024",
     tech: ["Figma", "UI/UX Design", "Wireframing", "Interactive Prototype"],
     techClasses: ["pill-amber", "pill-cyan", "pill-purple", "pill-pink"],
     desc: "Thrift Space adalah proyek perancangan antarmuka (UI/UX) aplikasi e-commerce mobile yang berfokus pada jual beli barang bekas berkualitas (pre-loved & thrift shopping). Didesain menggunakan Figma dengan riset pengalaman pengguna (UX) yang mendalam untuk menciptakan navigasi belanja yang intuitif dan visual estetik.",
@@ -3532,6 +3599,8 @@ const projectData = {
   },
   ngertiindia: {
     title: "Ngertiin Dia — Self-Care & Couple Sync",
+    role: "Lead Fullstack Dev",
+    year: "2024",
     tech: ["Next.js 14", "Tailwind CSS", "Framer Motion", "Gemini 2.5 Flash API", "PWA"],
     techClasses: ["pill-pink", "pill-cyan", "pill-purple", "pill-blue", "pill-green"],
     desc: "Ngertiin Dia adalah aplikasi interaktif yang dirancang khusus untuk membantu merawat kesehatan mental pribadi (Self-Care) sekaligus menyelaraskan komunikasi dan kebersamaan dengan pasangan (Couple Sync). Dibangun dengan Next.js 14 App Router dan diperkuat asisten AI bertenaga Gemini 2.5 Flash untuk merespons mood harian pengguna secara personal.",
@@ -3559,6 +3628,8 @@ const projectData = {
   },
   gymplanner: {
     title: "Gym Planner — Workout Planner PWA",
+    role: "PWA Developer",
+    year: "2024",
     tech: ["JavaScript", "PWA", "Supabase", "LocalStorage", "Rule-based Engine"],
     techClasses: ["pill-blue", "pill-green", "pill-amber", "pill-purple", "pill-cyan"],
     desc: "Gym Planner adalah Progressive Web App perencana latihan yang menyusun program 7 hari secara presisi sesuai target fisik pengguna — tanpa ribet daftar, tanpa iklan, dan sepenuhnya privat. Dilengkapi kalkulator TDEE pintar, target nutrisi harian, rekomendasi musik latihan, dan mode PWA offline agar tetap bisa diakses di gym tanpa kuota internet.",
@@ -3592,16 +3663,17 @@ const projectData = {
       { text: "🐙 GitHub", link: "https://github.com/Yoshput/GYM-PLANNER", primary: false }
     ]
   },
-
   gunung: {
     title: "Gunung — Retro Polaroid Adventure Poster",
+    role: "Graphic Designer",
+    year: "2023",
     tech: ["Poster Design", "Adobe Illustrator", "Retro Collage", "Typography"],
     techClasses: ["pill-amber", "pill-green", "pill-purple", "pill-blue"],
     desc: "Desain poster bertema petualangan alam bebas dengan konsep kolase Polaroid retro. Proyek ini memadukan tipografi serif berkarakter ('GUNUNG') dengan grid layout asimetris yang berisi foto-foto esensial pendakian, camping, api unggun, dan keindahan alam pegunungan.",
     features: [
       "Gaya kolase Polaroid dengan bayangan halus untuk efek 3D kertas nyata",
       "Palet warna terkurasi (Slate Blue, Forest Green, Amber Gold, Red Orange)",
-      "Penyusunan grid layout asimetris yang dinamis dan modern",
+      "Penyusunan grid layout asimetris yang dinamis and modern",
       "Penggunaan ornamen pelengkap seperti jarum pin merah dan daun pinus"
     ],
     images: [
@@ -3615,6 +3687,8 @@ const projectData = {
   },
   merch_telkom: {
     title: "Design Merch Telkom — STEMATEL Apparel",
+    role: "Merch Illustrator",
+    year: "2023",
     tech: ["Merchandise Design", "Vector Illustration", "Branding", "Adobe Illustrator"],
     techClasses: ["pill-cyan", "pill-amber", "pill-purple", "pill-green"],
     desc: "Koleksi rancangan desain merchandise resmi untuk komunitas SMK Telkom Purwokerto (STEMATEL). Proyek ini mencakup visual t-shirt bertema 'STEMATEL BRAVE' dengan patung klasik bersayap, grafis logo teknologi (HTML, Python), serta maskot TKJ.",
@@ -3633,6 +3707,8 @@ const projectData = {
   },
   komik_telkom: {
     title: "Edukasi SMK Telkom Comic — Pop-art Banner",
+    role: "Comic Artist",
+    year: "2023",
     tech: ["Comic & Banner", "Digital Illustration", "Pop Art", "Branding"],
     techClasses: ["pill-pink", "pill-purple", "pill-cyan", "pill-amber"],
     desc: "Desain banner publikasi edukasi interaktif untuk SMK Telkom Purwokerto dengan gaya komik pop-art. Proyek ini menampilkan maskot kartun yang ramah dikombinasikan dengan balon teks 'POW!', ornamen awan retro, dan latar belakang koridor sekolah nyata yang disunting dramatis.",
@@ -3651,8 +3727,32 @@ const projectData = {
   },
   mango_nyeni: {
     title: "Mango Nyeni — Bisnis F&B Minuman Sago Premium",
+    role: "Co-Founder & Operator",
+    year: "2026",
     tech: ["F&B Business", "Owner & Operator", "Social Media Marketing", "Content Creator"],
     techClasses: ["pill-amber", "pill-green", "pill-pink", "pill-cyan"],
+    desc: "Mango Nyeni adalah usaha minuman sago premium yang saya rintis dan kelola sendiri bersama kakak saya. Mulai dari proses produksi, pengemasan, pemasaran di media sosial, pelayanan pelanggan, hingga pengantaran — semuanya dikerjakan mandiri. Bisnis ini menawarkan varian sago dengan bahan buah segar pilihan: Mango Sago, Strawberry Sago, dan Buah Naga Sago.",
+    features: [
+      "Owner, Co-Founder & Full Operator — mengelola seluruh operasional bisnis secara mandiri",
+      "3 Varian Unggulan: Mango Sago, Strawberry Sago, dan Buah Naga Sago",
+      "Manajemen konten & feed Instagram termasuk foto produk dan desain visual",
+      "Pelayanan pelanggan & sistem pengantaran door-to-door",
+      "Produksi harian dengan standar kebersihan dan kualitas bahan baku fresh"
+    ],
+    images: [
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-01.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-02.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Feed-03.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Mango-Sago.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Strawberry-Sago.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Produk-Buah-Naga-Sago.jpg",
+      "assets/img/project-bisnis/Mango Nyeni/Mango-Nyeni-Profile-IG.jpg"
+    ],
+    actions: [
+      { text: "📸 Instagram Mango Nyeni", link: "https://instagram.com", primary: true }
+    ]
+  }
+};sses: ["pill-amber", "pill-green", "pill-pink", "pill-cyan"],
     desc: "Mango Nyeni adalah usaha minuman sago premium yang saya rintis dan kelola sendiri bersama kakak saya. Mulai dari proses produksi, pengemasan, pemasaran di media sosial, pelayanan pelanggan, hingga pengantaran — semuanya dikerjakan mandiri. Bisnis ini menawarkan varian sago dengan bahan buah segar pilihan: Mango Sago, Strawberry Sago, dan Buah Naga Sago.",
     features: [
       "Owner, Co-Founder & Full Operator — mengelola seluruh operasional bisnis secara mandiri",
@@ -3751,7 +3851,6 @@ function openProject(id) {
   setTimeout(() => {
     modal.classList.add('active');
   }, 10);
-  document.body.style.overflow = 'hidden';
 }
 
 function closeProjectModal() {
@@ -3760,7 +3859,6 @@ function closeProjectModal() {
   setTimeout(() => {
     modal.style.display = 'none';
   }, 300);
-  document.body.style.overflow = '';
 }
 
 function moveSlide(dir) {
@@ -4623,6 +4721,10 @@ window.openProject = function(id) {
   // Populate title
   document.getElementById('modalTitle').textContent = data.title;
 
+  // Populate Role & Year metadata
+  document.getElementById('modalMetaRole').textContent = data.role || 'Developer';
+  document.getElementById('modalMetaYear').textContent = data.year || '2026';
+
   // Populate tech pills
   const techCont = document.getElementById('modalTech');
   techCont.innerHTML = '';
@@ -4691,8 +4793,9 @@ window.openProject = function(id) {
     );
   }
   setTimeout(() => modal.classList.add('active'), 10);
-  document.body.style.overflow = 'hidden';
-  if (lenis) lenis.stop();
+  
+  // Scroll modal content to top on open
+  modal.querySelector('.p-modal-content').scrollTop = 0;
 };
 
 /* ─────────────────────────────────────────────────
@@ -4757,8 +4860,6 @@ window.openAllWorks = function() {
   _buildWorksGrid('all');
   overlay.classList.add('active');
   overlay.scrollTop = 0;
-  document.body.style.overflow = 'hidden';
-  if (lenis) lenis.stop();
 
   // Animate cards in
   setTimeout(() => {
@@ -4774,11 +4875,6 @@ window.openAllWorks = function() {
 
 window.closeAllWorks = function() {
   document.getElementById('allWorksOverlay').classList.remove('active');
-  const modal = document.getElementById('projectModal');
-  if (modal.style.display !== 'flex') {
-    document.body.style.overflow = '';
-    if (lenis) lenis.start();
-  }
 };
 
 window.filterWorks = function(cat) {
@@ -4872,13 +4968,6 @@ window.closeProjectModal = function() {
     const modal = document.getElementById('projectModal');
     modal.classList.remove('active');
     setTimeout(() => { modal.style.display = 'none'; }, 300);
-  }
-  // Only restore scroll if CV + all works also closed
-  const cv = document.getElementById('cvModalOverlay');
-  const aw = document.getElementById('allWorksOverlay');
-  if (!cv.classList.contains('active') && !aw.classList.contains('active')) {
-    document.body.style.overflow = '';
-    if (lenis) lenis.start();
   }
 };
 
