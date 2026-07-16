@@ -12,6 +12,7 @@
   <link rel="manifest" href="manifest.json"/>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <meta name="theme-color" content="#8b5cf6"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -138,7 +139,7 @@
 
   /* ══ FLOATING POPUPS (ANTI-GRAVITY GLASSMORPHISM) ══ */
   .popup-badge {
-    position: fixed;
+    position: absolute;
     z-index: 90;
     display: flex;
     align-items: center;
@@ -337,6 +338,20 @@
   .hero-subtitle .hl{color:var(--a1);font-weight:600}
   .hero-desc{font-size:.97rem;color:var(--txt2);max-width:520px;margin-bottom:2rem;line-height:1.75}
   .hero-socials{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
+  .hero-socials a.pill {
+    transition: transform 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  .hero-socials a.pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.25);
+    border-color: var(--txt);
+  }
+  .hero-socials a.pill::after {
+    content: ' ↗';
+    font-size: 10px;
+    opacity: 0.8;
+    margin-left: 3px;
+  }
   .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
   .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
   .stat-num{font-size:2.2rem;font-weight:800;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -806,12 +821,53 @@
   .timeline-bullets li{font-size:12px;color:var(--txt2);padding-left:14px;position:relative;line-height:1.5}
   .timeline-bullets li::before{content:'›';position:absolute;left:0;color:var(--a1);font-weight:700}
 
-  /* ══ DOKUMENTASI / GALLERY ══ */
+  /* ══ DOKUMENTASI / GALLERY (Redesign 2-Kolom Padat) ══ */
   .doc-section{position:relative;z-index:2}
-  .doc-categories{display:flex;flex-direction:column;gap:3rem}
-  .doc-cat-title{font-size:16px;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:10px}
-  .doc-cat-badge{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:100px;border:1px solid}
-  .doc-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+  .doc-categories{display:flex;flex-direction:column;gap:2.5rem}
+  .doc-cat-item{
+    display:grid;
+    grid-template-columns: 1.1fr 1.3fr;
+    gap: 1.5rem;
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .doc-cat-item:hover {
+    border-color: rgba(139, 92, 246, 0.25);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+  .doc-cat-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .doc-cat-title{font-size:16px;font-weight:700;margin-bottom:0.75rem;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .doc-cat-badge{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:100px;border:1px solid}
+  .doc-desc{
+    font-size:13px;
+    color:var(--txt2);
+    line-height:1.65;
+    margin-bottom:0;
+    flex-grow:1;
+    padding:16px;
+    background: rgba(15, 23, 42, 0.3);
+    border:1px solid var(--border);
+    border-radius:var(--r-md);
+    border-left:3px solid var(--a1);
+    height: 100%;
+    overflow-y: auto;
+    max-height: 310px; /* Batasan tinggi agar tidak terlalu panjang */
+  }
+  .doc-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0.75rem;
+    align-content: start;
+  }
   .doc-photo-wrap{
     border-radius:var(--r-lg);
     overflow:hidden;
@@ -824,21 +880,23 @@
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
   }
-  .doc-photo-wrap:hover{border-color:var(--border2);transform:scale(1.03);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+  .doc-photo-wrap:hover{border-color:var(--border2);transform:scale(1.03);box-shadow:0 12px 30px rgba(0,0,0,.4)}
   .doc-photo-wrap img{
     width:100%;
     height:100%;
     object-fit:cover;
     transition:transform .4s, opacity .4s ease;
-    opacity: 0; /* Default invisible until loaded */
+    opacity: 0;
   }
   .doc-photo-wrap:hover img{transform:scale(1.06)}
-  .doc-photo-caption{position:absolute;bottom:0;left:0;right:0;padding:10px 12px 8px;background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,transparent 100%);font-size:11px;color:rgba(255,255,255,.8);font-weight:500}
-  .doc-desc{font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:1rem;max-width:700px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);border-left:3px solid var(--a1)}
-  .doc-media-row{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}
-  .doc-video-card{flex:1;min-width:280px;border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .doc-photo-caption{position:absolute;bottom:0;left:0;right:0;padding:8px 10px 6px;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 100%);font-size:10px;color:rgba(255,255,255,.8);font-weight:500}
+  .doc-media-row{display:grid;grid-template-columns: 1fr 1fr;gap:1rem;margin:1rem 0}
+  .doc-video-card{width:100%;border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
   .doc-video-card:hover{transform:translateY(-4px)}
-  @media(max-width:600px){.doc-media-row{flex-direction:column}.doc-video-card{min-width:unset;width:100%}}
+  @media(max-width:960px){
+    .doc-cat-item{grid-template-columns: 1fr; gap:1.2rem}
+    .doc-media-row{grid-template-columns:1fr}
+  }
 
   /* ══ SKILLS ══ */
   .skills-outer{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
@@ -929,15 +987,22 @@
     border: 1px solid var(--border2);
     border-radius: var(--r-2xl);
     width: 100%;
-    max-width: 920px;
-    height: 600px;
-    max-height: 90vh;
-    overflow: hidden;
+    max-width: 940px;
+    max-height: 92vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
     transform: scale(0.9) translateY(20px);
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
   }
+  .p-modal-content::-webkit-scrollbar { width: 5px; }
+  .p-modal-content::-webkit-scrollbar-track { background: transparent; }
+  .p-modal-content::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
   .p-modal.active .p-modal-content {
     transform: scale(1) translateY(0);
   }
@@ -968,12 +1033,12 @@
   .p-modal-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    height: 100%;
+    min-height: 520px;
   }
   @media (max-width: 768px) {
     .p-modal-content {
       height: auto;
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
     }
     .p-modal-grid {
@@ -1597,6 +1662,74 @@
     .live-dot { display: none !important; }
     a { text-decoration: none !important; color: inherit !important; }
   }
+  /* ═══════════════════════════════════════════════
+     PREMIUM FEATURES CSS
+     ═══════════════════════════════════════════════ */
+  /* CV MODAL */
+  .cv-modal-overlay{position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s,background .35s;backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);}
+  .cv-modal-overlay.active{background:rgba(4,6,18,.88);opacity:1;visibility:visible;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+  .cv-modal-viewer{width:min(900px,96vw);height:min(92vh,950px);background:var(--bg2);border:1px solid var(--border2);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 48px 130px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06),inset 0 1px 0 rgba(255,255,255,.08);transform:translateY(50px) scale(.96);transition:transform .45s cubic-bezier(.34,1.46,.64,1),opacity .35s;opacity:0;}
+  .cv-modal-overlay.active .cv-modal-viewer{transform:translateY(0) scale(1);opacity:1;}
+  .cv-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:rgba(255,255,255,.035);border-bottom:1px solid var(--border);flex-shrink:0;gap:12px;}
+  .cv-modal-title{font-size:15px;font-weight:700;color:var(--txt);display:flex;align-items:center;gap:9px;margin:0;}
+  .cv-modal-title-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 0 10px rgba(59,130,246,.5);}
+  .cv-modal-header-actions{display:flex;gap:8px;align-items:center;}
+  .cv-modal-dl-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:99px;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-size:12px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .2s;font-family:inherit;box-shadow:0 4px 14px rgba(59,130,246,.3);}
+  .cv-modal-dl-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(59,130,246,.5);}
+  .cv-modal-close-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;transition:all .2s;}
+  .cv-modal-close-btn:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.4);color:#f87171;}
+  .cv-modal-body{flex:1;overflow:hidden;position:relative;background:var(--bg3);}
+  .cv-modal-body iframe{width:100%;height:100%;border:none;display:block;}
+  .cv-modal-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:var(--txt2);font-size:14px;}
+  .cv-modal-spinner{width:40px;height:40px;border-radius:50%;border:3px solid var(--border);border-top-color:var(--a1);animation:cvSpin .7s linear infinite;}
+  @keyframes cvSpin{to{transform:rotate(360deg);}}
+  /* ALL WORKS OVERLAY */
+  .all-works-overlay{position:fixed;inset:0;z-index:99997;background:var(--bg);opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .38s cubic-bezier(.4,0,.2,1),transform .38s cubic-bezier(.4,0,.2,1),visibility .38s;overflow-y:auto;overflow-x:hidden;}
+  .all-works-overlay.active{opacity:1;visibility:visible;transform:translateY(0);}
+  .all-works-inner{max-width:1200px;margin:0 auto;padding:72px 32px 80px;}
+  @media(max-width:640px){.all-works-inner{padding:60px 18px 60px;}}
+  .all-works-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
+  .all-works-title{font-size:clamp(32px,6vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;background:linear-gradient(135deg,var(--txt) 50%,var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .all-works-close{width:46px;height:46px;border-radius:50%;background:var(--surface2);border:1px solid var(--border2);color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;margin-top:6px;transition:all .2s;}
+  .all-works-close:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.4);}
+  .filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+  .filter-tab{padding:8px 22px;border-radius:99px;border:1px solid var(--border);background:var(--surface);color:var(--txt2);cursor:pointer;font-size:13px;font-weight:600;transition:all .25s;font-family:inherit;letter-spacing:.3px;}
+  .filter-tab:hover{border-color:var(--border2);color:var(--txt);transform:translateY(-1px);}
+  .filter-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(59,130,246,.35);transform:none;}
+  .works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;}
+  .work-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;cursor:pointer;transition:transform .3s cubic-bezier(.4,0,.2,1),border-color .3s,box-shadow .3s;}
+  .work-card:hover{transform:translateY(-7px) scale(1.01);border-color:rgba(59,130,246,.35);box-shadow:0 24px 64px rgba(0,0,0,.45),0 0 0 1px rgba(59,130,246,.15);}
+  .work-card-img-wrap{overflow:hidden;aspect-ratio:16/10;}
+  .work-card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;background:var(--bg3);}
+  .work-card:hover .work-card-img{transform:scale(1.06);}
+  .work-card-body{padding:16px 18px 18px;}
+  .work-card-cat{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--a1);margin-bottom:5px;}
+  .work-card-title{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:6px;line-height:1.3;}
+  .work-card-desc{font-size:12px;color:var(--txt2);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .works-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--txt3);font-size:15px;}
+  /* NEXT/PREV NAV */
+  .project-nav-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);overflow:hidden;border-radius:0 0 14px 14px;}
+  .project-nav-btn{position:relative;overflow:hidden;background:transparent;padding:18px 22px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:background .25s;border:none;text-align:left;font-family:inherit;}
+  .project-nav-btn:hover{background:rgba(255,255,255,.04);}
+  .project-nav-btn.nav-next{align-items:flex-end;border-left:1px solid var(--border);}
+  .project-nav-btn.nav-next .project-nav-name{text-align:right;}
+  .project-nav-label{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--txt3);}
+  .project-nav-name{font-size:13px;font-weight:700;color:var(--txt);line-height:1.3;max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s;}
+  .project-nav-btn:hover .project-nav-name{color:var(--a1);}
+  .project-nav-preview{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+  .project-nav-preview img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s;transform:scale(1.05);filter:brightness(.28) blur(1px);}
+  .project-nav-btn:hover .project-nav-preview img{opacity:1;}
+  /* ALL WORKS CTA */
+  .all-works-cta-wrap{display:flex;justify-content:center;padding:40px 0 0;}
+  .all-works-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:99px;border:1px solid var(--border2);background:var(--surface);color:var(--txt);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .28s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;}
+  .all-works-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(139,92,246,.12));opacity:0;transition:opacity .28s;}
+  .all-works-cta:hover{border-color:rgba(59,130,246,.5);box-shadow:0 0 28px rgba(59,130,246,.2),0 8px 32px rgba(0,0,0,.3);transform:translateY(-2px);color:#fff;}
+  .all-works-cta:hover::before{opacity:1;}
+  .all-works-cta-icon{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;box-shadow:0 2px 10px rgba(59,130,246,.4);}
+  /* LENIS */
+  html.lenis{height:auto;}
+  .lenis.lenis-smooth{scroll-behavior:auto;}
+  .lenis.lenis-stopped{overflow:hidden;}
   </style>
 </head>
 <body>
@@ -1619,23 +1752,7 @@
 </div>
 <div class="grid-bg"></div>
 
-<!-- FLOATING POPUPS -->
-<div class="popup-badge" id="pop1">
-  <span class="pb-icon">🤟</span>
-  <div class="pb-text">GestureFlow v3.0 <small>AI Real-Time · Live di Vercel</small></div>
-</div>
-<div class="popup-badge" id="pop2">
-  <span class="pb-icon">🎓</span>
-  <div class="pb-text">Semester 4 → 5 <small>Telkom University Purwokerto</small></div>
-</div>
-<div class="popup-badge" id="pop3">
-  <span class="pb-icon">⚡</span>
-  <div class="pb-text">Open to Opportunities <small>Web Dev · Network · UI/UX</small></div>
-</div>
-<div class="popup-badge" id="pop4">
-  <span class="pb-icon">🔥</span>
-  <div class="pb-text">UKM HIPMI PT Tel-U Purwokerto <small>Dep. Kaderisasi & Keanggotaan</small></div>
-</div>
+
 
 <!-- NAV -->
 <header class="nav-wrap" id="navWrap">
@@ -1656,7 +1773,7 @@
       <a href="#certifications">Sertifikat</a>
       <a href="#contact">Kontak</a>
     </nav>
-    <a href="https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf" target="_blank" class="btn btn-grad nav-cta" style="font-size:13px;padding:9px 18px;">📥 CV</a>
+    <button onclick="openCVModal()" class="btn btn-grad nav-cta" style="font-size:13px;padding:9px 18px;">📄 CV</button>
     <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">☀️</button>
   </div>
 </header>
@@ -1664,7 +1781,25 @@
 <main>
 
 <!-- ════ HERO ════ -->
-<section class="hero section" id="hero">
+<section class="hero section" id="hero" style="position: relative;">
+  <!-- FLOATING POPUPS (Relatif terhadap Hero Section) -->
+  <div class="popup-badge" id="pop1">
+    <span class="pb-icon">🤟</span>
+    <div class="pb-text">GestureFlow v3.0 <small>AI Real-Time · Live di Vercel</small></div>
+  </div>
+  <div class="popup-badge" id="pop2">
+    <span class="pb-icon">🎓</span>
+    <div class="pb-text">Semester 4 → 5 <small>Telkom University Purwokerto</small></div>
+  </div>
+  <div class="popup-badge" id="pop3">
+    <span class="pb-icon">⚡</span>
+    <div class="pb-text">Open to Opportunities <small>Web Dev · Network · UI/UX</small></div>
+  </div>
+  <div class="popup-badge" id="pop4">
+    <span class="pb-icon">🔥</span>
+    <div class="pb-text">UKM HIPMI PT Tel-U Purwokerto <small>Dep. Kaderisasi & Keanggotaan</small></div>
+  </div>
+
   <div class="container">
     <div class="hero-grid">
       <article>
@@ -1684,11 +1819,11 @@
         <div class="hero-socials reveal reveal-delay-2">
           <a href="https://instagram.com/_yosput" target="_blank" class="pill pill-pink">📷 @_yosput</a>
           <a href="https://github.com/yoshput" target="_blank" class="pill pill-blue">🐙 yoshput</a>
-          <a href="https://wa.me/6287778683766" target="_blank" class="pill pill-green">💬 WhatsApp</a>
-          <span class="pill pill-purple">🏫 IF-05 · NIM 103112430026</span>
+          <a href="mailto:yossikaputraerlangga@gmail.com" class="pill pill-green">📧 yossikaputraerlangga@gmail.com</a>
+          <span class="pill pill-purple">🏫 IPK 3.65 / 4.00</span>
         </div>
         <div class="hero-actions reveal reveal-delay-2">
-          <a href="https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf" target="_blank" class="btn btn-grad">📥 Download CV</a>
+          <button onclick="openCVModal()" class="btn btn-grad">📄 Lihat CV</button>
           <a href="#projects" class="btn btn-glass">🗂️ Lihat Projects</a>
           <a href="#contact" class="btn btn-glass">💬 Kontak</a>
         </div>
@@ -1708,13 +1843,13 @@
           <div class="card-glow"></div>
           <div class="card-top">
             <span class="card-brand">Portfolio</span>
-            <span class="card-no">103112430026</span>
+            <span class="card-no">IPK · 3.65</span>
           </div>
           <div class="card-photo">
             <img src="assets/img/FOTO JAS FRESH.jpeg" alt="Yossika" onerror="this.style.display='none'">
           </div>
           <div class="card-name">Yossika Putra Erlangga</div>
-          <div class="card-nim">NIM · 103112430026 · IF-05</div>
+          <div class="card-nim">IPK · 3.65 / 4.00</div>
           <div class="card-chips">
             <span class="card-chip chip-b">Informatika</span>
             <span class="card-chip chip-v">Dev</span>
@@ -1748,22 +1883,8 @@
       <div class="about-details">
         <div class="about-detail-row"><span class="about-detail-key">Lahir</span><span class="about-detail-val">Banyumas, 11 November 2005</span></div>
         <div class="about-detail-row"><span class="about-detail-key">Alamat</span><span class="about-detail-val">Sokaraja, Banyumas, Jawa Tengah</span></div>
-        <div class="about-detail-row"><span class="about-detail-key">Telepon</span><span class="about-detail-val">+62 877-7868-3766</span></div>
         <div class="about-detail-row"><span class="about-detail-key">Email</span><span class="about-detail-val">yossikaputraerlangga@gmail.com</span></div>
-        <div class="about-detail-row"><span class="about-detail-key">Angkatan</span><span class="about-detail-val">2024 · Kelas IF-05 · Semester 4 → 5</span></div>
-      </div>
-
-      <div class="semester-wrap reveal">
-        <div class="semester-label">📚 Mata Kuliah Semester 4 (2025/2026)</div>
-        <div class="matkul-grid">
-          <div class="matkul-item"><span class="matkul-icon">🤖</span>Dasar Kecerdasan Artifisial</div>
-          <div class="matkul-item"><span class="matkul-icon">🧪</span>Implementasi & Pengujian PL</div>
-          <div class="matkul-item"><span class="matkul-icon">🖱️</span>Interaksi Manusia Komputer</div>
-          <div class="matkul-item"><span class="matkul-icon">🌐</span>Jaringan Komputer</div>
-          <div class="matkul-item"><span class="matkul-icon">☕</span>Pemrograman Berorientasi Objek</div>
-          <div class="matkul-item"><span class="matkul-icon">📊</span>Strategi Algoritma</div>
-          <div class="matkul-item"><span class="matkul-icon">💡</span>Wawasan Global TIK</div>
-        </div>
+        <div class="about-detail-row"><span class="about-detail-key">Angkatan</span><span class="about-detail-val">2024 · Semester 4 → 5</span></div>
       </div>
     </article>
   </div>
@@ -1915,6 +2036,16 @@
       </div>
 
     </div>
+
+    <!-- ALL WORKS CTA -->
+    <div class="all-works-cta-wrap reveal">
+      <button onclick="openAllWorks()" class="all-works-cta">
+        <span class="all-works-cta-icon">❖</span>
+        Lihat Semua Project &amp; Karya
+        <span style="opacity:.6;font-size:12px">(→ All Works)</span>
+      </button>
+    </div>
+
   </div>
 </section>
 
@@ -2110,9 +2241,9 @@
             <div class="timeline-title">S1 Teknik Informatika</div>
             <div class="timeline-org">Telkom University Purwokerto · IF-05</div>
             <ul class="timeline-bullets">
-              <li>NIM: 103112430026 · Semester 4 menuju 5</li>
+              <li>Semester 4 menuju 5</li>
+              <li>Indeks Prestasi Kumulatif (IPK): 3.65 / 4.00</li>
               <li>Fokus: web dev, AI/ML, jaringan, UI/UX</li>
-              <li>Matkul unggulan: Fuzzy, OOP, IMK, Jaringan Komputer</li>
             </ul>
           </div>
           <div class="timeline-item">
@@ -2225,21 +2356,23 @@
     <div class="doc-categories">
 
       <!-- INFENTRA -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          🛡️ INFENTRA — Informatics Event &amp; Karya
-          <span class="doc-cat-badge" style="color:#93c5fd;background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">Staff Keamanan · Tel-U Purwokerto · 2025</span>
-        </div>
-        <div class="doc-desc">
-          <strong>INFENTRA (Informatics Event &amp; Karya)</strong> hadir sebagai ruang baru yang membawa semangat kolaborasi, kreativitas, dan gerak bersama. Dengan mengusung tema <em>“Synergy in Motion”</em>, acara ini menjadi titik temu bagi generasi muda yang ingin berkembang, berkompetisi, dan menunjukkan potensi terbaik mereka. INFENTRA menghadirkan suasana yang menggabungkan teknologi, inovasi, dan sportivitas dalam satu aliran sinergi yang hidup. Ini bukan sekadar event biasa, tetapi sebuah perjalanan baru yang membuka peluang, memperkuat karakter, dan memantik kreativitas di tengah perubahan zaman yang terus bergerak.
-          <br><br>
-          Dalam kepanitiaan event kampus ini, saya bertugas sebagai <strong>Staff Keamanan</strong> (Oktober – Desember 2025) dengan kewajiban:
-          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
-            <li>Menjaga kondusifitas area pameran karya teknologi serta mengontrol ketertiban penonton kompetisi.</li>
-            <li>Mengatur alur keluar masuk peserta dan pengunjung guna menghindari penumpukan di pintu masuk.</li>
-            <li>Mengawasi keamanan aset pameran dan kelengkapan instalasi lab komputer yang digunakan.</li>
-          </ul>
-          <br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Kompetensi Administrasi Jaringan — INFENTRA, Telkom University Purwokerto (2024).
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            🛡️ INFENTRA — Informatics Event &amp; Karya
+            <span class="doc-cat-badge" style="color:#93c5fd;background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">Staff Keamanan · Tel-U Purwokerto · 2025</span>
+          </div>
+          <div class="doc-desc">
+            <strong>INFENTRA (Informatics Event &amp; Karya)</strong> hadir sebagai ruang baru yang membawa semangat kolaborasi, kreativitas, dan gerak bersama. Dengan mengusung tema <em>“Synergy in Motion”</em>, acara ini menjadi titik temu bagi generasi muda yang ingin berkembang, berkompetisi, dan menunjukkan potensi terbaik mereka. INFENTRA menghadirkan suasana yang menggabungkan teknologi, inovasi, dan sportivitas dalam satu aliran sinergi yang hidup. Ini bukan sekadar event biasa, tetapi sebuah perjalanan baru yang membuka peluang, memperkuat karakter, dan memantik kreativitas di tengah perubahan zaman yang terus bergerak.
+            <br><br>
+            Dalam kepanitiaan event kampus ini, saya bertugas sebagai <strong>Staff Keamanan</strong> (Oktober – Desember 2025) dengan kewajiban:
+            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+              <li>Menjaga kondusifitas area pameran karya teknologi serta mengontrol ketertiban penonton kompetisi.</li>
+              <li>Mengatur alur keluar masuk peserta dan pengunjung guna menghindari penumpukan di pintu masuk.</li>
+              <li>Mengawasi keamanan aset pameran dan kelengkapan instalasi lab komputer yang digunakan.</li>
+            </ul>
+            <br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Kompetensi Administrasi Jaringan — INFENTRA, Telkom University Purwokerto (2024).
+          </div>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/01-INFENTRA/01-Dokumentasi.jpg','INFENTRA - Dokumentasi Kegiatan')">
@@ -2303,18 +2436,20 @@
       </div>
 
       <!-- PKL TELKOM -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          📡 PKL — PT Telkom Akses Karanganyar
-          <span class="doc-cat-badge" style="color:#86efac;background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.3)">Internship · Apr–Sep 2023</span>
-        </div>
-        <div class="doc-desc">
-          Praktek Kerja Lapangan (PKL) di <strong>PT Telkom Akses Karanganyar</strong> selama 6 bulan. Berperan sebagai teknisi lapangan yang berkontribusi dalam implementasi jaringan telekomunikasi dengan tanggung jawab:
-          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
-            <li>Melakukan instalasi baru perangkat WiFi IndiHome dan layanan telekomunikasi di area perumahan pelanggan.</li>
-            <li>Mendeteksi kerusakan (troubleshooting) jaringan transmisi kabel dan pemeliharaan kualitas koneksi pelanggan.</li>
-            <li>Mempelajari dan mempraktikkan proses penyambungan (splicing) serta pengukuran redaman kabel serat optik (Fiber Optic).</li>
-          </ul>
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            📡 PKL — PT Telkom Akses Karanganyar
+            <span class="doc-cat-badge" style="color:#86efac;background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.3)">Internship · Apr–Sep 2023</span>
+          </div>
+          <div class="doc-desc">
+            Praktek Kerja Lapangan (PKL) di <strong>PT Telkom Akses Karanganyar</strong> selama 6 bulan. Berperan sebagai teknisi lapangan yang berkontribusi dalam implementasi jaringan telekomunikasi dengan tanggung jawab:
+            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+              <li>Melakukan instalasi baru perangkat WiFi IndiHome dan layanan telekomunikasi di area perumahan pelanggan.</li>
+              <li>Mendeteksi kerusakan (troubleshooting) jaringan transmisi kabel dan pemeliharaan kualitas koneksi pelanggan.</li>
+              <li>Mempelajari dan mempraktikkan proses penyambungan (splicing) serta pengukuran redaman kabel serat optik (Fiber Optic).</li>
+            </ul>
+          </div>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/03-PKL_Telkom/01-Dokumentasi-PKL.jpg','PKL PT Telkom Akses - Dokumentasi')">
@@ -2325,13 +2460,15 @@
       </div>
 
       <!-- WISATA -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          🌄 Wisata Edukasi — Dieng & Wonosobo
-          <span class="doc-cat-badge" style="color:#fde68a;background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3)">Kegiatan Sosial</span>
-        </div>
-        <div class="doc-desc">
-          Wisata edukasi ke kawasan dataran tinggi Dieng — mengunjungi Candi Arjuna sebagai peninggalan sejarah Hindu di Jawa Tengah, serta Telaga Menjer di Wonosobo yang memukau. Kegiatan rekreasi sekaligus pengenalan warisan budaya lokal.
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            🌄 Wisata Edukasi — Dieng & Wonosobo
+            <span class="doc-cat-badge" style="color:#fde68a;background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3)">Kegiatan Sosial</span>
+          </div>
+          <div class="doc-desc">
+            Wisata edukasi ke kawasan dataran tinggi Dieng — mengunjungi Candi Arjuna sebagai peninggalan sejarah Hindu di Jawa Tengah, serta Telaga Menjer di Wonosobo yang memukau. Kegiatan rekreasi sekaligus pengenalan warisan budaya lokal.
+          </div>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/04-Wisata/01-Candi-Arjuna.jpg','Candi Arjuna - Dieng Plateau')">
@@ -2346,13 +2483,15 @@
       </div>
 
       <!-- PROJECT -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          💻 Project Work — Lab & Jaringan
-          <span class="doc-cat-badge" style="color:#67e8f9;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.3)">Technical Project</span>
-        </div>
-        <div class="doc-desc">
-          Dokumentasi project teknis selama studi — dari proyek sinematik KK5 hingga konfigurasi routing OSPF di Cisco Packet Tracer. Bukti nyata kemampuan di bidang jaringan komputer dan multimedia digital.
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            💻 Project Work — Lab & Jaringan
+            <span class="doc-cat-badge" style="color:#67e8f9;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.3)">Technical Project</span>
+          </div>
+          <div class="doc-desc">
+            Dokumentasi project teknis selama studi — dari proyek sinematik KK5 hingga konfigurasi routing OSPF di Cisco Packet Tracer. Bukti nyata kemampuan di bidang jaringan komputer dan multimedia digital.
+          </div>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp','KK5 Cinematic Project')">
@@ -2367,47 +2506,51 @@
       </div>
 
       <!-- UKM HIPMI -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          🚀 UKM HIPMI PT — Himpunan Pengusaha Muda Indonesia
-          <span class="doc-cat-badge" style="color:#f9a8d4;background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.3)">Organisasi · Jan 2026–Sekarang</span>
-        </div>
-        <div class="doc-desc">
-          Aktif sebagai <strong>Staff Departemen Kaderisasi &amp; Keanggotaan</strong> di <strong>UKM HIPMI PT Telkom University Purwokerto</strong> sejak Januari 2026. Berperan strategis dalam pengembangan ekosistem kewirausahaan mahasiswa di lingkungan kampus dengan tanggung jawab:
-          <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
-            <li>Merancang dan mengeksekusi program rekrutmen terbuka serta alur penerimaan anggota baru organisasi.</li>
-            <li>Mengoordinasikan program kaderisasi terstruktur untuk menyebarkan nilai-nilai wirausaha kreatif kepada mahasiswa.</li>
-            <li>Mengelola database keanggotaan dan memfasilitasi komunikasi serta sinergi antar anggota aktif.</li>
-          </ul>
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            🚀 UKM HIPMI PT — Himpunan Pengusaha Muda Indonesia
+            <span class="doc-cat-badge" style="color:#f9a8d4;background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.3)">Organisasi · Jan 2026–Sekarang</span>
+          </div>
+          <div class="doc-desc">
+            Aktif sebagai <strong>Staff Departemen Kaderisasi &amp; Keanggotaan</strong> di <strong>UKM HIPMI PT Telkom University Purwokerto</strong> sejak Januari 2026. Berperan strategis dalam pengembangan ekosistem kewirausahaan mahasiswa di lingkungan kampus dengan tanggung jawab:
+            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; list-style-type: disc; line-height: 1.6;">
+              <li>Merancang dan mengeksekusi program rekrutmen terbuka serta alur penerimaan anggota baru organisasi.</li>
+              <li>Mengoordinasikan program kaderisasi terstruktur untuk menyebarkan nilai-nilai wirausaha kreatif kepada mahasiswa.</li>
+              <li>Mengelola database keanggotaan dan memfasilitasi komunikasi serta sinergi antar anggota aktif.</li>
+            </ul>
+          </div>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/Foto Profile Yossika-Kaderisasi dan Keanggotaan.jpg','HIPMI - Foto Profil Yossika')">
             <img src="assets/img/foto kegiatan/06-HIPMI/Foto Profile Yossika-Kaderisasi dan Keanggotaan.jpg" alt="HIPMI Yossika" loading="lazy">
-            <div class="doc-photo-caption">👔 Foto Profil — Dep. Kaderisasi</div>
+            <div class="doc-photo-caption">👔 Foto Profil — Dep. OKK</div>
           </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/FOTO DEPARTEMEN KADERISASI DAN KEANGGOTAAN.jpg','HIPMI - Departemen Kaderisasi')">
             <img src="assets/img/foto kegiatan/06-HIPMI/FOTO DEPARTEMEN KADERISASI DAN KEANGGOTAAN.jpg" alt="HIPMI Departemen" loading="lazy">
-            <div class="doc-photo-caption">🤝 Foto Departemen Kaderisasi</div>
+            <div class="doc-photo-caption">🤝 Foto Dep. OKK</div>
           </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/Foto Departement OKK.jpeg','HIPMI - Foto Departemen OKK')">
             <img src="assets/img/foto kegiatan/06-HIPMI/Foto Departement OKK.jpeg" alt="HIPMI Departemen OKK" loading="lazy">
-            <div class="doc-photo-caption">📣 Foto Departemen OKK HIPMI</div>
+            <div class="doc-photo-caption">📣 Foto Departemen OKK</div>
           </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/06-HIPMI/Foto 0,5 Dokumentasi .jpeg','HIPMI - Dokumentasi Kegiatan')">
             <img src="assets/img/foto kegiatan/06-HIPMI/Foto 0,5 Dokumentasi .jpeg" alt="HIPMI Dokumentasi" loading="lazy">
-            <div class="doc-photo-caption">📸 Dokumentasi Kegiatan HIPMI</div>
+            <div class="doc-photo-caption">📸 Dokumentasi HIPMI</div>
           </div>
         </div>
       </div>
 
       <!-- WPI -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          🎓 WPI — Workshop &amp; Professional Initiative
-          <span class="doc-cat-badge" style="color:#a7f3d0;background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)">Workshop · Okt 2025</span>
-        </div>
-        <div class="doc-desc">
-          Mengikuti <strong>Workshop &amp; Professional Initiative (WPI)</strong> di Telkom University Purwokerto. Program ini dirancang untuk membekali mahasiswa dengan keterampilan kerja profesional, pemahaman dinamika industri modern, personal branding, serta kesiapan transisi karir akademis ke dunia profesional.
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            🎓 WPI — Workshop &amp; Professional Initiative
+            <span class="doc-cat-badge" style="color:#a7f3d0;background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)">Workshop · Okt 2025</span>
+          </div>
+          <div class="doc-desc">
+            Mengikuti <strong>Workshop &amp; Professional Initiative (WPI)</strong> di Telkom University Purwokerto. Program ini dirancang untuk membekali mahasiswa dengan keterampilan kerja profesional, pemahaman dinamika industri modern, personal branding, serta kesiapan transisi karir akademis ke dunia profesional.
+          </div>
         </div>
         <div class="doc-gallery">
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/07-WPI/Feed Ig WPI.jpg','WPI - Feed Instagram')">
@@ -2420,30 +2563,29 @@
           </div>
           <div class="doc-photo-wrap" onclick="openLB('assets/img/foto kegiatan/07-WPI/Foto Bersama Hari H WPI.jpeg','WPI - Foto Bersama Hari H')">
             <img src="assets/img/foto kegiatan/07-WPI/Foto Bersama Hari H WPI.jpeg" alt="WPI Foto Bersama" loading="lazy">
-            <div class="doc-photo-caption">👥 Foto Bersama Peserta & Panitia</div>
+            <div class="doc-photo-caption">👥 Foto Bersama Peserta</div>
           </div>
         </div>
       </div>
 
       <!-- MARKET DAY -->
-      <div class="reveal">
-        <div class="doc-cat-title">
-          🛒 Market Day 4.0 — Koordinator Keamanan
-          <span class="doc-cat-badge" style="color:#fb923c;background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.3)">Koordinator Keamanan · Mei 2026</span>
-        </div>
-        <div class="doc-desc">
-          <strong>Market Day 4.0</strong> adalah bazar kewirausahaan mahasiswa tahunan Telkom University Purwokerto yang berlangsung pada <strong>2 Mei 2026</strong>. Sebagai <strong>Koordinator Keamanan</strong>, bertugas memimpin tim keamanan, menyusun strategi penempatan personel, dan berkoordinasi dengan panitia utama untuk memastikan kelancaran acara.
-          <br><br>Saksikan highlight acara dan dokumentasi kegiatan di bawah ini — termasuk video drone eksklusif dari udara! 🚁
+      <div class="reveal doc-cat-item">
+        <div class="doc-cat-info">
+          <div class="doc-cat-title">
+            🛒 Market Day 4.0 — Koordinator Keamanan
+            <span class="doc-cat-badge" style="color:#fb923c;background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.3)">Koordinator Keamanan · Mei 2026</span>
+          </div>
+          <div class="doc-desc">
+            <strong>Market Day 4.0</strong> adalah bazar kewirausahaan mahasiswa tahunan Telkom University Purwokerto yang berlangsung pada <strong>2 Mei 2026</strong>. Sebagai <strong>Koordinator Keamanan</strong>, bertugas memimpin tim keamanan, menyusun strategi penempatan personel, dan berkoordinasi dengan panitia utama untuk memastikan kelancaran acara.
+            <br><br>Saksikan highlight acara, dokumentasi kegiatan, dan video drone eksklusif di samping! 🚁🎬
+          </div>
         </div>
 
-        <!-- VIDEO SECTION -->
-        <div class="doc-media-row" style="display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0;">
-
+        <div class="doc-gallery">
           <!-- YouTube Card -->
-          <div class="doc-video-card" style="flex:1;min-width:280px;background:rgba(15,15,30,.6);border:1px solid rgba(239,68,68,.3);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(239,68,68,.2);">
-            <div style="background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(185,28,28,.1));padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(239,68,68,.2);">
-              <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M19.6 2.18A2.5 2.5 0 0017.83.4C16.28 0 10 0 10 0S3.72 0 2.17.4A2.5 2.5 0 00.4 2.18 26.3 26.3 0 000 7a26.3 26.3 0 00.4 4.82A2.5 2.5 0 002.17 13.6C3.72 14 10 14 10 14s6.28 0 7.83-.4a2.5 2.5 0 001.77-1.78A26.3 26.3 0 0020 7a26.3 26.3 0 00-.4-4.82z" fill="#EF4444"/><path d="M8 10l5.2-3L8 4v6z" fill="white"/></svg>
-              <span style="font-size:.8rem;font-weight:700;color:#fca5a5;letter-spacing:.5px;">YOUTUBE · DOKUMENTASI ACARA</span>
+          <div class="doc-video-card" style="background:rgba(15,15,30,.6);border:1px solid rgba(239,68,68,.3);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(239,68,68,.2);">
+            <div style="background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(185,28,28,.1));padding:.5rem .75rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(239,68,68,.2);">
+              <span style="font-size:.65rem;font-weight:700;color:#fca5a5;letter-spacing:.5px;">▶ YOUTUBE DRONE</span>
             </div>
             <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
               <iframe
@@ -2456,60 +2598,47 @@
                 style="position:absolute;top:0;left:0;width:100%;height:100%;"
               ></iframe>
             </div>
-            <div style="padding:.6rem 1rem;font-size:.75rem;color:rgba(252,165,165,.7);display:flex;align-items:center;gap:.4rem;">
-              <span>▶</span> Market Day 4.0 — Official Documentation Video
-            </div>
           </div>
 
           <!-- Instagram Reel Card -->
-          <div class="doc-video-card" style="flex:1;min-width:280px;background:rgba(15,15,30,.6);border:1px solid rgba(168,85,247,.3);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(168,85,247,.2);display:flex;flex-direction:column;">
-            <div style="background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(219,39,119,.1));padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(168,85,247,.2);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#igGrad)" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="url(#igGrad)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#igGrad)"/><defs><linearGradient id="igGrad" x1="2" y1="2" x2="22" y2="22"><stop stop-color="#F58529"/><stop offset=".5" stop-color="#DD2A7B"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs></svg>
-              <span style="font-size:.8rem;font-weight:700;background:linear-gradient(90deg,#F58529,#DD2A7B,#8134AF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.5px;">INSTAGRAM REELS · DRONE VIEW</span>
+          <div class="doc-video-card" style="background:rgba(15,15,30,.6);border:1px solid rgba(168,85,247,.3);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(168,85,247,.2);display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(219,39,119,.1));padding:.5rem .75rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(168,85,247,.2);">
+              <span style="font-size:.65rem;font-weight:700;background:linear-gradient(90deg,#F58529,#DD2A7B,#8134AF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.5px;">🎬 IG REELS</span>
             </div>
             <div class="ig-reel-facade" data-reel-url="https://www.instagram.com/reel/DZcO3EEpvqR/" style="flex:1;position:relative;height:0;padding-bottom:56.25%;overflow:hidden;background:linear-gradient(135deg,#1a0f2e,#2b0f24);cursor:none;">
               <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto Dokumentasi Acara Market Day.JPG" alt="Preview Reel Drone Market Day" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;">
-              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55));">
-                <div class="ig-play-btn" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(168,85,247,.5);transition:transform .25s;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.3rem;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55));">
+                <div class="ig-play-btn" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(168,85,247,.5);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                 </div>
-                <span style="font-size:.75rem;font-weight:700;color:#fff;letter-spacing:.3px;text-shadow:0 2px 8px rgba(0,0,0,.5);">Tap untuk putar Reel</span>
               </div>
-            </div>
-            <div style="padding:.6rem 1rem;font-size:.75rem;color:rgba(216,180,254,.7);display:flex;align-items:center;gap:.4rem;background:rgba(15,15,30,.6);">
-              <span>🚁</span> Highlight Hari H — Drone View Market Day 4.0
             </div>
           </div>
 
-        </div>
-
-        <!-- MARKET DAY PHOTOS -->
-        <div class="doc-gallery">
           <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Foto Dokumentasi Acara Market Day.JPG','Market Day 4.0 - Dokumentasi Acara')">
             <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto Dokumentasi Acara Market Day.JPG" alt="Dokumentasi Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
-            <div class="doc-photo-caption">📸 Dokumentasi Acara Hari H</div>
+            <div class="doc-photo-caption">📸 Acara Hari H</div>
           </div>
           <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Potong Pita Pembukaan Market Day 2026.JPG','Market Day 4.0 - Potong Pita Pembukaan')">
             <img src="assets/img/foto kegiatan/08-MARKET DAY/Potong Pita Pembukaan Market Day 2026.JPG" alt="Potong Pita Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
-            <div class="doc-photo-caption">✂️ Potong Pita Pembukaan Resmi</div>
+            <div class="doc-photo-caption">✂️ Potong Pita</div>
           </div>
           <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Foto Bersama Market Day.JPG','Market Day 4.0 - Foto Bersama Panitia')">
             <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto Bersama Market Day.JPG" alt="Foto Bersama Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
-            <div class="doc-photo-caption">🤝 Foto Bersama Tim Panitia</div>
+            <div class="doc-photo-caption">🤝 Foto Bersama</div>
           </div>
           <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Foto-Market Day Hari H.jpeg','Market Day 4.0 - Suasana Hari H')">
             <img src="assets/img/foto kegiatan/08-MARKET DAY/Foto-Market Day Hari H.jpeg" alt="Suasana Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
-            <div class="doc-photo-caption">🏪 Suasana Hari H Market Day</div>
+            <div class="doc-photo-caption">🏪 Suasana Hari H</div>
           </div>
           <div class="doc-photo-wrap" style="background:linear-gradient(90deg, #131d2e 25%, #1c2a42 50%, #131d2e 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;" onclick="openLB('assets/img/foto kegiatan/08-MARKET DAY/Feed Instagram on marketday.tup as a Koor Keamanan on Market Day 2026.png','Market Day 4.0 - Feed Instagram - Koor Keamanan')">
             <img src="assets/img/foto kegiatan/08-MARKET DAY/Feed Instagram on marketday.tup as a Koor Keamanan on Market Day 2026.png" alt="Feed Instagram Market Day" loading="lazy" decoding="async" onload="this.parentElement.style.background='none'">
-            <div class="doc-photo-caption">📱 Feed Instagram — Koor Keamanan</div>
+            <div class="doc-photo-caption">📱 Feed Instagram</div>
           </div>
-          <div class="doc-photo-wrap" style="position:relative;overflow:hidden;cursor:pointer;border-radius:12px;background:rgba(15,15,30,.8);border:1px solid rgba(249,115,22,.3);display:flex;align-items:center;justify-content:center;min-height:160px;" onclick="this.innerHTML='<video src=\'assets/img/foto kegiatan/08-MARKET DAY/Take Konten-Panitia Market Day.mp4\' autoplay controls style=\'width:100%;height:100%;object-fit:cover;\' playsinline></video>'">
-            <div style="text-align:center;color:#fb923c;padding:1rem;">
-              <div style="font-size:2.5rem;">🎬</div>
-              <div style="font-weight:700;font-size:.9rem;margin-top:.5rem;">Take Konten Panitia</div>
-              <div style="font-size:.75rem;opacity:.7;margin-top:.25rem;">Tap untuk play video</div>
+          <div class="doc-photo-wrap" style="position:relative;overflow:hidden;cursor:pointer;border-radius:12px;background:rgba(15,15,30,.8);border:1px solid rgba(249,115,22,.3);display:flex;align-items:center;justify-content:center;min-height:100px;" onclick="this.innerHTML='<video src=\'assets/img/foto kegiatan/08-MARKET DAY/Take Konten-Panitia Market Day.mp4\' autoplay controls style=\'width:100%;height:100%;object-fit:cover;\' playsinline></video>'">
+            <div style="text-align:center;color:#fb923c;padding:0.5rem;">
+              <div style="font-size:1.5rem;">🎬</div>
+              <div style="font-weight:700;font-size:.7rem;margin-top:.2rem;">Take Konten</div>
             </div>
           </div>
         </div>
@@ -2625,17 +2754,9 @@
           <div class="contact-icon-wrap ci-email">📧</div>
           <div><strong>Email</strong><span>yossikaputraerlangga@gmail.com</span></div>
         </a>
-        <a href="tel:+6287778683766" class="contact-item">
-          <div class="contact-icon-wrap ci-phone">📱</div>
-          <div><strong>Telepon</strong><span>+62 877-7868-3766</span></div>
-        </a>
         <a href="https://instagram.com/_yosput" target="_blank" class="contact-item">
           <div class="contact-icon-wrap ci-ig">📷</div>
           <div><strong>Instagram</strong><span>@_yosput</span></div>
-        </a>
-        <a href="https://wa.me/6287778683766" target="_blank" class="contact-item">
-          <div class="contact-icon-wrap ci-wa">💬</div>
-          <div><strong>WhatsApp</strong><span>+62 877-7868-3766</span></div>
         </a>
         <a href="https://github.com/yoshput" target="_blank" class="contact-item">
           <div class="contact-icon-wrap ci-gh">🐙</div>
@@ -2739,6 +2860,69 @@
         <div class="p-modal-actions" id="modalActions"></div>
       </div>
     </div>
+    <!-- NEXT / PREV NAVIGATION -->
+    <div class="project-nav-row" id="projectNavRow">
+      <button class="project-nav-btn nav-prev" id="navPrevBtn" onclick="">
+        <div class="project-nav-preview"><img src="" alt="" loading="lazy"></div>
+        <span class="project-nav-label">← Sebelumnya</span>
+        <span class="project-nav-name" id="navPrevName">Project</span>
+      </button>
+      <button class="project-nav-btn nav-next" id="navNextBtn" onclick="">
+        <div class="project-nav-preview"><img src="" alt="" loading="lazy"></div>
+        <span class="project-nav-label">Selanjutnya →</span>
+        <span class="project-nav-name" id="navNextName">Project</span>
+      </button>
+    </div>
+    <!-- ALL WORKS BUTTON IN MODAL -->
+    <div style="display:flex;justify-content:center;padding:16px;border-top:1px solid var(--border);">
+      <button onclick="closeProjectModal();setTimeout(openAllWorks,350)" class="all-works-cta" style="padding:10px 24px;font-size:13px;">
+        <span class="all-works-cta-icon">❖</span> Lihat Semua Project
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CV MODAL ════ -->
+<div class="cv-modal-overlay" id="cvModalOverlay" onclick="if(event.target===this) closeCVModal()">
+  <div class="cv-modal-viewer">
+    <div class="cv-modal-header">
+      <h3 class="cv-modal-title">
+        <span class="cv-modal-title-dot"></span>
+        📄 CV — Yossika Putra Erlangga
+      </h3>
+      <div class="cv-modal-header-actions">
+        <a href="assets/CV YOSSIKA PUTRA ERLANGGA.pdf" download class="cv-modal-dl-btn">⬇️ Download PDF</a>
+        <button class="cv-modal-close-btn" onclick="closeCVModal()" aria-label="Tutup">×</button>
+      </div>
+    </div>
+    <div class="cv-modal-body">
+      <div class="cv-modal-loading" id="cvModalLoading">
+        <div class="cv-modal-spinner"></div>
+        <span>Memuat CV...</span>
+      </div>
+      <iframe id="cvIframe" src="" title="CV Yossika Putra Erlangga" onload="document.getElementById('cvModalLoading').style.display='none'"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ════ ALL WORKS FULLSCREEN GALLERY ════ -->
+<div class="all-works-overlay" id="allWorksOverlay">
+  <div class="all-works-inner">
+    <div class="all-works-header">
+      <div>
+        <h2 class="all-works-title">✦ All Works</h2>
+        <p style="color:var(--txt2);font-size:14px;margin-top:8px;">Semua project, desain, dan karya — dalam satu tempat.</p>
+      </div>
+      <button class="all-works-close" onclick="closeAllWorks()" aria-label="Tutup">×</button>
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-cat="all" onclick="filterWorks('all')">🗂️ Semua</button>
+      <button class="filter-tab" data-cat="development" onclick="filterWorks('development')">💻 Development</button>
+      <button class="filter-tab" data-cat="uiux" onclick="filterWorks('uiux')">🎨 UI/UX Design</button>
+      <button class="filter-tab" data-cat="graphic" onclick="filterWorks('graphic')">✏️ Graphic Design</button>
+      <button class="filter-tab" data-cat="bisnis" onclick="filterWorks('bisnis')">🛒 Bisnis</button>
+    </div>
+    <div class="works-grid" id="worksGrid"></div>
   </div>
 </div>
 
@@ -4184,6 +4368,465 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     🚀 PREMIUM PORTFOLIO FEATURES MODULE
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+'use strict';
+
+/* ─────────────────────────────────────────────────
+   1. LENIS ULTRA-SMOOTH SCROLL
+───────────────────────────────────────────────── */
+let lenis;
+if (window.Lenis && window.gsap) {
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smooth: true,
+    smoothTouch: false,
+    touchMultiplier: 2
+  });
+  // Single RAF source via GSAP ticker (recommended Lenis+GSAP pattern)
+  gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+  // Keep ScrollTrigger in sync
+  lenis.on('scroll', function() {
+    if (window.ScrollTrigger) ScrollTrigger.update();
+  });
+}
+
+/* ─────────────────────────────────────────────────
+   2. CV PDF MODAL
+───────────────────────────────────────────────── */
+const CV_PDF_URL = 'https://raw.githubusercontent.com/yoshput/CV-YOSSIKA/main/assets/CV%20YOSSIKA%20PUTRA%20ERLANGGA.pdf';
+let cvIframeLoaded = false;
+
+window.openCVModal = function() {
+  const overlay = document.getElementById('cvModalOverlay');
+  const iframe  = document.getElementById('cvIframe');
+  const loading = document.getElementById('cvModalLoading');
+  // Lazy load PDF only on first open
+  if (!cvIframeLoaded) {
+    loading.style.display = 'flex';
+    iframe.src = CV_PDF_URL + '#toolbar=1&navpanes=0&view=FitH&zoom=page-fit';
+    cvIframeLoaded = true;
+  }
+  overlay.classList.add('active');
+  if (lenis) lenis.stop();
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeCVModal = function() {
+  document.getElementById('cvModalOverlay').classList.remove('active');
+  const modal   = document.getElementById('projectModal');
+  const allWorks= document.getElementById('allWorksOverlay');
+  if (modal.style.display !== 'flex' && !allWorks.classList.contains('active')) {
+    document.body.style.overflow = '';
+    if (lenis) lenis.start();
+  }
+};
+
+/* ─────────────────────────────────────────────────
+   3. PROJECT ORDER & CATEGORY MAP
+───────────────────────────────────────────────── */
+const PROJECT_ORDER = [
+  'gesture','food','macabae','thrift','ngertiindia',
+  'gymplanner','dompetku','gunung','merch_telkom','komik_telkom','mango_nyeni'
+];
+const PROJECT_CATEGORIES = {
+  gesture:'development', food:'development', macabae:'development',
+  ngertiindia:'development', gymplanner:'development',
+  thrift:'uiux',
+  dompetku:'graphic', gunung:'graphic', merch_telkom:'graphic', komik_telkom:'graphic',
+  mango_nyeni:'bisnis'
+};
+const CAT_LABELS = {
+  development:'💻 Development', uiux:'🎨 UI/UX Design',
+  graphic:'✏️ Graphic Design', bisnis:'🛒 Bisnis'
+};
+
+/* ─────────────────────────────────────────────────
+   4. ENHANCED openProject — OVERRIDE
+───────────────────────────────────────────────── */
+let currentProjectId = null;
+// Save original vars used by existing code
+// (currentSlide, currentSlidesCount are globals defined earlier)
+
+window.openProject = function(id) {
+  currentProjectId = id;
+  const data = projectData[id];
+  if (!data) return;
+
+  // 💥 Card pulse animation (find matching card)
+  if (window.gsap) {
+    document.querySelectorAll('.project-card, .graphic-card, .featured-showcase').forEach(card => {
+      const oc = card.getAttribute('onclick') || '';
+      if (oc.includes("'" + id + "'") || oc.includes('"' + id + '"')) {
+        gsap.timeline()
+          .to(card, { scale: 1.04, duration: 0.12, ease: 'power2.out' })
+          .to(card, { scale: 1.00, duration: 0.25, ease: 'power3.out' });
+      }
+    });
+  }
+
+  // Populate title
+  document.getElementById('modalTitle').textContent = data.title;
+
+  // Populate tech pills
+  const techCont = document.getElementById('modalTech');
+  techCont.innerHTML = '';
+  data.tech.forEach((t, i) => {
+    const span = document.createElement('span');
+    span.className = 'pill ' + (data.techClasses[i] || 'pill-blue');
+    span.textContent = t;
+    techCont.appendChild(span);
+  });
+
+  // Populate description & features
+  document.getElementById('modalDesc').textContent = data.desc;
+  const featCont = document.getElementById('modalFeatures');
+  featCont.innerHTML = '';
+  data.features.forEach(f => {
+    const li = document.createElement('li');
+    li.textContent = f;
+    featCont.appendChild(li);
+  });
+
+  // Populate action buttons
+  const actCont = document.getElementById('modalActions');
+  actCont.innerHTML = '';
+  data.actions.forEach(act => {
+    const a = document.createElement('a');
+    a.href = act.link; a.target = '_blank';
+    a.className = act.primary ? 'btn btn-grad' : 'btn btn-glass';
+    a.style.cssText = 'padding:8px 18px;font-size:12px;';
+    a.textContent = act.text;
+    actCont.appendChild(a);
+  });
+
+  // Populate image slider
+  const slidesCont = document.getElementById('modalSlides');
+  const dotsCont   = document.getElementById('modalDots');
+  slidesCont.innerHTML = ''; dotsCont.innerHTML = '';
+  currentSlidesCount = data.images.length;
+  currentSlide = 0;
+
+  data.images.forEach((src, idx) => {
+    const slide = document.createElement('div');
+    slide.className = 'p-modal-slide';
+    const img = document.createElement('img');
+    img.src = src; img.alt = data.title + ' ' + (idx + 1); img.loading = 'lazy';
+    img.onerror = function() { this.src = 'assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp'; };
+    slide.appendChild(img); slidesCont.appendChild(slide);
+
+    const dot = document.createElement('span');
+    dot.className = 'p-slider-dot' + (idx === 0 ? ' active' : '');
+    dot.onclick = () => setSlide(idx);
+    dotsCont.appendChild(dot);
+  });
+  slidesCont.style.transform = 'translateX(0%)';
+
+  // Update next/prev nav
+  _updateProjectNav();
+
+  // Show modal with GSAP spring animation
+  const modal = document.getElementById('projectModal');
+  modal.style.display = 'flex';
+  if (window.gsap) {
+    const content = modal.querySelector('.p-modal-content');
+    gsap.fromTo(content,
+      { y: 70, opacity: 0, scale: 0.96 },
+      { y: 0,  opacity: 1, scale: 1, duration: 0.55, ease: 'power4.out' }
+    );
+  }
+  setTimeout(() => modal.classList.add('active'), 10);
+  document.body.style.overflow = 'hidden';
+  if (lenis) lenis.stop();
+};
+
+/* ─────────────────────────────────────────────────
+   5. NEXT / PREV NAVIGATION
+───────────────────────────────────────────────── */
+function _updateProjectNav() {
+  const idx    = PROJECT_ORDER.indexOf(currentProjectId);
+  const prevId = PROJECT_ORDER[(idx - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length];
+  const nextId = PROJECT_ORDER[(idx + 1) % PROJECT_ORDER.length];
+
+  const prevBtn = document.getElementById('navPrevBtn');
+  const nextBtn = document.getElementById('navNextBtn');
+  if (!prevBtn || !nextBtn) return;
+
+  // Wire up click handlers
+  prevBtn.onclick = () => _slideToProject(prevId, 'prev');
+  nextBtn.onclick = () => _slideToProject(nextId, 'next');
+
+  const prevData = projectData[prevId];
+  const nextData = projectData[nextId];
+
+  // Set names (trim after dash)
+  const prevName = prevData ? (prevData.title.split('—')[0].split('·')[0].trim()) : '';
+  const nextName = nextData ? (nextData.title.split('—')[0].split('·')[0].trim()) : '';
+  document.getElementById('navPrevName').textContent = prevName;
+  document.getElementById('navNextName').textContent = nextName;
+
+  // Set thumbnail previews
+  const prevImg = prevBtn.querySelector('.project-nav-preview img');
+  const nextImg = nextBtn.querySelector('.project-nav-preview img');
+  if (prevImg && prevData) prevImg.src = prevData.images[0] || '';
+  if (nextImg && nextData) nextImg.src = nextData.images[0] || '';
+}
+
+function _slideToProject(id, direction) {
+  const modal   = document.getElementById('projectModal');
+  const content = modal.querySelector('.p-modal-content');
+  if (window.gsap) {
+    const xOut = direction === 'next' ? -60 : 60;
+    const xIn  = direction === 'next' ?  60 : -60;
+    gsap.timeline()
+      .to(content, { x: xOut, opacity: 0, duration: 0.22, ease: 'power2.in' })
+      .call(() => { openProject(id); })
+      .fromTo(content, { x: xIn, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' });
+  } else {
+    openProject(id);
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   6. ALL WORKS FULLSCREEN GALLERY
+───────────────────────────────────────────────── */
+let currentFilter = 'all';
+
+window.openAllWorks = function() {
+  const overlay = document.getElementById('allWorksOverlay');
+  currentFilter = 'all';
+  // Reset filter tabs
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === 'all');
+  });
+  _buildWorksGrid('all');
+  overlay.classList.add('active');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  if (lenis) lenis.stop();
+
+  // Animate cards in
+  setTimeout(() => {
+    if (window.gsap) {
+      gsap.from(document.querySelectorAll('.work-card'), {
+        opacity: 0, y: 30, scale: 0.95, duration: 0.4,
+        stagger: { each: 0.05, from: 'start' },
+        ease: 'power3.out'
+      });
+    }
+  }, 60);
+};
+
+window.closeAllWorks = function() {
+  document.getElementById('allWorksOverlay').classList.remove('active');
+  const modal = document.getElementById('projectModal');
+  if (modal.style.display !== 'flex') {
+    document.body.style.overflow = '';
+    if (lenis) lenis.start();
+  }
+};
+
+window.filterWorks = function(cat) {
+  if (currentFilter === cat) return;
+  currentFilter = cat;
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === cat);
+  });
+  const grid = document.getElementById('worksGrid');
+  if (window.gsap && grid.children.length > 0) {
+    gsap.to([...grid.children], {
+      opacity: 0, y: 14, scale: 0.94,
+      duration: 0.18, stagger: 0.025, ease: 'power2.in',
+      onComplete: () => {
+        _buildWorksGrid(cat);
+        gsap.from([...grid.children], {
+          opacity: 0, y: 28, scale: 0.95,
+          duration: 0.38, stagger: 0.05, ease: 'power3.out'
+        });
+      }
+    });
+  } else {
+    _buildWorksGrid(cat);
+    if (window.gsap) {
+      gsap.from([...grid.children], {
+        opacity: 0, y: 28, scale: 0.95,
+        duration: 0.38, stagger: 0.05, ease: 'power3.out'
+      });
+    }
+  }
+};
+
+function _buildWorksGrid(cat) {
+  const grid = document.getElementById('worksGrid');
+  grid.innerHTML = '';
+  let count = 0;
+
+  PROJECT_ORDER.forEach(id => {
+    const data    = projectData[id];
+    if (!data) return;
+    const projCat = PROJECT_CATEGORIES[id] || 'other';
+    if (cat !== 'all' && projCat !== cat) return;
+    count++;
+
+    const catColor = { development:'var(--a1)', uiux:'var(--a3)', graphic:'var(--amber)', bisnis:'var(--green)' };
+
+    const card = document.createElement('div');
+    card.className = 'work-card';
+    card.dataset.category = projCat;
+    card.innerHTML = `
+      <div class="work-card-img-wrap">
+        <img class="work-card-img" src="${data.images[0]}" alt="${data.title}"
+          onerror="this.style.minHeight='120px';this.style.background='var(--bg3)'">
+      </div>
+      <div class="work-card-body">
+        <div class="work-card-cat" style="color:${catColor[projCat]||'var(--a1)'}">${CAT_LABELS[projCat] || projCat}</div>
+        <div class="work-card-title">${data.title.split('—')[0].split('·')[0].trim()}</div>
+        <div class="work-card-desc">${data.desc.substring(0, 110)}...</div>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      closeAllWorks();
+      setTimeout(() => openProject(id), 420);
+    });
+    grid.appendChild(card);
+  });
+
+  if (count === 0) {
+    grid.innerHTML = '<div class="works-empty">Tidak ada karya di kategori ini.</div>';
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   7. KEYBOARD SHORTCUTS
+───────────────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('cvModalOverlay').classList.contains('active')) {
+    closeCVModal(); return;
+  }
+  if (document.getElementById('allWorksOverlay').classList.contains('active')) {
+    closeAllWorks(); return;
+  }
+});
+
+// Restore lenis on project modal close
+const _origClose = window.closeProjectModal;
+window.closeProjectModal = function() {
+  if (_origClose) _origClose();
+  else {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    setTimeout(() => { modal.style.display = 'none'; }, 300);
+  }
+  // Only restore scroll if CV + all works also closed
+  const cv = document.getElementById('cvModalOverlay');
+  const aw = document.getElementById('allWorksOverlay');
+  if (!cv.classList.contains('active') && !aw.classList.contains('active')) {
+    document.body.style.overflow = '';
+    if (lenis) lenis.start();
+  }
+};
+
+/* ─────────────────────────────────────────────────
+   8. MAGNETIC HERO ORBS — PHYSICS LERP SYSTEM
+───────────────────────────────────────────────── */
+(function initMagneticOrbs() {
+  const orbEls = ['.orb-1','.orb-2','.orb-3','.orb-4']
+    .map(sel => document.querySelector(sel)).filter(Boolean);
+  if (!orbEls.length) return;
+
+  // Each orb has its own lerp factor & floating phase
+  const orbStates = orbEls.map((el, i) => ({
+    el,
+    cx: 0, cy: 0,          // current position (lerp)
+    factor: 0.015 + i * 0.012, // parallax depth (orb-1=0.015, orb-4=0.051)
+    floatAmpX: 18 + i * 6,
+    floatAmpY: 12 + i * 5,
+    floatSpeedX: 0.35 + i * 0.08,
+    floatSpeedY: 0.28 + i * 0.09,
+    phaseX: (i * Math.PI) / 2,
+    phaseY: (i * Math.PI) / 3 + 1
+  }));
+
+  let mouseX = window.innerWidth  / 2;
+  let mouseY = window.innerHeight / 2;
+  let time   = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+
+  // Override the simple GSAP mousemove handlers for orbs
+  // (they're inside initGsap3D which runs later — we use RAF priority)
+  function animateOrbs() {
+    time += 0.004;
+    const cx = window.innerWidth  / 2;
+    const cy = window.innerHeight / 2;
+
+    orbStates.forEach(state => {
+      // Target = parallax from mouse + floating sine wave
+      const targetX = (mouseX - cx) * state.factor * 3.5
+                    + Math.sin(time * state.floatSpeedX + state.phaseX) * state.floatAmpX;
+      const targetY = (mouseY - cy) * state.factor * 2.5
+                    + Math.cos(time * state.floatSpeedY + state.phaseY) * state.floatAmpY;
+
+      // Spring lerp (different damping per orb = depth feel)
+      const lerpFactor = 0.028 + state.factor * 0.5;
+      state.cx += (targetX - state.cx) * lerpFactor;
+      state.cy += (targetY - state.cy) * lerpFactor;
+
+      // Apply via GSAP set (zero-cost, just sets transform matrix)
+      if (window.gsap) {
+        gsap.set(state.el, { x: state.cx, y: state.cy });
+      } else {
+        state.el.style.transform = `translate(${state.cx}px, ${state.cy}px)`;
+      }
+    });
+    requestAnimationFrame(animateOrbs);
+  }
+  animateOrbs();
+})();
+
+/* ─────────────────────────────────────────────────
+   9. FLOATING POPUP BADGES — ENHANCED WAVE ANIMATION
+───────────────────────────────────────────────── */
+(function initFloatingBadges() {
+  const badges = [
+    { id: 'pop1', ampX:  8, ampY: 10, speedX: 0.7, speedY: 0.5, phX: 0.0,  phY: 0.0  },
+    { id: 'pop2', ampX: 10, ampY:  7, speedX: 0.5, speedY: 0.8, phX: 1.05, phY: 2.09 },
+    { id: 'pop3', ampX:  7, ampY: 12, speedX: 0.9, speedY: 0.6, phX: 2.09, phY: 1.05 },
+    { id: 'pop4', ampX: 11, ampY:  8, speedX: 0.6, speedY: 0.9, phX: 3.14, phY: 3.14 }
+  ];
+
+  let time = 0;
+  let isTouch = window.matchMedia('(hover: none)').matches;
+  if (isTouch) return; // no float on touch devices
+
+  function animateBadges() {
+    time += 0.008;
+    badges.forEach(b => {
+      const el = document.getElementById(b.id);
+      if (!el) return;
+      const dx = Math.sin(time * b.speedX + b.phX) * b.ampX;
+      const dy = Math.cos(time * b.speedY + b.phY) * b.ampY;
+      // Offset onto base CSS position (don't override top/left via this)
+      el.style.marginLeft = dx + 'px';
+      el.style.marginTop  = dy + 'px';
+    });
+    requestAnimationFrame(animateBadges);
+  }
+  animateBadges();
+})();
+
+})(); // end IIFE
 </script>
 </body>
 </html>
