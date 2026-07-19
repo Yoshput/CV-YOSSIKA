@@ -965,290 +965,404 @@
   .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
 
   /* ══ PROJECTS MODAL ══ */
+  /* ══ TRANSITION PANEL (curtain-wipe) ══ */
+  #transition-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #080d1a;
+    transform: translateY(100%);
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* ══ PROJECT DETAIL — FULLSCREEN PAGE ══ */
   .p-modal {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 9000;
     display: none;
-    background: rgba(8, 12, 21, 0.85);
-    backdrop-filter: blur(12px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .p-modal.active {
-    display: block;
-    opacity: 1;
-  }
-  .p-modal-content {
     background: var(--bg);
-    border: none;
-    border-radius: 0;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    box-shadow: none;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: var(--border2) transparent;
   }
-  .p-modal-content::-webkit-scrollbar { width: 6px; }
-  .p-modal-content::-webkit-scrollbar-track { background: transparent; }
-  .p-modal-content::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
-  .p-modal.active .p-modal-content {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .p-modal-close {
+  .p-modal::-webkit-scrollbar { width: 6px; }
+  .p-modal::-webkit-scrollbar-track { background: transparent; }
+  .p-modal::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+  .p-modal.active { display: block; }
+
+  /* Back button (top-left) */
+  .pd-back-btn {
     position: fixed;
-    top: 2rem;
-    right: 2rem;
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border2);
-    color: var(--txt);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    font-size: 24px;
+    top: 1.8rem;
+    left: 2rem;
+    z-index: 9100;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    background: rgba(10, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
     cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    letter-spacing: 0.2px;
   }
-  .p-modal-close:hover {
-    background: var(--a3);
-    border-color: var(--a3);
-    color: white;
-    transform: scale(1.1) rotate(90deg);
+  .pd-back-btn:hover {
+    background: rgba(59,130,246,0.25);
+    border-color: var(--a1);
+    transform: translateX(-3px);
   }
-  .p-modal-grid {
+  .pd-back-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* ── HERO BANNER ── */
+  .pd-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    min-height: auto;
-    gap: 0;
+    justify-content: flex-end;
   }
-  @media (max-width: 768px) {
-    .p-modal-content {
-      height: 100vh;
-      max-height: 100vh;
-    }
-    .p-modal-grid {
-      display: flex;
-      flex-direction: column;
-    }
+  .pd-hero-bg {
+    position: absolute;
+    inset: 0;
+    top: -15%;
+    height: 130%;
+    background-size: cover;
+    background-position: center top;
+    will-change: transform;
+    transform-origin: center center;
   }
-  .p-modal-slider-container {
+  .pd-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8,13,26,0.15) 0%,
+      rgba(8,13,26,0.35) 35%,
+      rgba(8,13,26,0.72) 65%,
+      rgba(8,13,26,0.92) 100%
+    );
+    z-index: 1;
+  }
+  .pd-hero-content {
     position: relative;
-    background: #090e18;
-    width: 100%;
-    aspect-ratio: 16/9;
-    max-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-  @media (max-width: 768px) {
-    .p-modal-slider-container {
-      aspect-ratio: 4/3;
-      max-height: 40vh;
-    }
-  }
-  .p-modal-slides {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-  .p-modal-slide {
-    min-width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .p-modal-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .p-slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: white;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .p-slider-btn:hover {
-    background: var(--a1);
-    border-color: var(--a1);
-    transform: translateY(-50%) scale(1.1);
-  }
-  .p-slider-btn.prev { left: 1.5rem; }
-  .p-slider-btn.next { right: 1.5rem; }
-  .p-slider-dots {
-    position: absolute;
-    bottom: 1.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 5;
-  }
-  .p-slider-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.35);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .p-slider-dot.active {
-    background: var(--a1);
-    transform: scale(1.3);
-  }
-  .p-modal-details {
-    padding: 3rem 10% 4rem;
+    z-index: 2;
+    padding: 0 8% 4rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    box-sizing: border-box;
   }
-  .p-modal-meta-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 24px 0;
-    margin: 10px 0;
-  }
-  @media (max-width: 768px) {
-    .p-modal-meta-row {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      padding: 16px 0;
-    }
-  }
-  .p-modal-meta-col {
+  .pd-hero-eyebrow {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .p-modal-meta-label {
+    align-items: center;
+    gap: 10px;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--txt3);
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.55);
   }
-  .p-modal-meta-val {
+  .pd-hero-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--a1);
+    display: block;
+  }
+  .pd-hero-title {
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #fff;
+    line-height: 1.05;
+    max-width: 900px;
+    margin: 0;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+  .pd-hero-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── HERO META GRID 4 COLUMNS ── */
+  .pd-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    .pd-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .pd-hero-content { padding: 0 5% 3rem; }
+    .pd-hero-title { font-size: clamp(1.8rem, 8vw, 3rem); }
+  }
+  .pd-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 1.5rem 0 0;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .pd-meta-item:last-child { border-right: none; }
+  .pd-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.45);
+  }
+  .pd-meta-val {
     font-size: 14px;
     font-weight: 600;
-    color: var(--txt);
+    color: rgba(255,255,255,0.9);
+    line-height: 1.4;
   }
-  .p-modal-meta-val a {
+  .pd-meta-val a {
     color: var(--a1);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .p-modal-meta-val a:hover {
-    color: var(--a2);
-  }
-  @media (max-width: 768px) {
-    .p-modal-details {
-      padding: 2rem 1.5rem 3rem;
-    }
-  }
-  .p-modal-details h3 {
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -.03em;
-    background: linear-gradient(135deg, var(--txt) 30%, var(--txt2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .p-modal-tech {
+  .pd-meta-val a:hover { color: #93c5fd; }
+
+  /* ── BODY / SCREENSHOTS ── */
+  .pd-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem 5% 8rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+    box-sizing: border-box;
   }
-  .p-modal-details p {
-    font-size: 13px;
+  @media (max-width: 768px) { .pd-body { padding: 3rem 4% 6rem; gap: 3rem; } }
+
+  /* Description + features block */
+  .pd-info-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  @media (max-width: 768px) { .pd-info-block { grid-template-columns: 1fr; gap: 1.5rem; } }
+  .pd-desc {
+    font-size: 16px;
+    line-height: 1.8;
     color: var(--txt2);
-    line-height: 1.65;
   }
-  .p-modal-details h4 {
-    font-size: 12.5px;
+  .pd-features-title {
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 1.5px;
     color: var(--a1);
-    margin-top: 0.3rem;
+    margin-bottom: 1rem;
   }
-  .p-modal-features {
+  .pd-features {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
   }
-  .p-modal-features li {
-    font-size: 12.5px;
+  .pd-features li {
+    font-size: 14px;
     color: var(--txt2);
     display: flex;
     align-items: flex-start;
-    gap: 6px;
-    line-height: 1.4;
+    gap: 10px;
+    line-height: 1.5;
   }
-  .p-modal-features li::before {
-    content: '✦';
+  .pd-features li::before {
+    content: '▸';
     color: var(--a1);
-    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  /* Action buttons row */
+  .pd-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Screenshots label */
+  .pd-screenshots-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--txt3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pd-screenshots-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── LAPTOP MOCKUP FRAME (first screenshot) ── */
+  .pd-mockup-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .pd-laptop-frame {
+    position: relative;
+    background: #1a1f2e;
+    border: 3px solid #2a3045;
+    border-radius: 16px 16px 6px 6px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.05),
+      0 40px 100px rgba(0,0,0,0.7),
+      0 80px 160px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+  .pd-laptop-notch {
+    height: 28px;
+    background: #1a1f2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     flex-shrink: 0;
   }
-  .p-modal-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: auto;
-    padding-top: 1rem;
+  .pd-laptop-notch::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.05);
+  }
+  .pd-laptop-screen {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+  }
+  .pd-laptop-base {
+    height: 18px;
+    background: linear-gradient(to bottom, #232840, #1a1f2e);
+    border-radius: 0 0 4px 4px;
+    position: relative;
+  }
+  .pd-laptop-base::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 8px;
+    background: #141824;
+    border-radius: 0 0 6px 6px;
+  }
+
+  /* ── FLAT SCREENSHOTS (rest) ── */
+  .pd-screenshot-wrap {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    background: var(--bg2);
+  }
+  .pd-screenshot-wrap img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+  }
+  .pd-screenshot-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(8,13,26,0.85), transparent);
+    padding: 1rem 1.2rem 0.8rem;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── NEXT / PREV NAV (bottom of detail page) ── */
+  .pd-nav-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    margin-top: 1rem;
   }
-  @media (max-width: 768px) {
-    .p-modal-actions {
-      margin-top: 1rem;
-    }
+  @media (max-width: 640px) { .pd-nav-row { grid-template-columns: 1fr; } }
+  .pd-nav-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    text-align: left;
+    overflow: hidden;
+    position: relative;
   }
+  .pd-nav-btn:hover {
+    border-color: var(--a1);
+    background: rgba(59,130,246,0.06);
+    transform: translateY(-3px);
+  }
+  .pd-nav-btn.nav-next { flex-direction: row-reverse; text-align: right; }
+  .pd-nav-thumb {
+    width: 56px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--bg3);
+  }
+  .pd-nav-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-nav-info { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+  .pd-nav-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--txt3);
+  }
+  .pd-nav-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--txt);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Removed old modal CSS selectors still referenced in cursor css */
+  .p-modal-close, .p-slider-btn, .p-slider-dot { cursor: pointer; }
 
   /* ══ RESPONSIVE ══ */
   @media(max-width:960px){
@@ -3045,65 +3159,101 @@
   </div>
 </div>
 
-<!-- Project Details Modal -->
-<div id="projectModal" class="p-modal" onclick="if(event.target===this) closeProjectModal()">
-  <div class="p-modal-content">
-    <button class="p-modal-close" onclick="closeProjectModal()">&times;</button>
-    <div class="p-modal-grid">
-      <div class="p-modal-slider-container">
-        <div class="p-modal-slides" id="modalSlides"></div>
-        <button class="p-slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="p-slider-btn next" onclick="moveSlide(1)">&#10095;</button>
-        <div class="p-slider-dots" id="modalDots"></div>
-      </div>
-      <div class="p-modal-details">
-        <h3 id="modalTitle">Project Title</h3>
-        
-        <!-- Premium 4-Column Metadata Row -->
-        <div class="p-modal-meta-row">
-          <div class="p-modal-meta-col">
-            <span class="p-modal-meta-label">Role</span>
-            <span class="p-modal-meta-val" id="modalMetaRole">Developer</span>
-          </div>
-          <div class="p-modal-meta-col">
-            <span class="p-modal-meta-label">Year</span>
-            <span class="p-modal-meta-val" id="modalMetaYear">2026</span>
-          </div>
-          <div class="p-modal-meta-col">
-            <span class="p-modal-meta-label">Tech Stack</span>
-            <div class="p-modal-tech" id="modalTech" style="gap: 4px;"></div>
-          </div>
-          <div class="p-modal-meta-col">
-            <span class="p-modal-meta-label">Live Project</span>
-            <span class="p-modal-meta-val" id="modalMetaLive">
-              <span id="modalActions"></span>
-            </span>
-          </div>
-        </div>
+<!-- Curtain Wipe Transition Panel -->
+<div id="transition-panel"></div>
 
-        <p id="modalDesc" style="font-size:14px; line-height:1.7; color:var(--txt2);">Project description...</p>
-        
-        <h4 style="margin-top: 1rem;">Fitur Utama:</h4>
-        <ul class="p-modal-features" id="modalFeatures"></ul>
+<!-- Project Details — Fullscreen Page -->
+<div id="projectModal" class="p-modal">
+  <!-- Back / Close button -->
+  <button class="pd-back-btn" id="pdBackBtn" onclick="closeProjectModal()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Kembali
+  </button>
+
+  <!-- Hero Banner 100vh -->
+  <div class="pd-hero" id="pdHero">
+    <div class="pd-hero-bg" id="pdHeroBg"></div>
+    <div class="pd-hero-overlay"></div>
+    <div class="pd-hero-content">
+      <div class="pd-hero-eyebrow" id="pdEyebrow">Project Detail</div>
+      <h1 class="pd-hero-title" id="pdTitle">Project Title</h1>
+      <div class="pd-hero-tech" id="pdHeroTech"></div>
+      <!-- 4-column meta grid -->
+      <div class="pd-meta-grid">
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Role</span>
+          <span class="pd-meta-val" id="pdMetaRole">Developer</span>
+        </div>
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Year</span>
+          <span class="pd-meta-val" id="pdMetaYear">2026</span>
+        </div>
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Category</span>
+          <span class="pd-meta-val" id="pdMetaCat">—</span>
+        </div>
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Live Project</span>
+          <span class="pd-meta-val" id="pdMetaLive">—</span>
+        </div>
       </div>
     </div>
-    <!-- NEXT / PREV NAVIGATION -->
-    <div class="project-nav-row" id="projectNavRow">
-      <button class="project-nav-btn nav-prev" id="navPrevBtn" onclick="">
-        <div class="project-nav-preview"><img src="" alt="" loading="lazy"></div>
-        <span class="project-nav-label">← Sebelumnya</span>
-        <span class="project-nav-name" id="navPrevName">Project</span>
+  </div>
+
+  <!-- Body: description, features, screenshots -->
+  <div class="pd-body" id="pdBody">
+
+    <!-- Info block: description + features -->
+    <div class="pd-info-block">
+      <p class="pd-desc" id="pdDesc">Loading...</p>
+      <div>
+        <div class="pd-features-title">Fitur Utama</div>
+        <ul class="pd-features" id="pdFeatures"></ul>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="pd-actions" id="pdActions"></div>
+
+    <!-- Screenshots section -->
+    <div class="pd-screenshots-label">Screenshots &amp; Preview</div>
+
+    <!-- First screenshot: laptop mockup frame -->
+    <div class="pd-mockup-wrap pd-screenshot-wrap" id="pdMockupWrap">
+      <div class="pd-laptop-frame">
+        <div class="pd-laptop-notch"></div>
+        <img class="pd-laptop-screen" id="pdFirstScreenshot" src="" alt="Screenshot 1" loading="lazy">
+        <div class="pd-laptop-base"></div>
+      </div>
+    </div>
+
+    <!-- Remaining screenshots: flat vertical -->
+    <div id="pdScreenshots"></div>
+
+    <!-- Next / Prev navigation -->
+    <div class="pd-nav-row" id="pdNavRow">
+      <button class="pd-nav-btn nav-prev" id="pdNavPrev">
+        <div class="pd-nav-thumb"><img src="" alt="" loading="lazy" id="pdNavPrevImg"></div>
+        <div class="pd-nav-info">
+          <span class="pd-nav-label">← Sebelumnya</span>
+          <span class="pd-nav-name" id="pdNavPrevName">Project</span>
+        </div>
       </button>
-      <button class="project-nav-btn nav-next" id="navNextBtn" onclick="">
-        <div class="project-nav-preview"><img src="" alt="" loading="lazy"></div>
-        <span class="project-nav-label">Selanjutnya →</span>
-        <span class="project-nav-name" id="navNextName">Project</span>
+      <button class="pd-nav-btn nav-next" id="pdNavNext">
+        <div class="pd-nav-info">
+          <span class="pd-nav-label">Selanjutnya →</span>
+          <span class="pd-nav-name" id="pdNavNextName">Project</span>
+        </div>
+        <div class="pd-nav-thumb"><img src="" alt="" loading="lazy" id="pdNavNextImg"></div>
       </button>
     </div>
-    <!-- ALL WORKS BUTTON IN MODAL -->
-    <div style="display:flex;justify-content:center;padding:16px;border-top:1px solid var(--border);">
-      <button onclick="closeProjectModal();setTimeout(openAllWorks,350)" class="all-works-cta" style="padding:10px 24px;font-size:13px;">
-        <span class="all-works-cta-icon">❖</span> Lihat Semua Project
+
+    <!-- All Works link -->
+    <div style="display:flex;justify-content:center;padding:1rem 0 2rem;">
+      <button onclick="closeProjectModal();setTimeout(openAllWorks,600)" class="all-works-cta" style="padding:10px 24px;font-size:13px;">
+        <span class="all-works-cta-icon">❖</span> Lihat Semua Project &amp; Karya
       </button>
     </div>
   </div>
@@ -4673,18 +4823,64 @@ const CAT_LABELS = {
 };
 
 /* ─────────────────────────────────────────────────
-   4. ENHANCED openProject — OVERRIDE
+   4. CURTAIN-WIPE TRANSITION ENGINE
 ───────────────────────────────────────────────── */
 let currentProjectId = null;
-// Save original vars used by existing code
-// (currentSlide, currentSlidesCount are globals defined earlier)
+let _pdParallaxST = null; // active parallax ScrollTrigger
+let _pdIsAnimating = false;
 
+const panel = document.getElementById('transition-panel');
+
+function _curtainIn(onComplete) {
+  // Panel slides UP from bottom to cover screen
+  _pdIsAnimating = true;
+  if (window.gsap) {
+    gsap.set(panel, { yPercent: 100 });
+    gsap.to(panel, {
+      yPercent: 0,
+      duration: 0.85,
+      ease: 'expo.inOut',
+      onComplete: function() {
+        if (onComplete) onComplete();
+      }
+    });
+  } else {
+    panel.style.transform = 'translateY(0%)';
+    setTimeout(onComplete, 200);
+  }
+}
+
+function _curtainOut(onComplete) {
+  // Panel sweeps UP out of viewport to reveal content
+  if (window.gsap) {
+    gsap.set(panel, { yPercent: 0 });
+    gsap.to(panel, {
+      yPercent: -100,
+      duration: 1.0,
+      ease: 'expo.inOut',
+      onComplete: function() {
+        _pdIsAnimating = false;
+        gsap.set(panel, { yPercent: 100 }); // reset to bottom for next use
+        if (onComplete) onComplete();
+      }
+    });
+  } else {
+    panel.style.transform = 'translateY(-100%)';
+    _pdIsAnimating = false;
+    setTimeout(() => { panel.style.transform = 'translateY(100%)'; if (onComplete) onComplete(); }, 200);
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   5. openProject — CURTAIN FLOW
+───────────────────────────────────────────────── */
 window.openProject = function(id) {
+  if (_pdIsAnimating) return;
   currentProjectId = id;
   const data = projectData[id];
   if (!data) return;
 
-  // 💥 Card pulse animation (find matching card)
+  // Card pulse feedback
   if (window.gsap) {
     document.querySelectorAll('.project-card, .graphic-card, .featured-showcase').forEach(card => {
       const oc = card.getAttribute('onclick') || '';
@@ -4696,135 +4892,295 @@ window.openProject = function(id) {
     });
   }
 
-  // Populate title
-  document.getElementById('modalTitle').textContent = data.title;
+  // Step 1: curtain slides in (covers screen)
+  _curtainIn(function() {
+    // Step 2: populate content while hidden behind curtain
+    _populateProjectDetail(data, id);
 
-  // Populate Role & Year metadata
-  document.getElementById('modalMetaRole').textContent = data.role || 'Developer';
-  document.getElementById('modalMetaYear').textContent = data.year || '2026';
+    // Show the modal (behind curtain)
+    const modal = document.getElementById('projectModal');
+    modal.style.display = 'block';
+    modal.classList.add('active');
+    modal.scrollTop = 0;
 
-  // Populate tech pills
-  const techCont = document.getElementById('modalTech');
+    // Kill any previous parallax
+    if (_pdParallaxST) { _pdParallaxST.kill(); _pdParallaxST = null; }
+
+    // Small delay so DOM renders behind curtain
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        // Step 3: curtain sweeps out, revealing content
+        _curtainOut(function() {
+          // Step 4: reveal timeline animations
+          _runRevealTimeline();
+          // Step 5: setup parallax
+          _setupHeroParallax();
+        });
+      });
+    });
+  });
+};
+
+/* ─────────────────────────────────────────────────
+   6. POPULATE PROJECT DETAIL CONTENT
+───────────────────────────────────────────────── */
+function _populateProjectDetail(data, id) {
+  // Hero background
+  const heroBg = document.getElementById('pdHeroBg');
+  if (data.images && data.images[0]) {
+    heroBg.style.backgroundImage = 'url("' + data.images[0] + '")';
+  } else {
+    heroBg.style.backgroundImage = 'linear-gradient(135deg, var(--bg2), var(--bg3))';
+  }
+  gsap && gsap.set(heroBg, { yPercent: 0 }); // reset parallax position
+
+  // Eyebrow: category label
+  const catKey = PROJECT_CATEGORIES[id] || 'development';
+  document.getElementById('pdEyebrow').textContent = (CAT_LABELS[catKey] || 'Project') + ' · ' + (data.year || '2026');
+
+  // Title
+  document.getElementById('pdTitle').textContent = data.title;
+
+  // Tech pills (hero)
+  const techCont = document.getElementById('pdHeroTech');
   techCont.innerHTML = '';
   data.tech.forEach((t, i) => {
-    const span = document.createElement('span');
-    span.className = 'pill ' + (data.techClasses[i] || 'pill-blue');
-    span.textContent = t;
-    techCont.appendChild(span);
+    const s = document.createElement('span');
+    s.className = 'pill ' + (data.techClasses[i] || 'pill-blue');
+    s.textContent = t;
+    techCont.appendChild(s);
   });
 
-  // Populate description & features
-  document.getElementById('modalDesc').textContent = data.desc;
-  const featCont = document.getElementById('modalFeatures');
+  // Meta grid
+  document.getElementById('pdMetaRole').textContent = data.role || 'Developer';
+  document.getElementById('pdMetaYear').textContent = data.year || '2026';
+  document.getElementById('pdMetaCat').textContent = CAT_LABELS[catKey] || catKey;
+
+  // Live project link (first primary action)
+  const liveMeta = document.getElementById('pdMetaLive');
+  const primary = data.actions && data.actions.find(a => a.primary);
+  if (primary) {
+    liveMeta.innerHTML = '<a href="' + primary.link + '" target="_blank" rel="noopener">' + primary.text + ' ↗</a>';
+  } else {
+    liveMeta.textContent = '—';
+  }
+
+  // Description
+  document.getElementById('pdDesc').textContent = data.desc;
+
+  // Features
+  const featCont = document.getElementById('pdFeatures');
   featCont.innerHTML = '';
-  data.features.forEach(f => {
+  (data.features || []).forEach(f => {
     const li = document.createElement('li');
     li.textContent = f;
     featCont.appendChild(li);
   });
 
-  // Populate action buttons
-  const actCont = document.getElementById('modalActions');
+  // Action buttons
+  const actCont = document.getElementById('pdActions');
   actCont.innerHTML = '';
-  data.actions.forEach(act => {
+  (data.actions || []).forEach(act => {
     const a = document.createElement('a');
-    a.href = act.link; a.target = '_blank';
+    a.href = act.link; a.target = '_blank'; a.rel = 'noopener';
     a.className = act.primary ? 'btn btn-grad' : 'btn btn-glass';
-    a.style.cssText = 'padding:8px 18px;font-size:12px;';
     a.textContent = act.text;
     actCont.appendChild(a);
   });
 
-  // Populate image slider
-  const slidesCont = document.getElementById('modalSlides');
-  const dotsCont   = document.getElementById('modalDots');
-  slidesCont.innerHTML = ''; dotsCont.innerHTML = '';
-  currentSlidesCount = data.images.length;
-  currentSlide = 0;
+  // Screenshots
+  const firstImg = document.getElementById('pdFirstScreenshot');
+  const mockupWrap = document.getElementById('pdMockupWrap');
+  const restCont = document.getElementById('pdScreenshots');
 
-  data.images.forEach((src, idx) => {
-    const slide = document.createElement('div');
-    slide.className = 'p-modal-slide';
-    const img = document.createElement('img');
-    img.src = src; img.alt = data.title + ' ' + (idx + 1); img.loading = 'lazy';
-    img.onerror = function() { this.src = 'assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp'; };
-    slide.appendChild(img); slidesCont.appendChild(slide);
-
-    const dot = document.createElement('span');
-    dot.className = 'p-slider-dot' + (idx === 0 ? ' active' : '');
-    dot.onclick = () => setSlide(idx);
-    dotsCont.appendChild(dot);
-  });
-  slidesCont.style.transform = 'translateX(0%)';
-
-  // Update next/prev nav
-  _updateProjectNav();
-
-  // Show modal with GSAP spring animation
-  const modal = document.getElementById('projectModal');
-  modal.style.display = 'flex';
-  if (window.gsap) {
-    const content = modal.querySelector('.p-modal-content');
-    gsap.fromTo(content,
-      { y: 70, opacity: 0, scale: 0.96 },
-      { y: 0,  opacity: 1, scale: 1, duration: 0.55, ease: 'power4.out' }
-    );
+  if (data.images && data.images.length > 0) {
+    firstImg.src = data.images[0];
+    firstImg.alt = data.title + ' — Screenshot 1';
+    firstImg.onerror = function() { this.src = 'assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp'; };
+    mockupWrap.style.display = '';
+  } else {
+    mockupWrap.style.display = 'none';
   }
-  setTimeout(() => modal.classList.add('active'), 10);
-  
-  // Scroll modal content to top on open
-  modal.querySelector('.p-modal-content').scrollTop = 0;
-};
+
+  restCont.innerHTML = '';
+  restCont.style.display = 'flex';
+  restCont.style.flexDirection = 'column';
+  restCont.style.gap = '4rem';
+
+  (data.images || []).slice(1).forEach((src, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'pd-screenshot-wrap';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = data.title + ' — Screenshot ' + (i + 2);
+    img.loading = 'lazy';
+    img.onerror = function() { this.src = 'assets/img/foto kegiatan/05-Project/01-KK5-Cinematic-Project.webp'; };
+    const cap = document.createElement('div');
+    cap.className = 'pd-screenshot-caption';
+    cap.textContent = 'Screenshot ' + (i + 2);
+    wrap.appendChild(img);
+    wrap.appendChild(cap);
+    restCont.appendChild(wrap);
+  });
+
+  // Next / Prev nav
+  _updatePdNav(id);
+}
 
 /* ─────────────────────────────────────────────────
-   5. NEXT / PREV NAVIGATION
+   7. REVEAL TIMELINE (title → meta → screenshots)
 ───────────────────────────────────────────────── */
-function _updateProjectNav() {
-  const idx    = PROJECT_ORDER.indexOf(currentProjectId);
+function _runRevealTimeline() {
+  if (!window.gsap) return;
+  // Reset positions before animating
+  gsap.set('#pdTitle', { y: 70, opacity: 0 });
+  gsap.set('.pd-hero-eyebrow', { y: 30, opacity: 0 });
+  gsap.set('.pd-hero-tech .pill', { y: 20, opacity: 0 });
+  gsap.set('.pd-meta-item', { y: 30, opacity: 0 });
+  gsap.set('#pdMockupWrap', { y: 60, opacity: 0 });
+  gsap.set('.pd-screenshot-wrap', { y: 60, opacity: 0 });
+  gsap.set('.pd-info-block', { y: 40, opacity: 0 });
+  gsap.set('.pd-actions', { y: 20, opacity: 0 });
+  gsap.set('.pd-back-btn', { x: -20, opacity: 0 });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+  tl.to('.pd-back-btn', { x: 0, opacity: 1, duration: 0.6 }, 0)
+    .to('.pd-hero-eyebrow', { y: 0, opacity: 1, duration: 0.8 }, 0.1)
+    .to('#pdTitle', { y: 0, opacity: 1, duration: 1.2 }, 0.2)
+    .to('.pd-hero-tech .pill', { y: 0, opacity: 1, duration: 0.6, stagger: 0.07 }, 0.55)
+    .to('.pd-meta-item', { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' }, 0.65)
+    .to('.pd-info-block', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.8)
+    .to('.pd-actions', { y: 0, opacity: 1, duration: 0.6 }, 0.95)
+    .to('#pdMockupWrap', { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0.9)
+    .to('.pd-screenshot-wrap', { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }, 1.0);
+}
+
+/* ─────────────────────────────────────────────────
+   8. HERO PARALLAX SCROLLTRIGGER
+───────────────────────────────────────────────── */
+function _setupHeroParallax() {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  const heroBg = document.getElementById('pdHeroBg');
+  const modal  = document.getElementById('projectModal');
+  if (!heroBg || !modal) return;
+
+  // Use the modal element as scroller
+  _pdParallaxST = gsap.to(heroBg, {
+    yPercent: 20,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: document.getElementById('pdHero'),
+      scroller: modal,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+      invalidateOnRefresh: true
+    }
+  });
+
+  // Sync Lenis scroll events with this ScrollTrigger
+  if (lenis) {
+    // Lenis scroll event already updates ScrollTrigger via the global listener
+    // But we also proxy the modal's own scroll for parallax
+    modal.addEventListener('scroll', () => {
+      if (window.ScrollTrigger) ScrollTrigger.update();
+    }, { passive: true });
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   9. UPDATE NEXT / PREV NAV
+───────────────────────────────────────────────── */
+function _updatePdNav(id) {
+  const idx    = PROJECT_ORDER.indexOf(id);
   const prevId = PROJECT_ORDER[(idx - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length];
   const nextId = PROJECT_ORDER[(idx + 1) % PROJECT_ORDER.length];
-
-  const prevBtn = document.getElementById('navPrevBtn');
-  const nextBtn = document.getElementById('navNextBtn');
-  if (!prevBtn || !nextBtn) return;
-
-  // Wire up click handlers
-  prevBtn.onclick = () => _slideToProject(prevId, 'prev');
-  nextBtn.onclick = () => _slideToProject(nextId, 'next');
 
   const prevData = projectData[prevId];
   const nextData = projectData[nextId];
 
-  // Set names (trim after dash)
-  const prevName = prevData ? (prevData.title.split('—')[0].split('·')[0].trim()) : '';
-  const nextName = nextData ? (nextData.title.split('—')[0].split('·')[0].trim()) : '';
-  document.getElementById('navPrevName').textContent = prevName;
-  document.getElementById('navNextName').textContent = nextName;
+  const prevName = prevData ? prevData.title.split('—')[0].trim() : '';
+  const nextName = nextData ? nextData.title.split('—')[0].trim() : '';
 
-  // Set thumbnail previews
-  const prevImg = prevBtn.querySelector('.project-nav-preview img');
-  const nextImg = nextBtn.querySelector('.project-nav-preview img');
+  document.getElementById('pdNavPrevName').textContent = prevName;
+  document.getElementById('pdNavNextName').textContent = nextName;
+
+  const prevImg = document.getElementById('pdNavPrevImg');
+  const nextImg = document.getElementById('pdNavNextImg');
   if (prevImg && prevData) prevImg.src = prevData.images[0] || '';
   if (nextImg && nextData) nextImg.src = nextData.images[0] || '';
+
+  const prevBtn = document.getElementById('pdNavPrev');
+  const nextBtn = document.getElementById('pdNavNext');
+  if (prevBtn) prevBtn.onclick = () => _curtainNav(prevId);
+  if (nextBtn) nextBtn.onclick = () => _curtainNav(nextId);
 }
 
-function _slideToProject(id, direction) {
-  const modal   = document.getElementById('projectModal');
-  const content = modal.querySelector('.p-modal-content');
-  if (window.gsap) {
-    const xOut = direction === 'next' ? -60 : 60;
-    const xIn  = direction === 'next' ?  60 : -60;
-    gsap.timeline()
-      .to(content, { x: xOut, opacity: 0, duration: 0.22, ease: 'power2.in' })
-      .call(() => { openProject(id); })
-      .fromTo(content, { x: xIn, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' });
-  } else {
-    openProject(id);
-  }
+function _curtainNav(id) {
+  if (_pdIsAnimating) return;
+  const modal = document.getElementById('projectModal');
+
+  _curtainIn(function() {
+    // Scroll modal to top during curtain
+    modal.scrollTop = 0;
+    // Kill old parallax
+    if (_pdParallaxST) { _pdParallaxST.kill(); _pdParallaxST = null; }
+    // Populate new content
+    currentProjectId = id;
+    const data = projectData[id];
+    if (data) _populateProjectDetail(data, id);
+
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        _curtainOut(function() {
+          _runRevealTimeline();
+          _setupHeroParallax();
+        });
+      });
+    });
+  });
 }
 
 /* ─────────────────────────────────────────────────
-   6. ALL WORKS FULLSCREEN GALLERY
+   10. closeProjectModal — REVERSE CURTAIN
+───────────────────────────────────────────────── */
+window.closeProjectModal = function() {
+  if (_pdIsAnimating) return;
+  // Curtain sweeps DOWN from top to cover, then hides modal
+  _pdIsAnimating = true;
+  if (window.gsap) {
+    gsap.set(panel, { yPercent: -100 });
+    gsap.to(panel, {
+      yPercent: 0,
+      duration: 0.85,
+      ease: 'expo.inOut',
+      onComplete: function() {
+        const modal = document.getElementById('projectModal');
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+        modal.scrollTop = 0;
+        if (_pdParallaxST) { _pdParallaxST.kill(); _pdParallaxST = null; }
+        // Reset panel back to bottom (ready for next open)
+        gsap.to(panel, {
+          yPercent: 100,
+          duration: 0.7,
+          ease: 'expo.inOut',
+          onComplete: function() { _pdIsAnimating = false; }
+        });
+      }
+    });
+  } else {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    modal.style.display = 'none';
+    panel.style.transform = 'translateY(100%)';
+    _pdIsAnimating = false;
+  }
+};
+
+/* ─────────────────────────────────────────────────
+   11. ALL WORKS FULLSCREEN GALLERY
 ───────────────────────────────────────────────── */
 let currentFilter = 'all';
 
