@@ -1032,15 +1032,17 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .pd-hero-bg {
     position: absolute;
     inset: 0;
-    top: -15%;
-    height: 130%;
+    top: -20%;
+    height: 140%;
     background-size: cover;
-    background-position: center top;
+    background-position: center center;
     will-change: transform;
     transform-origin: center center;
   }
@@ -1049,78 +1051,80 @@
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(8,13,26,0.15) 0%,
-      rgba(8,13,26,0.35) 35%,
-      rgba(8,13,26,0.72) 65%,
-      rgba(8,13,26,0.92) 100%
+      rgba(8,13,26,0.3) 0%,
+      rgba(8,13,26,0.5) 40%,
+      rgba(8,13,26,0.85) 80%,
+      rgba(8,13,26,1) 100%
     );
     z-index: 1;
   }
   .pd-hero-content {
     position: relative;
     z-index: 2;
-    padding: 0 8% 4rem;
+    padding: 0 5%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    will-change: transform;
   }
   .pd-hero-eyebrow {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: rgba(255,255,255,0.55);
-  }
-  .pd-hero-eyebrow::before {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--a1);
-    display: block;
+    color: var(--a1);
+    margin-bottom: 0.5rem;
   }
   .pd-hero-title {
-    font-size: clamp(2.4rem, 6vw, 5rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-size: clamp(3.5rem, 12vw, 9rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
     color: #fff;
-    line-height: 1.05;
-    max-width: 900px;
+    line-height: 0.95;
     margin: 0;
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    text-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  }
+  .pd-hero-desc {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    margin: 0 auto;
   }
   .pd-hero-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: center;
+    margin-top: 1rem;
   }
 
-  /* ── HERO META GRID 4 COLUMNS ── */
+  /* ── META GRID (Moved to body) ── */
   .pd-meta-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.15);
-    padding-top: 1.5rem;
-    margin-top: 0.5rem;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 3rem;
   }
-  @media (max-width: 768px) {
-    .pd-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .pd-hero-content { padding: 0 5% 3rem; }
-    .pd-hero-title { font-size: clamp(1.8rem, 8vw, 3rem); }
+  @media (max-width: 960px) {
+    .pd-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   }
   .pd-meta-item {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 0 1.5rem 0 0;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    gap: 8px;
   }
-  .pd-meta-item:last-child { border-right: none; }
   .pd-meta-label {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -1130,7 +1134,7 @@
     font-size: 14px;
     font-weight: 600;
     color: rgba(255,255,255,0.9);
-    line-height: 1.4;
+    line-height: 1.5;
   }
   .pd-meta-val a {
     color: var(--a1);
@@ -1143,29 +1147,28 @@
   .pd-body {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 5rem 5% 8rem;
+    padding: 0 5% 8rem;
     display: flex;
     flex-direction: column;
     gap: 4rem;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+    background: var(--bg);
   }
-  @media (max-width: 768px) { .pd-body { padding: 3rem 4% 6rem; gap: 3rem; } }
+  @media (max-width: 768px) { .pd-body { padding: 0 4% 6rem; gap: 3rem; } }
 
-  /* Description + features block */
+  /* Features block */
   .pd-info-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
   }
   @media (max-width: 768px) { .pd-info-block { grid-template-columns: 1fr; gap: 1.5rem; } }
-  .pd-desc {
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--txt2);
-  }
+
   .pd-features-title {
     font-size: 11px;
     font-weight: 700;
@@ -3176,42 +3179,41 @@
   <div class="pd-hero" id="pdHero">
     <div class="pd-hero-bg" id="pdHeroBg"></div>
     <div class="pd-hero-overlay"></div>
-    <div class="pd-hero-content">
+    <div class="pd-hero-content" id="pdHeroContent">
       <div class="pd-hero-eyebrow" id="pdEyebrow">Project Detail</div>
       <h1 class="pd-hero-title" id="pdTitle">Project Title</h1>
+      <p class="pd-hero-desc" id="pdHeroDesc">Project description goes here...</p>
       <div class="pd-hero-tech" id="pdHeroTech"></div>
-      <!-- 4-column meta grid -->
-      <div class="pd-meta-grid">
-        <div class="pd-meta-item">
-          <span class="pd-meta-label">Role</span>
-          <span class="pd-meta-val" id="pdMetaRole">Developer</span>
-        </div>
-        <div class="pd-meta-item">
-          <span class="pd-meta-label">Year</span>
-          <span class="pd-meta-val" id="pdMetaYear">2026</span>
-        </div>
-        <div class="pd-meta-item">
-          <span class="pd-meta-label">Category</span>
-          <span class="pd-meta-val" id="pdMetaCat">—</span>
-        </div>
-        <div class="pd-meta-item">
-          <span class="pd-meta-label">Live Project</span>
-          <span class="pd-meta-val" id="pdMetaLive">—</span>
-        </div>
-      </div>
     </div>
   </div>
 
   <!-- Body: description, features, screenshots -->
   <div class="pd-body" id="pdBody">
-
-    <!-- Info block: description + features -->
-    <div class="pd-info-block">
-      <p class="pd-desc" id="pdDesc">Loading...</p>
-      <div>
-        <div class="pd-features-title">Fitur Utama</div>
-        <ul class="pd-features" id="pdFeatures"></ul>
+    
+    <!-- 4-column meta grid -->
+    <div class="pd-meta-grid">
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">Role</span>
+        <span class="pd-meta-val" id="pdMetaRole">Developer</span>
       </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">Year</span>
+        <span class="pd-meta-val" id="pdMetaYear">2026</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">Description</span>
+        <span class="pd-meta-val" id="pdMetaDesc" style="color:var(--txt2); font-weight:400; font-size:13px;">—</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">Live Project</span>
+        <span class="pd-meta-val" id="pdMetaLive">—</span>
+      </div>
+    </div>
+
+    <!-- Features block -->
+    <div class="pd-info-block" id="pdFeaturesWrap">
+      <div class="pd-features-title">Fitur Utama</div>
+      <ul class="pd-features" id="pdFeatures"></ul>
     </div>
 
     <!-- Action buttons -->
@@ -4905,6 +4907,7 @@ window.openProject = function(id) {
 
     // Kill any previous parallax
     if (_pdParallaxST) { _pdParallaxST.kill(); _pdParallaxST = null; }
+    if (_pdParallaxST_Content) { _pdParallaxST_Content.kill(); _pdParallaxST_Content = null; }
 
     // Small delay so DOM renders behind curtain
     requestAnimationFrame(function() {
@@ -4966,16 +4969,23 @@ function _populateProjectDetail(data, id) {
   }
 
   // Description
-  document.getElementById('pdDesc').textContent = data.desc;
+  document.getElementById('pdHeroDesc').textContent = data.desc.substring(0, 150) + (data.desc.length > 150 ? '...' : '');
+  document.getElementById('pdMetaDesc').textContent = data.desc;
 
   // Features
+  const featWrap = document.getElementById('pdFeaturesWrap');
   const featCont = document.getElementById('pdFeatures');
   featCont.innerHTML = '';
-  (data.features || []).forEach(f => {
-    const li = document.createElement('li');
-    li.textContent = f;
-    featCont.appendChild(li);
-  });
+  if (data.features && data.features.length > 0) {
+    data.features.forEach(f => {
+      const li = document.createElement('li');
+      li.textContent = f;
+      featCont.appendChild(li);
+    });
+    featWrap.style.display = 'flex';
+  } else {
+    featWrap.style.display = 'none';
+  }
 
   // Action buttons
   const actCont = document.getElementById('pdActions');
@@ -5033,12 +5043,13 @@ function _populateProjectDetail(data, id) {
 function _runRevealTimeline() {
   if (!window.gsap) return;
   // Reset positions before animating
-  gsap.set('#pdTitle', { y: 70, opacity: 0 });
+  gsap.set('#pdTitle', { y: 80, opacity: 0, scale: 0.95 });
+  gsap.set('#pdHeroDesc', { y: 30, opacity: 0 });
   gsap.set('.pd-hero-eyebrow', { y: 30, opacity: 0 });
   gsap.set('.pd-hero-tech .pill', { y: 20, opacity: 0 });
-  gsap.set('.pd-meta-item', { y: 30, opacity: 0 });
-  gsap.set('#pdMockupWrap', { y: 60, opacity: 0 });
-  gsap.set('.pd-screenshot-wrap', { y: 60, opacity: 0 });
+  gsap.set('.pd-meta-item', { y: 40, opacity: 0 });
+  gsap.set('#pdMockupWrap', { y: 80, opacity: 0 });
+  gsap.set('.pd-screenshot-wrap', { y: 80, opacity: 0 });
   gsap.set('.pd-info-block', { y: 40, opacity: 0 });
   gsap.set('.pd-actions', { y: 20, opacity: 0 });
   gsap.set('.pd-back-btn', { x: -20, opacity: 0 });
@@ -5047,27 +5058,45 @@ function _runRevealTimeline() {
 
   tl.to('.pd-back-btn', { x: 0, opacity: 1, duration: 0.6 }, 0)
     .to('.pd-hero-eyebrow', { y: 0, opacity: 1, duration: 0.8 }, 0.1)
-    .to('#pdTitle', { y: 0, opacity: 1, duration: 1.2 }, 0.2)
-    .to('.pd-hero-tech .pill', { y: 0, opacity: 1, duration: 0.6, stagger: 0.07 }, 0.55)
-    .to('.pd-meta-item', { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' }, 0.65)
+    .to('#pdTitle', { y: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' }, 0.2)
+    .to('#pdHeroDesc', { y: 0, opacity: 1, duration: 1.0 }, 0.4)
+    .to('.pd-hero-tech .pill', { y: 0, opacity: 1, duration: 0.6, stagger: 0.05 }, 0.5)
+    .to('.pd-meta-item', { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, 0.6)
     .to('.pd-info-block', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.8)
-    .to('.pd-actions', { y: 0, opacity: 1, duration: 0.6 }, 0.95)
-    .to('#pdMockupWrap', { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0.9)
-    .to('.pd-screenshot-wrap', { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }, 1.0);
+    .to('.pd-actions', { y: 0, opacity: 1, duration: 0.6 }, 0.9)
+    .to('#pdMockupWrap', { y: 0, opacity: 1, duration: 1.2, ease: 'expo.out' }, 0.8)
+    .to('.pd-screenshot-wrap', { y: 0, opacity: 1, duration: 1.0, stagger: 0.15, ease: 'power3.out' }, 1.0);
 }
 
 /* ─────────────────────────────────────────────────
    8. HERO PARALLAX SCROLLTRIGGER
 ───────────────────────────────────────────────── */
+let _pdParallaxST_Content = null;
 function _setupHeroParallax() {
   if (!window.gsap || !window.ScrollTrigger) return;
   const heroBg = document.getElementById('pdHeroBg');
+  const heroContent = document.getElementById('pdHeroContent');
   const modal  = document.getElementById('projectModal');
-  if (!heroBg || !modal) return;
+  if (!heroBg || !modal || !heroContent) return;
 
-  // Use the modal element as scroller
+  // Background sinks down
   _pdParallaxST = gsap.to(heroBg, {
-    yPercent: 20,
+    yPercent: 40,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: document.getElementById('pdHero'),
+      scroller: modal,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+      invalidateOnRefresh: true
+    }
+  });
+
+  // Title/Content floats up
+  _pdParallaxST_Content = gsap.to(heroContent, {
+    yPercent: -35,
+    opacity: 0,
     ease: 'none',
     scrollTrigger: {
       trigger: document.getElementById('pdHero'),
@@ -5081,8 +5110,6 @@ function _setupHeroParallax() {
 
   // Sync Lenis scroll events with this ScrollTrigger
   if (lenis) {
-    // Lenis scroll event already updates ScrollTrigger via the global listener
-    // But we also proxy the modal's own scroll for parallax
     modal.addEventListener('scroll', () => {
       if (window.ScrollTrigger) ScrollTrigger.update();
     }, { passive: true });
@@ -5126,6 +5153,7 @@ function _curtainNav(id) {
     modal.scrollTop = 0;
     // Kill old parallax
     if (_pdParallaxST) { _pdParallaxST.kill(); _pdParallaxST = null; }
+    if (_pdParallaxST_Content) { _pdParallaxST_Content.kill(); _pdParallaxST_Content = null; }
     // Populate new content
     currentProjectId = id;
     const data = projectData[id];
@@ -5161,6 +5189,7 @@ window.closeProjectModal = function() {
         modal.style.display = 'none';
         modal.scrollTop = 0;
         if (_pdParallaxST) { _pdParallaxST.kill(); _pdParallaxST = null; }
+        if (_pdParallaxST_Content) { _pdParallaxST_Content.kill(); _pdParallaxST_Content = null; }
         // Reset panel back to bottom (ready for next open)
         gsap.to(panel, {
           yPercent: 100,
