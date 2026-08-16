@@ -1,0 +1,126 @@
+Line 2178: <button onclick="openCVModal()" class="btn btn-grad nav-cta" style="font-size:13px;padding:9px 18px;">📄 CV</button>
+Line 2179: <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">☀️</button>
+Line 2279: <div class="about-badge">💻 Teknik Informatika</div>
+Line 2311: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2333: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2355: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2377: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2400: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2423: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2445: <span class="all-works-cta-icon">❖</span>
+Line 2472: <button class="btn btn-grad" style="cursor:pointer;">Lihat Detail Desain 👁️</button>
+Line 2493: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2508: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2523: <span class="view-btn">Lihat Detail 👁️</span>
+Line 2552: <span>🍋</span> Owner &amp; Founder
+Line 2558: <span class="pill pill-amber">🧑‍🍳 Owner</span>
+Line 2559: <span class="pill pill-green">🛵 Delivery</span>
+Line 2560: <span class="pill pill-pink">📸 Content</span>
+Line 2561: <span class="pill pill-cyan">💬 Admin</span>
+Line 2563: <button class="btn btn-grad" style="cursor: pointer; padding: 10px 20px; font-size: 12px;">Lihat Galeri Bisnis 📸</button
+Line 2602: <div class="bisnis-stat-icon">🍹</div>
+Line 2608: <div class="bisnis-stat-icon">🤝</div>
+Line 2614: <div class="bisnis-stat-icon">📲</div>
+Line 2620: <div class="bisnis-stat-icon">📸</div>
+Line 2638: <h3 style="font-size:14px;font-weight:700;color:var(--txt2);margin-bottom:1.5rem;letter-spacing:1px;text-transform:upper
+Line 2665: <h3 style="font-size:14px;font-weight:700;color:var(--txt2);margin-bottom:1.5rem;letter-spacing:1px;text-transform:upper
+Line 2764: 🛡️ INFENTRA — Informatics Event &amp; Karya
+Line 2776: <br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Kompetensi Administrasi Jaringan — INFENTRA, Telkom University P
+Line 2782: <div class="doc-photo-caption">📸 Dokumentasi Kegiatan</div>
+Line 2786: <div class="doc-photo-caption">🖥️ Sesi Pelatihan Jaringan</div>
+Line 2790: <div class="doc-photo-caption">👥 Foto Bersama Peserta</div>
+Line 2794: <div class="doc-photo-caption">🎓 Group Photo Peserta</div>
+Line 2802: 🏆 Tel-U Leadermind TULC Season II
+Line 2814: <br>📜 <strong>Sertifikat diperoleh:</strong> Sertifikat Tel-U Leadermind TULC Season II — Telkom University Purwokerto (
+Line 2819: <div class="doc-photo-caption">🤝 Foto Bersama Peserta TULC</div>
+Line 2823: <div class="doc-photo-caption">💪 Sesi Leadership Challenge</div>
+Line 2827: <div class="doc-photo-caption">📝 Dokumentasi Rapat Kepanitiaan</div>
+Line 2831: <div class="doc-photo-caption">🎨 Feed Instagram TULC</div>
+Line 2835: <div class="doc-photo-caption">👤 Dokumentasi Personal</div>
+Line 2844: 📡 PKL — PT Telkom Akses Karanganyar
+Line 2859: <div class="doc-photo-caption">🔌 Dokumentasi PKL Telkom Akses</div>
+Line 2868: 🌄 Wisata Edukasi — Dieng & Wonosobo
+Line 2878: <div class="doc-photo-caption">🏛️ Candi Arjuna, Dieng</div>
+Line 2882: <div class="doc-photo-caption">🌊 Telaga Menjer, Wonosobo</div>
+Line 2891: 💻 Project Work — Lab & Jaringan
+Line 2901: <div class="doc-photo-caption">🎬 KK5 Cinematic Project</div>
+Line 2905: <div class="doc-photo-caption">🌐 Routing OSPF - Cisco PT</div>
+Line 2914: 🚀 UKM HIPMI PT — Himpunan Pengusaha Muda Indonesia
+Line 2929: <div class="doc-photo-caption">👔 Foto Profil — Dep. OKK</div>
+Line 2933: <div class="doc-photo-caption">🤝 Foto Dep. OKK</div>
+Line 2937: <div class="doc-photo-caption">📣 Foto Departemen OKK</div>
+Line 2941: <div class="doc-photo-caption">📸 Dokumentasi HIPMI</div>
+Line 2950: 🎓 WPI — Workshop &amp; Professional Initiative
+Line 2960: <div class="doc-photo-caption">🎨 Feed Instagram WPI</div>
+Line 2964: <div class="doc-photo-caption">📛 Co-Card & ID Card Peserta</div>
+Line 2968: <div class="doc-photo-caption">👥 Foto Bersama Peserta</div>
+Line 2977: 🛒 Market Day 4.0 — Koordinator Keamanan
+Line 2982: <br><br>Saksikan highlight acara, dokumentasi kegiatan, dan video drone eksklusif di samping! 🚁🎬
+Line 3008: <span style="font-size:.65rem;font-weight:700;background:linear-gradient(90deg,#F58529,#DD2A7B,#8134AF);-webkit-backgrou
+Line 3022: <div class="doc-photo-caption">📸 Acara Hari H</div>
+Line 3026: <div class="doc-photo-caption">✂️ Potong Pita</div>
+Line 3030: <div class="doc-photo-caption">🤝 Foto Bersama</div>
+Line 3034: <div class="doc-photo-caption">🏪 Suasana Hari H</div>
+Line 3038: <div class="doc-photo-caption">📱 Feed Instagram</div>
+Line 3042: <div style="font-size:1.5rem;">🎬</div>
+Line 3109: <div class="cert-img"><img src="assets/sertifikat/SERTIFIKAT MTCNA.jpg" alt="MTCNA" loading="lazy" onerror="certImgErr(t
+Line 3113: <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT DOCKER.jpeg" alt="Docker" loading="lazy" onerror="certImgEr
+Line 3117: <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT CODE COMBAT.jpeg" alt="CodeCombat" loading="lazy" onerror="
+Line 3121: <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT PKL TELKOM AKSES.jpeg" alt="PKL" loading="lazy" onerror="ce
+Line 3125: <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT INFENTRA.png" alt="Infentra" loading="lazy" onerror="certIm
+Line 3129: <div class="cert-img"><img src="assets/sertifikat/CERTIFIKAT TULC.png" alt="TULC" loading="lazy" onerror="certImgErr(thi
+Line 3133: <div class="cert-img"><img src="assets/sertifikat/SERTIFIKAT WPI.png" alt="WPI" loading="lazy" onerror="certImgErr(this)
+Line 3137: <div class="cert-img"><span class="cert-img-icon">🌐</span></div>
+Line 3186: <input type="hidden" name="_subject" value="📩 Pesan Baru dari Porto Yossika">
+Line 3208: <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle Chatbot">💬</button>
+Line 3212: <span class="chatbot-mascot-emoji">🤖</span>
+Line 3219: <button class="chatbot-settings-btn" id="chatbotSettingsBtn" title="Pengaturan Chatbot">⚙️</button>
+Line 3223: <div class="chatbot-msg bot" id="chatbotWelcomeMsg">Halo! Saya YosBot, asisten AI portofolio Yossika. Ada yang ingin And
+Line 3225: ⚠️ <strong>Info:</strong> Silakan klik ikon gerigi ⚙️ di atas untuk memasukkan Gemini API Key gratis Anda agar chatbot i
+Line 3240: <button type="submit" aria-label="Send">📤</button>
+Line 3338: <span class="all-works-cta-icon">❖</span> Lihat Semua Project &amp; Karya
+Line 3350: 📄 CV — Yossika Putra Erlangga
+Line 3372: <h2 class="all-works-title">✦ All Works</h2>
+Line 3378: <button class="filter-tab active" data-cat="all" onclick="filterWorks('all')">🗂️ Semua</button>
+Line 3379: <button class="filter-tab" data-cat="development" onclick="filterWorks('development')">💻 Development</button>
+Line 3380: <button class="filter-tab" data-cat="uiux" onclick="filterWorks('uiux')">🎨 UI/UX Design</button>
+Line 3381: <button class="filter-tab" data-cat="graphic" onclick="filterWorks('graphic')">✏️ Graphic Design</button>
+Line 3382: <button class="filter-tab" data-cat="bisnis" onclick="filterWorks('bisnis')">🛒 Bisnis</button>
+Line 3396: <p>© 2026 Yossika Putra Erlangga · Built with ❤️ for GitHub Pages</p>
+Line 3659: themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+Line 3666: themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+Line 3746: { text: "🔗 Live Demo", link: "https://gesture-landing.vercel.app/landing.html", primary: true },
+Line 3747: { text: "🐙 GitHub", link: "https://github.com/yoshput", primary: false }
+Line 3772: { text: "🐙 GitHub Repository", link: "https://github.com/yoshput", primary: true }
+Line 3804: { text: "🐙 GitHub Repository", link: "https://github.com/yoshput", primary: true }
+Line 3829: { text: "🎨 Figma Project Link", link: "https://figma.com", primary: true }
+Line 3857: { text: "🔗 Live Demo", link: "https://ngertiin-dia.vercel.app/", primary: true },
+Line 3858: { text: "🐙 GitHub", link: "https://github.com/Yoshput/sayang-app", primary: false }
+Line 3894: { text: "🔗 Live Demo", link: "https://gym-planner-beta.vercel.app", primary: true },
+Line 3895: { text: "🐙 GitHub", link: "https://github.com/Yoshput/GYM-PLANNER", primary: false }
+Line 3916: { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/gunung.jpg", primary: true },
+Line 3917: { text: "📸 Bukti Hasil", link: "assets/img/project-web/Selected Graphic Designs/bukti hasil-gunung.png", primary: false 
+Line 3937: { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/merch-telkom.png", primary: true }
+Line 3957: { text: "👁️ Lihat Desain", link: "assets/img/project-web/Selected Graphic Designs/komik-telkom.png", primary: true }
+Line 3984: { text: "📸 Instagram Mango Nyeni", link: "https://instagram.com", primary: true }
+Line 4172: // 🛱 Honeypot check — jika field _gotcha terisi, kemungkinan bot
+Line 4175: status.textContent = '✅ Pesan terkirim! Terima kasih 🎉';
+Line 4187: status.textContent = '⚠️ Nama, email, dan pesan wajib diisi!';
+Line 4195: status.textContent = '⚠️ Format email tidak valid!';
+Line 4204: status.textContent = '⚠️ Gagal mengirim: Domain email / nama pengujian tidak diperbolehkan.';
+Line 4211: status.textContent = '⚠️ Gagal mengirim: Terdeteksi spam karakter berulang.';
+Line 4218: alert('Mohon gunakan kata-kata yang baik ya anak muda... gunakan bahasa yang baik yaa! 😊');
+Line 4219: status.textContent = '⚠️ Gagal mengirim: Gunakan bahasa yang baik yaa anak muda.';
+Line 4231: _subject: '📩 Pesan Baru dari Porto Yossika'
+Line 4241: status.textContent = '✅ Pesan terkirim! Terima kasih 🎉';
+Line 4249: status.textContent = '⚠️ Gagal mengirim, coba lagi ya.';
+Line 4263: fbStatus.textContent = '⚠️ Mohon gunakan kata-kata yang baik ya anak muda... gunakan bahasa yang baik yaa! 😊';
+Line 4416: appendBotMsg(`✅ Pengaturan disimpan! Nama saya sekarang ${botName}. Silakan ajukan pertanyaan! 😊`);
+Line 4460: appendBotMsg('⚠️ Harap masukkan Gemini API Key terlebih dahulu melalui ikon gerigi ⚙️ di pojok kanan atas.');
+Line 4492: appendBotMsg('⚠️ Terjadi kesalahan atau API Key tidak valid. Silakan periksa kembali key Anda.');
+Line 4497: 🛠️ FITUR MAINTENANCE MODE
+Line 4581: <div class="m-badge">⚙️ PORTFOLIO UPDATE</div>
+Line 4582: <div class="m-glow" style="margin-top: 1rem;">🚀</div>
+Line 4830: 🚀 PREMIUM PORTFOLIO FEATURES MODULE
+Line 4903: development:'💻 Development', uiux:'🎨 UI/UX Design',
+Line 4904: graphic:'✏️ Graphic Design', bisnis:'🛒 Bisnis'
