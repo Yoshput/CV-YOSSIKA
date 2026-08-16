@@ -220,7 +220,7 @@
   /* ══ FLOATING POPUPS (ANTI-GRAVITY GLASSMORPHISM) ══ */
   .popup-badge {
     position: absolute;
-    z-index: 90;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -233,13 +233,12 @@
     font-size: 13px;
     font-weight: 600;
     color: var(--txt);
-    /* Layered mathematically clean soft violet shadows */
     box-shadow: 
       0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -1px rgba(0, 0, 0, 0.06),
       0 20px 40px -15px rgba(139, 92, 246, 0.25),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    pointer-events: auto; /* enable interactive custom cursor effects */
+    pointer-events: none; /* Never block drag or clicks on ID Card */
     will-change: transform;
     transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform-style: preserve-3d;
@@ -268,10 +267,18 @@
     font-weight: 400;
     margin-top: 2px;
   }
-  #pop1 { left: 3%; top: 26%; animation: popFloat 7s ease-in-out infinite; }
-  #pop2 { right: 3%; top: 32%; animation: popFloat 8s ease-in-out infinite 1.5s; }
-  #pop3 { left: 4%; bottom: 25%; animation: popFloat 9s ease-in-out infinite 3s; }
-  #pop4 { right: 4%; bottom: 18%; animation: popFloat 6.5s ease-in-out infinite 0.8s; }
+  /* Peripheral safe placement - will not overlap card */
+  #pop1 { left: 2%; top: 20%; animation: popFloat 7s ease-in-out infinite; }
+  #pop2 { right: 2%; top: 12%; animation: popFloat 8s ease-in-out infinite 1.5s; }
+  #pop3 { left: 2%; bottom: 18%; animation: popFloat 9s ease-in-out infinite 3s; }
+  #pop4 { right: 2%; bottom: 8%; animation: popFloat 6.5s ease-in-out infinite 0.8s; }
+  
+  @media(max-width: 1400px) {
+    #pop2, #pop4 { display: none !important; }
+  }
+  @media(max-width: 1100px) {
+    #pop1, #pop3 { display: none !important; }
+  }
   @keyframes popFloat {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-16px) rotate(1deg); }
@@ -443,33 +450,36 @@
     position: relative;
     display: flex;
     justify-content: center;
+    padding-top: 55px; /* Provides realistic hanging gap */
     perspective: 1200px;
-    perspective-origin: 50% 120px;
-    touch-action: pan-y;
+    perspective-origin: 50% 100px;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
   .lanyard-rope-svg {
     position: absolute;
-    top: -90px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
     height: 350px;
     pointer-events: none;
-    z-index: 10;
+    z-index: 40;
     overflow: visible;
   }
   .lanyard-clip {
     position: absolute;
-    top: -62px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 32px;
     height: 14px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
-    border: 1.5px solid rgba(255,255,255,0.3);
+    background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
+    border: 1.5px solid rgba(255,255,255,0.35);
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
-    z-index: 15;
+    z-index: 45;
     pointer-events: none;
   }
   .lanyard-clip::after {
@@ -496,12 +506,13 @@
     transform-style: preserve-3d;
     position: relative;
     overflow: hidden;
-    cursor: grab;
+    cursor: grab !important;
     user-select: none;
     -webkit-user-select: none;
-    touch-action: none;
+    touch-action: none !important;
+    pointer-events: auto !important;
     will-change: transform;
-    z-index: 5;
+    z-index: 30;
   }
   .id-card-body.is-dragging {
     cursor: grabbing !important;
@@ -538,7 +549,7 @@
   .chip-c{color:#67e8f9;background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.35)}
   .card-bar{height:3.5px;border-radius:2px;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));margin:14px 0 8px}
   .card-uni{font-size:9px;color:var(--txt3);text-align:center;letter-spacing:1.5px;text-transform:uppercase}
-  .float-badge{position:absolute;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px);border-radius:12px;padding:9px 14px;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);white-space:nowrap}
+  .float-badge{position:absolute;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px);border-radius:12px;padding:9px 14px;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);white-space:nowrap;pointer-events:none;z-index:20;}
   .fbadge-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
   .fb-green{background:var(--green);box-shadow:0 0 8px rgba(74,222,128,.6)}
   .fb-blue{background:var(--a1);box-shadow:0 0 8px rgba(59,130,246,.6)}
@@ -2676,11 +2687,11 @@
             </filter>
           </defs>
           <!-- Outer glow layer -->
-          <path id="lanyardRopeGlow" d="M 300 30 C 300 50 300 70 300 90" stroke="rgba(139,92,246,0.35)" stroke-width="7" stroke-linecap="round" filter="url(#ropeGlow)"/>
+          <path id="lanyardRopeGlow" d="M 300 7 C 300 25 300 40 300 55" stroke="rgba(139,92,246,0.35)" stroke-width="7" stroke-linecap="round" filter="url(#ropeGlow)"/>
           <!-- Main lanyard ribbon strap -->
-          <path id="lanyardRopePath" d="M 300 30 C 300 50 300 70 300 90" stroke="url(#lanyardGrad)" stroke-width="3.5" stroke-linecap="round"/>
+          <path id="lanyardRopePath" d="M 300 7 C 300 25 300 40 300 55" stroke="url(#lanyardGrad)" stroke-width="3.5" stroke-linecap="round"/>
           <!-- Clip connector ring -->
-          <circle id="lanyardRing" cx="300" cy="90" r="3.5" fill="#eef2ff" stroke="#8b5cf6" stroke-width="1.5"/>
+          <circle id="lanyardRing" cx="300" cy="55" r="3.5" fill="#eef2ff" stroke="#8b5cf6" stroke-width="1.5"/>
         </svg>
         <div class="id-card-body" id="idCardBody">
           <div class="card-top-slot"></div>
@@ -6213,8 +6224,8 @@ window.closeProjectModal = function() {
 
     // Anchor geometry (relative to resting top-center of card at 0,0)
     var anchorX = 0;
-    var anchorY = -60;
-    var ropeRestLen = 60;
+    var anchorY = -55; // Clip is at top: 0px while card top rests at y: 55px
+    var ropeRestLen = 55;
 
     // Simulation state
     var pos = { x: 0, y: 0 };
@@ -6239,6 +6250,11 @@ window.closeProjectModal = function() {
 
     // Pointer events (Desktop Mouse & Touch Drag)
     function onPointerDown(e) {
+      // Allow primary button (left mouse click) or touch
+      if (e.button !== 0 && e.pointerType === 'mouse') return;
+      e.preventDefault();
+      e.stopPropagation();
+
       isDragging = true;
       card.classList.add('is-dragging');
       try { card.setPointerCapture(e.pointerId); } catch(err) {}
@@ -6255,6 +6271,7 @@ window.closeProjectModal = function() {
 
     function onPointerMove(e) {
       if (!isDragging) return;
+      e.preventDefault();
 
       var dx = e.clientX - dragStartPointer.x;
       var dy = e.clientY - dragStartPointer.y;
@@ -6264,11 +6281,11 @@ window.closeProjectModal = function() {
 
       // Soft elastic boundary constraint
       var dist = Math.hypot(rawX - anchorX, rawY - anchorY);
-      var maxStretch = 300;
+      var maxStretch = 280;
       if (dist > maxStretch) {
         var angle = Math.atan2(rawY - anchorY, rawX - anchorX);
         var excess = dist - maxStretch;
-        var limited = maxStretch + Math.tanh(excess / 80) * 50;
+        var limited = maxStretch + Math.tanh(excess / 80) * 45;
         pos.x = anchorX + Math.cos(angle) * limited;
         pos.y = anchorY + Math.sin(angle) * limited;
       } else {
@@ -6312,6 +6329,12 @@ window.closeProjectModal = function() {
     card.addEventListener('pointermove', onPointerMove);
     card.addEventListener('pointerup', onPointerUp);
     card.addEventListener('pointercancel', onPointerUp);
+    window.addEventListener('pointerup', function() {
+      if (isDragging) {
+        isDragging = false;
+        card.classList.remove('is-dragging');
+      }
+    });
 
     // Physics Engine Loop
     var lastTime = performance.now();
@@ -6339,21 +6362,21 @@ window.closeProjectModal = function() {
         var fy = 1100;
 
         // 2. Rope spring tension
-        var springK = 40;
+        var springK = 42;
         var delta = dist - ropeRestLen;
         if (delta > 0) {
-          fx += -dirX * delta * springK * 4.2;
-          fy += -dirY * delta * springK * 4.2;
+          fx += -dirX * delta * springK * 4.5;
+          fy += -dirY * delta * springK * 4.5;
         }
 
         // 3. Pendulum restoring force toward center (0,0)
-        var pendulumK = 44;
+        var pendulumK = 46;
         fx += -pos.x * pendulumK;
         fy += -pos.y * pendulumK;
 
         // 4. Subtle ambient micro-sway when settled
         if (Math.abs(pos.x) < 2 && Math.abs(pos.y) < 2 && Math.abs(vel.x) < 5) {
-          fx += Math.sin(idleTime * 1.6) * 10;
+          fx += Math.sin(idleTime * 1.6) * 8;
         }
 
         // Integrate Velocity & Position (Semi-implicit Euler with damping)
@@ -6390,25 +6413,26 @@ window.closeProjectModal = function() {
 
     function renderRope(cardX, cardY, angleDeg) {
       var svgCenterX = 300;
-      var svgCenterY = 90;
+      var clipTopY = 7; // Fixed clip top in SVG viewBox (0 0 600 350)
+      var cardRestTopY = 55; // Card resting top in SVG viewBox
 
       // Anchor point (fixed clip)
       var ax = svgCenterX;
-      var ay = svgCenterY + anchorY; // = 300, 30
+      var ay = clipTopY;
 
       // Card top attachment
       var cx = svgCenterX + cardX;
-      var cy = svgCenterY + cardY;
+      var cy = cardRestTopY + cardY;
 
       var angleRad = (angleDeg * Math.PI) / 180;
       var normalX = Math.sin(angleRad);
       var normalY = Math.cos(angleRad);
 
       var cp1x = ax;
-      var cp1y = ay + 20;
+      var cp1y = ay + 18;
 
-      var cp2x = cx - normalX * 22;
-      var cp2y = cy - normalY * 22;
+      var cp2x = cx - normalX * 20;
+      var cp2y = cy - normalY * 20;
 
       var d = 'M ' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' ' +
               'C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ' ' +
@@ -6425,7 +6449,6 @@ window.closeProjectModal = function() {
 
     requestAnimationFrame(stepPhysics);
   })();
-
 </script>
 </body>
 </html>
