@@ -6026,33 +6026,72 @@ window.closeProjectModal = function() {
       if (noiseNode) { try { noiseNode.stop(); } catch(e){} noiseNode = null; }
     }
 
+    var userManuallyStopped = false;
+
     function startMusic() {
       createCtx();
-      if (ctx.state === 'suspended') ctx.resume();
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
       masterGain.gain.setTargetAtTime(1, ctx.currentTime, 1.5);
       if (!noiseNode) noiseNode = createNoise();
       startChordCycle();
+      playing = true;
+      btn.classList.add('playing');
+      btn.setAttribute('data-tooltip', 'Hentikan Musik');
+      btn.setAttribute('aria-label', 'Stop Background Music');
     }
 
     function stopMusic() {
       if (!ctx) return;
       masterGain.gain.setTargetAtTime(0, ctx.currentTime, 1.0);
       stopChordCycle();
+      playing = false;
+      btn.classList.remove('playing');
+      btn.setAttribute('data-tooltip', 'Putar Musik');
+      btn.setAttribute('aria-label', 'Play Background Music');
     }
 
-    btn.addEventListener('click', function() {
-      playing = !playing;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       if (playing) {
-        startMusic();
-        btn.classList.add('playing');
-        btn.setAttribute('data-tooltip', 'Hentikan Musik');
-        btn.setAttribute('aria-label', 'Stop Background Music');
-      } else {
+        userManuallyStopped = true;
         stopMusic();
-        btn.classList.remove('playing');
-        btn.setAttribute('data-tooltip', 'Putar Musik');
-        btn.setAttribute('aria-label', 'Play Background Music');
+      } else {
+        userManuallyStopped = false;
+        startMusic();
       }
+    });
+
+    // ── AUTO-PLAY WITH SMART INTERACTION FALLBACK ──
+    function attemptAutoPlay() {
+      if (userManuallyStopped) return;
+      startMusic();
+      if (ctx && ctx.state === 'running') {
+        // Autoplay succeeded immediately!
+        removeInteractionListeners();
+      }
+    }
+
+    function onFirstUserInteraction() {
+      if (userManuallyStopped) return;
+      attemptAutoPlay();
+      removeInteractionListeners();
+    }
+
+    function removeInteractionListeners() {
+      ['click', 'touchstart', 'scroll', 'keydown', 'wheel'].forEach(function(evt) {
+        window.removeEventListener(evt, onFirstUserInteraction, { capture: true });
+      });
+    }
+
+    ['click', 'touchstart', 'scroll', 'keydown', 'wheel'].forEach(function(evt) {
+      window.addEventListener(evt, onFirstUserInteraction, { capture: true, once: true });
+    });
+
+    // Attempt immediately when loading screen finishes
+    window.addEventListener('load', function() {
+      setTimeout(attemptAutoPlay, 1000);
     });
   })();
 
