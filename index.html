@@ -88,15 +88,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%238b5cf6'/></linearGradient></defs><rect fill='url(%23g)' width='100' height='100' rx='20'/><text x='50' y='68' font-size='60' font-weight='800' fill='white' text-anchor='middle' font-family='sans-serif'>Y</text></svg>"/>
-  <link rel="manifest" href="manifest.json"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="manifest" href="/manifest.json"/>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <meta name="theme-color" content="#8b5cf6"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <link rel="apple-touch-icon" href="assets/img/foto kegiatan/06-HIPMI/Foto Profile Yossika-Kaderisasi dan Keanggotaan.jpg"/>
   <style>
   @keyframes shimmer {
     0% { background-position: -200% 0; }
@@ -445,27 +448,28 @@
   .stat-lbl{font-size:12px;color:var(--txt3);font-weight:500;margin-top:4px;letter-spacing:.5px}
 
   /* ID CARD */
-  /* ══ 3D PHYSICAL ID CARD & LANYARD ══ */
+  /* ══ 3D PHYSICAL ID CARD & AUTHENTIC FABRIC LANYARD ══ */
   .id-card-zone {
     position: relative;
     display: flex;
     justify-content: center;
-    padding-top: 55px; /* Provides realistic hanging gap */
+    padding-top: 75px; /* Perfect suspension gap for fabric lanyard strap */
     perspective: 1200px;
-    perspective-origin: 50% 100px;
+    perspective-origin: 50% 120px;
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
+    z-index: 20;
   }
   .lanyard-rope-svg {
     position: absolute;
-    top: 0;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
-    height: 350px;
+    height: 500px;
     pointer-events: none;
-    z-index: 40;
+    z-index: 25;
     overflow: visible;
   }
   .lanyard-clip {
@@ -473,24 +477,35 @@
     top: 0px;
     left: 50%;
     transform: translateX(-50%);
-    width: 32px;
-    height: 14px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
-    border: 1.5px solid rgba(255,255,255,0.35);
+    width: 38px;
+    height: 15px;
+    background: linear-gradient(180deg, #334155, #0f172a);
+    border: 1.5px solid rgba(255,255,255,0.32);
     border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
-    z-index: 45;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.35);
+    z-index: 30;
     pointer-events: none;
+  }
+  .lanyard-clip::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    border-radius: 1px;
   }
   .lanyard-clip::after {
     content: '';
     position: absolute;
-    top: 50%;
+    bottom: 2px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 14px;
+    transform: translateX(-50%);
+    width: 16px;
     height: 4px;
-    background: rgba(14,21,37,0.8);
+    background: rgba(10,15,30,0.9);
     border-radius: 2px;
   }
   .id-card-body {
@@ -512,15 +527,17 @@
     touch-action: none !important;
     pointer-events: auto !important;
     will-change: transform;
-    z-index: 30;
+    z-index: 22;
+    transition: none !important;
   }
   .id-card-body.is-dragging {
     cursor: grabbing !important;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.18);
   }
   .id-card-body img {
     pointer-events: none;
     -webkit-user-drag: none;
+    user-select: none;
   }
   .card-top-slot {
     position: absolute;
@@ -529,8 +546,8 @@
     transform: translateX(-50%);
     width: 26px;
     height: 5px;
-    background: rgba(0,0,0,0.45);
-    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.16);
     border-radius: 99px;
   }
   .card-glow{position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(139,92,246,.45),transparent 70%);pointer-events:none}
@@ -2674,24 +2691,59 @@
         <!-- Fixed Lanyard Anchor Clip -->
         <div class="lanyard-clip"></div>
         <!-- Dynamic Lanyard SVG Rope -->
-        <svg class="lanyard-rope-svg" id="lanyardRopeSvg" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="lanyard-rope-svg" id="lanyardRopeSvg" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="lanyardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <!-- Fabric strap gradient (Deep Indigo to Rich Violet-Pink) -->
+            <linearGradient id="strapGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1e1b4b"/>
+              <stop offset="30%" stop-color="#2e1065"/>
+              <stop offset="70%" stop-color="#4c1d95"/>
+              <stop offset="100%" stop-color="#701a75"/>
+            </linearGradient>
+            <!-- Vibrant edge border gradient -->
+            <linearGradient id="strapEdgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stop-color="#3b82f6"/>
-              <stop offset="60%" stop-color="#8b5cf6"/>
+              <stop offset="50%" stop-color="#8b5cf6"/>
               <stop offset="100%" stop-color="#ec4899"/>
             </linearGradient>
-            <filter id="ropeGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            <!-- Metallic chrome gradient for swivel hook -->
+            <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#94a3b8"/>
+              <stop offset="25%" stop-color="#f8fafc"/>
+              <stop offset="60%" stop-color="#64748b"/>
+              <stop offset="85%" stop-color="#f1f5f9"/>
+              <stop offset="100%" stop-color="#475569"/>
+            </linearGradient>
+            <filter id="ribbonShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="rgba(0,0,0,0.55)"/>
             </filter>
           </defs>
-          <!-- Outer glow layer -->
-          <path id="lanyardRopeGlow" d="M 300 7 C 300 25 300 40 300 55" stroke="rgba(139,92,246,0.35)" stroke-width="7" stroke-linecap="round" filter="url(#ropeGlow)"/>
-          <!-- Main lanyard ribbon strap -->
-          <path id="lanyardRopePath" d="M 300 7 C 300 25 300 40 300 55" stroke="url(#lanyardGrad)" stroke-width="3.5" stroke-linecap="round"/>
-          <!-- Clip connector ring -->
-          <circle id="lanyardRing" cx="300" cy="55" r="3.5" fill="#eef2ff" stroke="#8b5cf6" stroke-width="1.5"/>
+          <!-- 1. Drop shadow of fabric ribbon -->
+          <path id="lanyardShadow" d="M 300 8 C 300 35 300 55 300 75" stroke="rgba(0,0,0,0.5)" stroke-width="22" stroke-linecap="square" filter="url(#ribbonShadow)"/>
+          <!-- 2. Main 20px wide fabric ribbon strap -->
+          <path id="lanyardStrap" d="M 300 8 C 300 35 300 55 300 75" stroke="url(#strapGrad)" stroke-width="20" stroke-linecap="square"/>
+          <!-- 3. Dual woven side stripes -->
+          <path id="lanyardEdge" d="M 300 8 C 300 35 300 55 300 75" stroke="url(#strapEdgeGrad)" stroke-width="20" stroke-linecap="square" stroke-dasharray="1.5 17"/>
+          <!-- 4. Delicate white stitching line -->
+          <path id="lanyardStitch" d="M 300 8 C 300 35 300 55 300 75" stroke="rgba(255,255,255,0.38)" stroke-width="1.2" stroke-dasharray="3.5 3.5"/>
+          <!-- 5. Dynamic text path along the curved ribbon -->
+          <path id="lanyardTextPath" d="M 300 8 C 300 35 300 55 300 75" fill="none"/>
+          <text fill="#ffffff" font-size="8.5" font-weight="700" letter-spacing="2.5" opacity="0.95" font-family="'Space Grotesk', sans-serif">
+            <textPath id="lanyardText" href="#lanyardTextPath" startOffset="50%" text-anchor="middle">
+              ✦ TELKOM UNIVERSITY ✦ YOSSIKA PUTRA ✦
+            </textPath>
+          </text>
+          <!-- 6. Heavy-Duty Metallic Swivel Lobster Clasp Assembly -->
+          <g id="lanyardClaspGroup" transform="translate(300, 75)">
+            <!-- Metal ribbon clamp band -->
+            <rect x="-12" y="-10" width="24" height="6" rx="2" fill="url(#chromeGrad)" stroke="#1e293b" stroke-width="0.8"/>
+            <rect x="-9" y="-9" width="18" height="1.5" fill="#f8fafc" opacity="0.6"/>
+            <!-- Swivel ring connector -->
+            <ellipse cx="0" cy="-2" rx="7" ry="5" fill="none" stroke="url(#chromeGrad)" stroke-width="2.5"/>
+            <!-- Lobster claw hook clasp entering card top slot -->
+            <path d="M -3.5 1 L -3.5 8 Q 0 11.5 3.5 8 L 3.5 1" fill="none" stroke="url(#chromeGrad)" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="0" cy="7.5" r="2.8" fill="#f8fafc" stroke="#475569" stroke-width="0.8"/>
+          </g>
         </svg>
         <div class="id-card-body" id="idCardBody">
           <div class="card-top-slot"></div>
@@ -5229,22 +5281,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    /* 4) FLOATING 3D PARALLAX ON HERO ID CARD (mouse-reactive, gentle) */
-    const idCard = document.querySelector('.id-card, .id-card-body, .hero-visual');
-    if (idCard && !reduceMotion && !isTouch) {
-      const wrap = idCard.closest('.hero-visual') || idCard.parentElement || idCard;
-      wrap.style.perspective = '1400px';
-      idCard.style.transformStyle = 'preserve-3d';
-      const rX = gsap.quickTo(idCard, 'rotationX', { duration: 0.6, ease: 'power3.out' });
-      const rY = gsap.quickTo(idCard, 'rotationY', { duration: 0.6, ease: 'power3.out' });
-      document.addEventListener('mousemove', (e) => {
-        const px = e.clientX / window.innerWidth - 0.5;
-        const py = e.clientY / window.innerHeight - 0.5;
-        rX(-py * 12);
-        rY(px * 16);
-      });
-      gsap.to(idCard, { y: '+=14', duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-    }
+    /* 4) FLOATING 3D PARALLAX ON HERO ID CARD — Handled by Dedicated Physical Lanyard Physics Engine */
 
     /* 5) SUBTLE 3D DEPTH ON ORB BACKGROUND (parallax layers) */
     document.querySelectorAll('.orb-1, .orb-2, .orb-3, .orb-4').forEach((orb, i) => {
@@ -6208,246 +6245,280 @@ window.closeProjectModal = function() {
 
 
 
-  // ══ 3D PHYSICAL LANYARD & ID CARD INTERACTION ENGINE ══
+  // ══ 3D PHYSICAL LANYARD & ID CARD INTERACTION ENGINE (DESKTOP & MOBILE) ══
   (function() {
-    var zone = document.querySelector('.id-card-zone');
-    var card = document.getElementById('idCardBody') || document.querySelector('.id-card-body');
-    var ropePath = document.getElementById('lanyardRopePath');
-    var ropeGlow = document.getElementById('lanyardRopeGlow');
-    var ropeRing = document.getElementById('lanyardRing');
+    function initLanyardPhysics() {
+      var zone = document.querySelector('.id-card-zone');
+      var card = document.getElementById('idCardBody') || document.querySelector('.id-card-body');
+      var lanyardShadow = document.getElementById('lanyardShadow');
+      var lanyardStrap = document.getElementById('lanyardStrap');
+      var lanyardEdge = document.getElementById('lanyardEdge');
+      var lanyardStitch = document.getElementById('lanyardStitch');
+      var lanyardTextPath = document.getElementById('lanyardTextPath');
+      var lanyardClasp = document.getElementById('lanyardClaspGroup');
 
-    if (!zone || !card || !ropePath) return;
+      if (!zone || !card || !lanyardStrap) return;
 
-    // Reduced motion check
-    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
 
-    // Anchor geometry (relative to resting top-center of card at 0,0)
-    var anchorX = 0;
-    var anchorY = -55; // Clip is at top: 0px while card top rests at y: 55px
-    var ropeRestLen = 55;
+      // Coordinate Geometry
+      var svgCenterX = 300;
+      var clipTopY = 8;
+      var cardRestTopY = 75;
 
-    // Simulation state
-    var pos = { x: 0, y: 0 };
-    var vel = { x: 0, y: 0 };
-    var rot = { x: 0, y: 0, z: 1.5 };
-    var rotVel = { z: 0 };
+      // Simulation State
+      var pos = { x: 0, y: 0 };
+      var vel = { x: 0, y: 0 };
+      var rot = { x: 0, y: 0, z: 1.5 };
+      var rotVel = { z: 0 };
 
-    var isDragging = false;
-    var dragStartPointer = { x: 0, y: 0 };
-    var dragStartPos = { x: 0, y: 0 };
-    var history = [];
-    var idleTime = 0;
-    var isHeroVisible = true;
+      var isDragging = false;
+      var dragStartPointer = { x: 0, y: 0 };
+      var dragStartPos = { x: 0, y: 0 };
+      var history = [];
+      var idleTime = 0;
 
-    // Pause physics calculations when out of viewport for battery efficiency
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries) {
-        isHeroVisible = entries[0].isIntersecting;
-      }, { threshold: 0.05 });
-      observer.observe(zone);
-    }
+      // Universal Drag Start (Mouse & Touch)
+      function handleDragStart(clientX, clientY) {
+        isDragging = true;
+        card.classList.add('is-dragging');
+        document.body.style.userSelect = 'none';
+        document.body.style.cursor = 'grabbing';
 
-    // Pointer events (Desktop Mouse & Touch Drag)
-    function onPointerDown(e) {
-      // Allow primary button (left mouse click) or touch
-      if (e.button !== 0 && e.pointerType === 'mouse') return;
-      e.preventDefault();
-      e.stopPropagation();
-
-      isDragging = true;
-      card.classList.add('is-dragging');
-      try { card.setPointerCapture(e.pointerId); } catch(err) {}
-
-      dragStartPointer.x = e.clientX;
-      dragStartPointer.y = e.clientY;
-      dragStartPos.x = pos.x;
-      dragStartPos.y = pos.y;
-      vel.x = 0;
-      vel.y = 0;
-      rotVel.z = 0;
-      history = [{ x: e.clientX, y: e.clientY, t: performance.now() }];
-    }
-
-    function onPointerMove(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-
-      var dx = e.clientX - dragStartPointer.x;
-      var dy = e.clientY - dragStartPointer.y;
-
-      var rawX = dragStartPos.x + dx;
-      var rawY = dragStartPos.y + dy;
-
-      // Soft elastic boundary constraint
-      var dist = Math.hypot(rawX - anchorX, rawY - anchorY);
-      var maxStretch = 280;
-      if (dist > maxStretch) {
-        var angle = Math.atan2(rawY - anchorY, rawX - anchorX);
-        var excess = dist - maxStretch;
-        var limited = maxStretch + Math.tanh(excess / 80) * 45;
-        pos.x = anchorX + Math.cos(angle) * limited;
-        pos.y = anchorY + Math.sin(angle) * limited;
-      } else {
-        pos.x = rawX;
-        pos.y = rawY;
+        dragStartPointer.x = clientX;
+        dragStartPointer.y = clientY;
+        dragStartPos.x = pos.x;
+        dragStartPos.y = pos.y;
+        vel.x = 0;
+        vel.y = 0;
+        rotVel.z = 0;
+        history = [{ x: clientX, y: clientY, t: performance.now() }];
       }
 
-      // Record trajectory for release momentum
-      var now = performance.now();
-      history.push({ x: e.clientX, y: e.clientY, t: now });
-      if (history.length > 5) history.shift();
+      // Universal Drag Move (Mouse & Touch)
+      function handleDragMove(clientX, clientY) {
+        if (!isDragging) return;
 
-      // Dynamic tilt while dragging
-      rot.z = (pos.x - anchorX) * 0.16;
-      rot.y = Math.max(-28, Math.min(28, pos.x * 0.12));
-      rot.x = Math.max(-22, Math.min(22, -pos.y * 0.1 - Math.abs(pos.x) * 0.05));
-    }
+        var dx = clientX - dragStartPointer.x;
+        var dy = clientY - dragStartPointer.y;
 
-    function onPointerUp(e) {
-      if (!isDragging) return;
-      isDragging = false;
-      card.classList.remove('is-dragging');
-      try { card.releasePointerCapture(e.pointerId); } catch(err) {}
+        var rawX = dragStartPos.x + dx;
+        var rawY = dragStartPos.y + dy;
 
-      // Calculate throw momentum
-      if (history.length >= 2) {
-        var first = history[0];
-        var last = history[history.length - 1];
-        var dt = Math.max(16, last.t - first.t) / 1000;
-        var vx = (last.x - first.x) / dt;
-        var vy = (last.y - first.y) / dt;
+        // Soft elastic boundary constraint
+        var dist = Math.hypot(rawX, rawY);
+        var maxStretch = 320;
+        if (dist > maxStretch) {
+          var angle = Math.atan2(rawY, rawX);
+          var excess = dist - maxStretch;
+          var limited = maxStretch + Math.tanh(excess / 80) * 50;
+          pos.x = Math.cos(angle) * limited;
+          pos.y = Math.sin(angle) * limited;
+        } else {
+          pos.x = rawX;
+          pos.y = rawY;
+        }
 
-        vel.x = Math.max(-1400, Math.min(1400, vx * 0.65));
-        vel.y = Math.max(-1400, Math.min(1400, vy * 0.65));
-        rotVel.z = vel.x * 0.07;
+        // Record motion trajectory for momentum
+        var now = performance.now();
+        history.push({ x: clientX, y: clientY, t: now });
+        if (history.length > 6) history.shift();
+
+        // 3D dynamic tilt while dragging
+        rot.z = pos.x * 0.18;
+        rot.y = Math.max(-30, Math.min(30, pos.x * 0.14));
+        rot.x = Math.max(-24, Math.min(24, -pos.y * 0.12 - Math.abs(pos.x) * 0.05));
       }
-      history = [];
-    }
 
-    card.addEventListener('pointerdown', onPointerDown);
-    card.addEventListener('pointermove', onPointerMove);
-    card.addEventListener('pointerup', onPointerUp);
-    card.addEventListener('pointercancel', onPointerUp);
-    window.addEventListener('pointerup', function() {
-      if (isDragging) {
+      // Universal Drag End
+      function handleDragEnd() {
+        if (!isDragging) return;
         isDragging = false;
         card.classList.remove('is-dragging');
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+
+        // Calculate throw momentum
+        if (history.length >= 2) {
+          var first = history[0];
+          var last = history[history.length - 1];
+          var dt = Math.max(16, last.t - first.t) / 1000;
+          var vx = (last.x - first.x) / dt;
+          var vy = (last.y - first.y) / dt;
+
+          vel.x = Math.max(-1600, Math.min(1600, vx * 0.7));
+          vel.y = Math.max(-1600, Math.min(1600, vy * 0.7));
+          rotVel.z = vel.x * 0.08;
+        }
+        history = [];
       }
-    });
 
-    // Physics Engine Loop
-    var lastTime = performance.now();
+      // ── Event Bindings: Pointer Events (Modern) ──
+      card.addEventListener('pointerdown', function(e) {
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        e.preventDefault();
+        e.stopPropagation();
+        handleDragStart(e.clientX, e.clientY);
+      }, { passive: false });
 
-    function stepPhysics(now) {
+      window.addEventListener('pointermove', function(e) {
+        if (isDragging) {
+          e.preventDefault();
+          handleDragMove(e.clientX, e.clientY);
+        }
+      }, { passive: false });
+
+      window.addEventListener('pointerup', handleDragEnd);
+      window.addEventListener('pointercancel', handleDragEnd);
+
+      // ── Event Bindings: Direct Mouse & Touch Fallback ──
+      card.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        handleDragStart(e.clientX, e.clientY);
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+          handleDragMove(e.clientX, e.clientY);
+        }
+      });
+
+      window.addEventListener('mouseup', handleDragEnd);
+
+      card.addEventListener('touchstart', function(e) {
+        if (e.touches.length > 0) {
+          e.preventDefault();
+          e.stopPropagation();
+          handleDragStart(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: false });
+
+      window.addEventListener('touchmove', function(e) {
+        if (isDragging && e.touches.length > 0) {
+          e.preventDefault();
+          handleDragMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: false });
+
+      window.addEventListener('touchend', handleDragEnd);
+      window.addEventListener('touchcancel', handleDragEnd);
+
+      // ── Physics Engine Animation Loop (Continuous 60fps) ──
+      var lastTime = performance.now();
+
+      function stepPhysics(now) {
+        requestAnimationFrame(stepPhysics);
+
+        var dt = Math.min(0.033, (now - lastTime) / 1000);
+        lastTime = now;
+
+        if (!isDragging) {
+          idleTime += dt;
+
+          var dx = pos.x;
+          var dy = pos.y;
+          var dist = Math.hypot(dx, dy);
+
+          // 1. Gravity pull
+          var fx = 0;
+          var fy = 1200;
+
+          // 2. Rope spring tension
+          var springK = 46;
+          if (dist > 0) {
+            var dirX = dx / dist;
+            var dirY = dy / dist;
+            var stretch = dist;
+            fx += -dirX * stretch * springK * 4.2;
+            fy += -dirY * stretch * springK * 4.2;
+          }
+
+          // 3. Pendulum restoring force toward resting (0,0)
+          var pendulumK = 50;
+          fx += -pos.x * pendulumK;
+          fy += -pos.y * pendulumK;
+
+          // 4. Subtle ambient micro-sway when settled
+          if (Math.abs(pos.x) < 2 && Math.abs(pos.y) < 2 && Math.abs(vel.x) < 5) {
+            fx += Math.sin(idleTime * 1.5) * 8;
+          }
+
+          // Integrate Velocity & Position with damping
+          var damping = Math.pow(0.925, dt * 60);
+          vel.x = (vel.x + fx * dt) * damping;
+          vel.y = (vel.y + fy * dt) * damping;
+
+          pos.x += vel.x * dt;
+          pos.y += vel.y * dt;
+
+          // 5. Angular Rotation Physics (Harmonic pendulum swing)
+          var targetRotZ = pos.x * 0.22;
+          var rotTorqueZ = (targetRotZ - rot.z) * 65 - rotVel.z * 7;
+          rotVel.z += rotTorqueZ * dt;
+          rot.z += rotVel.z * dt;
+
+          // 3D Pitch and Yaw
+          var targetRotY = Math.max(-30, Math.min(30, pos.x * 0.14));
+          var targetRotX = Math.max(-24, Math.min(24, -pos.y * 0.1 - Math.abs(pos.x) * 0.04));
+
+          rot.y += (targetRotY - rot.y) * 0.14;
+          rot.x += (targetRotX - rot.x) * 0.14;
+        }
+
+        // Apply 3D Transform to real HTML Card DOM
+        card.style.transform = 'translate3d(' + pos.x.toFixed(2) + 'px, ' + pos.y.toFixed(2) + 'px, 0px) ' +
+                               'rotateZ(' + rot.z.toFixed(2) + 'deg) ' +
+                               'rotateY(' + rot.y.toFixed(2) + 'deg) ' +
+                               'rotateX(' + rot.x.toFixed(2) + 'deg)';
+
+        // Render Dynamic Lanyard Bezier Curve & Clasp
+        renderLanyard(pos.x, pos.y, rot.z);
+      }
+
+      function renderLanyard(cardX, cardY, angleDeg) {
+        var ax = svgCenterX;
+        var ay = clipTopY;
+
+        var cx = svgCenterX + cardX;
+        var cy = cardRestTopY + cardY;
+
+        var angleRad = (angleDeg * Math.PI) / 180;
+        var normalX = Math.sin(angleRad);
+        var normalY = Math.cos(angleRad);
+
+        var cp1x = ax;
+        var cp1y = ay + 25;
+
+        var cp2x = cx - normalX * 28;
+        var cp2y = cy - normalY * 28;
+
+        var d = 'M ' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' ' +
+                'C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ' ' +
+                       cp2x.toFixed(1) + ' ' + cp2y.toFixed(1) + ' ' +
+                       cx.toFixed(1) + ' ' + cy.toFixed(1);
+
+        if (lanyardShadow) lanyardShadow.setAttribute('d', d);
+        if (lanyardStrap) lanyardStrap.setAttribute('d', d);
+        if (lanyardEdge) lanyardEdge.setAttribute('d', d);
+        if (lanyardStitch) lanyardStitch.setAttribute('d', d);
+        if (lanyardTextPath) lanyardTextPath.setAttribute('d', d);
+
+        if (lanyardClasp) {
+          lanyardClasp.setAttribute('transform', 'translate(' + cx.toFixed(1) + ', ' + cy.toFixed(1) + ') rotate(' + angleDeg.toFixed(1) + ')');
+        }
+      }
+
       requestAnimationFrame(stepPhysics);
-      if (!isHeroVisible) return;
-
-      var dt = Math.min(0.033, (now - lastTime) / 1000);
-      lastTime = now;
-
-      if (!isDragging) {
-        idleTime += dt;
-
-        var dx = pos.x - anchorX;
-        var dy = pos.y - anchorY;
-        var dist = Math.hypot(dx, dy);
-        if (dist < 0.001) dist = 0.001;
-
-        var dirX = dx / dist;
-        var dirY = dy / dist;
-
-        // 1. Gravity pull
-        var fx = 0;
-        var fy = 1100;
-
-        // 2. Rope spring tension
-        var springK = 42;
-        var delta = dist - ropeRestLen;
-        if (delta > 0) {
-          fx += -dirX * delta * springK * 4.5;
-          fy += -dirY * delta * springK * 4.5;
-        }
-
-        // 3. Pendulum restoring force toward center (0,0)
-        var pendulumK = 46;
-        fx += -pos.x * pendulumK;
-        fy += -pos.y * pendulumK;
-
-        // 4. Subtle ambient micro-sway when settled
-        if (Math.abs(pos.x) < 2 && Math.abs(pos.y) < 2 && Math.abs(vel.x) < 5) {
-          fx += Math.sin(idleTime * 1.6) * 8;
-        }
-
-        // Integrate Velocity & Position (Semi-implicit Euler with damping)
-        var damping = Math.pow(0.92, dt * 60);
-        vel.x = (vel.x + fx * dt) * damping;
-        vel.y = (vel.y + fy * dt) * damping;
-
-        pos.x += vel.x * dt;
-        pos.y += vel.y * dt;
-
-        // 5. Angular Rotation Physics (Harmonic swing)
-        var targetRotZ = (pos.x - anchorX) * 0.2;
-        var rotTorqueZ = (targetRotZ - rot.z) * 60 - rotVel.z * 6.5;
-        rotVel.z += rotTorqueZ * dt;
-        rot.z += rotVel.z * dt;
-
-        // 3D Pitch and Yaw smoothly following motion
-        var targetRotY = Math.max(-28, Math.min(28, pos.x * 0.12));
-        var targetRotX = Math.max(-22, Math.min(22, -pos.y * 0.1 - Math.abs(pos.x) * 0.04));
-
-        rot.y += (targetRotY - rot.y) * 0.14;
-        rot.x += (targetRotX - rot.x) * 0.14;
-      }
-
-      // Synchronize Real HTML DOM with GPU acceleration
-      card.style.transform = 'translate3d(' + pos.x.toFixed(2) + 'px, ' + pos.y.toFixed(2) + 'px, 0px) ' +
-                             'rotateZ(' + rot.z.toFixed(2) + 'deg) ' +
-                             'rotateY(' + rot.y.toFixed(2) + 'deg) ' +
-                             'rotateX(' + rot.x.toFixed(2) + 'deg)';
-
-      // Render Dynamic Bezier Rope Curve
-      renderRope(pos.x, pos.y, rot.z);
     }
 
-    function renderRope(cardX, cardY, angleDeg) {
-      var svgCenterX = 300;
-      var clipTopY = 7; // Fixed clip top in SVG viewBox (0 0 600 350)
-      var cardRestTopY = 55; // Card resting top in SVG viewBox
-
-      // Anchor point (fixed clip)
-      var ax = svgCenterX;
-      var ay = clipTopY;
-
-      // Card top attachment
-      var cx = svgCenterX + cardX;
-      var cy = cardRestTopY + cardY;
-
-      var angleRad = (angleDeg * Math.PI) / 180;
-      var normalX = Math.sin(angleRad);
-      var normalY = Math.cos(angleRad);
-
-      var cp1x = ax;
-      var cp1y = ay + 18;
-
-      var cp2x = cx - normalX * 20;
-      var cp2y = cy - normalY * 20;
-
-      var d = 'M ' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' ' +
-              'C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ' ' +
-                     cp2x.toFixed(1) + ' ' + cp2y.toFixed(1) + ' ' +
-                     cx.toFixed(1) + ' ' + cy.toFixed(1);
-
-      ropePath.setAttribute('d', d);
-      if (ropeGlow) ropeGlow.setAttribute('d', d);
-      if (ropeRing) {
-        ropeRing.setAttribute('cx', cx.toFixed(1));
-        ropeRing.setAttribute('cy', cy.toFixed(1));
-      }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanyardPhysics);
+    } else {
+      initLanyardPhysics();
     }
-
-    requestAnimationFrame(stepPhysics);
   })();
 </script>
 </body>
