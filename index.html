@@ -6068,162 +6068,127 @@ window.closeProjectModal = function() {
   })();
 
 
-  // ══ AMBIENT MUSIC PLAYER (Web Audio API — no external file needed) ══
+  // ══ NCS / NO COPYRIGHT RELAXING CHILL BACKGROUND MUSIC PLAYER ══
   (function() {
     var btn = document.getElementById('music-btn');
     if (!btn) return;
 
-    var ctx = null;
-    var playing = false;
-    var masterGain = null;
-    var oscillators = [];
-    var noiseNode = null;
-
-    // Ambient chord notes (Hz) — soft lo-fi minor seventh feel
-    var chords = [
-      [130.81, 164.81, 196.00, 246.94],  // C3 E3 G3 B3
-      [116.54, 146.83, 174.61, 220.00],  // Bb2 D3 F3 A3
-      [146.83, 185.00, 220.00, 261.63],  // D3 F#3 A3 C4
-      [130.81, 155.56, 196.00, 233.08],  // C3 Eb3 G3 Bb3
+    // Curated relaxing chill / NCS instrumental playlist
+    var playlist = [
+      { file: 'assets/audio/ncs-chill-dreams.mp3', title: 'NCS Chill · Rooftop Dreams' },
+      { file: 'assets/audio/ncs-rain-echoes.mp3', title: 'NCS Relax · After Rain' },
+      { file: 'assets/audio/ncs-late-night.mp3', title: 'NCS Calm · Midnight Echoes' },
+      { file: 'assets/audio/ncs-cozy-journey.mp3', title: 'NCS Ambient · Last Train Home' },
+      { file: 'assets/audio/ncs-neon-serenade.mp3', title: 'NCS Lofi · Neon Serenade' }
     ];
-    var currentChord = 0;
-    var chordTimer = null;
 
-    function createCtx() {
-      if (ctx) return;
-      ctx = new (window.AudioContext || window.webkitAudioContext)();
-      masterGain = ctx.createGain();
-      masterGain.gain.setValueAtTime(0, ctx.currentTime);
-      masterGain.connect(ctx.destination);
-    }
-
-    function createNoise() {
-      // Pink-ish noise for ambience
-      var bufferSize = ctx.sampleRate * 4;
-      var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      var data = buffer.getChannelData(0);
-      var b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0;
-      for (var i = 0; i < bufferSize; i++) {
-        var white = Math.random() * 2 - 1;
-        b0 = 0.99886*b0 + white*0.0555179;
-        b1 = 0.99332*b1 + white*0.0750759;
-        b2 = 0.96900*b2 + white*0.1538520;
-        b3 = 0.86650*b3 + white*0.3104856;
-        b4 = 0.55000*b4 + white*0.5329522;
-        b5 = -0.7616*b5 - white*0.0168980;
-        data[i] = (b0+b1+b2+b3+b4+b5+b6+white*0.5362) * 0.08;
-        b6 = white * 0.115926;
-      }
-      var src = ctx.createBufferSource();
-      src.buffer = buffer;
-      src.loop = true;
-      var ngain = ctx.createGain();
-      ngain.gain.value = 0.018;
-      var filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 400;
-      src.connect(filter);
-      filter.connect(ngain);
-      ngain.connect(masterGain);
-      src.start();
-      return src;
-    }
-
-    function playChord(freqs) {
-      // Stop old oscillators
-      oscillators.forEach(function(o) {
-        try { o.osc.gain.gain.setTargetAtTime(0, ctx.currentTime, 0.5); }
-        catch(e){}
-        setTimeout(function(){ try { o.osc.stop(); } catch(e){} }, 1500);
-      });
-      oscillators = [];
-
-      freqs.forEach(function(freq, i) {
-        var osc = ctx.createOscillator();
-        var g = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-        // Add slight detuning for warmth
-        osc.detune.value = (Math.random() - 0.5) * 6;
-        var vol = [0.22, 0.18, 0.16, 0.12][i] || 0.1;
-        g.gain.setValueAtTime(0, ctx.currentTime);
-        g.gain.setTargetAtTime(vol, ctx.currentTime, 0.8);
-        osc.connect(g);
-        g.connect(masterGain);
-        osc.start();
-        oscillators.push({ osc: osc, gain: g });
-      });
-    }
-
-    function startChordCycle() {
-      playChord(chords[currentChord]);
-      chordTimer = setInterval(function() {
-        currentChord = (currentChord + 1) % chords.length;
-        playChord(chords[currentChord]);
-      }, 6000);
-    }
-
-    function stopChordCycle() {
-      clearInterval(chordTimer);
-      oscillators.forEach(function(o) {
-        try { o.osc.gain.gain.setTargetAtTime(0, ctx.currentTime, 0.8); }
-        catch(e){}
-        setTimeout(function(){ try { o.osc.stop(); } catch(e){} }, 2000);
-      });
-      oscillators = [];
-      if (noiseNode) { try { noiseNode.stop(); } catch(e){} noiseNode = null; }
-    }
-
+    // Pick a random starting track
+    var currentTrackIdx = Math.floor(Math.random() * playlist.length);
+    var audio = new Audio();
+    audio.preload = 'auto';
+    audio.volume = 0; // will fade in
+    var targetVolume = 0.35; // optimal ambient background volume
+    var isPlaying = false;
     var userManuallyStopped = false;
+    var fadeTimer = null;
 
-    function startMusic() {
-      createCtx();
-      if (ctx.state === 'suspended') {
-        ctx.resume();
+    function loadTrack(idx) {
+      currentTrackIdx = idx % playlist.length;
+      var track = playlist[currentTrackIdx];
+      audio.src = track.file;
+      return track;
+    }
+
+    loadTrack(currentTrackIdx);
+
+    // When current track ends, pick the next random track automatically
+    audio.addEventListener('ended', function() {
+      var nextIdx = (currentTrackIdx + 1 + Math.floor(Math.random() * (playlist.length - 1))) % playlist.length;
+      var track = loadTrack(nextIdx);
+      audio.play().then(function() {
+        fadeInAudio();
+        updateUI(true, track.title);
+      }).catch(function(e) {
+        console.log('Audio autoplay error:', e);
+      });
+    });
+
+    function fadeInAudio() {
+      clearInterval(fadeTimer);
+      var vol = audio.volume;
+      fadeTimer = setInterval(function() {
+        vol = Math.min(targetVolume, vol + 0.04);
+        audio.volume = vol;
+        if (vol >= targetVolume) clearInterval(fadeTimer);
+      }, 50);
+    }
+
+    function fadeOutAudio(onComplete) {
+      clearInterval(fadeTimer);
+      var vol = audio.volume;
+      fadeTimer = setInterval(function() {
+        vol = Math.max(0, vol - 0.05);
+        audio.volume = vol;
+        if (vol <= 0) {
+          clearInterval(fadeTimer);
+          audio.pause();
+          if (onComplete) onComplete();
+        }
+      }, 40);
+    }
+
+    function updateUI(playing, title) {
+      if (playing) {
+        btn.classList.add('playing');
+        btn.setAttribute('data-tooltip', '🎵 ' + (title || playlist[currentTrackIdx].title));
+        btn.setAttribute('aria-label', 'Jeda Musik');
+      } else {
+        btn.classList.remove('playing');
+        btn.setAttribute('data-tooltip', 'Putar Musik NCS');
+        btn.setAttribute('aria-label', 'Putar Background Music');
       }
-      masterGain.gain.setTargetAtTime(1, ctx.currentTime, 1.5);
-      if (!noiseNode) noiseNode = createNoise();
-      startChordCycle();
-      playing = true;
-      btn.classList.add('playing');
-      btn.setAttribute('data-tooltip', 'Hentikan Musik');
-      btn.setAttribute('aria-label', 'Stop Background Music');
+    }
+
+    function playMusic() {
+      var track = playlist[currentTrackIdx];
+      audio.play().then(function() {
+        isPlaying = true;
+        fadeInAudio();
+        updateUI(true, track.title);
+      }).catch(function(err) {
+        console.log('Audio autoplay prevented by browser policy, waiting for interaction:', err);
+      });
     }
 
     function stopMusic() {
-      if (!ctx) return;
-      masterGain.gain.setTargetAtTime(0, ctx.currentTime, 1.0);
-      stopChordCycle();
-      playing = false;
-      btn.classList.remove('playing');
-      btn.setAttribute('data-tooltip', 'Putar Musik');
-      btn.setAttribute('aria-label', 'Play Background Music');
+      isPlaying = false;
+      fadeOutAudio(function() {
+        updateUI(false);
+      });
     }
 
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
-      if (playing) {
+      if (isPlaying) {
         userManuallyStopped = true;
         stopMusic();
       } else {
         userManuallyStopped = false;
-        startMusic();
+        playMusic();
       }
     });
 
-    // ── AUTO-PLAY WITH SMART INTERACTION FALLBACK ──
+    // ── SMART AUTOPLAY WITH ONE-TIME INTERACTION FALLBACK ──
     function attemptAutoPlay() {
       if (userManuallyStopped) return;
-      startMusic();
-      if (ctx && ctx.state === 'running') {
-        // Autoplay succeeded immediately!
-        removeInteractionListeners();
-      }
+      playMusic();
     }
 
     function onFirstUserInteraction() {
       if (userManuallyStopped) return;
-      attemptAutoPlay();
+      if (!isPlaying) {
+        playMusic();
+      }
       removeInteractionListeners();
     }
 
@@ -6242,8 +6207,6 @@ window.closeProjectModal = function() {
       setTimeout(attemptAutoPlay, 1000);
     });
   })();
-
-
 
   // ══ 3D PHYSICAL LANYARD & ID CARD INTERACTION ENGINE (DESKTOP & MOBILE) ══
   (function() {
