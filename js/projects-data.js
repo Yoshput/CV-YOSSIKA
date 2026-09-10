@@ -164,38 +164,57 @@ const PROJECTS_DATA = {
     },
     features: {
       en: [
-        "Multi-role access (Student/Customer, Canteen Vendor, and University Admin)",
-        "Midtrans Payment Gateway integration (QRIS, GoPay, ShopeePay, Bank Transfer)",
-        "TyU-Pay internal student virtual wallet",
-        "Live order status tracker (Received, Cooking, Ready for Pickup)",
-        "Vendor analytics dashboard for daily revenue and inventory control"
+        "Food-TYU AI Assistant: Intelligent conversational bot recommending campus meals based on mood & budget",
+        "Multi-stall Canteen Directory (Kantin Barokah, Kantin Segar, Kantin Nusantara)",
+        "Interactive Food Catalog with real-time ratings, pricing, and fast add-to-cart",
+        "Midtrans Payment Gateway integration (QRIS, GoPay, ShopeePay, Bank Virtual Accounts)",
+        "TyU-Pay internal student virtual wallet and voucher discounts",
+        "Campus Location map & operational schedule for Tel-U Purwokerto community"
       ],
       id: [
-        "Multi-Role Access (Mahasiswa, Pemilik Stand Kantin, Administrator Kampus)",
+        "Food-TYU AI Assistant: Asisten pintar rekomendasi menu kantin kampus berbasis mood dan budget",
+        "Direktori Kantin Multi-Stand (Kantin Barokah, Kantin Segar, Kantin Nusantara)",
+        "Katalog Menu Interaktif dengan rating kepuasan, harga transparan, dan keranjang belanja cepat",
         "Integrasi Midtrans Payment Gateway untuk pembayaran digital (QRIS & E-Wallet)",
-        "TyU-Pay Virtual Wallet sebagai opsi saldo internal mahasiswa",
-        "Pembaruan status pesanan real-time (Diterima, Dimasak, Siap Diambil)",
-        "Dashboard analitik penjualan dan manajemen stok menu untuk vendor"
+        "TyU-Pay Virtual Wallet & sistem diskon voucher khusus civitas akademika",
+        "Peta Lokasi Kampus Tel-U Purwokerto dan jam operasional kantin"
       ]
     },
     images: [
+      "assets/img/project-web/Food-TYU/food-tyu-dashboard-overview.webp",
+      "assets/img/project-web/Food-TYU/food-tyu-ai-assistant.webp",
+      "assets/img/project-web/Food-TYU/food-tyu-daftar-kantin.webp",
+      "assets/img/project-web/Food-TYU/food-tyu-menu-kantin.webp",
+      "assets/img/project-web/Food-TYU/food-tyu-lokasi-kampus.webp",
       "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-landing.webp",
       "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-home.webp",
       "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-form-daftar.webp",
       "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-midtrans.webp",
       "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-midtrans-metode.webp"
     ],
+    video: "assets/img/project-web/Food-TYU/food-tyu-demo.mp4",
+    previewWebp: "assets/img/project-web/Food-TYU/food-tyu-preview.webp",
     imageCaptions: {
       en: [
+        "Student Dashboard Overview: Personalized greeting, active orders, and TyU-Pay balance status",
+        "Food-TYU AI Assistant: Interactive conversational culinary bot assisting meal choices & queries",
+        "Campus Canteen Directory: Vendor stalls overview with customer ratings and operating statuses",
+        "Interactive Menu Grid: Bakso Malang, Soto Ayam, Chicken Katsu with instant ordering controls",
+        "Campus Location & Hours: Direct Google Maps navigation to Tel-U Purwokerto dining hub",
         "Landing Page: Direct ordering CTA and digital cashless showcase",
-        "Home Menu Catalog: Live vendor stalls, food categories, and search",
+        "Home Menu Catalog: Live vendor stalls, food categories, and search filters",
         "Registration & Checkout: Form to customize meal orders & pickup timing",
         "Midtrans Payment Interface: Seamless QRIS & multi-bank virtual accounts",
         "Payment Methods Selection: E-Wallet (GoPay, ShopeePay) & TyU-Pay Wallet"
       ],
       id: [
+        "Dashboard Mahasiswa: Sapaan personal, monitoring pesanan aktif, dan status saldo TyU-Pay",
+        "Food-TYU AI Assistant: Asisten kuliner pintar interaktif untuk rekomendasi makanan harian",
+        "Daftar Kantin Kampus: Profil stand mitra kantin (Barokah, Segar, Nusantara) dengan rating",
+        "Katalog Menu Kantin: Pilihan Bakso Malang, Soto Ayam, Ayam Katsu dengan tombol beli cepat",
+        "Peta Lokasi & Jam Operasional: Navigasi Google Maps langsung ke area kantin Tel-U Purwokerto",
         "Landing Page: Halaman muka dengan ajakan pesan digital tanpa antre",
-        "Katalog Menu Kantin: Daftar stand kantin, kategori makanan, dan pencarian",
+        "Katalog Menu Kantin: Daftar stand kantin, kategori makanan, dan fitur pencarian",
         "Pendaftaran & Checkout: Formulir pesanan dan jadwal pengambilan makanan",
         "Antarmuka Pembayaran Midtrans: Integrasi QRIS dan Virtual Account Bank",
         "Pilihan Metode Pembayaran: E-Wallet (GoPay, ShopeePay) & Saldo TyU-Pay"
