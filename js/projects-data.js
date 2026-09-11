@@ -675,6 +675,16 @@ const PROJECTS_DATA = {
   mango_nyeni: {
     id: "mango_nyeni",
     status: "completed",
+    deviceMockup: "iphone",
+    isMobileGallery: true,
+    phoneAccent: "#f59e0b",
+    phoneAccentGlow: "rgba(245, 158, 11, 0.4)",
+    phoneBadges: {
+      left1: { title: "Fresh Mango Sago", sub: "Signature fruit dessert" },
+      left2: { title: "Purwokerto F&B", sub: "Direct-to-consumer delivery" },
+      right1: { title: "Instagram Marketing", sub: "Active feeds & daily stories" },
+      right2: { title: "5.0 Customer Rating", sub: "Authentic buyer testimonials" }
+    },
     title: "Mango Nyeni — Artisan Sago Beverage Enterprise",
     role: "Co-Founder & Operator",
     year: "2026",
@@ -704,16 +714,48 @@ const PROJECTS_DATA = {
       ]
     },
     images: [
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-01.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-02.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-03.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-ig-profile-full.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-showcase.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-post-pricelist.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-story-testimoni-01.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-story-testimoni-02.webp",
       "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-mango-sago.webp",
       "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-strawberry-sago.webp",
       "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-buah-naga-sago.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-profile-ig.webp"
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-01.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-02.webp",
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-03.webp"
     ],
+    imageCaptions: {
+      en: [
+        "Instagram Profile: Full mobile feed, bio, and story highlights of @magi_store.id",
+        "Brand Showcase: Visual collage of official menu, packaging, and endorsements",
+        "Price List Menu: Best seller Mango Sago & new fruit variants layout",
+        "Buyer Endorsement: Customer unboxing and 5-star video testimonial",
+        "Creamy Texture Review: Verified review highlighting fruit freshness and balance",
+        "Product Photography: Signature Mango Sago in premium dessert bowl",
+        "Product Photography: Fresh Strawberry Sago with creamy condensed milk blend",
+        "Product Photography: Exotic Dragon Fruit Sago with diced natural toppings",
+        "Social Media Feed: Promotional visual design for market launches",
+        "Social Media Feed: Product awareness carousel design",
+        "Social Media Feed: Customer engagement and review highlight graphic"
+      ],
+      id: [
+        "Profil Instagram: Tampilan feed, bio, dan highlight story lengkap @magi_store.id",
+        "Showcase Produk: Kolase visual menu resmi, packaging, dan testimoni pelanggan",
+        "Menu & Daftar Harga: Best seller Mango Sago dan varian buah segar",
+        "Testimoni Endorsement: Video unboxing dan review jujur bintang 5 pelanggan",
+        "Review Tekstur Creamy: Testimoni kelezatan dan kesegaran mangga asli",
+        "Foto Produk: Varian unggulan Mango Sago dalam mangkok dessert premium",
+        "Foto Produk: Varian segar Strawberry Sago dengan susu creamy",
+        "Foto Produk: Varian eksotis Buah Naga Sago dengan topping buah segar",
+        "Feed Instagram: Desain visual promosi peluncuran produk",
+        "Feed Instagram: Desain carousel pengenalan varian produk",
+        "Feed Instagram: Desain grafis testimoni dan kepuasan pembeli"
+      ]
+    },
     actions: [
-      { text: "Instagram Mango Nyeni ↗", link: "https://instagram.com", primary: true }
+      { text: "Instagram @magi_store.id ↗", link: "https://instagram.com/magi_store.id", primary: true }
     ]
   }
 };

@@ -819,7 +819,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
         vid.play().catch(() => {});
       } else if (data.images && data.images[0]) {
         const img = document.createElement('img');
-        img.src = data.laptopShowcase || data.images[0];
+        img.src = isIphoneMockup ? data.images[0] : (data.laptopShowcase || data.images[0]);
         img.alt = data.title;
         img.loading = 'eager';
         heroMedia.appendChild(img);
