@@ -535,29 +535,12 @@ function buildImmersiveHero(data, lang) {
   const descText = typeof data.desc === 'object' ? data.desc[lang] : (data.desc || '');
   const actionLink = (data.actions && data.actions[0]) ? data.actions[0].link : '#';
   const actionLabel = (data.actions && data.actions[0]) ? data.actions[0].text : 'View Project ↗';
-  const imgs = data.images || [];
-
-  // Pick 5 phone screens (skip cover at index 0, use screens 1–5)
-  const bgImgs = imgs.slice(1, 6);
-  const bgHtml = bgImgs.map((src, i) => {
-    const offsets = [
-      { top: '8%',  left: '-2%',  rot: '-8deg',  scale: '0.78' },
-      { top: '4%',  left: '15%',  rot: '-3deg',  scale: '0.9' },
-      { top: '0%',  left: '35%',  rot:  '0deg',  scale: '1.0' },
-      { top: '4%',  left: '56%',  rot:  '3deg',  scale: '0.9' },
-      { top: '8%',  right: '-2%', rot:  '8deg',  scale: '0.78' },
-    ][i] || { top: '5%', left: `${i*18}%`, rot: '0deg', scale: '0.85' };
-    const posStyle = offsets.right
-      ? `top:${offsets.top};right:${offsets.right};`
-      : `top:${offsets.top};left:${offsets.left};`;
-    return `<div class="ih-phone-wrap" style="${posStyle}transform:rotate(${offsets.rot}) scale(${offsets.scale})">
-      <img src="${src}" alt="" loading="eager" decoding="async">
-    </div>`;
-  }).join('');
 
   heroSection.classList.add('cs-immersive-hero');
   heroSection.innerHTML = `
-    <div class="ih-bg-screens" aria-hidden="true">${bgHtml}</div>
+    <div class="ih-showcase-bg" aria-hidden="true">
+      <img src="assets/img/project-web/thrift-space/thrift-space-hero-showcase.webp" alt="Thrift Space 3D Showcase" class="ih-showcase-img" loading="eager" decoding="async">
+    </div>
     <div class="ih-overlay" aria-hidden="true"></div>
 
     <div class="ih-content">
@@ -587,10 +570,10 @@ function buildImmersiveHero(data, lang) {
 
   // Animate with GSAP
   if (window.gsap) {
-    gsap.fromTo('.ih-title',      { opacity: 0, scale: 0.88, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.8, delay: 0.15, ease: 'expo.out' });
-    gsap.fromTo('.ih-eyebrow',    { opacity: 0, y: 20 },               { opacity: 1, y: 0, duration: 0.6, delay: 0.05, ease: 'power3.out' });
-    gsap.fromTo('.ih-meta-bar',   { opacity: 0, y: 30 },               { opacity: 1, y: 0, duration: 0.55, delay: 0.35, ease: 'power3.out' });
-    gsap.fromTo('.ih-phone-wrap', { opacity: 0, scale: 0.9, y: 30 },   { opacity: 0.55, scale: 1, y: 0, duration: 1.1, delay: 0.08, stagger: 0.07, ease: 'expo.out' });
+    gsap.fromTo('.ih-showcase-img', { opacity: 0, scale: 1.05 }, { opacity: 0.9, scale: 1, duration: 1.2, ease: 'power2.out' });
+    gsap.fromTo('.ih-title',        { opacity: 0, scale: 0.92, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.75, delay: 0.1, ease: 'expo.out' });
+    gsap.fromTo('.ih-eyebrow',      { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.05, ease: 'power3.out' });
+    gsap.fromTo('.ih-meta-bar',     { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.25, ease: 'power3.out' });
   }
 }
 
@@ -651,9 +634,11 @@ window.openCaseStudy = window.openProjectModal = function(id) {
 
   // 0. Detect immersive mode (UI/UX case study projects with phone screens)
   const heroSection = document.querySelector('.cs-hero');
+  const overlayEl = document.getElementById('caseStudyView');
   const isImmersive = (id === 'thrift');
 
   if (isImmersive) {
+    if (overlayEl) overlayEl.classList.add('cs-mobile-project');
     // ── Immersive "Faiz Azzahra" hero for Thrift Space ──────────────────────
     buildImmersiveHero(data, lang);
 
@@ -669,6 +654,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
       });
     }
   } else {
+    if (overlayEl) overlayEl.classList.remove('cs-mobile-project');
     // ── Normal hero for code / web projects ─────────────────────────────────
     resetNormalHero(heroSection);
 
