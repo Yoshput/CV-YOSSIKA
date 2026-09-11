@@ -53,8 +53,8 @@ const I18N_DATA = {
     "projects.viewDetail": "View Detail →",
     "projects.liveDemo": "Live Demo ↗",
     "projects.github": "GitHub ↗",
-    "projects.statusOngoing": "🚧 In Progress / Ongoing Development",
-    "projects.statusFeatured": "⭐ Featured",
+    "projects.statusOngoing": "In Progress / Ongoing Development",
+    "projects.statusFeatured": "Featured",
 
     // Design Portfolio
     "designs.eyebrow": "Visual Arts",
@@ -171,8 +171,8 @@ const I18N_DATA = {
     "projects.viewDetail": "Lihat Detail →",
     "projects.liveDemo": "Live Demo ↗",
     "projects.github": "GitHub ↗",
-    "projects.statusOngoing": "🚧 Sedang Dikembangkan / Active Development",
-    "projects.statusFeatured": "⭐ Unggulan",
+    "projects.statusOngoing": "Sedang Dikembangkan / Active Development",
+    "projects.statusFeatured": "Unggulan",
 
     // Design Portfolio
     "designs.eyebrow": "Karya Visual",

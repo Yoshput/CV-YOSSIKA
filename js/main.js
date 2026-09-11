@@ -583,7 +583,7 @@ function resetNormalHero(heroSection) {
   heroSection.innerHTML = `
     <div class="container cs-hero-inner">
       <div class="cs-hero-badge-wrap">
-        <span id="csHeroBadge" class="pill pill-purple">⭐ Featured</span>
+        <span id="csHeroBadge" class="pill pill-purple">Featured Project</span>
       </div>
       <p class="cs-hero-tagline" id="csHeroTagline"></p>
       <h1 class="cs-hero-title" id="csHeroTitle">PROJECT</h1>
@@ -664,11 +664,11 @@ window.openCaseStudy = window.openProjectModal = function(id) {
       if (data.status === 'in_progress') {
         badgeEl.style.display = 'inline-flex';
         badgeEl.className = 'badge-in-progress';
-        badgeEl.textContent = data.statusBadge ? data.statusBadge[lang] : '🚧 In Progress';
+        badgeEl.textContent = data.statusBadge ? data.statusBadge[lang].replace(/[^\w\s/–-]/g, '').trim() : 'In Progress';
       } else if (data.status === 'featured') {
         badgeEl.style.display = 'inline-flex';
         badgeEl.className = 'pill pill-purple';
-        badgeEl.textContent = data.statusBadge ? data.statusBadge[lang] : '⭐ Featured';
+        badgeEl.textContent = data.statusBadge ? data.statusBadge[lang].replace(/[^\w\s/–-]/g, '').trim() : 'Featured Project';
       } else {
         badgeEl.style.display = 'inline-flex';
         badgeEl.className = 'pill pill-blue';
@@ -703,11 +703,18 @@ window.openCaseStudy = window.openProjectModal = function(id) {
       const accentGlow = data.phoneAccentGlow || 'rgba(198, 255, 0, 0.35)';
       const badges = data.phoneBadges || {};
 
+      const BADGE_SVGS = {
+        left1: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`,
+        left2: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
+        right1: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>`,
+        right2: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`
+      };
+
       let badgesHtml = '';
       if (badges.left1) {
         badgesHtml += `
           <div class="cs-phone-badge cs-phone-badge-left1">
-            <span class="badge-icon">${badges.left1.icon || '⚡'}</span>
+            <span class="badge-icon">${BADGE_SVGS.left1}</span>
             <div class="badge-text">
               <span class="badge-title">${badges.left1.title}</span>
               <span class="badge-sub">${badges.left1.sub}</span>
@@ -717,7 +724,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
       if (badges.left2) {
         badgesHtml += `
           <div class="cs-phone-badge cs-phone-badge-left2">
-            <span class="badge-icon">${badges.left2.icon || '🎯'}</span>
+            <span class="badge-icon">${BADGE_SVGS.left2}</span>
             <div class="badge-text">
               <span class="badge-title">${badges.left2.title}</span>
               <span class="badge-sub">${badges.left2.sub}</span>
@@ -727,7 +734,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
       if (badges.right1) {
         badgesHtml += `
           <div class="cs-phone-badge cs-phone-badge-right1">
-            <span class="badge-icon">${badges.right1.icon || '🔥'}</span>
+            <span class="badge-icon">${BADGE_SVGS.right1}</span>
             <div class="badge-text">
               <span class="badge-title">${badges.right1.title}</span>
               <span class="badge-sub">${badges.right1.sub}</span>
@@ -737,7 +744,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
       if (badges.right2) {
         badgesHtml += `
           <div class="cs-phone-badge cs-phone-badge-right2">
-            <span class="badge-icon">${badges.right2.icon || '📊'}</span>
+            <span class="badge-icon">${BADGE_SVGS.right2}</span>
             <div class="badge-text">
               <span class="badge-title">${badges.right2.title}</span>
               <span class="badge-sub">${badges.right2.sub}</span>
@@ -861,12 +868,19 @@ window.openCaseStudy = window.openProjectModal = function(id) {
   const featCont = document.getElementById('csFeaturesGrid');
   featCont.innerHTML = '';
   const features = typeof data.features === 'object' && data.features[lang] ? data.features[lang] : (Array.isArray(data.features) ? data.features : []);
-  const featIcons = ['⚡', '🎯', '🛡️', '📊', '🌐', '💡', '🔥'];
+  const FEAT_SVGS = [
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`,
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`,
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line></svg>`
+  ];
   features.forEach((f, idx) => {
     const card = document.createElement('div');
     card.className = 'cs-feature-card';
     card.innerHTML = `
-      <span class="cs-feature-icon">${featIcons[idx % featIcons.length]}</span>
+      <span class="cs-feature-icon" style="color:var(--accent);display:inline-flex;align-items:center;">${FEAT_SVGS[idx % FEAT_SVGS.length]}</span>
       <span class="cs-feature-text">${f}</span>
     `;
     featCont.appendChild(card);
@@ -926,7 +940,8 @@ window.openCaseStudy = window.openProjectModal = function(id) {
           <div class="cs-screen-caption">${capText}</div>
         </div>
         <div class="cs-screen-zoom-hint" onclick="openLightbox('${src}')">
-          <span>🔍</span> ${isEn ? 'Click to Zoom' : 'Perbesar'}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+          ${isEn ? 'Click to Zoom' : 'Perbesar'}
         </div>
       </div>
       <div class="cs-screen-img-wrap" onclick="openLightbox('${src}')">

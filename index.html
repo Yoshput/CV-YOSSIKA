@@ -641,6 +641,58 @@
       .ih-title { font-size: clamp(2.8rem, 12vw, 4.8rem); }
       .cs-screens-grid { grid-template-columns: 1fr !important; }
     }
+
+    /* Fix Lightbox z-index to always be on top of case study overlay */
+    .lightbox-overlay {
+      z-index: 999999 !important;
+      cursor: zoom-out;
+      background: rgba(5, 7, 12, 0.94) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+    .lightbox-overlay.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .lightbox-img {
+      max-width: 92vw !important;
+      max-height: 92vh !important;
+      object-fit: contain !important;
+      border-radius: 14px !important;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .lightbox-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 1000000;
+    }
+    .lightbox-close-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.1);
+    }
+    .badge-dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38bdf8;
+      display: inline-block;
+      margin-right: 6px;
+      box-shadow: 0 0 8px #38bdf8;
+    }
   </style>
 </head>
 <body>
@@ -689,7 +741,7 @@
 
       <div class="nav-controls">
         <button id="langToggleBtn" class="lang-btn" aria-label="Switch Language (EN)">
-          <span class="lang-globe" aria-hidden="true">🌐</span> <span id="langCurrentText">EN</span>
+          <span class="lang-globe" aria-hidden="true"></span> <span id="langCurrentText">EN</span>
         </button>
         <button id="musicToggleBtn" class="icon-btn" aria-label="Play Background Music">🎵</button>
         <button id="themeToggleBtn" class="icon-btn" aria-label="Toggle Dark/Light Mode">☀️</button>
@@ -843,7 +895,7 @@
           <article class="project-card" onclick="openProjectModal('optik_iseeyou')">
             <div class="project-media">
               <div class="project-badge-pos">
-                <span class="badge-in-progress" data-i18n="projects.statusOngoing">🚧 In Progress / Ongoing Development</span>
+                <span class="badge-in-progress" data-i18n="projects.statusOngoing"><span class="badge-dot-pulse"></span> In Progress</span>
               </div>
               <video class="card-video-loop" src="assets/img/project-web/optik-iseeyou/optik-iseeyou-demo.mp4" poster="assets/img/project-web/optik-iseeyou/optik-iseeyou-landing.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
             </div>
@@ -868,7 +920,7 @@
           <article class="project-card" onclick="openProjectModal('gesture')">
             <div class="project-media">
               <div class="project-badge-pos">
-                <span class="pill pill-purple" data-i18n="projects.statusFeatured">⭐ Featured</span>
+                <span class="pill pill-purple" data-i18n="projects.statusFeatured">Featured Project</span>
               </div>
               <img src="assets/img/project-web/Gesture-Isyarat/gesture-isyarat-preview.webp" alt="GestureFlow v3.0 — AI Sign Language Learning" width="600" height="338" loading="eager">
             </div>
@@ -897,10 +949,10 @@
               <h3 class="project-title">Food-TYU — Tel-U Digital Canteen System</h3>
               <p class="project-tagline">Campus e-canteen platform featuring automated food ordering, Midtrans QRIS/E-Wallet payments, and vendor analytics.</p>
               <div class="project-tech">
-                <span class="pill pill-green">Laravel</span>
-                <span class="pill pill-amber">Midtrans Payment</span>
+                <span class="pill pill-red">PHP Native</span>
                 <span class="pill pill-blue">MySQL</span>
-                <span class="pill pill-purple">TailwindCSS</span>
+                <span class="pill pill-green">Midtrans Snap</span>
+                <span class="pill pill-purple">Chart.js</span>
               </div>
               <div class="project-action-row">
                 <span data-i18n="projects.viewDetail">View Detail →</span>
@@ -937,7 +989,7 @@
           <!-- Ngertiin Dia -->
           <article class="project-card" onclick="openProjectModal('ngertiindia')">
             <div class="project-media">
-              <video class="card-video-loop" src="assets/img/project-web/ngertiin-dia/ngertiin-dia-demo.mp4" poster="assets/img/project-web/ngertiin-dia/ngertiin-dia-landing.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
+              <img src="assets/img/project-web/ngertiin-dia/ngertiin-dia-showcase.webp" alt="Ngertiin Dia — Self-Care & Couple Sync" width="600" height="338" loading="lazy">
             </div>
             <div class="project-body">
               <h3 class="project-title">Ngertiin Dia — Self-Care & Couple Sync</h3>
@@ -958,7 +1010,7 @@
           <!-- Gym Planner -->
           <article class="project-card" onclick="openProjectModal('gymplanner')">
             <div class="project-media">
-              <video class="card-video-loop" src="assets/img/project-web/gym-planner/gym-planner-demo.mp4" poster="assets/img/project-web/gym-planner/gym-planner-landing.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
+              <img src="assets/img/project-web/gym-planner/gym-planner-showcase.webp" alt="Gym Planner — Offline-First Workout PWA" width="600" height="338" loading="lazy">
             </div>
             <div class="project-body">
               <h3 class="project-title">Gym Planner — Offline-First Workout PWA</h3>
@@ -980,7 +1032,7 @@
           <article class="project-card" onclick="openProjectModal('thrift')">
             <div class="project-media">
               <div class="project-badge-pos">
-                <span class="pill pill-purple">🎨 UI/UX Design</span>
+                <span class="pill pill-purple">UI/UX Design</span>
               </div>
               <video
                 class="card-video-loop"
@@ -1615,7 +1667,7 @@
   <!-- ════ LIGHTWEIGHT POPUP: FIRST VISIT LANGUAGE PICKER ════ -->
   <aside class="lang-popup" id="langModal" role="region" aria-label="Language Selector">
     <div class="lang-popup-header">
-      <span class="lang-globe-icon" aria-hidden="true">🌐</span>
+      <span class="lang-globe-icon" aria-hidden="true"></span>
       <div class="lang-popup-title" id="lmTitle" data-i18n="langModal.title">Select Language</div>
       <button class="lang-popup-close" onclick="window.I18N.dismissModal()" aria-label="Close language selector">✕</button>
     </div>
@@ -1649,7 +1701,7 @@
       <section class="cs-hero">
         <div class="container cs-hero-inner">
           <div class="cs-hero-badge-wrap">
-            <span id="csHeroBadge" class="pill pill-purple">⭐ Featured</span>
+            <span id="csHeroBadge" class="pill pill-purple">Featured</span>
           </div>
 
           <p class="cs-hero-tagline" id="csHeroTagline">Tagline goes here</p>
@@ -1801,18 +1853,23 @@
 
   <!-- ════ MODAL: LIGHTBOX ════ -->
   <div class="lightbox-overlay" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close-btn" aria-label="Close Lightbox" onclick="closeLightbox()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
     <img id="lightboxImg" class="lightbox-img" src="" alt="Enlarged View" width="800" height="600">
   </div>
 
   <!-- ════ YOSBOT CHATBOT LAUNCHER & WINDOW ════ -->
   <div class="chatbot-launcher" id="chatbotLauncher" aria-label="Open AI Chatbot Assistant">
-    <span style="font-size:1.4rem;">💬</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
   </div>
 
   <div class="chatbot-window" id="chatbotWindow">
     <div class="chatbot-head">
       <div style="display:flex;align-items:center;gap:0.6rem;">
-        <span style="font-size:1.2rem;">🤖</span>
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;color:#38bdf8;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+        </div>
         <div>
           <div style="font-weight:700;font-size:0.92rem;" data-i18n="chatbot.title">YosBot Assistant</div>
           <div style="font-size:0.75rem;color:var(--green);" data-i18n="chatbot.online">Online · Powered by Gemini AI</div>

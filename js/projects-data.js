@@ -8,8 +8,8 @@ const PROJECTS_DATA = {
     id: "optik_iseeyou",
     status: "in_progress",
     statusBadge: {
-      en: "🚧 In Progress / Ongoing Development",
-      id: "🚧 Sedang Dikembangkan / Active Development"
+      en: "In Progress / Ongoing Development",
+      id: "Sedang Dikembangkan / Active Development"
     },
     title: "Optik I See You — AR Try-On & Optical Store Website",
     role: "Lead Fullstack & Web AI Developer",
@@ -78,8 +78,8 @@ const PROJECTS_DATA = {
     id: "gesture",
     status: "featured",
     statusBadge: {
-      en: "⭐ Featured",
-      id: "⭐ Unggulan"
+      en: "Featured",
+      id: "Unggulan"
     },
     title: "GestureFlow v3.0 — AI Sign Language Learning",
     role: "AI / Web Developer",
@@ -391,10 +391,10 @@ const PROJECTS_DATA = {
     phoneAccent: "#c6ff00",
     phoneAccentGlow: "rgba(198, 255, 0, 0.35)",
     phoneBadges: {
-      left1: { icon: "⚡", title: "Offline-First PWA", sub: "Works 100% offline with zero latency" },
-      left2: { icon: "🎯", title: "7-Day Custom Split", sub: "Push-Pull-Legs & Upper-Lower routines" },
-      right1: { icon: "🔥", title: "TDEE & Macro Calc", sub: "Dynamic deficit/surplus calorie targets" },
-      right2: { icon: "📊", title: "Volume & PR Tracker", sub: "Auto rep & set progressive overload" }
+      left1: { icon: "", title: "Offline-First PWA", sub: "Works 100% offline with zero latency" },
+      left2: { icon: "", title: "7-Day Custom Split", sub: "Push-Pull-Legs & Upper-Lower routines" },
+      right1: { icon: "", title: "TDEE & Macro Calc", sub: "Dynamic deficit/surplus calorie targets" },
+      right2: { icon: "", title: "Volume & PR Tracker", sub: "Auto rep & set progressive overload" }
     },
     title: "Gym Planner — Offline-First Workout PWA",
     role: "PWA Developer",
