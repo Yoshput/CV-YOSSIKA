@@ -1142,6 +1142,17 @@ function buildWorksGrid(cat) {
   const isEn = window.I18N ? window.I18N.current === 'en' : true;
   const lang = isEn ? 'en' : 'id';
 
+  const showcaseMap = {
+    'gymplanner': 'assets/img/project-web/gym-planner/gym-planner-showcase.webp',
+    'ngertiindia': 'assets/img/project-web/ngertiin-dia/ngertiin-dia-showcase.webp',
+    'macabae': 'assets/img/project-web/maca-bae/macabae-laptop-showcase.webp',
+    'thrift': 'assets/img/project-web/thrift-space/thrift-space-hero-showcase.webp',
+    'mango_nyeni': 'assets/img/project-bisnis/mango-nyeni/mango-nyeni-showcase.webp',
+    'optik_iseeyou': 'assets/img/project-web/optik-iseeyou/optik-iseeyou-landing.webp',
+    'gesture': 'assets/img/project-web/Gesture-Isyarat/gesture-isyarat-preview.webp',
+    'food': 'assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-landing.webp'
+  };
+
   Object.values(window.PROJECTS_DATA).forEach(item => {
     if (cat !== 'all' && item.category !== cat) return;
 
@@ -1152,15 +1163,12 @@ function buildWorksGrid(cat) {
       setTimeout(() => openCaseStudy(item.id), 200);
     };
 
-    const previewImg = item.images && item.images[0] ? item.images[0] : '';
+    const cardThumb = item.cardShowcase || item.laptopShowcase || showcaseMap[item.id] || (item.images && item.images[0]) || '';
     const tagline = typeof item.tagline === 'object' ? item.tagline[lang] : item.tagline;
-    const mediaHtml = item.video
-      ? `<video class="card-video-loop" src="${item.video}" poster="${previewImg}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
-      : `<img src="${previewImg}" alt="${item.title}" loading="lazy">`;
 
     card.innerHTML = `
       <div class="project-media">
-        ${mediaHtml}
+        <img src="${cardThumb}" alt="${item.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="project-body">
         <div class="project-title">${item.title.split('—')[0].trim()}</div>
@@ -1173,7 +1181,6 @@ function buildWorksGrid(cat) {
     `;
     grid.appendChild(card);
   });
-  initCardVideos();
 }
 
 /* ==========================================================================
