@@ -714,11 +714,14 @@ window.openCaseStudy = window.openProjectModal = function(id) {
         vid.setAttribute('disablepictureinpicture', '');
         vid.setAttribute('disableremoteplayback', '');
         vid.setAttribute('preload', 'auto');
+        // Set poster: laptopShowcase → previewWebp → first image
+        const posterSrc = data.laptopShowcase || data.previewWebp || (data.images && data.images[0]);
+        if (posterSrc) vid.setAttribute('poster', posterSrc);
         heroMedia.appendChild(vid);
         vid.play().catch(() => {});
       } else if (data.images && data.images[0]) {
         const img = document.createElement('img');
-        img.src = data.images[0];
+        img.src = data.laptopShowcase || data.images[0];
         img.alt = data.title;
         img.loading = 'eager';
         heroMedia.appendChild(img);

@@ -256,7 +256,11 @@ const PROJECTS_DATA = {
         "Tervalidasi dengan 71 automated test cases (DUPL PHPUnit) tanpa kegagalan"
       ]
     },
+    video: "assets/img/project-web/maca-bae/macabae-demo.mp4",
+    previewWebp: "assets/img/project-web/maca-bae/macabae-demo-preview.webp",
+    laptopShowcase: "assets/img/project-web/maca-bae/macabae-laptop-showcase.webp",
     images: [
+      "assets/img/project-web/maca-bae/macabae-laptop-showcase.webp",
       "assets/img/project-web/maca-bae/macabae-landing-page.webp",
       "assets/img/project-web/maca-bae/macabae-home.webp",
       "assets/img/project-web/maca-bae/macabae-login.webp",
@@ -272,6 +276,7 @@ const PROJECTS_DATA = {
     ],
     imageCaptions: {
       en: [
+        "Laptop Showcase: Browser mockup with MacaBae Home dashboard and floating screen cards",
         "Landing Page: Digital library portal with easy online access",
         "Home Catalog: Curated categories, trending literature, and eBook reader",
         "Authentication: Secure student login gateway",
@@ -286,6 +291,7 @@ const PROJECTS_DATA = {
         "Test Validation 08: Full 71 PHPUnit automated test suite passing"
       ],
       id: [
+        "Laptop Showcase: Mockup browser dengan tampilan dashboard MacaBae dan kartu layar melayang",
         "Landing Page: Portal perpustakaan digital dengan kemudahan akses online",
         "Katalog Buku Utama: Pilihan kategori, buku populer, dan pembaca eBook",
         "Autentikasi: Portal login mahasiswa yang aman",
