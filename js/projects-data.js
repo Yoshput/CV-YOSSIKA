@@ -749,10 +749,7 @@ const PROJECTS_DATA = {
       "assets/img/project-bisnis/mango-nyeni/mango-nyeni-story-testimoni-02.webp",
       "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-mango-sago.webp",
       "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-strawberry-sago.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-buah-naga-sago.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-01.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-02.webp",
-      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-feed-03.webp"
+      "assets/img/project-bisnis/mango-nyeni/mango-nyeni-produk-buah-naga-sago.webp"
     ],
     imageCaptions: {
       en: [
@@ -763,10 +760,7 @@ const PROJECTS_DATA = {
         "Creamy Texture Review: Verified review highlighting fruit freshness and balance",
         "Product Photography: Signature Mango Sago in premium dessert bowl",
         "Product Photography: Fresh Strawberry Sago with creamy condensed milk blend",
-        "Product Photography: Exotic Dragon Fruit Sago with diced natural toppings",
-        "Social Media Feed: Promotional visual design for market launches",
-        "Social Media Feed: Product awareness carousel design",
-        "Social Media Feed: Customer engagement and review highlight graphic"
+        "Product Photography: Exotic Dragon Fruit Sago with diced natural toppings"
       ],
       id: [
         "Profil Instagram: Tampilan feed, bio, dan highlight story lengkap @magi_store.id",
@@ -776,10 +770,7 @@ const PROJECTS_DATA = {
         "Review Tekstur Creamy: Testimoni kelezatan dan kesegaran mangga asli",
         "Foto Produk: Varian unggulan Mango Sago dalam mangkok dessert premium",
         "Foto Produk: Varian segar Strawberry Sago dengan susu creamy",
-        "Foto Produk: Varian eksotis Buah Naga Sago dengan topping buah segar",
-        "Feed Instagram: Desain visual promosi peluncuran produk",
-        "Feed Instagram: Desain carousel pengenalan varian produk",
-        "Feed Instagram: Desain grafis testimoni dan kepuasan pembeli"
+        "Foto Produk: Varian eksotis Buah Naga Sago dengan topping buah segar"
       ]
     },
     actions: [
