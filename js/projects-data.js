@@ -679,12 +679,40 @@ const PROJECTS_DATA = {
     isMobileGallery: true,
     phoneAccent: "#f59e0b",
     phoneAccentGlow: "rgba(245, 158, 11, 0.4)",
+    video: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-demo.mp4",
+    previewWebp: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-preview.webp",
     phoneBadges: {
       left1: { title: "Fresh Mango Sago", sub: "Signature fruit dessert" },
       left2: { title: "Purwokerto F&B", sub: "Direct-to-consumer delivery" },
       right1: { title: "Instagram Marketing", sub: "Active feeds & daily stories" },
       right2: { title: "5.0 Customer Rating", sub: "Authentic buyer testimonials" }
     },
+    videoStories: [
+      {
+        id: "vlog-delivery",
+        title: "Vlog Delivery Sokaraja ke Kroya",
+        tag: "Marketing Vlog",
+        src: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-vlog-delivery.mp4",
+        poster: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-vlog-delivery-thumb.webp",
+        hasAudio: true
+      },
+      {
+        id: "testimoni-andrew",
+        title: "Review Testimoni Mas Andrew",
+        tag: "5-Star Testimonial",
+        src: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-testimoni-andrew.mp4",
+        poster: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-testimoni-andrew-thumb.webp",
+        hasAudio: true
+      },
+      {
+        id: "testimoni-kasir",
+        title: "Review Testimoni Mba Kasir",
+        tag: "Customer Story",
+        src: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-testimoni-kasir.mp4",
+        poster: "assets/img/project-bisnis/mango-nyeni/mango-nyeni-testimoni-kasir-thumb.webp",
+        hasAudio: true
+      }
+    ],
     title: "Mango Nyeni — Artisan Sago Beverage Enterprise",
     role: "Co-Founder & Operator",
     year: "2026",

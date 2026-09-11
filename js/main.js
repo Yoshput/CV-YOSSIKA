@@ -886,12 +886,104 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     featCont.appendChild(card);
   });
 
-  // 7. Video Section (only when video is NOT already playing as the hero media, e.g. Thrift Space)
+  // 7. Video Section (Supports both single video demo and multi-story customer testimonials with audio)
   const videoSec = document.getElementById('csVideoSection');
   const videoWrap = document.getElementById('csVideoWrap');
   const hasHeroVideo = (!isImmersive && Boolean(data.video));
 
-  if (data.video && !hasHeroVideo) {
+  if (data.videoStories && data.videoStories.length > 0) {
+    videoSec.style.display = 'block';
+    const stories = data.videoStories;
+
+    // Header updates
+    const vSecHead = videoSec.querySelector('.cs-section-head');
+    if (vSecHead) {
+      vSecHead.innerHTML = `
+        <span class="eyebrow">${isEn ? 'Authentic Social Proof' : 'Testimoni & Dokumentasi Lapangan'}</span>
+        <h2 class="cs-section-title">${isEn ? 'Live Customer Stories & Marketing Vlog' : 'Video Stories & Review Pelanggan Asli'}</h2>
+      `;
+    }
+
+    let tabsHtml = '<div class="cs-stories-tabs">';
+    stories.forEach((st, sIdx) => {
+      tabsHtml += `
+        <button class="cs-story-tab-btn ${sIdx === 0 ? 'active' : ''}" data-idx="${sIdx}">
+          <span>${st.tag}</span> · ${st.title}
+        </button>
+      `;
+    });
+    tabsHtml += '</div>';
+
+    const firstStory = stories[0];
+    videoWrap.innerHTML = `
+      ${tabsHtml}
+      <div class="cs-video-container" style="position:relative;overflow:hidden;border-radius:36px;background:#07090e;max-width:340px;margin:0 auto;box-shadow:0 30px 70px rgba(0,0,0,0.7), 0 0 40px rgba(245,158,11,0.25);border:1px solid rgba(255,255,255,0.18);">
+        <button class="cs-video-sound-toggle" id="csSoundToggle" aria-label="Toggle Sound">
+          <span id="csSoundIcon">🔇</span> <span id="csSoundText">Tap to Unmute</span>
+        </button>
+        <video id="csStoryVideo" src="${firstStory.src}" poster="${firstStory.poster}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" style="width:100%;height:auto;display:block;border-radius:inherit;cursor:pointer;"></video>
+      </div>
+    `;
+
+    const sVid = document.getElementById('csStoryVideo');
+    const sBtn = document.getElementById('csSoundToggle');
+    const sIcon = document.getElementById('csSoundIcon');
+    const sText = document.getElementById('csSoundText');
+    let isUserUnmuted = false;
+
+    function updateSoundUI() {
+      if (sVid.muted) {
+        sIcon.textContent = '🔇';
+        sText.textContent = isEn ? 'Tap to Unmute' : 'Nyalakan Suara';
+      } else {
+        sIcon.textContent = '🔊';
+        sText.textContent = isEn ? 'Sound ON' : 'Suara Nyala';
+      }
+    }
+
+    if (sBtn && sVid) {
+      sBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sVid.muted = !sVid.muted;
+        isUserUnmuted = !sVid.muted;
+        updateSoundUI();
+        if (sVid.paused) sVid.play().catch(() => {});
+      });
+
+      sVid.addEventListener('click', () => {
+        if (sVid.muted) {
+          sVid.muted = false;
+          isUserUnmuted = true;
+          updateSoundUI();
+        } else {
+          if (sVid.paused) sVid.play().catch(() => {});
+          else sVid.pause();
+        }
+      });
+    }
+
+    // Story Tabs switcher
+    const tabBtns = videoWrap.querySelectorAll('.cs-story-tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const idx = parseInt(btn.dataset.idx, 10);
+        const st = stories[idx];
+        if (sVid && st) {
+          sVid.src = st.src;
+          sVid.poster = st.poster;
+          sVid.muted = !isUserUnmuted;
+          updateSoundUI();
+          sVid.play().catch(() => {});
+        }
+      });
+    });
+
+    if (sVid) {
+      sVid.play().catch(() => {});
+    }
+  } else if (data.video && !hasHeroVideo) {
     videoSec.style.display = 'block';
     const isMobile = (data.deviceMockup === 'iphone' || data.isMobileGallery || id === 'thrift');
     const wrapStyle = isMobile
