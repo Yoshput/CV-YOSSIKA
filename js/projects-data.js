@@ -490,37 +490,48 @@ const PROJECTS_DATA = {
     },
     features: {
       en: [
-        "Interactive onboarding flow communicating app core value",
-        "Category discovery, faceted filters, and seller verification tags",
-        "High-fidelity interactive prototype simulated for iOS/Android"
+        "Interactive Onboarding Flow: Communicates sustainable fashion and value proposition",
+        "Smart Feed & Category Discovery: Banner highlights, recent stock grid, and brand search",
+        "Comprehensive Product Detail: Authentic item condition grading, sizing picker, and buyer ratings",
+        "Multi-seller Cart & Fast Checkout: Quantity stepper, voucher redemption, and payment options",
+        "Figma Design System: Auto-layout components, typography scales, and interactive prototype"
       ],
       id: [
-        "Alur onboarding interaktif yang komunikatif",
-        "Navigasi homepage dengan filter kategori dan verifikasi penjual",
-        "Interactive prototype dengan simulasi interaksi riil di Figma"
+        "Alur Onboarding Interaktif: Edukasi konsep sustainable pre-loved fashion berkualitas",
+        "Eksplorasi Beranda & Kategori: Banner promo, katalog recent stock, dan pencarian brand",
+        "Detail Produk Komprehensif: Grading kondisi barang, seleksi ukuran, dan ulasan pembeli",
+        "Keranjang Multi-Toko & Checkout Cepat: Pengaturan kuantitas, klaim voucher, dan ragam pembayaran",
+        "Sistem Desain Figma: Komponen auto-layout, panduan tipografi, dan prototype interaktif"
       ]
     },
+    previewWebp: "assets/img/project-web/thrift-space/thrift-space-preview.webp",
     images: [
-      "assets/img/project-web/thrift-space/thrift-space-ui-figma.webp",
-      "assets/img/project-web/thrift-space/home-aplikasi.webp",
-      "assets/img/project-web/thrift-space/detail-produk.webp",
-      "assets/img/project-web/thrift-space/on-boarding.webp",
+      "assets/img/project-web/thrift-space/thrift-space-cover.webp",
+      "assets/img/project-web/thrift-space/thrift-space-onboarding.webp",
+      "assets/img/project-web/thrift-space/thrift-space-home.webp",
+      "assets/img/project-web/thrift-space/thrift-space-detail.webp",
+      "assets/img/project-web/thrift-space/thrift-space-cart.webp",
+      "assets/img/project-web/thrift-space/thrift-space-checkout.webp",
       "assets/img/project-web/thrift-space/thrift-space-figma.webp"
     ],
     imageCaptions: {
       en: [
-        "Figma Mobile UI System: Overview of high-fidelity screens and component library",
-        "Home Screen: Curation feeds, trending vintage pieces, and flash deals",
-        "Product Detail Screen: High-resolution zoom, item condition grading, and sizing",
-        "Onboarding Flow: 3-step value proposition onboarding screens",
-        "Figma Canvas: Complete wireframes, auto-layout variants, and design tokens"
+        "Showcase Overview: Multi-device high-fidelity mobile design system in Dark Mode",
+        "Onboarding Flow: Value proposition highlighting affordable sustainable fashion",
+        "Home Feed: Greeting, personalized search, promo banner, and recent stock items",
+        "Product Detail Screen: High-resolution product images, sizing options, customer ratings, and CTA",
+        "Shopping Cart Screen: Multi-seller item selection, quantity counter, and total price summary",
+        "Payment & Checkout: Delivery address, voucher discounts, multi-channel payment (VA, QRIS, E-Wallet)",
+        "Figma Design System: Complete wireframes, auto-layout variants, and design tokens"
       ],
       id: [
-        "Sistem UI Mobile Figma: Gambaran menyeluruh screen dan komponen desain",
-        "Halaman Utama: Feed kurasi pakaian vintage, tren busana, dan promo",
-        "Detail Produk: Tampilan foto resolusi tinggi, grade kondisi pakaian, dan ukuran",
-        "Alur Onboarding: 3 langkah pengenalan fitur utama aplikasi",
-        "Kanvas Figma: Struktur wireframe lengkap, varian auto-layout, dan token desain"
+        "Showcase Desain: Sistem antarmuka mobile multi-device bertema dark mode yang estetik",
+        "Alur Onboarding: Halaman awal berburu fashion branded terjangkau dan ramah lingkungan",
+        "Halaman Beranda: Sapaan pengguna, pencarian pintar, banner koleksi, dan stok produk terkini",
+        "Detail Produk: Tampilan foto produk jernih, pilihan ukuran, rating pembeli, dan tombol beli",
+        "Keranjang Belanja: Manajemen pesanan multi-toko, jumlah item, dan kalkulasi subtotal",
+        "Detail Pembayaran: Alamat pengiriman, voucher promo, dan multi-channel payment (VA, QRIS, E-Wallet)",
+        "Sistem Desain Figma: Struktur wireframe lengkap, varian auto-layout, dan token desain"
       ]
     },
     actions: [
