@@ -504,7 +504,8 @@ const PROJECTS_DATA = {
         "Sistem Desain Figma: Komponen auto-layout, panduan tipografi, dan prototype interaktif"
       ]
     },
-    previewWebp: "assets/img/project-web/thrift-space/thrift-space-preview.webp",
+    previewWebp: "assets/img/project-web/thrift-space/thrift-space-demo-preview.webp",
+    video: "assets/img/project-web/thrift-space/thrift-space-demo.mp4",
     images: [
       "assets/img/project-web/thrift-space/thrift-space-cover.webp",
       "assets/img/project-web/thrift-space/thrift-space-onboarding.webp",
