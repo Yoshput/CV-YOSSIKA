@@ -872,14 +872,21 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     featCont.appendChild(card);
   });
 
-  // 7. Video Section (if separate demo video exists)
+  // 7. Video Section (only when video is NOT already playing as the hero media, e.g. Thrift Space)
   const videoSec = document.getElementById('csVideoSection');
   const videoWrap = document.getElementById('csVideoWrap');
-  if (data.video) {
+  const hasHeroVideo = (!isImmersive && Boolean(data.video));
+
+  if (data.video && !hasHeroVideo) {
     videoSec.style.display = 'block';
+    const isMobile = (data.deviceMockup === 'iphone' || data.isMobileGallery || id === 'thrift');
+    const wrapStyle = isMobile
+      ? 'position:relative;overflow:hidden;border-radius:36px;background:#07090e;max-width:320px;margin:0 auto;box-shadow:0 25px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);'
+      : 'position:relative;overflow:hidden;border-radius:var(--radius-lg);background:#07090e;box-shadow:0 20px 50px rgba(0,0,0,0.5);max-width:960px;margin:0 auto;';
+
     videoWrap.innerHTML = `
-      <div class="cs-video-container" style="position:relative;overflow:hidden;border-radius:var(--radius-lg);background:#07090e;box-shadow:0 20px 50px rgba(0,0,0,0.5);">
-        <video src="${data.video}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" style="width:100%;height:auto;display:block;border-radius:var(--radius-lg);"></video>
+      <div class="cs-video-container" style="${wrapStyle}">
+        <video src="${data.video}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" style="width:100%;height:auto;display:block;border-radius:inherit;"></video>
       </div>
     `;
     const secVid = videoWrap.querySelector('video');
