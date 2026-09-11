@@ -512,6 +512,7 @@ const PROJECTS_DATA = {
       "assets/img/project-web/thrift-space/thrift-space-detail.webp",
       "assets/img/project-web/thrift-space/thrift-space-cart.webp",
       "assets/img/project-web/thrift-space/thrift-space-checkout.webp",
+      "assets/img/project-web/thrift-space/thrift-space-riwayat-pesanan.webp",
       "assets/img/project-web/thrift-space/thrift-space-figma.webp"
     ],
     imageCaptions: {
@@ -522,6 +523,7 @@ const PROJECTS_DATA = {
         "Product Detail Screen: High-resolution product images, sizing options, customer ratings, and CTA",
         "Shopping Cart Screen: Multi-seller item selection, quantity counter, and total price summary",
         "Payment & Checkout: Delivery address, voucher discounts, multi-channel payment (VA, QRIS, E-Wallet)",
+        "Order History (Riwayat Pesanan): Real-time payment tracking, product thumbnails, and instant payment CTA",
         "Figma Design System: Complete wireframes, auto-layout variants, and design tokens"
       ],
       id: [
@@ -531,6 +533,7 @@ const PROJECTS_DATA = {
         "Detail Produk: Tampilan foto produk jernih, pilihan ukuran, rating pembeli, dan tombol beli",
         "Keranjang Belanja: Manajemen pesanan multi-toko, jumlah item, dan kalkulasi subtotal",
         "Detail Pembayaran: Alamat pengiriman, voucher promo, dan multi-channel payment (VA, QRIS, E-Wallet)",
+        "Riwayat Pesanan: Pelacakan pembayaran real-time, thumbnail produk, dan tombol Bayar Sekarang",
         "Sistem Desain Figma: Struktur wireframe lengkap, varian auto-layout, dan token desain"
       ]
     },

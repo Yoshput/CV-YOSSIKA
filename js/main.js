@@ -521,6 +521,123 @@ function initOptimizedLanyard() {
 /* ==========================================================================
    FULLSCREEN PROJECT CASE STUDY (ATM FAIZ AZZAHRA DESIGN SYSTEM)
    ========================================================================== */
+/* ──────────────────────────────────────────────────────────────────────────────
+   IMMERSIVE HERO: Faiz Azzahra-style hero for UI/UX project (Thrift Space)
+   – Full-width dark bg with blurred phone screenshots layered behind giant title
+   – Bottom metadata band: ROLE / YEAR / DESCRIPTION / LIVE SITE
+   ──────────────────────────────────────────────────────────────────────────── */
+function buildImmersiveHero(data, lang) {
+  const heroSection = document.querySelector('.cs-hero');
+  if (!heroSection) return;
+
+  const cleanTitle = data.title.split('—')[0].trim().toUpperCase();
+  const taglineText = typeof data.tagline === 'object' ? data.tagline[lang] : (data.tagline || '');
+  const descText = typeof data.desc === 'object' ? data.desc[lang] : (data.desc || '');
+  const actionLink = (data.actions && data.actions[0]) ? data.actions[0].link : '#';
+  const actionLabel = (data.actions && data.actions[0]) ? data.actions[0].text : 'View Project ↗';
+  const imgs = data.images || [];
+
+  // Pick 5 phone screens (skip cover at index 0, use screens 1–5)
+  const bgImgs = imgs.slice(1, 6);
+  const bgHtml = bgImgs.map((src, i) => {
+    const offsets = [
+      { top: '8%',  left: '-2%',  rot: '-8deg',  scale: '0.78' },
+      { top: '4%',  left: '15%',  rot: '-3deg',  scale: '0.9' },
+      { top: '0%',  left: '35%',  rot:  '0deg',  scale: '1.0' },
+      { top: '4%',  left: '56%',  rot:  '3deg',  scale: '0.9' },
+      { top: '8%',  right: '-2%', rot:  '8deg',  scale: '0.78' },
+    ][i] || { top: '5%', left: `${i*18}%`, rot: '0deg', scale: '0.85' };
+    const posStyle = offsets.right
+      ? `top:${offsets.top};right:${offsets.right};`
+      : `top:${offsets.top};left:${offsets.left};`;
+    return `<div class="ih-phone-wrap" style="${posStyle}transform:rotate(${offsets.rot}) scale(${offsets.scale})">
+      <img src="${src}" alt="" loading="eager" decoding="async">
+    </div>`;
+  }).join('');
+
+  heroSection.classList.add('cs-immersive-hero');
+  heroSection.innerHTML = `
+    <div class="ih-bg-screens" aria-hidden="true">${bgHtml}</div>
+    <div class="ih-overlay" aria-hidden="true"></div>
+
+    <div class="ih-content">
+      <div class="ih-eyebrow">FASHION / ${cleanTitle}.</div>
+      <h1 class="ih-title" id="csHeroTitle">${cleanTitle}</h1>
+    </div>
+
+    <div class="ih-meta-bar">
+      <div class="ih-meta-col">
+        <span class="ih-meta-lbl">ROLE</span>
+        <span class="ih-meta-val">${data.role || 'UI/UX Designer'}</span>
+      </div>
+      <div class="ih-meta-col">
+        <span class="ih-meta-lbl">YEAR</span>
+        <span class="ih-meta-val">${data.year || '2024'}</span>
+      </div>
+      <div class="ih-meta-col ih-meta-wide">
+        <span class="ih-meta-lbl">DESCRIPTION</span>
+        <span class="ih-meta-val ih-meta-desc">${descText}</span>
+      </div>
+      <div class="ih-meta-col">
+        <span class="ih-meta-lbl">LIVE SITE</span>
+        <a href="${actionLink}" target="_blank" rel="noopener" class="ih-meta-link">${actionLabel}</a>
+      </div>
+    </div>
+  `;
+
+  // Animate with GSAP
+  if (window.gsap) {
+    gsap.fromTo('.ih-title',      { opacity: 0, scale: 0.88, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.8, delay: 0.15, ease: 'expo.out' });
+    gsap.fromTo('.ih-eyebrow',    { opacity: 0, y: 20 },               { opacity: 1, y: 0, duration: 0.6, delay: 0.05, ease: 'power3.out' });
+    gsap.fromTo('.ih-meta-bar',   { opacity: 0, y: 30 },               { opacity: 1, y: 0, duration: 0.55, delay: 0.35, ease: 'power3.out' });
+    gsap.fromTo('.ih-phone-wrap', { opacity: 0, scale: 0.9, y: 30 },   { opacity: 0.55, scale: 1, y: 0, duration: 1.1, delay: 0.08, stagger: 0.07, ease: 'expo.out' });
+  }
+}
+
+function resetNormalHero(heroSection) {
+  if (!heroSection) return;
+  heroSection.classList.remove('cs-immersive-hero');
+  heroSection.innerHTML = `
+    <div class="container cs-hero-inner">
+      <div class="cs-hero-badge-wrap">
+        <span id="csHeroBadge" class="pill pill-purple">⭐ Featured</span>
+      </div>
+      <p class="cs-hero-tagline" id="csHeroTagline"></p>
+      <h1 class="cs-hero-title" id="csHeroTitle">PROJECT</h1>
+      <div class="cs-hero-mockup-wrap">
+        <div class="cs-browser-window" id="csHeroMockupWindow">
+          <div class="cs-browser-header">
+            <span class="cs-browser-dot dot-red"></span>
+            <span class="cs-browser-dot dot-yellow"></span>
+            <span class="cs-browser-dot dot-green"></span>
+            <span class="cs-browser-address" id="csBrowserAddress">https://yossikaputra.my.id</span>
+          </div>
+          <div class="cs-browser-body" id="csHeroMediaBody"></div>
+        </div>
+      </div>
+      <div class="cs-meta-bar">
+        <div class="cs-meta-col">
+          <span class="cs-meta-lbl">ROLE</span>
+          <span class="cs-meta-val" id="csRole">Developer</span>
+        </div>
+        <div class="cs-meta-col">
+          <span class="cs-meta-lbl">YEAR</span>
+          <span class="cs-meta-val" id="csYear">2024</span>
+        </div>
+        <div class="cs-meta-col cs-meta-desc-col">
+          <span class="cs-meta-lbl">DESCRIPTION</span>
+          <p class="cs-meta-desc" id="csDesc"></p>
+        </div>
+        <div class="cs-meta-col cs-meta-actions-col">
+          <span class="cs-meta-lbl">LINKS</span>
+          <div class="cs-actions-wrap" id="csActions"></div>
+        </div>
+      </div>
+      <div class="cs-tech-wrap" id="csTechWrap"></div>
+    </div>
+  `;
+}
+
 window.openCaseStudy = window.openProjectModal = function(id) {
   const data = window.PROJECTS_DATA && window.PROJECTS_DATA[id];
   if (!data) return;
@@ -532,92 +649,133 @@ window.openCaseStudy = window.openProjectModal = function(id) {
   const topPill = document.getElementById('csTopPillTitle');
   if (topPill) topPill.textContent = data.title.split('—')[0].trim().toUpperCase();
 
-  // 2. Hero Badge
-  const badgeEl = document.getElementById('csHeroBadge');
-  if (data.status === 'in_progress') {
-    badgeEl.style.display = 'inline-flex';
-    badgeEl.className = 'badge-in-progress';
-    badgeEl.textContent = data.statusBadge ? data.statusBadge[lang] : '🚧 In Progress';
-  } else if (data.status === 'featured') {
-    badgeEl.style.display = 'inline-flex';
-    badgeEl.className = 'pill pill-purple';
-    badgeEl.textContent = data.statusBadge ? data.statusBadge[lang] : '⭐ Featured';
-  } else {
-    badgeEl.style.display = 'inline-flex';
-    badgeEl.className = 'pill pill-blue';
-    badgeEl.textContent = isEn ? 'Completed Project' : 'Project Selesai';
-  }
+  // 0. Detect immersive mode (UI/UX case study projects with phone screens)
+  const heroSection = document.querySelector('.cs-hero');
+  const isImmersive = (id === 'thrift');
 
-  // 3. Tagline & Giant Title
-  const taglineText = typeof data.tagline === 'object' ? data.tagline[lang] : data.tagline;
-  document.getElementById('csHeroTagline').textContent = taglineText || '';
+  if (isImmersive) {
+    // ── Immersive "Faiz Azzahra" hero for Thrift Space ──────────────────────
+    buildImmersiveHero(data, lang);
+
+    // Tech stack pills rendered inside cs-tech-wrap AFTER hero
+    const techCont = document.getElementById('csTechWrap');
+    if (techCont) {
+      techCont.innerHTML = '';
+      data.tech.forEach((t, i) => {
+        const sp = document.createElement('span');
+        sp.className = `pill ${data.techClasses[i] || 'pill-blue'}`;
+        sp.textContent = t;
+        techCont.appendChild(sp);
+      });
+    }
+  } else {
+    // ── Normal hero for code / web projects ─────────────────────────────────
+    resetNormalHero(heroSection);
+
+    // 2. Hero Badge
+    const badgeEl = document.getElementById('csHeroBadge');
+    if (badgeEl) {
+      if (data.status === 'in_progress') {
+        badgeEl.style.display = 'inline-flex';
+        badgeEl.className = 'badge-in-progress';
+        badgeEl.textContent = data.statusBadge ? data.statusBadge[lang] : '🚧 In Progress';
+      } else if (data.status === 'featured') {
+        badgeEl.style.display = 'inline-flex';
+        badgeEl.className = 'pill pill-purple';
+        badgeEl.textContent = data.statusBadge ? data.statusBadge[lang] : '⭐ Featured';
+      } else {
+        badgeEl.style.display = 'inline-flex';
+        badgeEl.className = 'pill pill-blue';
+        badgeEl.textContent = isEn ? 'Completed Project' : 'Project Selesai';
+      }
+    }
+
+    // 3. Tagline & Giant Title
+    const taglineText = typeof data.tagline === 'object' ? data.tagline[lang] : data.tagline;
+    const taglineEl = document.getElementById('csHeroTagline');
+    if (taglineEl) taglineEl.textContent = taglineText || '';
+
+    const cleanTitle = data.title.split('—')[0].trim();
+    const titleEl2 = document.getElementById('csHeroTitle');
+    if (titleEl2) titleEl2.textContent = cleanTitle;
+
+    // 4. Hero Browser Address & Body Media
+    const addressEl = document.getElementById('csBrowserAddress');
+    if (addressEl) {
+      let cleanDomain = 'https://yossikaputra.my.id/' + id;
+      if (data.actions && data.actions[0] && data.actions[0].link) {
+        cleanDomain = data.actions[0].link;
+      }
+      addressEl.textContent = cleanDomain;
+    }
+
+    const heroMedia = document.getElementById('csHeroMediaBody');
+    if (heroMedia) {
+      heroMedia.innerHTML = '';
+      if (data.video) {
+        const vid = document.createElement('video');
+        vid.src = data.video;
+        vid.autoplay = true;
+        vid.muted = true;
+        vid.defaultMuted = true;
+        vid.loop = true;
+        vid.playsInline = true;
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('webkit-playsinline', '');
+        vid.setAttribute('muted', '');
+        vid.setAttribute('autoplay', '');
+        vid.setAttribute('loop', '');
+        vid.setAttribute('disablepictureinpicture', '');
+        vid.setAttribute('disableremoteplayback', '');
+        vid.setAttribute('preload', 'auto');
+        heroMedia.appendChild(vid);
+        vid.play().catch(() => {});
+      } else if (data.images && data.images[0]) {
+        const img = document.createElement('img');
+        img.src = data.images[0];
+        img.alt = data.title;
+        img.loading = 'eager';
+        heroMedia.appendChild(img);
+      }
+    }
+
+    // 5. Metadata Bar
+    const roleEl = document.getElementById('csRole');
+    const yearEl = document.getElementById('csYear');
+    const descEl = document.getElementById('csDesc');
+    if (roleEl) roleEl.textContent = data.role;
+    if (yearEl) yearEl.textContent = data.year;
+    if (descEl) descEl.textContent = typeof data.desc === 'object' ? data.desc[lang] : data.desc;
+
+    // Actions
+    const actionsCont = document.getElementById('csActions');
+    if (actionsCont) {
+      actionsCont.innerHTML = '';
+      (data.actions || []).forEach(act => {
+        const a = document.createElement('a');
+        a.href = act.link;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = act.primary ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+        a.textContent = act.text;
+        actionsCont.appendChild(a);
+      });
+    }
+
+    // Tech Stack Pills
+    const techCont = document.getElementById('csTechWrap');
+    if (techCont) {
+      techCont.innerHTML = '';
+      data.tech.forEach((t, i) => {
+        const sp = document.createElement('span');
+        sp.className = `pill ${data.techClasses[i] || 'pill-blue'}`;
+        sp.textContent = t;
+        techCont.appendChild(sp);
+      });
+    }
+  }
 
   const cleanTitle = data.title.split('—')[0].trim();
-  document.getElementById('csHeroTitle').textContent = cleanTitle;
-
-  // 4. Hero Browser Address & Body Media
-  const addressEl = document.getElementById('csBrowserAddress');
-  let cleanDomain = 'https://yossikaputra.my.id/' + id;
-  if (data.actions && data.actions[0] && data.actions[0].link) {
-    cleanDomain = data.actions[0].link;
-  }
-  addressEl.textContent = cleanDomain;
-
-  const heroMedia = document.getElementById('csHeroMediaBody');
-  heroMedia.innerHTML = '';
-  if (data.video) {
-    const vid = document.createElement('video');
-    vid.src = data.video;
-    vid.autoplay = true;
-    vid.muted = true;
-    vid.defaultMuted = true;
-    vid.loop = true;
-    vid.playsInline = true;
-    vid.setAttribute('playsinline', '');
-    vid.setAttribute('webkit-playsinline', '');
-    vid.setAttribute('muted', '');
-    vid.setAttribute('autoplay', '');
-    vid.setAttribute('loop', '');
-    vid.setAttribute('disablepictureinpicture', '');
-    vid.setAttribute('disableremoteplayback', '');
-    vid.setAttribute('preload', 'auto');
-    heroMedia.appendChild(vid);
-    vid.play().catch(() => {});
-  } else if (data.images && data.images[0]) {
-    const img = document.createElement('img');
-    img.src = data.images[0];
-    img.alt = data.title;
-    img.loading = 'eager';
-    heroMedia.appendChild(img);
-  }
-
-  // 5. Metadata Bar
-  document.getElementById('csRole').textContent = data.role;
-  document.getElementById('csYear').textContent = data.year;
-  document.getElementById('csDesc').textContent = typeof data.desc === 'object' ? data.desc[lang] : data.desc;
-
-  // Actions
-  const actionsCont = document.getElementById('csActions');
-  actionsCont.innerHTML = '';
-  (data.actions || []).forEach(act => {
-    const a = document.createElement('a');
-    a.href = act.link;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.className = act.primary ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
-    a.textContent = act.text;
-    actionsCont.appendChild(a);
-  });
-
-  // Tech Stack Pills
-  const techCont = document.getElementById('csTechWrap');
-  techCont.innerHTML = '';
-  data.tech.forEach((t, i) => {
-    const sp = document.createElement('span');
-    sp.className = `pill ${data.techClasses[i] || 'pill-blue'}`;
-    sp.textContent = t;
-    techCont.appendChild(sp);
-  });
 
   // 6. Features Grid
   const featCont = document.getElementById('csFeaturesGrid');
@@ -706,24 +864,25 @@ window.openCaseStudy = window.openProjectModal = function(id) {
   document.body.style.overflow = 'hidden';
   overlay.scrollTop = 0;
 
-  const titleEl = document.getElementById('csHeroTitle');
-  const mockupEl = document.getElementById('csHeroMockupWindow');
-  if (titleEl) {
-    titleEl.style.transform = 'none';
-    titleEl.style.opacity = '1';
-  }
-  if (mockupEl) {
-    mockupEl.style.transform = 'none';
+  if (!isImmersive) {
+    const titleEl = document.getElementById('csHeroTitle');
+    const mockupEl = document.getElementById('csHeroMockupWindow');
+    if (titleEl) { titleEl.style.transform = 'none'; titleEl.style.opacity = '1'; }
+    if (mockupEl) { mockupEl.style.transform = 'none'; }
+
+    if (window.gsap) {
+      gsap.fromTo(overlay, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' });
+      gsap.fromTo('#csHeroTitle', { opacity: 0, scale: 0.96, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, delay: 0.1, ease: 'power3.out' });
+      gsap.fromTo('#csHeroMockupWindow', { opacity: 0, y: 30, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, delay: 0.18, ease: 'power3.out' });
+      gsap.fromTo('.cs-meta-bar', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.25, ease: 'power3.out' });
+    }
+  } else {
+    if (window.gsap) {
+      gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+    }
   }
 
-  if (window.gsap) {
-    gsap.fromTo(overlay, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' });
-    gsap.fromTo('#csHeroTitle', { opacity: 0, scale: 0.96, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, delay: 0.1, ease: 'power3.out' });
-    gsap.fromTo('#csHeroMockupWindow', { opacity: 0, y: 30, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, delay: 0.18, ease: 'power3.out' });
-    gsap.fromTo('.cs-meta-bar', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.25, ease: 'power3.out' });
-  }
-
-  // Smooth scroll handler without awkward title collision
+  // Smooth scroll handler — fade title on scroll
   overlay.onscroll = () => {
     const st = overlay.scrollTop;
     const title = document.getElementById('csHeroTitle');
