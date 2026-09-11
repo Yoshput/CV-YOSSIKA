@@ -314,6 +314,7 @@ const PROJECTS_DATA = {
   ngertiindia: {
     id: "ngertiindia",
     status: "completed",
+    isMobileGallery: true,
     title: "Ngertiin Dia — Self-Care & Couple Sync",
     role: "Lead Fullstack Dev",
     year: "2024",
@@ -385,6 +386,16 @@ const PROJECTS_DATA = {
   gymplanner: {
     id: "gymplanner",
     status: "completed",
+    deviceMockup: "iphone",
+    isMobileGallery: true,
+    phoneAccent: "#c6ff00",
+    phoneAccentGlow: "rgba(198, 255, 0, 0.35)",
+    phoneBadges: {
+      left1: { icon: "⚡", title: "Offline-First PWA", sub: "Works 100% offline with zero latency" },
+      left2: { icon: "🎯", title: "7-Day Custom Split", sub: "Push-Pull-Legs & Upper-Lower routines" },
+      right1: { icon: "🔥", title: "TDEE & Macro Calc", sub: "Dynamic deficit/surplus calorie targets" },
+      right2: { icon: "📊", title: "Volume & PR Tracker", sub: "Auto rep & set progressive overload" }
+    },
     title: "Gym Planner — Offline-First Workout PWA",
     role: "PWA Developer",
     year: "2024",

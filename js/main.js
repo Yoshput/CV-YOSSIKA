@@ -685,7 +685,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     const titleEl2 = document.getElementById('csHeroTitle');
     if (titleEl2) titleEl2.textContent = cleanTitle;
 
-    // 4. Hero Browser Address & Body Media
+    // 4. Hero Browser / iPhone 17 Frame & Body Media
     const addressEl = document.getElementById('csBrowserAddress');
     if (addressEl) {
       let cleanDomain = 'https://yossikaputra.my.id/' + id;
@@ -693,6 +693,97 @@ window.openCaseStudy = window.openProjectModal = function(id) {
         cleanDomain = data.actions[0].link;
       }
       addressEl.textContent = cleanDomain;
+    }
+
+    const mockupWrap = document.querySelector('.cs-hero-mockup-wrap');
+    const isIphoneMockup = (data.deviceMockup === 'iphone');
+
+    if (isIphoneMockup && mockupWrap) {
+      const accent = data.phoneAccent || 'var(--accent)';
+      const accentGlow = data.phoneAccentGlow || 'rgba(198, 255, 0, 0.35)';
+      const badges = data.phoneBadges || {};
+
+      let badgesHtml = '';
+      if (badges.left1) {
+        badgesHtml += `
+          <div class="cs-phone-badge cs-phone-badge-left1">
+            <span class="badge-icon">${badges.left1.icon || '⚡'}</span>
+            <div class="badge-text">
+              <span class="badge-title">${badges.left1.title}</span>
+              <span class="badge-sub">${badges.left1.sub}</span>
+            </div>
+          </div>`;
+      }
+      if (badges.left2) {
+        badgesHtml += `
+          <div class="cs-phone-badge cs-phone-badge-left2">
+            <span class="badge-icon">${badges.left2.icon || '🎯'}</span>
+            <div class="badge-text">
+              <span class="badge-title">${badges.left2.title}</span>
+              <span class="badge-sub">${badges.left2.sub}</span>
+            </div>
+          </div>`;
+      }
+      if (badges.right1) {
+        badgesHtml += `
+          <div class="cs-phone-badge cs-phone-badge-right1">
+            <span class="badge-icon">${badges.right1.icon || '🔥'}</span>
+            <div class="badge-text">
+              <span class="badge-title">${badges.right1.title}</span>
+              <span class="badge-sub">${badges.right1.sub}</span>
+            </div>
+          </div>`;
+      }
+      if (badges.right2) {
+        badgesHtml += `
+          <div class="cs-phone-badge cs-phone-badge-right2">
+            <span class="badge-icon">${badges.right2.icon || '📊'}</span>
+            <div class="badge-text">
+              <span class="badge-title">${badges.right2.title}</span>
+              <span class="badge-sub">${badges.right2.sub}</span>
+            </div>
+          </div>`;
+      }
+
+      mockupWrap.innerHTML = `
+        <div class="cs-phone-hero-wrapper" id="csPhoneHeroWrapper" style="--phone-accent:${accent}; --phone-accent-glow:${accentGlow};">
+          <div class="cs-phone-glow" style="background: radial-gradient(circle, ${accent} 0%, transparent 70%);"></div>
+          ${badgesHtml}
+          <div class="cs-iphone-frame" id="csIphoneFrame">
+            <div class="iphone-button iphone-action-btn"></div>
+            <div class="iphone-button iphone-vol-up"></div>
+            <div class="iphone-button iphone-vol-down"></div>
+            <div class="iphone-button iphone-power-btn"></div>
+            <div class="iphone-screen">
+              <div class="iphone-dynamic-island">
+                <div class="island-camera"></div>
+                <div class="island-sensor"></div>
+              </div>
+              <div class="iphone-speaker"></div>
+              <div class="iphone-screen-content" id="csHeroMediaBody"></div>
+              <div class="iphone-glass-glare"></div>
+              <div class="iphone-home-bar"></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 3D Tilt interactive listener on mouse move
+      const pWrapper = document.getElementById('csPhoneHeroWrapper');
+      const pPhone = document.getElementById('csIphoneFrame');
+      if (pWrapper && pPhone) {
+        pWrapper.addEventListener('mousemove', (e) => {
+          const rect = pWrapper.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rotX = -(y / (rect.height / 2)) * 9;
+          const rotY = (x / (rect.width / 2)) * 9;
+          pPhone.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        pWrapper.addEventListener('mouseleave', () => {
+          pPhone.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+      }
     }
 
     const heroMedia = document.getElementById('csHeroMediaBody');
@@ -812,6 +903,12 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     const screenItem = document.createElement('article');
     screenItem.className = 'cs-screen-item';
 
+    // Auto-detect landscape screens (landing page, hero showcase, banner) to span nicely
+    const lowerSrc = src.toLowerCase();
+    if (lowerSrc.includes('landing') || lowerSrc.includes('showcase') || lowerSrc.includes('banner')) {
+      screenItem.classList.add('is-landscape');
+    }
+
     const capText = captions[idx] || `${cleanTitle} Screen ${idx + 1}`;
     const screenNum = `SCREEN ${String(idx + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`;
 
@@ -862,12 +959,21 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     if (window.gsap) {
       gsap.fromTo(overlay, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' });
       gsap.fromTo('#csHeroTitle', { opacity: 0, scale: 0.96, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, delay: 0.1, ease: 'power3.out' });
-      gsap.fromTo('#csHeroMockupWindow', { opacity: 0, y: 30, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, delay: 0.18, ease: 'power3.out' });
+
+      if (isIphoneMockup) {
+        gsap.fromTo('#csIphoneFrame', { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: 0.15, ease: 'power3.out' });
+        gsap.fromTo('.cs-phone-badge', { opacity: 0, scale: 0.85, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, stagger: 0.08, delay: 0.3, ease: 'back.out(1.5)' });
+      } else {
+        gsap.fromTo('#csHeroMockupWindow', { opacity: 0, y: 30, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, delay: 0.18, ease: 'power3.out' });
+      }
+
       gsap.fromTo('.cs-meta-bar', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.25, ease: 'power3.out' });
+      gsap.fromTo('.cs-screen-item', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.035, delay: 0.3, ease: 'power2.out' });
     }
   } else {
     if (window.gsap) {
       gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      gsap.fromTo('.cs-screen-item', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.035, delay: 0.25, ease: 'power2.out' });
     }
   }
 

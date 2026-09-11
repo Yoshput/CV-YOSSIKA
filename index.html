@@ -238,58 +238,395 @@
       transform: translateY(-2px);
     }
 
-    /* ── Mobile Project (Thrift Space) Phone Gallery - Neatly Arranged, NOT Zoomed ── */
-    .cs-mobile-project .cs-screens-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .cs-mobile-project .cs-screen-item {
-      max-width: 360px;
+    /* ══════════════════════════════════════════════════════════════════════════
+       ── iPhone 17 Pro Max Hero Mockup & Interactive Showcase ──────────────────
+       ══════════════════════════════════════════════════════════════════════════ */
+    .cs-phone-hero-wrapper {
+      position: relative;
       width: 100%;
-      margin: 0 auto;
-      border-radius: 24px;
-      background: #0d0f17;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .cs-mobile-project .cs-screen-item:hover {
-      transform: translateY(-6px);
-      border-color: rgba(165, 180, 252, 0.4);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
-    }
-    .cs-mobile-project .cs-screen-img-wrap {
-      width: 100%;
-      background: #06070a;
+      max-width: 960px;
+      margin: 1.5rem auto 2.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.25rem 1rem 1.5rem;
-      cursor: zoom-in;
+      perspective: 1200px;
     }
-    .cs-mobile-project .cs-screen-img-wrap img {
-      width: auto;
-      max-width: 100%;
-      max-height: 520px;
-      object-fit: contain;
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-      display: block;
-      transition: transform 0.35s ease;
+
+    /* Ambient Glow behind iPhone */
+    .cs-phone-glow {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 1;
+      transition: background 0.5s ease, opacity 0.5s ease;
     }
-    .cs-mobile-project .cs-screen-img-wrap:hover img {
-      transform: scale(1.03);
+
+    /* iPhone 17 Pro Max Frame */
+    .cs-iphone-frame {
+      position: relative;
+      z-index: 2;
+      width: 320px;
+      height: 650px;
+      background: linear-gradient(145deg, #444652 0%, #1c1d24 35%, #2a2b35 100%);
+      border-radius: 52px;
+      padding: 11px;
+      box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 25px 60px -10px rgba(0, 0, 0, 0.8),
+        0 40px 90px -20px rgba(0, 0, 0, 0.7);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
-    .cs-mobile-project .cs-video-container {
-      max-width: 600px;
-      margin: 0 auto;
+
+    .cs-iphone-frame:hover {
+      box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.25),
+        0 35px 80px -10px rgba(0, 0, 0, 0.9),
+        0 0 50px -10px var(--phone-accent-glow, rgba(198, 255, 0, 0.35));
+    }
+
+    /* Titanium Bezel Specular Edge */
+    .cs-iphone-frame::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 49px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    /* iPhone Buttons (Titanium side keys) */
+    .iphone-button {
+      position: absolute;
+      background: #2b2c36;
+      border-radius: 3px;
+      z-index: 1;
+    }
+    .iphone-action-btn {
+      left: -3px;
+      top: 115px;
+      width: 3px;
+      height: 28px;
+    }
+    .iphone-vol-up {
+      left: -3px;
+      top: 155px;
+      width: 3px;
+      height: 50px;
+    }
+    .iphone-vol-down {
+      left: -3px;
+      top: 215px;
+      width: 3px;
+      height: 50px;
+    }
+    .iphone-power-btn {
+      right: -3px;
+      top: 165px;
+      width: 3px;
+      height: 75px;
+    }
+
+    /* Inner Screen */
+    .iphone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      border-radius: 42px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+    }
+
+    /* Dynamic Island */
+    .iphone-dynamic-island {
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 105px;
+      height: 28px;
+      background: #000000;
       border-radius: 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.08);
+      transition: width 0.3s ease;
+    }
+    .cs-iphone-frame:hover .iphone-dynamic-island {
+      width: 115px;
+    }
+    .island-camera {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1a1a2e 30%, #0d0d18 70%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-left: auto;
+    }
+    .island-sensor {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #111;
+      margin-left: 6px;
+    }
+
+    /* Speaker Ear-Piece */
+    .iphone-speaker {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 3px;
+      background: #1f2026;
+      border-radius: 2px;
+      z-index: 10;
+    }
+
+    /* Screen Video / Content */
+    .iphone-screen-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #090a0f;
+    }
+    .iphone-screen-content video,
+    .iphone-screen-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 42px;
+    }
+
+    /* Glossy Glass Reflection Sheen */
+    .iphone-glass-glare {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(125deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 30%, transparent 60%);
+      pointer-events: none;
+      z-index: 8;
+      border-radius: 42px;
+    }
+
+    /* Home Indicator Bar */
+    .iphone-home-bar {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 10px;
+      z-index: 10;
+    }
+
+    /* Floating Feature Badges around iPhone */
+    .cs-phone-badge {
+      position: absolute;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: rgba(14, 18, 28, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.85rem 1.25rem;
+      border-radius: 18px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      max-width: 240px;
+    }
+    .cs-phone-badge:hover {
+      transform: translateY(-4px) scale(1.04);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .cs-phone-badge .badge-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .cs-phone-badge .badge-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .cs-phone-badge .badge-title {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .cs-phone-badge .badge-sub {
+      font-size: 0.72rem;
+      color: var(--txt-muted);
+      line-height: 1.35;
+      margin-top: 0.2rem;
+    }
+
+    /* Positions of badges */
+    .cs-phone-badge-left1 { left: 2%; top: 22%; }
+    .cs-phone-badge-left2 { left: 4%; bottom: 25%; }
+    .cs-phone-badge-right1 { right: 2%; top: 25%; }
+    .cs-phone-badge-right2 { right: 4%; bottom: 22%; }
+
+    @media (max-width: 992px) {
+      .cs-phone-badge { display: none; }
+      .cs-phone-hero-wrapper { margin: 1rem auto 2rem; }
+      .cs-iphone-frame { width: 280px; height: 570px; border-radius: 46px; }
+      .iphone-screen { border-radius: 36px; }
+    }
+    @media (max-width: 480px) {
+      .cs-iphone-frame { width: 250px; height: 510px; border-radius: 40px; }
+      .iphone-screen { border-radius: 30px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       ── Universal Responsive Screens Grid (NO MORE CRAZY ZOOM!) ─────────────
+       ══════════════════════════════════════════════════════════════════════════ */
+    .cs-screens-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)) !important;
+      gap: 2.25rem !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+      justify-items: center !important;
+      width: 100% !important;
+    }
+
+    .cs-screen-item {
+      width: 100% !important;
+      max-width: 350px !important;
+      background: rgba(13, 16, 26, 0.78) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+      border-radius: 22px !important;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35) !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
+    }
+
+    .cs-screen-item:hover {
+      transform: translateY(-8px) scale(1.015) !important;
+      border-color: rgba(165, 180, 252, 0.35) !important;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(165, 180, 252, 0.1) !important;
+    }
+
+    .cs-screen-header {
+      padding: 1.15rem 1.35rem !important;
+      background: rgba(18, 22, 36, 0.85) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      gap: 0.75rem !important;
+    }
+
+    .cs-screen-badge {
+      font-family: var(--font-display) !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      color: var(--accent) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.12em !important;
+      margin-bottom: 0.3rem !important;
+    }
+
+    .cs-screen-caption {
+      font-size: 0.86rem !important;
+      font-weight: 600 !important;
+      color: #e2e8f0 !important;
+      line-height: 1.45 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+
+    .cs-screen-zoom-hint {
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      color: rgba(165, 180, 252, 0.85) !important;
+      background: rgba(165, 180, 252, 0.1) !important;
+      border: 1px solid rgba(165, 180, 252, 0.2) !important;
+      padding: 0.3rem 0.65rem !important;
+      border-radius: var(--radius-full) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.3rem !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .cs-screen-zoom-hint:hover {
+      background: var(--accent) !important;
+      color: #08090d !important;
+      border-color: var(--accent) !important;
+    }
+
+    .cs-screen-img-wrap {
+      width: 100% !important;
+      padding: 1.25rem 1rem 1.5rem !important;
+      background: radial-gradient(circle at 50% 30%, rgba(26, 32, 54, 0.4) 0%, rgba(7, 9, 15, 0.95) 100%) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      position: relative !important;
+      cursor: zoom-in !important;
+      overflow: hidden !important;
+    }
+
+    /* Gambar Portrait Mobile: Pas, Rapi, TIDAK NGE-ZOOM! */
+    .cs-screen-img-wrap img {
+      width: auto !important;
+      max-width: 100% !important;
+      max-height: 520px !important;
+      object-fit: contain !important;
+      border-radius: 16px !important;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+      display: block !important;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .cs-screen-img-wrap:hover img {
+      transform: scale(1.035) !important;
+    }
+
+    /* Landscape Screens (e.g. Landing Page Banner): Span across columns nicely */
+    .cs-screen-item.is-landscape {
+      grid-column: 1 / -1 !important;
+      max-width: 960px !important;
+    }
+    .cs-screen-item.is-landscape .cs-screen-img-wrap {
+      padding: 1.25rem 1.5rem !important;
+    }
+    .cs-screen-item.is-landscape .cs-screen-img-wrap img {
+      max-height: 500px !important;
+      width: 100% !important;
+      object-fit: contain !important;
     }
 
     @media (max-width: 900px) {
@@ -302,7 +639,7 @@
       .ih-meta-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 1.25rem; }
       .ih-meta-wide { grid-column: span 1; }
       .ih-title { font-size: clamp(2.8rem, 12vw, 4.8rem); }
-      .cs-mobile-project .cs-screens-grid { grid-template-columns: 1fr; }
+      .cs-screens-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
