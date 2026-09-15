@@ -1416,6 +1416,115 @@
       font-size: 0.7rem;
     }
 
+  
+    /* ════ OFFICIAL EMBLEM SHOWCASE ════ */
+    .official-emblem-showcase {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(30, 41, 59, 0.5));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .emblem-card-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .emblem-img-wrap {
+      flex-shrink: 0;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .emblem-large-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+    .emblem-card-item:hover .emblem-large-img {
+      transform: scale(1.08) rotate(2deg);
+    }
+    .artha-gold-img {
+      filter: drop-shadow(0 6px 16px rgba(212, 175, 55, 0.45));
+    }
+    .emblem-info-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .emblem-badge-tag {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .emblem-badge-tag.gold-badge {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold);
+      border-color: var(--border-accent);
+    }
+    .emblem-card-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .emblem-card-desc {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .emblem-divider-line {
+      width: 1px;
+      height: 90px;
+      background: linear-gradient(to bottom, transparent, var(--border-accent), transparent);
+      flex-shrink: 0;
+    }
+    @media (max-width: 868px) {
+      .official-emblem-showcase {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+      .emblem-divider-line {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+      }
+      .emblem-card-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      .emblem-badge-tag {
+        align-self: center;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1427,7 +1536,7 @@
     <div class="container nav-content">
       <a href="#hero" class="nav-brand-group">
         <div class="brand-emblems">
-          <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI PT Tel-U" class="brand-logo-img">
+          <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT Tel-U" class="brand-logo-img">
           <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="brand-logo-img">
         </div>
         <div class="brand-text-col">
@@ -1491,7 +1600,7 @@
         <!-- Dual Emblem Hero Badge -->
         <div class="dual-emblem-badge gsap-hero-el">
           <div class="emblem-pair">
-            <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI PT Telkom Purwokerto" class="emblem-icon">
+            <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT Telkom Purwokerto" class="emblem-icon">
             <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="emblem-icon">
           </div>
           <div class="emblem-label">
@@ -1582,8 +1691,8 @@
             <div class="stat-lbl-text">Sesi Pleno Sidang</div>
           </div>
           <div class="stat-box">
-            <div class="stat-val-text tabular" data-counter="5">5</div>
-            <div class="stat-lbl-text">Departemen LPJ</div>
+            <div class="stat-val-text tabular" data-counter="9">9</div>
+            <div class="stat-lbl-text">Departemen Artha Jayana</div>
           </div>
           <div class="stat-box">
             <div class="stat-val-text tabular" style="color:var(--gold);">Aula</div>
@@ -1636,6 +1745,37 @@
             <p class="cycle-body">
               Penyempurnaan tata tertib persidangan dan AD/ART, diikuti suksesi Ketua Umum baru yang demokratis, berintegritas, dan menjunjung semboyan <em>Pejuang Pengusaha</em>.
             </p>
+          </div>
+        </div>
+
+        <!-- ════ OFFICIAL EMBLEM SHOWCASE (DUAL LOGO PROPER) ════ -->
+        <div class="official-emblem-showcase gsap-reveal">
+          <div class="emblem-card-item">
+            <div class="emblem-img-wrap">
+              <img src="assets/img/logo-hipmi-pt-telu-official.png" alt="Segel Resmi HIPMI PT Telkom Purwokerto" class="emblem-large-img">
+            </div>
+            <div class="emblem-info-wrap">
+              <span class="emblem-badge-tag">Badan Otonom Kemahasiswaan</span>
+              <h4 class="emblem-card-title">HIPMI PT Telkom University Purwokerto</h4>
+              <p class="emblem-card-desc">
+                Organisasi wadah resmi pengusaha muda mahasiswa di bawah naungan Direktorat Akademik & Riset dan Kemahasiswaan Universitas Telkom Kampus Purwokerto.
+              </p>
+            </div>
+          </div>
+
+          <div class="emblem-divider-line" aria-hidden="true"></div>
+
+          <div class="emblem-card-item">
+            <div class="emblem-img-wrap">
+              <img src="assets/img/logo-artha-jayana.png" alt="Lambang Emas 3D Kabinet Artha Jayana" class="emblem-large-img artha-gold-img">
+            </div>
+            <div class="emblem-info-wrap">
+              <span class="emblem-badge-tag gold-badge">Identitas Kepengurusan 2025/2026</span>
+              <h4 class="emblem-card-title">Kabinet Artha Jayana</h4>
+              <p class="emblem-card-desc">
+                Simbol kejayaan, kemakmuran, dan sinergi adaptif yang merepresentasikan kepengurusan periode 2025/2026 yang bersiap mempertanggungjawabkan amanah.
+              </p>
+            </div>
           </div>
         </div>
       </div>
