@@ -1157,6 +1157,11 @@ window.openDocModal = function(id) {
     photosCont.appendChild(img);
   });
 
+  const mubesBtn = document.getElementById('dmMubesAction');
+  if (mubesBtn) {
+    mubesBtn.style.display = data.mubesLink ? 'block' : 'none';
+  }
+
   const certWrap = document.getElementById('dmCertWrap');
   if (data.cert) {
     certWrap.style.display = 'block';

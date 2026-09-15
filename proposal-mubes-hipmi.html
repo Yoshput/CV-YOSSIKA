@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROPOSAL KEGIATAN MUBES — HIPMI PT Telkom University Purwokerto</title>
+  <meta name="description" content="Proposal Resmi Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia (HIPMI) PT Telkom University Purwokerto. Dokumen formal siap cetak dan pengesahan.">
+  <meta name="author" content="Yossika Putra Erlangga">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-navy: #0b1f3a;
+      --primary-blue: #1b3d6d;
+      --accent-gold: #d97706;
+      --accent-amber: #f59e0b;
+      --ink: #1e293b;
+      --ink-muted: #475569;
+      --border-subtle: #cbd5e1;
+      --paper-bg: #ffffff;
+      --highlight-bg: #fef3c7;
+      --highlight-border: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background-color: #f1f5f9;
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 11pt;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Action bar on top for screen view */
+    .screen-action-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 31, 58, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 2px solid var(--accent-gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .action-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .badge-draft {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid #f59e0b;
+      color: #fef08a;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .btn-act {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .btn-act-primary {
+      background: var(--accent-gold);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+    }
+    .btn-act-primary:hover {
+      background: #b45309;
+      transform: translateY(-1px);
+    }
+    .btn-act-outline {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #f8fafc;
+    }
+    .btn-act-outline:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    /* Container Document */
+    .proposal-container {
+      max-width: 860px;
+      margin: 2rem auto;
+      background: var(--paper-bg);
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Printable Page wrapper */
+    .doc-page {
+      padding: 4.5rem 4.5rem 3.5rem;
+      min-height: 1100px;
+      position: relative;
+    }
+
+    .doc-page + .doc-page {
+      border-top: 1px dashed #cbd5e1;
+    }
+
+    /* Editorial headings */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--primary-navy);
+      line-height: 1.3;
+    }
+
+    /* Cover Page Styling */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      min-height: 1120px;
+      padding: 4.5rem 3.5rem;
+      background: radial-gradient(circle at 50% 15%, #f8fafc 0%, #ffffff 80%);
+      border: 12px double var(--primary-blue);
+      margin: 1.5rem;
+      border-radius: 4px;
+    }
+    .cover-top {
+      width: 100%;
+    }
+    .cover-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .logo-emblem {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 4px 15px rgba(11, 31, 58, 0.25);
+    }
+    .logo-emblem.telu {
+      background: linear-gradient(135deg, #b91c1c, #dc2626);
+      border-color: #fca5a5;
+    }
+    .cover-kicker {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
+      margin-bottom: 0.75rem;
+    }
+    .cover-title {
+      font-size: 24pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--primary-navy);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .cover-subtitle {
+      font-size: 15pt;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 1rem;
+      display: inline-block;
+      max-width: 90%;
+    }
+    .cover-theme-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid var(--accent-gold);
+      border-radius: 6px;
+      padding: 1.25rem 1.75rem;
+      margin: 1.5rem auto;
+      max-width: 90%;
+      text-align: left;
+    }
+    .theme-box-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      margin-bottom: 0.25rem;
+    }
+    .theme-box-quote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 11.5pt;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .cover-bottom {
+      width: 100%;
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .cover-meta {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+
+    /* Section Headers */
+    .chapter-heading {
+      font-size: 16pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary-navy);
+      border-bottom: 2px solid var(--primary-navy);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .chapter-heading .ch-num {
+      color: var(--accent-gold);
+      font-weight: 800;
+    }
+    .sub-heading {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* Unfilled / Placeholders */
+    .field-tag {
+      background: var(--highlight-bg);
+      border: 1px solid var(--highlight-border);
+      color: #92400e;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Tables */
+    table.doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0 1.75rem;
+      font-size: 9.5pt;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    table.doc-table th, table.doc-table td {
+      border: 1px solid #cbd5e1;
+      padding: 0.55rem 0.75rem;
+      vertical-align: top;
+    }
+    table.doc-table th {
+      background: #f1f5f9;
+      color: var(--primary-navy);
+      font-weight: 700;
+      text-align: left;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    table.doc-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+    table.doc-table tfoot td {
+      font-weight: 700;
+      background: #f8fafc;
+      color: var(--primary-navy);
+      border-top: 2px solid var(--primary-navy);
+    }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+
+    /* Lembar Pengesahan */
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .signature-box {
+      text-align: center;
+    }
+    .sig-role {
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4.5rem;
+      line-height: 1.4;
+    }
+    .sig-name {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-decoration: underline;
+      color: var(--primary-navy);
+    }
+    .sig-id {
+      font-size: 9pt;
+      color: var(--ink-muted);
+      margin-top: 0.2rem;
+    }
+    .signature-grid-center {
+      grid-column: span 2;
+      max-width: 380px;
+      margin: 2rem auto 0;
+    }
+
+    /* Surat Permohonan Formal */
+    .kop-surat {
+      border-bottom: 3px double var(--primary-navy);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .kop-logo {
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-navy);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      border-radius: 12px;
+      border: 2px solid var(--accent-gold);
+    }
+    .kop-text {
+      flex: 1;
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .kop-h1 {
+      font-size: 13pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary-navy);
+    }
+    .kop-h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+    .kop-sub {
+      font-size: 8.5pt;
+      color: var(--ink-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Table of Contents */
+    .toc-list {
+      list-style: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10pt;
+      margin: 1.5rem 0;
+    }
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted #cbd5e1;
+    }
+    .toc-title {
+      font-weight: 600;
+      color: var(--primary-navy);
+    }
+    .toc-page {
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    /* Print Specific Rules */
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        font-size: 10.5pt;
+      }
+      .screen-action-bar {
+        display: none !important;
+      }
+      .proposal-container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border: none;
+      }
+      .cover-page {
+        margin: 0;
+        min-height: 98vh;
+        border-width: 4px;
+        page-break-after: always;
+        break-after: page;
+      }
+      .doc-page {
+        padding: 0;
+        min-height: auto;
+        page-break-after: always;
+        break-after: page;
+        border-top: none;
+      }
+      .doc-page:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+      table.doc-table th {
+        background: #e2e8f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .field-tag {
+        background: none;
+        border: 1px dashed #78350f;
+        color: #78350f;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 20mm 15mm 20mm 15mm;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .doc-page {
+        padding: 2rem 1.5rem;
+      }
+      .cover-page {
+        margin: 0.5rem;
+        padding: 2.5rem 1.25rem;
+      }
+      .signature-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .signature-grid-center {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Sticky Action Bar (Hidden during Print) -->
+  <header class="screen-action-bar">
+    <div class="action-brand">
+      <span>📄 Dokumen Proposal MUBES HIPMI</span>
+      <span class="badge-draft">Draft Siap Cetak</span>
+    </div>
+    <div class="action-buttons">
+      <button onclick="window.print()" class="btn-act btn-act-primary">
+        🖨️ Cetak / Simpan PDF (Ctrl+P)
+      </button>
+      <a href="mubes-hipmi.html" class="btn-act btn-act-outline">
+        🌐 Buka Versi Web Interaktif
+      </a>
+      <a href="index.html" class="btn-act btn-act-outline">
+        🏠 Beranda
+      </a>
+    </div>
+  </header>
+
+  <main class="proposal-container" id="proposalContent">
+
+    <!-- ════ COVER / HALAMAN JUDUL ════ -->
+    <div class="cover-page">
+      <div class="cover-top">
+        <div class="cover-logos">
+          <div class="logo-emblem">HIPMI</div>
+          <div class="logo-emblem telu">TEL-U</div>
+        </div>
+        <div class="cover-kicker">PROPOSAL KEGIATAN FORMAL</div>
+        <h1 class="cover-title">MUSYAWARAH BESAR (MUBES)</h1>
+        <div class="cover-subtitle">
+          HIMPUNAN PENGUSAHA MUDA INDONESIA (HIPMI)<br>
+          PERGURUAN TINGGI TELKOM UNIVERSITY PURWOKERTO
+        </div>
+
+        <div class="cover-theme-box">
+          <div class="theme-box-label">Tema Kegiatan :</div>
+          <div class="theme-box-quote">
+            "Navigating Synergy: Melahirkan Pemimpin Pengusaha Muda yang Adaptif, Akuntabel, dan Berkelanjutan"
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <div class="cover-meta">
+          <strong>PANITIA PELAKSANA MUSYAWARAH BESAR</strong><br>
+          UKM HIPMI PT TELKOM UNIVERSITY PURWOKERTO<br>
+          PERIODE 2026/2027<br>
+          BANYUMAS — JAWA TENGAH<br>
+          TAHUN 2026
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ LEMBAR PENGESAHAN ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading text-center" style="justify-content:center; margin-bottom: 2rem;">
+        LEMBAR PENGESAHAN
+      </h2>
+      <p style="text-align:center; margin-bottom: 2rem; font-family:'Plus Jakarta Sans',sans-serif;">
+        Proposal Kegiatan Musyawarah Besar (MUBES)<br>
+        <strong>Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT)</strong><br>
+        Telkom University Purwokerto Periode 2026/2027
+      </p>
+
+      <table class="doc-table" style="margin-bottom: 2.5rem;">
+        <tr>
+          <td style="width: 32%; font-weight:700;">Nama Kegiatan</td>
+          <td>Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tema</td>
+          <td>Navigating Synergy: Melahirkan Pemimpin Pengusaha Muda yang Adaptif, Akuntabel, dan Berkelanjutan</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Ketua Pelaksana</td>
+          <td>Yossika Putra Erlangga (NIM. <span class="field-tag">[ISI/SESUAIKAN: 2311102xxx]</span>)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Hari, Tanggal</td>
+          <td><span class="field-tag">[ISI/SESUAIKAN: Sabtu, 16 Mei 2026]</span> (08.00 s.d. 17.45 WIB)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tempat Pelaksanaan</td>
+          <td>Aula Telkom University Purwokerto</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Total Estimasi Anggaran</td>
+          <td><strong>Rp 5.850.000,-</strong> <em>(Lima Juta Delapan Ratus Lima Puluh Ribu Rupiah)</em></td>
+        </tr>
+      </table>
+
+      <p style="text-align: right; font-family:'Plus Jakarta Sans', sans-serif; font-size: 10pt; margin-bottom: 1.5rem;">
+        Purwokerto, <span class="field-tag">[ISI/SESUAIKAN: DD MMMM 2026]</span>
+      </p>
+
+      <div class="signature-grid">
+        <div class="signature-box">
+          <div class="sig-role">
+            Ketua Pelaksana MUBES,
+          </div>
+          <div class="sig-name">Yossika Putra Erlangga</div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: 2311102xxx]</span></div>
+        </div>
+
+        <div class="signature-box">
+          <div class="sig-role">
+            Sekretaris Pelaksana,
+          </div>
+          <div class="sig-name"><span class="field-tag">[ISI/SESUAIKAN: Nama Sekretaris 1]</span></div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: NIM]</span></div>
+        </div>
+
+        <div class="signature-box">
+          <div class="sig-role">
+            Mengetahui,<br>
+            Ketua Umum UKM HIPMI PT Tel-U,
+          </div>
+          <div class="sig-name"><span class="field-tag">[ISI/SESUAIKAN: Nama Ketua Umum]</span></div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: NIM]</span></div>
+        </div>
+
+        <div class="signature-box">
+          <div class="sig-role">
+            Menyetujui,<br>
+            Dosen Pembina UKM HIPMI PT Tel-U,
+          </div>
+          <div class="sig-name"><span class="field-tag">[ISI/SESUAIKAN: Nama Dosen Pembina / Kemahasiswaan]</span></div>
+          <div class="sig-id">NIP/NIDN. <span class="field-tag">[ISI/SESUAIKAN: NIP/NIDN]</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ KATA PENGANTAR & DAFTAR ISI ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading">KATA PENGANTAR</h2>
+      <p>
+        Puji syukur senantiasa kita panjatkan ke hadirat Tuhan Yang Maha Esa atas segala limpahan rahmat, petunjuk, dan karunia-Nya, sehingga Panitia Pelaksana dapat menyelesaikan penyusunan <strong>Proposal Kegiatan Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto Periode 2026/2027</strong> dengan baik.
+      </p>
+      <p>
+        Musyawarah Besar ini merupakan forum konstitusional tertinggi organisasi mahasiswa yang memegang peranan krusial dalam mengevaluasi kinerja program kerja per departemen selama satu periode kepengurusan, menyempurnakan aturan tata tertib dan AD/ART, memberikan apresiasi setinggi-tingginya kepada segenap pengurus yang telah berdedikasi, serta memilih formatur kepengurusan baru demi menjaga keberlanjutan estafet wirausaha muda di kampus Telkom University Purwokerto.
+      </p>
+      <p>
+        Proposal ini disusun sebagai pedoman acuan teknis pelaksanaan serta bentuk permohonan perizinan tempat, sarana prasarana Aula, dan dukungan pendanaan kepada pihak universitas maupun mitra eksternal. Kami menyadari bahwa keberhasilan agenda ini sangat bergantung pada sinergi dan dukungan dari semua pihak. Atas perhatian, bimbingan, dan kerja sama yang diberikan, kami haturkan terima kasih.
+      </p>
+
+      <p style="text-align: right; margin-top: 1.5rem; font-family:'Plus Jakarta Sans',sans-serif; font-size: 10pt;">
+        Purwokerto, <span class="field-tag">[ISI/SESUAIKAN: DD MMMM 2026]</span><br>
+        <strong>Panitia Pelaksana MUBES HIPMI PT</strong>
+      </p>
+
+      <hr style="border:none; border-top:1px dashed #cbd5e1; margin: 2rem 0;">
+
+      <h2 class="chapter-heading">DAFTAR ISI</h2>
+      <ul class="toc-list">
+        <li class="toc-item"><span class="toc-title">HALAMAN JUDUL / COVER</span><span class="toc-page">i</span></li>
+        <li class="toc-item"><span class="toc-title">LEMBAR PENGESAHAN</span><span class="toc-page">ii</span></li>
+        <li class="toc-item"><span class="toc-title">KATA PENGANTAR & DAFTAR ISI</span><span class="toc-page">iii</span></li>
+        <li class="toc-item"><span class="toc-title">BAB I : PENDAHULUAN & LATAR BELAKANG</span><span class="toc-page">1</span></li>
+        <li class="toc-item"><span class="toc-title">BAB II : NAMA & TEMA KEGIATAN</span><span class="toc-page">2</span></li>
+        <li class="toc-item"><span class="toc-title">BAB III : TUJUAN KEGIATAN</span><span class="toc-page">2</span></li>
+        <li class="toc-item"><span class="toc-title">BAB IV : MANFAAT KEGIATAN</span><span class="toc-page">3</span></li>
+        <li class="toc-item"><span class="toc-title">BAB V : WAKTU, TEMPAT & ESTIMASI PESERTA</span><span class="toc-page">3</span></li>
+        <li class="toc-item"><span class="toc-title">BAB VI : SUSUNAN KEPANITIAAN</span><span class="toc-page">4</span></li>
+        <li class="toc-item"><span class="toc-title">BAB VII : RUNDOWN ACARA SIDANG</span><span class="toc-page">5</span></li>
+        <li class="toc-item"><span class="toc-title">BAB VIII : RANCANGAN ANGGARAN BIAYA (RAB)</span><span class="toc-page">6</span></li>
+        <li class="toc-item"><span class="toc-title">BAB IX : RENCANA MITIGASI RISIKO</span><span class="toc-page">7</span></li>
+        <li class="toc-item"><span class="toc-title">BAB X : PENUTUP</span><span class="toc-page">8</span></li>
+        <li class="toc-item"><span class="toc-title">LAMPIRAN 1 : DRAFT SURAT PEMINJAMAN AULA</span><span class="toc-page">9</span></li>
+        <li class="toc-item"><span class="toc-title">LAMPIRAN 2 : DRAFT SURAT UNDANGAN SIDANG</span><span class="toc-page">10</span></li>
+      </ul>
+    </div>
+
+    <!-- ════ BAB I s.d. BAB IV ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading"><span class="ch-num">BAB I</span> PENDAHULUAN & LATAR BELAKANG</h2>
+      <p>
+        Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto merupakan wadah strategis mahasiswa dalam menumbuhkembangkan jiwa kepemimpinan, kapabilitas wirausaha, serta jejaring bisnis profesional di lingkup kampus maupun regional Banyumas Raya. Seiring berjalannya roda organisasi selama satu periode penuh, dinamika program kerja dan dedikasi seluruh pengurus perlu diuji, diapresiasi, dan dievaluasi secara terstruktur.
+      </p>
+      <p>
+        Musyawarah Besar (MUBES) merupakan pemegang kekuasaan dan forum pengambilan keputusan tertinggi dalam struktur organisasi UKM HIPMI PT Telkom University Purwokerto. Forum ini bukan sekadar seremoni serah terima jabatan, melainkan momentum konstitusional krusial yang mengemban tugas pokok: mengevaluasi laporan pertanggungjawaban (LPJ) per departemen secara terukur, menetapkan pedoman peraturan organisasi serta tata tertib persidangan, memberikan apresiasi atas dedikasi pengurus periode berjalan, serta memilih dan menetapkan formatur kepengurusan baru.
+      </p>
+      <p>
+        Berbeda dari evaluasi internal biasa, MUBES kali ini menitikberatkan pada Laporan Pertanggungjawaban (LPJ) berbasis capaian objektif per departemen, meliputi realisasi program kerja, efisiensi anggaran, hingga evaluasi tantangan riil di lapangan. Hasil kajian ini akan menjadi landasan rekomendasi strategis bagi pengurus periode berikutnya.
+      </p>
+      <p>
+        Mengingat urgensi dan skala agenda yang melibatkan seluruh elemen organisasi, alumni/demisioner, serta tamu kehormatan civitas akademika, pelaksanaan MUBES direncanakan bertempat di Aula Kampus Telkom University Purwokerto dengan persiapan matang, kepanitiaan yang solid, serta perencanaan anggaran yang transparan.
+      </p>
+
+      <h2 class="chapter-heading" style="margin-top: 2rem;"><span class="ch-num">BAB II</span> NAMA & TEMA KEGIATAN</h2>
+      <p>
+        <strong>Nama Kegiatan:</strong><br>
+        <em>"Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia (HIPMI) Perguruan Tinggi Telkom University Purwokerto Periode 2026/2027"</em>
+      </p>
+      
+      <p><strong>Alternatif Pilihan Tema:</strong></p>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Tema Utama (Direkomendasikan):</strong><br>
+          <em>"Navigating Synergy: Melahirkan Pemimpin Pengusaha Muda yang Adaptif, Akuntabel, dan Berkelanjutan"</em><br>
+          <small style="color:var(--ink-muted);">Fokus: Sinergi lintas departemen, akuntabilitas LPJ terukur, dan regenerasi kepemimpinan berdaya saing.</small>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Alternatif 2:</strong><br>
+          <em>"Ignite the Spirit: Restrukturisasi Visi, Membangun Ekosistem Wirausaha Kampus Berdaya Saing"</em><br>
+          <small style="color:var(--ink-muted);">Fokus: Evaluasi kurikulum wirausaha mahasiswa dan pemantapan program inkubasi bisnis.</small>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Alternatif 3:</strong><br>
+          <em>"Revitalisasi Sinergi: Transformasi Pengurus Menuju HIPMI PT Tel-U yang Mandiri dan Progresif"</em><br>
+          <small style="color:var(--ink-muted);">Fokus: Penguatan AD/ART internal, ketertiban konstitusi, dan kepemimpinan berintegritas tinggi.</small>
+        </li>
+      </ol>
+
+      <h2 class="chapter-heading" style="margin-top: 2rem;"><span class="ch-num">BAB III</span> TUJUAN KEGIATAN</h2>
+      <ol style="margin-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>Laporan Pertanggungjawaban (LPJ) Per Departemen:</strong> Memaparkan, menguji, dan mengesahkan LPJ setiap departemen kepengurusan periode berjalan secara transparan dan akuntabel.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Apresiasi Kinerja Pengurus:</strong> Memberikan penghargaan dan apresiasi resmi kepada jajaran pengurus, koordinator divisi, dan staf atas dedikasi serta realisasi program kerja.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Penetapan Presidium Sidang & Tata Tertib:</strong> Memilih Presidium Sidang definitif dan menetapkan tata tertib persidangan sebagai pedoman konstitusional jalannya MUBES.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Penyusunan Aturan Organisasi & Rekomendasi Kerja:</strong> Mengkaji AD/ART, menyempurnakan pedoman internal organisasi, serta merumuskan rekomendasi arah strategis bagi kepengurusan selanjutnya.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Pemilihan & Penetapan Ketua Umum Baru:</strong> Melaksanakan suksesi kepemimpinan yang demokratis, berintegritas, dan menjunjung tinggi nilai-nilai persaudaraan pengusaha muda (Pejuang Pengusaha, Pengusaha Pejuang).</li>
+      </ol>
+
+      <h2 class="chapter-heading" style="margin-top: 2rem;"><span class="ch-num">BAB IV</span> MANFAAT KEGIATAN</h2>
+      <ul style="margin-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>Bagi Organisasi (UKM HIPMI PT):</strong> Menjamin kesinambungan estafet kepemimpinan, memperkuat legalitas konstitusional, dan menghasilkan arsip LPJ yang kredibel untuk akreditasi organisasi kemahasiswaan.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Bagi Anggota & Kader:</strong> Memberikan wadah pembelajaran etika persidangan formal, menumbuhkan jiwa kepemimpinan kritis, serta mempererat networking antar-angkatan mahasiswa wirausaha.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Bagi Universitas (Telkom University Purwokerto):</strong> Mendukung terciptanya iklim ormawa yang sehat, tertib administrasi, serta berkontribusi nyata dalam melahirkan lulusan berjiwa entrepreneurship unggul.</li>
+      </ul>
+    </div>
+
+    <!-- ════ BAB V & BAB VI (WAKTU, TEMPAT & PANITIA) ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading"><span class="ch-num">BAB V</span> WAKTU, TEMPAT & TARGET PESERTA</h2>
+      <table class="doc-table">
+        <tr>
+          <td style="width: 28%; font-weight:700;">Hari, Tanggal</td>
+          <td><span class="field-tag">[ISI/SESUAIKAN: Sabtu, 16 Mei 2026]</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Waktu Pelaksanaan</td>
+          <td>08.00 s.d. 17.45 WIB (Estimasi 9 Jam 45 Menit termasuk ISHOMA)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tempat / Venue</td>
+          <td>Aula Telkom University Purwokerto (Jl. D.I. Panjaitan No. 128, Purwokerto)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Target Peserta</td>
+          <td>
+            Total estimasi 100 – 120 orang peserta, terdiri dari:
+            <ul style="margin-left:1.2rem; margin-top:0.3rem;">
+              <li>Pengurus UKM HIPMI PT Periode Berjalan (BPH & Anggota Departemen)</li>
+              <li>Demisioner / Alumni Pengurus HIPMI PT Telkom University Purwokerto</li>
+              <li>Anggota Aktif & Calon Pengurus Baru</li>
+              <li>Tamu Undangan (Pembina Kemahasiswaan, Perwakilan Ormawa Kampus, Delegasi BPC HIPMI Banyumas)</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <h2 class="chapter-heading" style="margin-top: 2rem;"><span class="ch-num">BAB VI</span> SUSUNAN KEPANITIAAN</h2>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 26%;">Jabatan / Divisi</th>
+            <th style="width: 32%;">Nama Personel</th>
+            <th>Tugas Pokok & Tanggung Jawab</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pelindung</strong></td>
+            <td><span class="field-tag">[ISI/SESUAIKAN: Rektor / Warek Kemahasiswaan]</span></td>
+            <td>Pelindung institusional kegiatan MUBES di lingkungan kampus Tel-U Purwokerto.</td>
+          </tr>
+          <tr>
+            <td><strong>Penasihat / Pembina</strong></td>
+            <td><span class="field-tag">[ISI/SESUAIKAN: Dosen Pembina UKM HIPMI PT]</span></td>
+            <td>Memberikan arahan kebijakan dan bimbingan administratif ormawa.</td>
+          </tr>
+          <tr>
+            <td><strong>Penanggung Jawab</strong></td>
+            <td><span class="field-tag">[ISI/SESUAIKAN: Ketua Umum HIPMI PT]</span></td>
+            <td>Penanggung jawab umum pelaksanaan MUBES sesuai AD/ART organisasi.</td>
+          </tr>
+          <tr>
+            <td><strong>Ketua Pelaksana</strong></td>
+            <td><strong>Yossika Putra Erlangga</strong><br><small>NIM. <span class="field-tag">[ISI/SESUAIKAN]</span></small></td>
+            <td>Memimpin koordinasi persiapan, perizinan Aula kampus, alur teknis persidangan, serta pengawasan RAB.</td>
+          </tr>
+          <tr>
+            <td><strong>Wakil Ketua</strong></td>
+            <td><span class="field-tag">[ISI/SESUAIKAN: Nama Wakil Ketua]</span></td>
+            <td>Mendampingi Ketua Pelaksana dan memonitor kesiapan logistik lapangan.</td>
+          </tr>
+          <tr>
+            <td><strong>Sekretaris I & II</strong></td>
+            <td>
+              1. <span class="field-tag">[ISI/SESUAIKAN: Nama Sekretaris 1]</span><br>
+              2. <span class="field-tag">[ISI/SESUAIKAN: Nama Sekretaris 2]</span>
+            </td>
+            <td>Surat izin aula, proposal, draft tata tertib, absensi digital, dan notulensi persidangan.</td>
+          </tr>
+          <tr>
+            <td><strong>Bendahara</strong></td>
+            <td><span class="field-tag">[ISI/SESUAIKAN: Nama Bendahara]</span></td>
+            <td>Rekapitulasi RAB, sirkulasi kas, pencatatan nota transaksi, dan SPJ keuangan.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisi Acara & Persidangan</strong></td>
+            <td>
+              Koord: <span class="field-tag">[ISI/SESUAIKAN: Nama Koord]</span><br>
+              Anggota: <span class="field-tag">[ISI/SESUAIKAN: 3 Personel]</span>
+            </td>
+            <td>Memandu alur rundown, time keeper sidang pleno, menyiapkan draft SK dan palu sidang.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisi Kesekretariatan</strong></td>
+            <td>
+              Koord: <span class="field-tag">[ISI/SESUAIKAN: Nama Koord]</span><br>
+              Anggota: <span class="field-tag">[ISI/SESUAIKAN: 2 Personel]</span>
+            </td>
+            <td>Mencetak bundel berkas LPJ, kartu suara pemilihan, dan ID card peserta.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisi Humas & Publikasi</strong></td>
+            <td>
+              Koord: <span class="field-tag">[ISI/SESUAIKAN: Nama Koord]</span><br>
+              Anggota: <span class="field-tag">[ISI/SESUAIKAN: 2 Personel]</span>
+            </td>
+            <td>Menyebarkan undangan resmi, menjalin relasi eksternal BPC HIPMI, dan publikasi media.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisi Perlengkapan (Venue Aula)</strong></td>
+            <td>
+              Koord: <span class="field-tag">[ISI/SESUAIKAN: Nama Koord]</span><br>
+              Anggota: <span class="field-tag">[ISI/SESUAIKAN: 3 Personel]</span>
+            </td>
+            <td>Peminjaman inventaris Aula, sound system, proyektor, layout panggung presidium, dan kebersihan.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisi Konsumsi</strong></td>
+            <td>
+              Koord: <span class="field-tag">[ISI/SESUAIKAN: Nama Koord]</span><br>
+              Anggota: <span class="field-tag">[ISI/SESUAIKAN: 2 Personel]</span>
+            </td>
+            <td>Menyediakan snack box pagi, makan siang bento (ISHOMA), dan air minum VIP/peserta.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisi Dokumentasi & Media</strong></td>
+            <td>
+              Koord: <span class="field-tag">[ISI/SESUAIKAN: Nama Koord]</span><br>
+              Anggota: <span class="field-tag">[ISI/SESUAIKAN: 2 Personel]</span>
+            </td>
+            <td>Dokumentasi foto/video cinematic, slide materi aula, dan after-movie resmi MUBES.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ════ BAB VII (RUNDOWN ACARA) ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading"><span class="ch-num">BAB VII</span> SUSUNAN ACARA / RUNDOWN</h2>
+      <p style="margin-bottom:0.75rem;">
+        Berikut adalah susunan agenda sidang Musyawarah Besar (MUBES) yang dirancang mengalir, tertib waktu, dan akomodatif terhadap seluruh proses konstitusi:
+      </p>
+
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 14%;">Waktu</th>
+            <th style="width: 12%;">Durasi</th>
+            <th style="width: 24%;">Sesi Agenda</th>
+            <th>Uraian Kegiatan Sidang</th>
+            <th style="width: 18%;">PIC / Penanggung Jawab</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>07.30 - 08.00</td>
+            <td>30 mnt</td>
+            <td><strong>Pra-Acara & Registrasi</strong></td>
+            <td>Registrasi delegasi, pembagian bundel berkas sidang, snack pagi, dan video kilas balik HIPMI Tel-U.</td>
+            <td>Divisi Kesekretariatan & Konsumsi</td>
+          </tr>
+          <tr>
+            <td>08.00 - 08.45</td>
+            <td>45 mnt</td>
+            <td><strong>Opening Ceremony</strong></td>
+            <td>Menyanyikan Indonesia Raya & Mars HIPMI, sambutan Ketua Panitia (Yossika), sambutan Ketum HIPMI PT, sambutan Pembina & Pembukaan Resmi.</td>
+            <td>Divisi Acara & MC</td>
+          </tr>
+          <tr>
+            <td>08.45 - 09.30</td>
+            <td>45 mnt</td>
+            <td><strong>Sidang Pleno I</strong></td>
+            <td>Pembahasan & Pengesahan Agenda Acara, Tata Tertib Sidang MUBES, serta Pemilihan Presidium Sidang Definitif.</td>
+            <td>Presidium Sidang Sementara / Divisi Acara</td>
+          </tr>
+          <tr>
+            <td>09.30 - 11.45</td>
+            <td>135 mnt</td>
+            <td><strong>Sidang Pleno II (LPJ Departemen)</strong></td>
+            <td>Penyampaian Laporan Pertanggungjawaban (LPJ) per Departemen: BPH, OKK, Ekraf, Humas & Kemitraan, Media Kreatif, dilanjutkan tanggapan peserta.</td>
+            <td>Presidium Sidang Definitif & Seluruh Kadep</td>
+          </tr>
+          <tr>
+            <td>11.45 - 12.15</td>
+            <td>30 mnt</td>
+            <td><strong>Apresiasi Pengurus</strong></td>
+            <td>Penyerahan sertifikat apresiasi & plakat penghargaan kepada jajaran pengurus dan koordinator periode berjalan.</td>
+            <td>Ketua Pelaksana & Ketua Umum</td>
+          </tr>
+          <tr>
+            <td>12.15 - 13.15</td>
+            <td>60 mnt</td>
+            <td><strong>ISHOMA</strong></td>
+            <td>Istirahat siang, sholat dzuhur berjamaah, dan santap siang bersama di selasar Aula.</td>
+            <td>Divisi Konsumsi & Logistik</td>
+          </tr>
+          <tr>
+            <td>13.15 - 14.45</td>
+            <td>90 mnt</td>
+            <td><strong>Sidang Pleno III (Sidang Komisi)</strong></td>
+            <td>Sidang Komisi A (AD/ART & Regulasi Internal), Komisi B (Garis Besar Haluan Program Kerja & Rekomendasi Masa Depan) & Pleno Komisi.</td>
+            <td>Presidium Sidang & Ketua Komisi</td>
+          </tr>
+          <tr>
+            <td>14.45 - 16.30</td>
+            <td>105 mnt</td>
+            <td><strong>Sidang Pleno IV (Pemilihan Formatur)</strong></td>
+            <td>Verifikasi berkas calon Ketua Umum, orasi visi-misi calon, uji panelis terbuka, dan proses pemungutan suara demokratis.</td>
+            <td>Presidium Sidang & Panitia Pemilihan</td>
+          </tr>
+          <tr>
+            <td>16.30 - 17.15</td>
+            <td>45 mnt</td>
+            <td><strong>Sidang Pleno V (Serah Terima Jabatan)</strong></td>
+            <td>Pembacaan SK Ketum Terpilih, penyerahan pataka bendera HIPMI PT, serta pidato perdana Ketua Umum terpilih.</td>
+            <td>Presidium Sidang & BPH</td>
+          </tr>
+          <tr>
+            <td>17.15 - 17.45</td>
+            <td>30 mnt</td>
+            <td><strong>Penutupan & Dokumentasi</strong></td>
+            <td>Doa penutup, ucapan selamat peserta, sesi foto bersama seluruh delegasi di panggung Aula, dan sterilisasi venue.</td>
+            <td>Divisi Acara & Dokumentasi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ════ BAB VIII (RAB) ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading"><span class="ch-num">BAB VIII</span> RANCANGAN ANGGARAN BIAYA (RAB)</h2>
+      <p style="margin-bottom:0.75rem;">
+        Rancangan Anggaran Biaya disusun berdasarkan estimasi kebutuhan riil pelaksanaan MUBES skala 120 peserta di Aula Telkom University Purwokerto:
+      </p>
+
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 5%;">No</th>
+            <th>Uraian Kebutuhan</th>
+            <th style="width: 14%;">Volume</th>
+            <th style="width: 15%;" class="text-right">Harga Satuan</th>
+            <th style="width: 16%;" class="text-right">Jumlah (Rp)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Pos 1 -->
+          <tr>
+            <td colspan="5" style="background:#e2e8f0; font-weight:700; color:var(--primary-navy);">
+              I. KESEKRETARIATAN & PERSIDANGAN (Subtotal: Rp 1.050.000,-)
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">1</td>
+            <td>Penggandaan Draft Materi Sidang & Berkas LPJ</td>
+            <td>100 eks</td>
+            <td class="text-right">Rp 4.500</td>
+            <td class="text-right">Rp 450.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">2</td>
+            <td>ID Card Panitia & Co-Card Peserta Sidang</td>
+            <td>120 pcs</td>
+            <td class="text-right">Rp 3.500</td>
+            <td class="text-right">Rp 420.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">3</td>
+            <td>Surat Suara Pemilihan & Kertas Berita Acara (HVS A4)</td>
+            <td>2 rim</td>
+            <td class="text-right">Rp 65.000</td>
+            <td class="text-right">Rp 130.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">4</td>
+            <td>Sewa Palu Sidang & Bantalan Kayu Resmi</td>
+            <td>1 set</td>
+            <td class="text-right">Rp 50.000</td>
+            <td class="text-right">Rp 50.000</td>
+          </tr>
+
+          <!-- Pos 2 -->
+          <tr>
+            <td colspan="5" style="background:#e2e8f0; font-weight:700; color:var(--primary-navy);">
+              II. PUBLIKASI, DEKORASI & APRESIASI (Subtotal: Rp 880.000,-)
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">5</td>
+            <td>Cetak Backdrop Panggung Aula (4 x 2.5 m Flexi Doff)</td>
+            <td>1 buah</td>
+            <td class="text-right">Rp 280.000</td>
+            <td class="text-right">Rp 280.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">6</td>
+            <td>X-Banner Informasi Alur & Barcode Berkas Sidang</td>
+            <td>2 buah</td>
+            <td class="text-right">Rp 85.000</td>
+            <td class="text-right">Rp 170.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">7</td>
+            <td>Plakat Akrilik Apresiasi Pengurus / Pembina</td>
+            <td>3 buah</td>
+            <td class="text-right">Rp 110.000</td>
+            <td class="text-right">Rp 330.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">8</td>
+            <td>Sertifikat Penghargaan Pengurus (Kertas Linen)</td>
+            <td>50 lbr</td>
+            <td class="text-right">Rp 2.000</td>
+            <td class="text-right">Rp 100.000</td>
+          </tr>
+
+          <!-- Pos 3 -->
+          <tr>
+            <td colspan="5" style="background:#e2e8f0; font-weight:700; color:var(--primary-navy);">
+              III. KONSUMSI PESERTA, TAMU & PANITIA (Subtotal: Rp 2.570.000,-)
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">9</td>
+            <td>Snack Box Pagi (Tamu Undangan & Peserta)</td>
+            <td>120 box</td>
+            <td class="text-right">Rp 7.000</td>
+            <td class="text-right">Rp 840.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">10</td>
+            <td>Makan Siang Bento Box ISHOMA (Ayam + Sayur)</td>
+            <td>120 box</td>
+            <td class="text-right">Rp 13.000</td>
+            <td class="text-right">Rp 1.560.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">11</td>
+            <td>Air Mineral Botol 330ml (Meja Presidium & Tamu VIP)</td>
+            <td>2 dus</td>
+            <td class="text-right">Rp 45.000</td>
+            <td class="text-right">Rp 90.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">12</td>
+            <td>Air Mineral Galon Refill + Cup Dispenser Peserta</td>
+            <td>4 galon</td>
+            <td class="text-right">Rp 20.000</td>
+            <td class="text-right">Rp 80.000</td>
+          </tr>
+
+          <!-- Pos 4 -->
+          <tr>
+            <td colspan="5" style="background:#e2e8f0; font-weight:700; color:var(--primary-navy);">
+              IV. LOGISTIK, VENUE AULA & MEDIS (Subtotal: Rp 750.000,-)
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">13</td>
+            <td>Insentif Kebersihan & Pendamping Teknis Aula Kampus</td>
+            <td>1 paket</td>
+            <td class="text-right">Rp 350.000</td>
+            <td class="text-right">Rp 350.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">14</td>
+            <td>Lakban Panggung, Baterai Mic Wireless & Plastik Sampah</td>
+            <td>1 paket</td>
+            <td class="text-right">Rp 150.000</td>
+            <td class="text-right">Rp 150.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">15</td>
+            <td>P3K & Kesiapan Medis Ringan Darurat</td>
+            <td>1 paket</td>
+            <td class="text-right">Rp 100.000</td>
+            <td class="text-right">Rp 100.000</td>
+          </tr>
+          <tr>
+            <td class="text-center">16</td>
+            <td>Bunga Meja Presidium & Kain Taplak Cadangan</td>
+            <td>1 paket</td>
+            <td class="text-right">Rp 150.000</td>
+            <td class="text-right">Rp 150.000</td>
+          </tr>
+
+          <!-- Pos 5 -->
+          <tr>
+            <td colspan="5" style="background:#e2e8f0; font-weight:700; color:var(--primary-navy);">
+              V. DANA CADANGAN TAK TERDUGA (Subtotal: Rp 600.000,-)
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">17</td>
+            <td>Biaya Darurat / Lonjakan Peserta / Kabel Cadangan</td>
+            <td>1 paket</td>
+            <td class="text-right">Rp 600.000</td>
+            <td class="text-right">Rp 600.000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="text-right" style="font-size:10.5pt;">TOTAL ESTIMASI BIAYA KESELURUHAN</td>
+            <td class="text-right" style="font-size:11pt; color:var(--primary-navy);">Rp 5.850.000,-</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p style="font-size:9.5pt; color:var(--ink-muted); font-style:italic;">
+        * Catatan: Seluruh nominal di atas masih bersifat draft estimasi dan dapat disesuaikan <span class="field-tag">[ISI/SESUAIKAN]</span> dengan ketersediaan kas organisasi serta persetujuan dana kemahasiswaan.
+      </p>
+    </div>
+
+    <!-- ════ BAB IX & BAB X (MITIGASI & PENUTUP) ════ -->
+    <div class="doc-page">
+      <h2 class="chapter-heading"><span class="ch-num">BAB IX</span> RENCANA MITIGASI RISIKO</h2>
+      <p style="margin-bottom:0.75rem;">
+        Guna menjamin kelancaran sidang tanpa kendala berarti, Panitia Pelaksana merumuskan matriks mitigasi risiko komprehensif berikut:
+      </p>
+
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 10%;">ID</th>
+            <th style="width: 25%;">Potensi Risiko</th>
+            <th style="width: 12%;">Tingkat</th>
+            <th style="width: 25%;">Dampak yang Mungkin Terjadi</th>
+            <th>Rencana Tindakan Mitigasi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>R-01</strong></td>
+            <td>Keterlambatan Kesiapan LPJ Departemen Tertentu</td>
+            <td><strong style="color:#b45309;">Tinggi</strong></td>
+            <td>Sidang Pleno II terhambat, waktu molor, penundaan agenda suksesi.</td>
+            <td>
+              • Deadline submit naskah LPJ H-7 sebelum hari-H.<br>
+              • Simulasi pra-MUBES internal H-3 bersama BPH.<br>
+              • Template presentasi standar agar seragam dan cepat dikompilasi.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>R-02</strong></td>
+            <td>Kuorum Peserta Sidang Tidak Terpenuhi</td>
+            <td><strong style="color:#b45309;">Tinggi</strong></td>
+            <td>Sidang pleno tidak dapat dibuka secara sah menurut konstitusi AD/ART.</td>
+            <td>
+              • Konfirmasi kehadiran RSVP via Google Form mulai H-14.<br>
+              • Penerapan klausul skorsing 2 x 15 menit, kemudian sidang sah dilanjutkan.<br>
+              • Absensi digital presensi real-time via WhatsApp blast.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>R-03</strong></td>
+            <td>Kendala Izin Tempat / Bentrok Jadwal Aula Kampus</td>
+            <td><strong style="color:#dc2626;">Kritis</strong></td>
+            <td>Tidak memiliki venue representatif, relokasi mendadak memicu kekacauan peserta.</td>
+            <td>
+              • Pengajuan surat permohonan Aula H-30 (minimal 3-4 minggu sebelumnya).<br>
+              • Audiensi langsung oleh Ketua Panitia (Yossika) ke Bagian Logistik Kampus.<br>
+              • Menyiapkan Plan B: Auditorium Gedung D / Ruang Sidang Bersama.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>R-04</strong></td>
+            <td>Gangguan Sound System, Mic Mati / Proyektor Eror</td>
+            <td><strong style="color:#2563eb;">Sedang</strong></td>
+            <td>Materi LPJ tidak terbaca jelas, suasana gaduh dan kehilangan kekhidmatan.</td>
+            <td>
+              • Gladi bersih dan sound check teknis di Aula pada H-1 sore.<br>
+              • Menyediakan kabel konverter Type-C/HDMI cadangan & baterai mic ekstra.<br>
+              • Seluruh berkas LPJ disimpan di flashdisk offline tanpa bergantung internet.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>R-05</strong></td>
+            <td>Deadlock / Debat Berkepanjangan Saat Pemilihan Presidium / Ketum</td>
+            <td><strong style="color:#b45309;">Tinggi</strong></td>
+            <td>Sidang molor melewati batas jam malam kampus, suasana menjadi tegang.</td>
+            <td>
+              • Memilih presidium sidang yang berpengalaman dan bersikap tegas netral.<br>
+              • Pembatasan interupsi maksimal 2-3 menit per delegasi dalam Tatib.<br>
+              • Mekanisme voting tertutup jika musyawarah tidak mufakat dalam 2 x 10 menit.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>R-06</strong></td>
+            <td>Konflik Jadwal dengan Agenda Akademik Kampus (UAS/Kuis)</td>
+            <td><strong style="color:#2563eb;">Sedang</strong></td>
+            <td>Kehadiran peserta rendah karena prioritas studi mahasiswa.</td>
+            <td>
+              • Sinkronisasi kalender akademik Telkom University Purwokerto sebelum tanggal final.<br>
+              • Memilih hari Sabtu di masa tenang perkuliahan.<br>
+              • Surat izin dispensasi resmi bertanda tangan pembina ormawa.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="chapter-heading" style="margin-top: 2rem;"><span class="ch-num">BAB X</span> PENUTUP</h2>
+      <p>
+        Demikian Proposal Kegiatan Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto Periode 2026/2027 ini kami susun dengan penuh rasa tanggung jawab. Agenda konstitusional ini menjadi tonggak sejarah penting dalam menjaga muruah organisasi, mengevaluasi capaian program kerja secara objektif, serta mencetak regenerasi pemimpin pengusaha muda yang adaptif, akuntabel, dan berdaya saing global.
+      </p>
+      <p>
+        Besar harapan kami agar Bapak/Ibu pimpinan universitas, bagian kemahasiswaan, logistik kampus, serta seluruh civitas akademika berkenan memberikan izin tempat penggunaan Aula, dukungan sarana prasarana, serta bantuan anggaran demi suksesnya perhelatan akbar ini. Atas perhatian, kepercayaan, dan kerja sama yang senantiasa terjalin, kami mengucapkan terima kasih yang sebesar-besarnya.
+      </p>
+
+      <p style="text-align: right; margin-top: 2rem; font-family:'Plus Jakarta Sans',sans-serif; font-size: 10pt;">
+        Purwokerto, <span class="field-tag">[ISI/SESUAIKAN: DD MMMM 2026]</span><br>
+        <strong>PANITIA PELAKSANA MUSYAWARAH BESAR<br>UKM HIPMI PT TELKOM UNIVERSITY PURWOKERTO</strong>
+      </p>
+    </div>
+
+    <!-- ════ LAMPIRAN 1: SURAT PEMINJAMAN AULA ════ -->
+    <div class="doc-page">
+      <div class="kop-surat">
+        <div class="kop-logo">HIPMI</div>
+        <div class="kop-text">
+          <div class="kop-h1">PANITIA PELAKSANA MUSYAWARAH BESAR (MUBES)</div>
+          <div class="kop-h2">HIMPUNAN PENGUSAHA MUDA INDONESIA PERGURUAN TINGGI</div>
+          <div class="kop-h2">TELKOM UNIVERSITY PURWOKERTO</div>
+          <div class="kop-sub">Sekretariat: Jl. D.I. Panjaitan No. 128, Purwokerto Selatan, Banyumas, Jawa Tengah 53147 | Email: hipmi.telupurwokerto@gmail.com</div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5pt; margin-bottom:1.5rem;">
+        <div>
+          Nomor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="field-tag">[ISI/SESUAIKAN: 012/PAN-MUBES/HIPMI-TUP/V/2026]</span><br>
+          Lampiran : 1 (satu) Berkas Proposal Kegiatan<br>
+          Perihal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <strong>Permohonan Izin Peminjaman Tempat & Fasilitas Aula</strong>
+        </div>
+        <div style="text-align:right;">
+          Purwokerto, <span class="field-tag">[ISI/SESUAIKAN: DD MMMM 2026]</span>
+        </div>
+      </div>
+
+      <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10pt; line-height:1.5;">
+        Kepada Yth.<br>
+        <strong>Kepala Bagian Logistik & Pengelolaan Fasilitas Kampus</strong><br>
+        c.q. Bagian Kemahasiswaan Telkom University Purwokerto<br>
+        di Tempat
+      </p>
+
+      <p style="margin-top:1.25rem;">Dengan hormat,</p>
+      <p>
+        Sehubungan dengan akan diselenggarakannya agenda tahunan Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto Periode <span class="field-tag">[ISI/SESUAIKAN: 2026/2027]</span>, kami selaku Panitia Pelaksana bermaksud mengajukan permohonan izin peminjaman tempat beserta fasilitas pendukung.
+      </p>
+
+      <p>Adapun rincian pelaksanaan kegiatan dimaksud adalah sebagai berikut:</p>
+      <table class="doc-table" style="margin: 0.5rem 0 1rem;">
+        <tr>
+          <td style="width: 25%; font-weight:700;">Nama Kegiatan</td>
+          <td>Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Hari, Tanggal</td>
+          <td><span class="field-tag">[ISI/SESUAIKAN: Sabtu, 16 Mei 2026]</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Waktu Penggunaan</td>
+          <td>07.30 – 18.00 WIB (Termasuk persiapan gladi dan sterilisasi venue)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tempat / Venue</td>
+          <td><strong>Aula Telkom University Purwokerto</strong></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Estimasi Peserta</td>
+          <td>± 120 Orang (Pengurus, Demisioner, Anggota Aktif, dan Tamu Undangan)</td>
+        </tr>
+      </table>
+
+      <p>
+        Guna mendukung kelancaran kegiatan tersebut, kami juga memohon izin pemanfaatan fasilitas pendukung Aula berupa:
+      </p>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1rem; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5pt;">
+        <li>Sound system utama aula dan 4 (empat) buah microphone wireless</li>
+        <li>LCD Projector dan screen layar panggung pementasan</li>
+        <li>Kursi peserta sejumlah 120 (seratus dua puluh) unit</li>
+        <li>1 (satu) meja panjang untuk Presidium Sidang di atas panggung</li>
+        <li>Pendingin ruangan (AC) dan daya kelistrikan stop kontak</li>
+        <li>Podium sambutan dan tiang bendera resmi</li>
+      </ol>
+
+      <p>
+        Panitia berkomitmen penuh untuk senantiasa menjaga kebersihan, ketertiban, keutuhan fasilitas, serta mematuhi seluruh tata tertib penggunaan sarana kampus yang berlaku. Sebagai bahan pertimbangan Bapak/Ibu, kami lampirkan 1 (satu) berkas proposal kegiatan.
+      </p>
+      <p>
+        Demikian surat permohonan ini kami sampaikan. Atas perhatian, dukungan, dan kerja sama yang baik dari pihak kampus, kami ucapkan terima kasih.
+      </p>
+
+      <div class="signature-grid" style="margin-top:2rem;">
+        <div class="signature-box">
+          <div class="sig-role">Ketua Pelaksana MUBES,</div>
+          <div class="sig-name">Yossika Putra Erlangga</div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: 2311102xxx]</span></div>
+        </div>
+
+        <div class="signature-box">
+          <div class="sig-role">Sekretaris Pelaksana,</div>
+          <div class="sig-name"><span class="field-tag">[ISI/SESUAIKAN: Nama Sekretaris 1]</span></div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: NIM]</span></div>
+        </div>
+
+        <div class="signature-box" style="grid-column: span 2; max-width:320px; margin: 1rem auto 0;">
+          <div class="sig-role">Mengetahui,<br>Ketua Umum UKM HIPMI PT Tel-U,</div>
+          <div class="sig-name"><span class="field-tag">[ISI/SESUAIKAN: Nama Ketua Umum]</span></div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: NIM]</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ LAMPIRAN 2: DRAFT SURAT UNDANGAN PESERTA ════ -->
+    <div class="doc-page">
+      <div class="kop-surat">
+        <div class="kop-logo">HIPMI</div>
+        <div class="kop-text">
+          <div class="kop-h1">PANITIA PELAKSANA MUSYAWARAH BESAR (MUBES)</div>
+          <div class="kop-h2">HIMPUNAN PENGUSAHA MUDA INDONESIA PERGURUAN TINGGI</div>
+          <div class="kop-h2">TELKOM UNIVERSITY PURWOKERTO</div>
+          <div class="kop-sub">Sekretariat: Jl. D.I. Panjaitan No. 128, Purwokerto Selatan, Banyumas, Jawa Tengah 53147 | Email: hipmi.telupurwokerto@gmail.com</div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5pt; margin-bottom:1.5rem;">
+        <div>
+          Nomor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="field-tag">[ISI/SESUAIKAN: 014/PAN-MUBES/HIPMI-TUP/V/2026]</span><br>
+          Lampiran : 1 (satu) Lembar Susunan Acara<br>
+          Perihal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <strong>Undangan Menghadiri Musyawarah Besar (MUBES) HIPMI PT</strong>
+        </div>
+        <div style="text-align:right;">
+          Purwokerto, <span class="field-tag">[ISI/SESUAIKAN: DD MMMM 2026]</span>
+        </div>
+      </div>
+
+      <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10pt; line-height:1.5;">
+        Kepada Yth.<br>
+        <strong><span class="field-tag">[ISI/SESUAIKAN: Nama Penerima / Delegasi / Pengurus / Demisioner]</span></strong><br>
+        UKM HIPMI PT Telkom University Purwokerto<br>
+        di Tempat
+      </p>
+
+      <p style="margin-top:1.25rem;">Dengan hormat,</p>
+      <p>
+        Dalam rangka menuntaskan amanah konstitusi organisasi serta melanjutkan estafet kepemimpinan pengusaha muda, Panitia Pelaksana Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto mengundang Saudara/i untuk hadir dan berpartisipasi aktif dalam kegiatan MUBES tahunan.
+      </p>
+
+      <p>Adapun kegiatan akan diselenggarakan pada:</p>
+      <table class="doc-table" style="margin: 0.5rem 0 1rem;">
+        <tr>
+          <td style="width: 25%; font-weight:700;">Hari, Tanggal</td>
+          <td><span class="field-tag">[ISI/SESUAIKAN: Sabtu, 16 Mei 2026]</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Waktu</td>
+          <td>08.00 WIB s.d. 17.45 WIB</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tempat</td>
+          <td><strong>Aula Telkom University Purwokerto</strong></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Pakaian (Dresscode)</td>
+          <td>Kemeja Rapi / Jas Almamater / PDH Organisasi / Bersepatu</td>
+        </tr>
+      </table>
+
+      <p>
+        Kehadiran, hak suara, serta gagasan konstruktif dari Saudara/i sangat kami harapkan demi terwujudnya masa depan UKM HIPMI PT yang semakin progresif, mandiri, akuntabel, dan berdaya saing.
+      </p>
+      <p>
+        Demikian surat undangan ini kami sampaikan. Atas perhatian, kesediaan hadir, dan komitmen Saudara/i, kami ucapkan terima kasih.
+      </p>
+
+      <div class="signature-grid" style="margin-top:2.5rem;">
+        <div class="signature-box">
+          <div class="sig-role">Ketua Pelaksana MUBES,</div>
+          <div class="sig-name">Yossika Putra Erlangga</div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: 2311102xxx]</span></div>
+        </div>
+
+        <div class="signature-box">
+          <div class="sig-role">Sekretaris Pelaksana,</div>
+          <div class="sig-name"><span class="field-tag">[ISI/SESUAIKAN: Nama Sekretaris 1]</span></div>
+          <div class="sig-id">NIM. <span class="field-tag">[ISI/SESUAIKAN: NIM]</span></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer style="text-align:center; padding: 2rem 1rem; color: #64748b; font-family:'Plus Jakarta Sans', sans-serif; font-size: 8.5pt;">
+    Dokumen Proposal Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto &bull; Ketua Pelaksana: Yossika Putra Erlangga &bull; Terhubung dengan <a href="mubes-hipmi.html" style="color:#d97706; text-decoration:underline;">Halaman Web Interaktif</a>
+  </footer>
+
+  <script src="js/mubes-data.js"></script>
+</body>
+</html>

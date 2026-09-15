@@ -923,31 +923,32 @@ const DOCUMENTATION_DATA = {
   hipmi: {
     id: "hipmi",
     title: {
-      en: "UKM HIPMI PT Tel-U — Cadre & Membership Staff",
-      id: "UKM HIPMI PT Tel-U — Staff Kaderisasi & Keanggotaan"
+      en: "UKM HIPMI PT Tel-U — Head of Committee for MUBES & Cadre Staff",
+      id: "UKM HIPMI PT Tel-U — Ketua Panitia MUBES & Staff Kaderisasi"
     },
-    role: { en: "Department Staff", id: "Staff Kaderisasi & Keanggotaan" },
+    role: { en: "Head of Committee for MUBES & Cadre Staff", id: "Ketua Panitia MUBES & Staff Kaderisasi" },
     date: { en: "Jan 2026 – Present", id: "Januari 2026 – Sekarang" },
     summary: {
-      en: "Active management of student entrepreneurship development, internal onboarding, and member networking.",
-      id: "Pengelolaan kaderisasi mahasiswa wirausaha kampus Tel-U Purwokerto dan penguatan jaringan keanggotaan."
+      en: "Elected Head of Committee for Musyawarah Besar (MUBES) 2026 & active Cadre Staff in student entrepreneurship development.",
+      id: "Ketua Pelaksana Musyawarah Besar (MUBES) 2026 dan staf aktif dalam pengelolaan kaderisasi wirausaha muda Tel-U Purwokerto."
     },
     desc: {
-      en: "Serving as an active officer in the Indonesian Young Entrepreneurs Association Student Chapter (UKM HIPMI PT) at Telkom University Purwokerto, empowering student startups and driving community synergy.",
-      id: "Menjadi staf aktif di Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto, menyusun program regenerasi anggota dan mendorong ekosistem wirausaha muda di kampus."
+      en: "Serving as Head of Committee for Musyawarah Besar (MUBES) 2026 and Cadre Staff at UKM HIPMI PT Telkom University Purwokerto. Directing constitutional plenary preparations, Aula venue logistics, LPJ department reporting, and democratic leadership succession.",
+      id: "Diamanahi sebagai Ketua Pelaksana Musyawarah Besar (MUBES) 2026 dan Staf Kaderisasi di UKM HIPMI PT Telkom University Purwokerto. Memimpin persiapan sidang pleno konstitusi, perizinan Aula kampus, penyusunan LPJ per departemen, serta regenerasi kepemimpinan wirausaha muda kampus."
     },
     bullets: {
       en: [
-        "Facilitating member registration, database management, and onboarding workshops",
-        "Organizing entrepreneurship seminars and networking mixers with regional business mentors",
-        "Contributing to department operational reviews and strategic milestones"
+        "Directing end-to-end committee operations, Aula venue licensing, and budget allocation for MUBES 2026",
+        "Coordinating 5 department LPJ evaluations, constitution amendments, and formatur elections",
+        "Managing new member database onboarding, seminars, and business networking mixers"
       ],
       id: [
-        "Memfasilitasi pendataan, verifikasi, dan orientasi calon anggota baru",
-        "Mendukung penyelenggaraan seminar bisnis dan sharing session bersama praktisi usaha",
-        "Koordinasi internal kepengurusan dalam program inkubasi wirausaha mahasiswa"
+        "Memimpin persiapan kepanitiaan MUBES 2026, perizinan Aula kampus, dan rancangan anggaran belanja (RAB)",
+        "Mengoordinasikan evaluasi LPJ 5 departemen, penyempurnaan AD/ART, dan pemilihan formatur Ketua Umum baru",
+        "Mengelola rekrutmen keanggotaan baru, seminar bisnis, dan penguatan jejaring wirausaha muda"
       ]
     },
+    mubesLink: "mubes-hipmi.html",
     images: [
       "assets/img/foto-kegiatan/06-hipmi/foto-departemen-kaderisasi-dan-keanggotaan.webp",
       "assets/img/foto-kegiatan/06-hipmi/foto-departement-okk.webp",
