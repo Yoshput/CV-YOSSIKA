@@ -24,23 +24,25 @@
 
   <style>
     :root {
-      --bg-base: #060911;
-      --bg-elevated: #0b1120;
-      --bg-surface: rgba(15, 23, 42, 0.72);
-      --glass-card: rgba(17, 24, 39, 0.65);
-      --glass-card-hover: rgba(30, 41, 59, 0.85);
-      --border-fine: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(212, 175, 55, 0.35);
+      --bg-base: #090704;
+      --bg-elevated: #140f08;
+      --bg-surface: rgba(24, 18, 11, 0.82);
+      --glass-card: rgba(26, 20, 12, 0.78);
+      --glass-card-hover: rgba(38, 29, 17, 0.92);
+      --border-fine: rgba(212, 175, 55, 0.15);
+      --border-accent: rgba(212, 175, 55, 0.42);
       --border-accent-strong: #d4af37;
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --text-dim: #64748b;
+      --text-main: #fdfbf7;
+      --text-sub: #cbd5e1;
+      --text-dim: #94a3b8;
       --gold: #d4af37;
-      --gold-bright: #f59e0b;
-      --gold-glow: rgba(212, 175, 55, 0.22);
+      --gold-bright: #fbbf24;
+      --gold-glow: rgba(212, 175, 55, 0.32);
+      --crimson: #c51a1b;
+      --crimson-glow: rgba(197, 26, 27, 0.28);
       --emerald: #10b981;
       --rose: #f43f5e;
-      --sky: #38bdf8;
+      --sky: #eab308;
       --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --radius-sm: 10px;
@@ -71,16 +73,17 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Ambient Lighting Mesh */
+    /* Ambient Lighting Mesh — HIPMI Executive Gold & Crimson Aura */
     .ambient-mesh {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       background: 
-        radial-gradient(ellipse 65% 50% at 50% -5%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
-        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 90% 70%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+        radial-gradient(ellipse 70% 55% at 50% -5%, rgba(212, 175, 55, 0.28) 0%, transparent 65%),
+        radial-gradient(circle at 10% 42%, rgba(197, 26, 27, 0.22) 0%, transparent 52%),
+        radial-gradient(circle at 90% 68%, rgba(245, 158, 11, 0.20) 0%, transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(184, 134, 11, 0.14) 0%, transparent 60%);
     }
 
     .container {
@@ -101,7 +104,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(6, 9, 17, 0.82);
+      background: rgba(10, 8, 5, 0.88);
       backdrop-filter: blur(24px) saturate(190%);
       -webkit-backdrop-filter: blur(24px) saturate(190%);
       border-bottom: 1px solid var(--border-fine);
@@ -232,7 +235,7 @@
     .marquee-container {
       width: 100%;
       overflow: hidden;
-      background: rgba(11, 17, 32, 0.7);
+      background: rgba(18, 14, 8, 0.85);
       border-top: 1px solid var(--border-fine);
       border-bottom: 1px solid var(--border-fine);
       padding: 0.55rem 0;
@@ -281,7 +284,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.85rem;
-      background: rgba(17, 24, 39, 0.75);
+      background: rgba(24, 18, 10, 0.82);
       border: 1px solid var(--border-accent);
       padding: 0.45rem 1.25rem 0.45rem 0.65rem;
       border-radius: var(--radius-full);
@@ -442,7 +445,7 @@
     }
     .theme-pill-btn.active {
       background: var(--gold);
-      color: #060911;
+      color: #090704;
       border-color: var(--gold);
       box-shadow: 0 2px 12px var(--gold-glow);
     }
@@ -611,7 +614,7 @@
     }
     .pillar-btn.active {
       background: var(--gold);
-      color: #060911;
+      color: #090704;
       border-color: var(--gold);
       box-shadow: 0 4px 18px var(--gold-glow);
     }
@@ -759,7 +762,7 @@
     }
     .filter-btn.active {
       background: var(--gold);
-      color: #060911;
+      color: #090704;
       border-color: var(--gold);
     }
 
@@ -1017,7 +1020,7 @@
       transition: width 0.6s ease;
     }
     .seg-konsumsi { background: #d4af37; }
-    .seg-sekretariat { background: #38bdf8; }
+    .seg-sekretariat { background: #f59e0b; }
     .seg-publikasi { background: #10b981; }
     .seg-logistik { background: #a855f7; }
     .seg-cadangan { background: #f43f5e; }
@@ -1138,9 +1141,9 @@
       color: #fde68a;
     }
     .sev-sedang {
-      background: rgba(56, 189, 248, 0.18);
-      border: 1px solid #38bdf8;
-      color: #bae6fd;
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid #f59e0b;
+      color: #fde68a;
     }
     .risk-heading {
       font-family: var(--font-display);
@@ -1476,9 +1479,9 @@
       letter-spacing: 0.1em;
       padding: 0.2rem 0.65rem;
       border-radius: var(--radius-full);
-      background: rgba(56, 189, 248, 0.12);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(212, 175, 55, 0.12);
+      color: #e6ca65;
+      border: 1px solid rgba(212, 175, 55, 0.25);
     }
     .emblem-badge-tag.gold-badge {
       background: rgba(212, 175, 55, 0.15);
@@ -1523,6 +1526,193 @@
       .emblem-badge-tag {
         align-self: center;
       }
+    }
+
+  
+    /* ════ IPHONE 16 PRO DEVICE MOCKUP FOR INSTAGRAM POSTS ════ */
+    .lpj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+    .dept-card {
+      background: var(--glass-card);
+      border: 1px solid var(--border-fine);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6);
+    }
+    .dept-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    /* iPhone Frame Container */
+    .iphone-mockup {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 0.5rem auto;
+      border-radius: 42px;
+      background: #000000;
+      padding: 8px;
+      box-shadow: 
+        0 24px 45px -10px rgba(0, 0, 0, 0.85),
+        0 0 0 2.5px #3a2e1b,
+        inset 0 0 0 2px #100d08;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .dept-card:hover .iphone-mockup {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 
+        0 30px 55px -10px rgba(0, 0, 0, 0.95),
+        0 0 0 2.5px var(--gold),
+        0 0 25px rgba(212, 175, 55, 0.28);
+    }
+    .iphone-screen {
+      border-radius: 34px;
+      overflow: hidden;
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* iPhone Status Bar */
+    .iphone-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 16px 3px 16px;
+      background: #000000;
+      color: #f8fafc;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-body);
+    }
+    .dynamic-island {
+      width: 76px;
+      height: 18px;
+      background: #000000;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+    }
+    .camera-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #111;
+      border: 1px solid #222;
+    }
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Instagram In-App Header */
+    .ig-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      background: #000000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .ig-user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ig-user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+      background: #fff;
+    }
+    .ig-user-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .ig-user-handle {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .ig-user-subtitle {
+      font-size: 9px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Instagram Canvas Poster Image */
+    .ig-poster-viewport {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #0f0b06;
+      position: relative;
+    }
+    .ig-poster-viewport img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .dept-card:hover .ig-poster-viewport img {
+      transform: scale(1.05);
+    }
+
+    /* Instagram In-App Action Row */
+    .ig-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px 6px 12px;
+      background: #000000;
+    }
+    .ig-actions-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+    }
+    .ig-action-icon {
+      cursor: pointer;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .ig-action-icon:hover {
+      transform: scale(1.15);
+      color: var(--gold);
+    }
+
+    /* Instagram Caption Snip */
+    .ig-caption-snip {
+      padding: 0 12px 10px 12px;
+      background: #000000;
+      font-size: 10.5px;
+      line-height: 1.35;
+      color: #cbd5e1;
+    }
+    .ig-caption-snip strong {
+      color: #fff;
     }
 
   </style>
@@ -1782,7 +1972,7 @@
     </section>
 
     <!-- ════ SECTION 2: TUJUAN & MANFAAT (3-PILLAR) ════ -->
-    <section class="section" id="tujuan-manfaat" style="background: rgba(11, 17, 32, 0.4);">
+    <section class="section" id="tujuan-manfaat" style="background: rgba(18, 14, 8, 0.55);">
       <div class="container">
         <div class="section-head gsap-reveal">
           <span class="section-eyebrow">
@@ -1904,7 +2094,7 @@
     </section>
 
     <!-- ════ SECTION 4: RUNDOWN SIDANG ════ -->
-    <section class="section" id="rundown" style="background: rgba(11, 17, 32, 0.4);">
+    <section class="section" id="rundown" style="background: rgba(18, 14, 8, 0.55);">
       <div class="container">
         <div class="section-head gsap-reveal">
           <span class="section-eyebrow">
@@ -2017,7 +2207,7 @@
     </section>
 
     <!-- ════ SECTION 6: RAB ════ -->
-    <section class="section" id="rab" style="background: rgba(11, 17, 32, 0.4);">
+    <section class="section" id="rab" style="background: rgba(18, 14, 8, 0.55);">
       <div class="container">
         <div class="section-head gsap-reveal">
           <span class="section-eyebrow">
@@ -2099,7 +2289,7 @@
     </section>
 
     <!-- ════ SECTION 8: DOKUMENTASI KEGIATAN HIPMI ════ -->
-    <section class="section" id="galeri" style="background: rgba(11, 17, 32, 0.4);">
+    <section class="section" id="galeri" style="background: rgba(18, 14, 8, 0.55);">
       <div class="container">
         <div class="section-head gsap-reveal">
           <span class="section-eyebrow">
@@ -2191,11 +2381,14 @@
       const data = window.MUBES_DATA;
       if (!data) return;
 
-      // 1. Render 9 Departemen Resmi Kabinet Artha Jayana (Data Rilis Instagram Resmi)
+      // 1. Render 9 Departemen Resmi Kabinet Artha Jayana (Lengkap dengan Mockup iPhone & Poster Instagram)
       const lpjCont = document.getElementById("lpjContainer");
       const deptList = data.departemenKabinet || data.departemenLpj;
       if (lpjCont && deptList) {
         lpjCont.innerHTML = deptList.map(dep => {
+          // Poster image URL
+          const posterSrc = dep.posterUrl || `assets/img/feed-hipmi/${dep.id}_poster.webp`;
+
           // Leadership HTML
           const leadersHtml = dep.pimpinan && dep.pimpinan.length > 0 ? `
             <div class="dept-pimpinan-box">
@@ -2231,13 +2424,63 @@
           const igBtnHtml = dep.instagramUrl ? `
             <a href="${dep.instagramUrl}" target="_blank" rel="noopener noreferrer" class="dept-ig-btn" title="Buka Rilis Resmi Instagram Departemen ${dep.nama}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-              <span>Rilis Instagram</span>
+              <span>Buka di Instagram</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
             </a>
           ` : '';
 
           return `
             <div class="lpj-card dept-card gsap-card">
+              <!-- iPhone Mockup Device Frame -->
+              <div class="iphone-mockup">
+                <div class="iphone-screen">
+                  <!-- iPhone Status Bar -->
+                  <div class="iphone-status-bar">
+                    <span>9:41</span>
+                    <div class="dynamic-island">
+                      <div class="camera-dot"></div>
+                    </div>
+                    <div class="status-icons">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 21l3.47-.62C9.28 20.73 10.6 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+                      <svg width="14" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="6" width="18" height="12" rx="2"/><path d="M23 10v4"/></svg>
+                    </div>
+                  </div>
+
+                  <!-- Instagram In-App Header -->
+                  <div class="ig-header-bar">
+                    <div class="ig-user-profile">
+                      <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT" class="ig-user-avatar">
+                      <div class="ig-user-info">
+                        <span class="ig-user-handle">hipmitelkompurwokerto</span>
+                        <span class="ig-user-subtitle">Kabinet Artha Jayana</span>
+                      </div>
+                    </div>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                  </div>
+
+                  <!-- Instagram Poster Canvas -->
+                  <div class="ig-poster-viewport">
+                    <img src="${posterSrc}" alt="Poster Resmi ${dep.nama}" loading="lazy">
+                  </div>
+
+                  <!-- Instagram In-App Actions -->
+                  <div class="ig-actions-row">
+                    <div class="ig-actions-left">
+                      <svg class="ig-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                      <svg class="ig-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                      <svg class="ig-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </div>
+                    <svg class="ig-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+
+                  <!-- Instagram In-App Caption Snip -->
+                  <div class="ig-caption-snip">
+                    <strong>hipmitelkompurwokerto</strong> &bull; <span style="color:var(--gold);">${dep.nama.toUpperCase()}</span></div>
+                </div>
+              </div>
+
+              <!-- Department Details & Meta -->
               <div class="lpj-top-row">
                 <span class="lpj-code-badge">${dep.kode || 'HIPMI'}</span>
                 ${igBtnHtml}

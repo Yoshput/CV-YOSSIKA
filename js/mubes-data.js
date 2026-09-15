@@ -115,6 +115,7 @@ const MUBES_DATA = {
   departemenKabinet: [
     {
       id: "bendum",
+      posterUrl: "assets/img/feed-hipmi/bendum_poster.webp",
       kode: "BND",
       nama: "Bendahara Umum",
       instagramUrl: "https://www.instagram.com/p/DXgZ1SaExPk/",
@@ -130,6 +131,7 @@ const MUBES_DATA = {
     },
     {
       id: "kabid",
+      posterUrl: "assets/img/feed-hipmi/kabid_poster.webp",
       kode: "KBD",
       nama: "Kepala Bidang (OKK, PPB, PRD)",
       instagramUrl: "https://www.instagram.com/p/DXe_DlIE7AU/",
@@ -145,6 +147,7 @@ const MUBES_DATA = {
     },
     {
       id: "po",
+      posterUrl: "assets/img/feed-hipmi/po_poster.webp",
       kode: "PO",
       nama: "Departemen Pengembangan Organisasi",
       instagramUrl: "https://www.instagram.com/p/DXgYyLNE8cR/",
@@ -163,6 +166,7 @@ const MUBES_DATA = {
     },
     {
       id: "kaderisasi",
+      posterUrl: "assets/img/feed-hipmi/kaderisasi_poster.webp",
       kode: "KDR",
       nama: "Departemen Kaderisasi & Keanggotaan",
       instagramUrl: "https://www.instagram.com/p/DXgRYwQAMW2/",
@@ -181,6 +185,7 @@ const MUBES_DATA = {
     },
     {
       id: "inkubasi",
+      posterUrl: "assets/img/feed-hipmi/inkubasi_poster.webp",
       kode: "INK",
       nama: "Departemen Inkubasi Bisnis",
       instagramUrl: "https://www.instagram.com/p/DXe_-tokw0E/",
@@ -200,6 +205,7 @@ const MUBES_DATA = {
     },
     {
       id: "enterprise",
+      posterUrl: "assets/img/feed-hipmi/enterprise_poster.webp",
       kode: "ENT",
       nama: "Departemen Enterprise",
       instagramUrl: "https://www.instagram.com/p/DXe-ohxEza_/",
@@ -218,6 +224,7 @@ const MUBES_DATA = {
     },
     {
       id: "harmonisasi",
+      posterUrl: "assets/img/feed-hipmi/harmonisasi_poster.webp",
       kode: "HRM",
       nama: "Departemen Harmonisasi Eksternal",
       instagramUrl: "https://www.instagram.com/p/DXe9okZk7og/",
@@ -237,6 +244,7 @@ const MUBES_DATA = {
     },
     {
       id: "medkraf",
+      posterUrl: "assets/img/feed-hipmi/medkraf_poster.webp",
       kode: "MDK",
       nama: "Departemen Media Kreatif",
       instagramUrl: "https://www.instagram.com/p/DXezjEtE0Ll/",
@@ -258,6 +266,7 @@ const MUBES_DATA = {
     },
     {
       id: "ti",
+      posterUrl: "assets/img/feed-hipmi/ti_poster.webp",
       kode: "TI",
       nama: "Departemen Teknologi Informasi",
       instagramUrl: "https://www.instagram.com/p/DXeZqELkwbF/",
