@@ -1,6 +1,9 @@
 /**
  * MUBES_DATA — Single Source of Truth
  * Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto
+ * Kabinet Artha Jayana Periode 2025/2026
+ *
+ * Mengikuti Template Baku Dokumen Kemahasiswaan Telkom University Purwokerto (PROPOSAL TW 3.docx)
  * Digunakan oleh:
  * 1. Halaman Interaktif (mubes-hipmi.html)
  * 2. Dokumen Proposal Formal Print-Ready (proposal-mubes-hipmi.html)
@@ -8,491 +11,524 @@
 
 const MUBES_DATA = {
   meta: {
-    namaKegiatan: "Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia (HIPMI) Perguruan Tinggi Telkom University Purwokerto",
-    namaSingkat: "MUBES HIPMI PT Tel-U Purwokerto",
+    namaKegiatan: "Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia (HIPMI) Perguruan Tinggi Telkom University Purwokerto Tahun 2026",
+    namaSingkat: "MUBES HIPMI PT Tel-U Purwokerto 2026",
     kabinet: "Kabinet Artha Jayana",
-    logoHipmi: "assets/img/logo-hipmi-telu.webp",
-    logoArthaJayana: "assets/img/logo-artha-jayana.webp",
-    logoEmblem: "assets/img/hipmi-artha-jayana-emblem.webp",
-    periode: "2026/2027",
+    periode: "2025/2026",
     tahun: "2026",
-    statusDraft: "DRAFT PROPOSAL — SIAP REVIEW & PENGESAHAN",
+    nomorSurat: "001/0002/A.1/PRD.1/HIPMI-TUP/V/2026",
+    tanggalSurat: "Purwokerto, 20 Mei 2026",
+    tanggalKegiatan: "Sabtu, 30 Mei 2026",
+    waktuKegiatan: "08.00–17.30 WIB",
+    tempatKegiatan: "Aula Gedung DSP / Auditorium Telkom University Purwokerto",
+    alamatKampus: "Jalan D.I. Panjaitan No. 128, Kec. Purwokerto Selatan, Banyumas 53147",
+    emailOrganisasi: "hipmitelkompurwokerto@gmail.com",
+    statusDraft: "PROPOSAL FORMAL — SIAP PENGESAHAN",
+    targetPeserta: "120 Peserta (Pengurus Kabinet Artha Jayana, Anggota Aktif, Dewan Pembina, Demisioner, dan Delegasi Tamu Ormawa)",
+    
+    // Pimpinan & Pejabat Resmi Telkom University Purwokerto & HIPMI PT
     ketuaPelaksana: "Yossika Putra Erlangga",
-    nimKetuaPelaksana: "[ISI/SESUAIKAN: 2311102xxx]",
-    ketuaUmumHipmi: "[ISI/SESUAIKAN: Nama Ketua Umum HIPMI PT]",
-    pembinaUkm: "[ISI/SESUAIKAN: Nama Dosen Pembina UKM HIPMI / Bagian Kemahasiswaan]",
-    nipPembina: "[ISI/SESUAIKAN: NIP/NIDN Pembina]",
-    tanggalSurat: "[ISI/SESUAIKAN: Banyumas, DD MMMM 2026]",
-    nomorSuratPeminjaman: "[ISI/SESUAIKAN: 012/PAN-MUBES/HIPMI-TUP/V/2026]",
-    nomorSuratUndangan: "[ISI/SESUAIKAN: 014/PAN-MUBES/HIPMI-TUP/V/2026]",
-    targetPeserta: "120 Peserta (Pengurus Periode Berjalan, Demisioner, Anggota Aktif, Calon Pengurus, dan Delegasi Tamu)",
+    nimKetuaPelaksana: "103112430026",
+    prodiKetuaPelaksana: "S1 Teknik Informatika, 2024",
+
+    sekretarisPelaksana: "Salumita Ardiana",
+    nimSekretarisPelaksana: "109092530004",
+    prodiSekretarisPelaksana: "S1 Rekayasa Perangkat Lunak, 2025",
+
+    bendaharaPelaksana: "Muhammad Naufal Hanif",
+    nimBendaharaPelaksana: "103122400057",
+    prodiBendaharaPelaksana: "S1 Rekayasa Perangkat Lunak, 2024",
+
+    ketuaUmumHipmi: "Raden Aurel Aditya Kusumawaningyun",
+    nimKetuaUmumHipmi: "103112430267",
+    prodiKetuaUmumHipmi: "S1 Teknik Informatika, 2024",
+
+    pembinaUkm: "Kurnia Indah Sumunar, S.E., M.S.Ak",
+    nipPembina: "25910001",
+
+    ketuaPanitiaPengarah: "Faizah, S.TP., M.Si.",
+    nipKetuaPanitiaPengarah: "0608129203",
+
+    kaurKemahasiswaan: "Kadarisman, S.Si.",
+    nipKaurKemahasiswaan: "22960016",
+
+    kaurSespinLegalPr: "Silvia Van Marsally, S.E., M.M.",
+
+    warekAkademikRiset: "Dr. Catur Nugroho, S.Sos., M.I.Kom.",
+    nipWarekAkademikRiset: "14780035-1",
+
+    direkturTelU: "Dr. Tenia Wahyuningrum, S.Kom., M.T.",
+    nipDirekturTelU: "07820045-1",
+
+    // Logos
+    logoTelu: "assets/img/logo-telkom-university-purwokerto.png",
+    logoTeluWebp: "assets/img/logo-telkom-university-purwokerto.webp",
+    logoTeluHorizontal: "assets/img/logo-telkom-university-horizontal.png",
+    logoHipmiOfficial: "assets/img/logo-hipmi-pt-telu-official.png",
+    logoHipmiOfficialWebp: "assets/img/logo-hipmi-pt-telu-official.webp",
+    logoArthaJayana: "assets/img/logo-artha-jayana.webp",
+    logoEmblemComposite: "assets/img/hipmi-artha-jayana-emblem.webp"
   },
 
   waktuTempat: {
-    tempat: "Aula Telkom University Purwokerto",
-    alamat: "Jl. D.I. Panjaitan No.128, Karangreja, Purwokerto Selatan, Banyumas, Jawa Tengah 53147",
-    hariTanggal: "[ISI/SESUAIKAN: Sabtu, 16 Mei 2026]",
+    tempat: "Aula Gedung DSP / Auditorium Telkom University Purwokerto",
+    alamat: "Jl. D.I. Panjaitan No. 128, Karangreja, Kec. Purwokerto Selatan, Banyumas 53147",
+    hariTanggal: "Sabtu, 30 Mei 2026",
     waktuMulai: "08.00 WIB",
-    waktuSelesai: "17.45 WIB",
-    targetDurasiTotal: "9 Jam 45 Menit (termasuk istirahat ISHOMA)",
-    countdownTarget: "2026-05-16T08:00:00+07:00",
-    estimasiPeserta: "100 - 120 Orang",
+    waktuSelesai: "17.30 WIB",
+    countdownTarget: "2026-05-30T08:00:00+07:00",
+    estimasiPeserta: "120 Orang",
+    durasiTotal: "9 Jam 30 Menit (termasuk ISHOMA)"
   },
 
-  temaOptions: [
-    {
-      id: 1,
-      isDefault: true,
-      judul: "Navigating Synergy: Melahirkan Pemimpin Pengusaha Muda yang Adaptif, Akuntabel, dan Berkelanjutan",
-      tagline: "Sinergi Nyata, Akuntabilitas Teruji, Regenerasi Berdaya Saing",
-      deskripsi: "Menekankan pentingnya kolaborasi antar departemen, pertanggungjawaban program kerja yang transparan, dan kesiapan suksesi kepengurusan baru di era wirausaha digital."
-    },
-    {
-      id: 2,
-      isDefault: false,
-      judul: "Ignite the Spirit: Restrukturisasi Visi, Membangun Ekosistem Wirausaha Kampus Berdaya Saing",
-      tagline: "Nyalakan Semangat Inovasi Menuju Kemandirian Organisasi",
-      deskripsi: "Fokus pada evaluasi mendalam arah strategis organisasi guna melahirkan kurikulum kaderisasi wirausaha yang relevan dengan kebutuhan mahasiswa Telkom University."
-    },
-    {
-      id: 3,
-      isDefault: false,
-      judul: "Revitalisasi Sinergi: Transformasi Pengurus Menuju HIPMI PT Tel-U yang Mandiri dan Progresif",
-      tagline: "Evaluasi Terukur, Regulasi Solid, Suksesi Bermartabat",
-      deskripsi: "Menitikberatkan pada penguatan AD/ART internal, pembenahan tata kelola persidangan, serta estafet kepemimpinan yang berintegritas tinggi."
-    }
-  ],
+  temaKegiatan: {
+    judul: "Navigating Synergy: Melahirkan Pemimpin Pengusaha Muda yang Adaptif, Akuntabel, dan Berkelanjutan",
+    tagline: "Sinergi Nyata, Akuntabilitas Teruji, Suksesi Berdaya Saing",
+    deskripsi: "Mengukuhkan sinergi antar departemen Kabinet Artha Jayana, mengevaluasi pertanggungjawaban program kerja secara transparan dan objektif, serta meregenerasikan estafet kepemimpinan UKM HIPMI PT Telkom University Purwokerto menuju ekosistem wirausaha kampus yang mandiri, adaptif, dan berdaya saing global."
+  },
 
   latarBelakang: [
-    "Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto merupakan wadah strategis bagi mahasiswa dalam menumbuhkembangkan jiwa kepemimpinan, kapabilitas wirausaha, serta jejaring bisnis profesional di lingkup kampus maupun regional Banyumas Raya. Seiring berjalannya roda organisasi selama satu periode penuh, dinamika program kerja dan dedikasi seluruh pengurus perlu diuji, diapresiasi, dan dievaluasi secara terstruktur.",
-    "Musyawarah Besar (MUBES) merupakan pemegang kekuasaan dan forum pengambilan keputusan tertinggi dalam struktur organisasi UKM HIPMI PT Telkom University Purwokerto. Forum ini bukan sekadar seremoni serah terima jabatan, melainkan momentum konstitusional krusial yang mengemban tugas pokok: mengevaluasi laporan pertanggungjawaban (LPJ) per departemen secara terukur, menetapkan pedoman peraturan organisasi serta tata tertib persidangan, memberikan apresiasi atas dedikasi pengurus periode berjalan, serta memilih dan menetapkan formatur kepengurusan baru.",
-    "Berbeda dari evaluasi internal biasa, MUBES kali ini menitikberatkan pada Laporan Pertanggungjawaban (LPJ) berbasis capaian objektif per departemen, meliputi realisasi program kerja, efisiensi anggaran, hingga evaluasi tantangan riil di lapangan. Hasil kajian ini akan menjadi landasan rekomendasi strategis bagi pengurus periode berikutnya.",
-    "Mengingat urgensi dan skala agenda yang melibatkan seluruh elemen organisasi, alumni/demisioner, serta tamu kehormatan civitas akademika, pelaksanaan MUBES bertempat di Aula Kampus Telkom University Purwokerto dengan persiapan matang, kepanitiaan yang solid, serta perencanaan anggaran yang transparan."
+    "Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto merupakan organisasi kemahasiswaan strategis yang berkomitmen menumbuhkembangkan ekosistem wirausaha, jiwa kepemimpinan inovatif, serta jejaring kolaborasi bisnis di lingkungan civitas akademika dan regional Banyumas.",
+    "Sepanjang masa bakti periode 2025/2026, jajaran pengurus Kabinet Artha Jayana telah merealisasikan berbagai inisiatif program kerja di bidang organisasi, kaderisasi, pengembangan bisnis, inkubasi, kemitraan eksternal, teknologi informasi, hingga media publikasi. Setiap amanah dan anggaran yang diamanahkan memerlukan pertanggungjawaban komprehensif, terukur, dan transparan sebagai wujud akuntabilitas tata kelola kelembagaan.",
+    "Musyawarah Besar (MUBES) merupakan forum permusyawaratan tertinggi UKM HIPMI PT Telkom University Purwokerto. Forum ini menjadi pilar konstitusional yang mengemban tugas krusial: menilai dan mengesahkan Laporan Pertanggungjawaban (LPJ) Kabinet Artha Jayana per departemen, mengevaluasi serta merekomendasikan penyempurnaan AD/ART dan pedoman organisasi, memberikan apresiasi atas dedikasi pengurus demisioner, serta menyelenggarakan pemilihan dan pengesahan Ketua Umum beserta Tim Formatur kepengurusan periode berikutnya.",
+    "Berdasarkan pedoman pengelolaan kegiatan organisasi mahasiswa Telkom University Purwokerto, pelaksanaan MUBES 2026 dirancang dengan standar tata kelola profesional, kepanitiaan yang solid, mitigasi risiko kegiatan yang komprehensif, serta akuntabilitas anggaran yang tepat sasaran demi terwujudnya regenerasi kepemimpinan yang bermartabat."
   ],
 
   tujuan: [
+    "Menyampaikan, menguji, dan mengesahkan Laporan Pertanggungjawaban (LPJ) kepengurusan HIPMI PT Telkom University Purwokerto Kabinet Artha Jayana Periode 2025/2026 secara transparan dan akuntabel.",
+    "Memberikan apresiasi dan penghargaan kelembagaan atas kontribusi dedikatif seluruh jajaran Badan Pengurus Harian, Koordinator Bidang, Kepala Departemen, dan Staf Kabinet Artha Jayana.",
+    "Membahas, menyempurnakan, dan menetapkan Anggaran Dasar / Anggaran Rumah Tangga (AD/ART), Pedoman Pokok Organisasi (PPO), serta Tata Tertib Persidangan MUBES.",
+    "Merumuskan pokok-pokok pikiran strategis dan rekomendasi program kerja bagi kepengurusan HIPMI PT Telkom University Purwokerto periode selanjutnya.",
+    "Memilih, menetapkan, dan mengesahkan Ketua Umum definitif serta Tim Formatur HIPMI PT Telkom University Purwokerto Periode 2026/2027 melalui mekanisme permusyawaratan yang demokratis."
+  ],
+
+  manfaat: [
+    "Bagi Pengurus Kabinet Artha Jayana: Menjadi wahana evaluasi objektif, apresiasi nyata atas pencapaian program kerja, serta penuntasan amanah kepengurusan secara konstitusional dan terhormat.",
+    "Bagi Anggota & Calon Pengurus: Memperoleh pemahaman mendalam terkait dinamika kepemimpinan organisasi, tata tertib persidangan formil, serta transfer wawasan strategis dari para demisioner.",
+    "Bagi Institusi Telkom University Purwokerto: Memperkokoh iklim demokrasi mahasiswa yang sehat, akuntabel, dan mendukung pencapaian Capaian Pelaksanaan Program (CPP) kemahasiswaan yang berintegritas tinggi.",
+    "Bagi Ekosistem HIPMI Banyumas Raya: Menjamin kesinambungan estafet kaderisasi pengusaha muda di kampus Telkom University Purwokerto yang adaptif terhadap tantangan ekonomi digital."
+  ],
+
+  peserta: "Seluruh Badan Pengurus Harian (BPH), Kepala Bidang, Kepala Departemen, dan Staf Kabinet Artha Jayana, Anggota Aktif UKM HIPMI PT Tel-U Purwokerto, Dewan Pembina, Alumni/Demisioner, serta Perwakilan Ormawa Telkom University Purwokerto dengan total estimasi 120 orang.",
+
+  // 9 Departemen Resmi Kabinet Artha Jayana (Berdasarkan Data Rilis Resmi Instagram)
+  departemenKabinet: [
     {
-      no: 1,
-      poin: "Laporan Pertanggungjawaban (LPJ) Per Departemen",
-      uraian: "Memaparkan, menguji, dan mengesahkan LPJ setiap departemen kepengurusan periode berjalan secara transparan dan akuntabel."
+      id: "bendum",
+      kode: "BND",
+      nama: "Bendahara Umum",
+      instagramUrl: "https://www.instagram.com/p/DXgZ1SaExPk/",
+      fokus: "Transparansi Arus Kas & Akuntabilitas Finansial Organisasi",
+      prokerUtama: "SOP Pengelolaan Arus Kas, Penyusunan Anggaran Departemen, Rekonsiliasi Finansial Terbuka, Audit LPJ",
+      deskripsi: "Sebagai pengelola keuangan organisasi, Bendahara bertanggung jawab menjaga transparansi, akuntabilitas, serta kestabilan finansial organisasi. Seluruh arus kas dikelola secara sistematis dan terdokumentasi dengan baik.",
+      pimpinan: [
+        { nama: "Muhammad Naufal Hanif", jabatan: "Bendahara Umum", prodi: "S1 Rekayasa Perangkat Lunak, 2024" },
+        { nama: "Nabilah", jabatan: "Bendahara 1", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Nuriyatul Wafiroh", jabatan: "Bendahara 2", prodi: "S1 Teknik Logistik, 2024" }
+      ],
+      staf: []
     },
     {
-      no: 2,
-      poin: "Apresiasi Kinerja Pengurus Periode Berjalan",
-      uraian: "Memberikan penghargaan dan apresiasi resmi kepada jajaran pengurus, koordinator divisi, dan staf atas dedikasi serta realisasi program kerja sepanjang periode kepengurusan."
+      id: "kabid",
+      kode: "KBD",
+      nama: "Kepala Bidang (OKK, PPB, PRD)",
+      instagramUrl: "https://www.instagram.com/p/DXe_DlIE7AU/",
+      fokus: "Pengarahan Strategis, Sinergi Antar Bidang & Pengendalian Proker",
+      prokerUtama: "Sinkronisasi Visi Misi Kabinet, Monitoring Kinerja Departemen, Evaluasi Pencapaian Target Organisasi",
+      deskripsi: "Sebagai penggerak utama organisasi, Kepala Bidang bertanggung jawab dalam mengarahkan, mengendalikan, serta memastikan seluruh program kerja di setiap departemen berjalan selaras dengan visi HIPMI.",
+      pimpinan: [
+        { nama: "Raihan Marzo Yudhistira", jabatan: "Kepala Bidang OKK (Organisasi, Kaderisasi, Keanggotaan)", prodi: "S1 Bisnis Digital, 2024" },
+        { nama: "Bintang Putra Angkasa", jabatan: "Kepala Bidang PPB (Pengembangan Potensi Bisnis)", prodi: "S1 Teknik Informatika, 2023" },
+        { nama: "Ma’ruf Sarifudin", jabatan: "Kepala Bidang PRD (Pengembangan Riset & Data)", prodi: "S1 Teknik Informatika, 2024" }
+      ],
+      staf: []
     },
     {
-      no: 3,
-      poin: "Penetapan Presidium Sidang & Tata Tertib MUBES",
-      uraian: "Memilih Presidium Sidang definitif dan menetapkan tata tertib persidangan sebagai pedoman konstitusional jalannya MUBES."
+      id: "po",
+      kode: "PO",
+      nama: "Departemen Pengembangan Organisasi",
+      instagramUrl: "https://www.instagram.com/p/DXgYyLNE8cR/",
+      fokus: "Penguatan Fondasi Kelembagaan, Standarisasi Sistem & Budaya Kerja",
+      prokerUtama: "Upgrading Internal Pengurus, Analisis Beban Kerja, Penyusunan SOP Operasional, Evaluasi Kinerja Berkala",
+      deskripsi: "Memperkuat fondasi internal organisasi melalui pengembangan sistem, peningkatan kapasitas, serta pembentukan budaya kerja yang profesional. Memastikan struktur yang solid, adaptif, dan berkelanjutan.",
+      pimpinan: [
+        { nama: "Luluk Aulia Putri Salma", jabatan: "Kepala Departemen", prodi: "S1 Teknik Logistik, 2024" }
+      ],
+      staf: [
+        { nama: "Muhammad Daffa Tegar Ollivery", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Muhammad Firdaus Ardiansyah", prodi: "S1 Teknik Informatika, 2025" },
+        { nama: "Putri Rahma Wati", prodi: "S1 Teknik Informatika, 2024" },
+        { nama: "Hesti Purwati", prodi: "S1 Bisnis Digital, 2025" }
+      ]
     },
     {
-      no: 4,
-      poin: "Penyusunan Aturan Organisasi & Rekomendasi Kerja",
-      uraian: "Mengkaji AD/ART, menyempurnakan pedoman internal organisasi, serta merumuskan rekomendasi arah strategis bagi kepengurusan selanjutnya."
+      id: "kaderisasi",
+      kode: "KDR",
+      nama: "Departemen Kaderisasi & Keanggotaan",
+      instagramUrl: "https://www.instagram.com/p/DXgRYwQAMW2/",
+      fokus: "Regenerasi Terstruktur, Sense of Belonging & Pembinaan Kader",
+      prokerUtama: "Perekrutan Anggota Baru, Diklat Kepemimpinan Wirausaha, Database Keanggotaan Terpadu, Mentoring Pengurus",
+      deskripsi: "Membangun regenerasi organisasi yang terstruktur dan berkelanjutan melalui proses kaderisasi sistematis. Fokus pada kualitas, loyalitas, serta kesiapan melanjutkan estafet kepemimpinan.",
+      pimpinan: [
+        { nama: "Siska Yulianti", jabatan: "Kepala Departemen", prodi: "S1 Sistem Informasi, 2024" }
+      ],
+      staf: [
+        { nama: "Cindy Dwi Cahyaningsih", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Hanif Fathur Rohman", prodi: "S1 Bisnis Digital, 2024" },
+        { nama: "Aulia Nurussyifa", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Yossika Putra Erlangga", prodi: "S1 Teknik Informatika, 2024" }
+      ]
     },
     {
-      no: 5,
-      poin: "Pemilihan & Penetapan Ketua Umum / Formatur Baru",
-      uraian: "Melaksanakan suksesi kepemimpinan yang demokratis, berintegritas, dan menjunjung tinggi nilai-nilai persaudaraan pengusaha muda (Pejuang Pengusaha, Pengusaha Pejuang)."
+      id: "inkubasi",
+      kode: "INK",
+      nama: "Departemen Inkubasi Bisnis",
+      instagramUrl: "https://www.instagram.com/p/DXe_-tokw0E/",
+      fokus: "Akselerasi Rintisan Bisnis Mahasiswa & Pendampingan Mentor",
+      prokerUtama: "Business Pitching Bootcamp, Mentorship Praktisi Usaha, Validasi Ide Produk, Akses Legalitas Usaha Mikro",
+      deskripsi: "Berfokus pada pengembangan ide bisnis menjadi realisasi nyata melalui proses inkubasi yang terarah: pembinaan, pendampingan uji pasar, hingga evaluasi kesiapan kompetitif.",
+      pimpinan: [
+        { nama: "Finsa Annisa", jabatan: "Kepala Departemen", prodi: "S1 Teknik Biomedis, 2024" }
+      ],
+      staf: [
+        { nama: "Agesna Johdan", prodi: "S1 Teknik Telekomunikasi, 2024" },
+        { nama: "Angelia Thirstinove", prodi: "S1 Bisnis Digital, 2024" },
+        { nama: "Nayaka Shafwan Bagas Adi Prasetyo", prodi: "S1 Sistem Informasi, 2024" },
+        { nama: "Muhammad Dafin Susilo Putra", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Naufal Aziz", prodi: "S1 Bisnis Digital, 2025" }
+      ]
+    },
+    {
+      id: "enterprise",
+      kode: "ENT",
+      nama: "Departemen Enterprise",
+      instagramUrl: "https://www.instagram.com/p/DXe-ohxEza_/",
+      fokus: "Komersialisasi Unit Usaha Mandiri & Pendapatan Organisasi",
+      prokerUtama: "Pengelolaan Merchandise Kampus, Unit Bisnis Kantin/Event, Market Day Partnership, Revenue Sharing",
+      deskripsi: "Menjalankan dan mengembangkan unit usaha organisasi sebagai wujud implementasi nyata kewirausahaan mahasiswa, menciptakan perputaran nilai ekonomi mandiri yang berkelanjutan.",
+      pimpinan: [
+        { nama: "Almas Mustika Putri Ramadhani", jabatan: "Kepala Departemen", prodi: "S1 Bisnis Digital, 2024" }
+      ],
+      staf: [
+        { nama: "Aulia Zulfina Azahra", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Hilman Kanzi", prodi: "S1 Teknik Informatika, 2025" },
+        { nama: "Syahda Nur Lathifah", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Nadya Salsabila Fauziyah", prodi: "S1 Bisnis Digital, 2025" }
+      ]
+    },
+    {
+      id: "harmonisasi",
+      kode: "HRM",
+      nama: "Departemen Harmonisasi Eksternal",
+      instagramUrl: "https://www.instagram.com/p/DXe9okZk7og/",
+      fokus: "Kemitraan Strategis, Ekosistem HIPMI Banyumas & Relasi Industri",
+      prokerUtama: "Kunjungan Industri & BPC HIPMI Banyumas, Forum Kolaborasi Antar Ormawa, Sinergi CSR Perusahaan",
+      deskripsi: "Membangun dan menjaga hubungan eksternal dengan pemangku kepentingan kampus, jejaring HIPMI regional Banyumas Raya, instansi swasta/pemerintah, dan mitra strategis.",
+      pimpinan: [
+        { nama: "Aisyah Akhmad", jabatan: "Kepala Departemen", prodi: "S1 Teknik Informatika, 2024" }
+      ],
+      staf: [
+        { nama: "Rifky Dzaky Eka Saputra", prodi: "S1 Teknik Informatika, 2025" },
+        { nama: "Muhammad Hanif Baihaqi", prodi: "S1 Rekayasa Perangkat Lunak, 2024" },
+        { nama: "Nefiesta Fatmaidy Udiya", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Nasywa Aulia Putri", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Artika Ayu Permana", prodi: "S1 Bisnis Digital, 2025" }
+      ]
+    },
+    {
+      id: "medkraf",
+      kode: "MDK",
+      nama: "Departemen Media Kreatif",
+      instagramUrl: "https://www.instagram.com/p/DXezjEtE0Ll/",
+      fokus: "Identitas Visual, Visual Branding Digital & Media Publikasi",
+      prokerUtama: "Desain Konten Feed & Reels Instagram, Liputan Multimedia Kegiatan, Brand Guidelines Kabinet Artha Jayana",
+      deskripsi: "Membangun identitas visual dan branding organisasi melalui karya multimedia yang kreatif, profesional, serta memperkuat reputasi UKM HIPMI PT Telkom University Purwokerto.",
+      pimpinan: [
+        { nama: "Azevedo Ardhani", jabatan: "Kepala Departemen", prodi: "S1 Bisnis Digital, 2024" }
+      ],
+      staf: [
+        { nama: "Najla Azizah Daniel", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Naqa Halim Arya Putra", prodi: "S1 Bisnis Digital, 2024" },
+        { nama: "M. Devfan Adefrid Sutopo", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Meisya Ajeng Deswari", prodi: "S1 Bisnis Digital, 2024" },
+        { nama: "Salsabilla Nurul Hassanah", prodi: "S1 Teknik Informatika, 2024" },
+        { nama: "Apriani Putri", prodi: "S1 Rekayasa Perangkat Lunak, 2025" },
+        { nama: "Zahra Primanda Shafira", prodi: "S1 Bisnis Digital, 2025" }
+      ]
+    },
+    {
+      id: "ti",
+      kode: "TI",
+      nama: "Departemen Teknologi Informasi",
+      instagramUrl: "https://www.instagram.com/p/DXeZqELkwbF/",
+      fokus: "Rekayasa Perangkat Lunak, Portal Digital & Modernisasi Sistem",
+      prokerUtama: "Pengembangan Website Resmi & Microsite MUBES, Integrasi Form Registrasi Digital, Pemeliharaan Cloud Server",
+      deskripsi: "Bertanggung jawab atas pengelolaan arsitektur teknologi digital, portal web, basis data terintegrasi, dan penyediaan infrastruktur digital demi keunggulan operasional organisasi.",
+      pimpinan: [
+        { nama: "Azaila Dwi Putri Fajarwati", jabatan: "Kepala Departemen", prodi: "S1 Sistem Informasi, 2024" }
+      ],
+      staf: [
+        { nama: "Wafiq Azizah", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Nabilah Syahirah Restuti", prodi: "S1 Bisnis Digital, 2025" },
+        { nama: "Muhammad Omar Nadiv", prodi: "S1 Teknik Informatika, 2024" },
+        { nama: "Hilkia Farrel Azaria", prodi: "S1 Teknik Informatika, 2025" }
+      ]
     }
   ],
 
-  manfaat: {
-    organisasi: [
-      "Menjamin kesinambungan siklus estafet kepemimpinan UKM HIPMI PT Telkom University Purwokerto.",
-      "Menciptakan transparansi dan akuntabilitas tata kelola organisasi melalui LPJ per departemen yang terdokumentasi rapi.",
-      "Menyediakan dokumen rekomendasi strategis sebagai kompas kerja bagi jajaran pengurus periode berikutnya."
-    ],
-    anggota: [
-      "Sebagai sarana pembelajaran demokrasi, kepemimpinan, dan etika persidangan formal bagi kader mahasiswa.",
-      "Membuka ruang partisipasi aktif anggota untuk menyampaikan aspirasi dan kontribusi pemikiran langsung terhadap masa depan organisasi.",
-      "Mempererat jejaring kekeluargaan antar-angkatan, anggota aktif, dan para demisioner HIPMI Tel-U."
-    ],
-    kampus: [
-      "Menegaskan eksistensi UKM HIPMI PT sebagai organisasi kemahasiswaan yang mandiri, tertib administratif, dan berprestasi.",
-      "Mendukung indikator kinerja universitas dalam melahirkan lulusan berjiwa entrepreneurship dan kepemimpinan adaptif.",
-      "Menjaga iklim organisasi kemahasiswaan di lingkungan Telkom University Purwokerto tetap sehat dan dinamis."
-    ]
+  // Alias untuk kompatibilitas renderer mubes-hipmi.html
+  get departemenLpj() {
+    return this.departemenKabinet;
   },
 
-  departemenLpj: [
-    {
-      kode: "BPH",
-      nama: "Badan Pengurus Harian (BPH Inti)",
-      fokus: "Arah kebijakan strategis, administrasi persuratan umum, tata kelola keuangan, dan relasi institusional universitas.",
-      prokerUtama: "Rapat Kerja Tahunan, Pengelolaan Kas Organisasi, Supervisi Program Kerja Antar-Departemen."
-    },
-    {
-      kode: "OKK",
-      nama: "Departemen Organisasi, Kaderisasi & Keanggotaan (OKK)",
-      fokus: "Rekrutmen anggota baru, penjenjangan kaderisasi wirausaha, pembinaan integritas anggota, dan database anggota HIPMI.",
-      prokerUtama: "Open Recruitment HIPMI 2026, Masa Bimbingan Kader Wirausaha, Database Membership & Keaktifan."
-    },
-    {
-      kode: "EKRAF",
-      nama: "Departemen Pengembangan Bisnis & Ekonomi Kreatif (Ekraf)",
-      fokus: "Inkubasi ide bisnis anggota, pengadaan merchant/merchandise organisasi, dan fasilitasi bazar/event kewirausahaan.",
-      prokerUtama: "Market Day & Entrepreneur Booth, HIPMI Official Merch, Klinik Mentoring Ide Bisnis Mahasiswa."
-    },
-    {
-      kode: "HUMAS",
-      nama: "Departemen Hubungan Masyarakat & Kemitraan Eksternal",
-      fokus: "Membangun jejaring dengan BPC HIPMI Banyumas, sponsor, instansi pemerintah, dan komunitas bisnis luar kampus.",
-      prokerUtama: "Company Visit / Industri Tour, Sinergi BPC HIPMI Banyumas, Partnership Acara Kampus."
-    },
-    {
-      kode: "MEDKREATIF",
-      nama: "Departemen Media, Branding & Informasi Kreatif (Medkraf)",
-      fokus: "Pengelolaan identitas visual, media sosial resmi Instagram/LinkedIn, dokumentasi kegiatan, dan publikasi digital.",
-      prokerUtama: "Social Media Branding Campaign, Liputan & Dokumentasi Event, Konten Edukasi Bisnis Mingguan."
-    }
-  ],
-
+  // Rundown Sidang Interaktif
   rundown: [
-    {
-      waktu: "07.30 - 08.00",
-      durasi: "30 menit",
-      sesi: "Registrasi & Pra-Acara",
-      kegiatan: "Registrasi peserta, pembagian berkas persidangan, snack pagi, dan pemutaran video kilas balik HIPMI Tel-U",
-      pic: "Divisi Kesekretariatan & Konsumsi",
-      kategori: "persiapan"
-    },
-    {
-      waktu: "08.00 - 08.45",
-      durasi: "45 menit",
-      sesi: "Opening Ceremony",
-      kegiatan: "Menyanyikan Lagu Indonesia Raya, Mars HIPMI, sambutan Ketua Panitia (Yossika), sambutan Ketua Umum HIPMI PT, sambutan Pembina Kemahasiswaan & Pembukaan Resmi",
-      pic: "Divisi Acara & MC",
-      kategori: "pembukaan"
-    },
-    {
-      waktu: "08.45 - 09.30",
-      durasi: "45 menit",
-      sesi: "Sidang Pleno I",
-      kegiatan: "Pembacaan dan Pengesahan Agenda Acara serta Tata Tertib Sidang MUBES, dilanjutkan pemilihan Presidium Sidang Definitif",
-      pic: "Presidium Sidang Sementara / Divisi Acara",
-      kategori: "sidang"
-    },
-    {
-      waktu: "09.30 - 11.45",
-      durasi: "135 menit",
-      sesi: "Sidang Pleno II (LPJ Departemen)",
-      kegiatan: "Penyampaian Laporan Pertanggungjawaban (LPJ) per Departemen: BPH, OKK, Ekraf, Humas & Kemitraan, Media Kreatif, dilanjutkan pandangan umum dan tanya jawab peserta",
-      pic: "Presidium Sidang Definitif & Seluruh Kadep",
-      kategori: "lpj"
-    },
-    {
-      waktu: "11.45 - 12.15",
-      durasi: "30 menit",
-      sesi: "Pemberian Apresiasi Pengurus",
-      kegiatan: "Penyerahan sertifikat & cinderamata apresiasi kepada seluruh jajaran pengurus, koordinator departemen, dan staf periode berjalan",
-      pic: "Ketua Panitia & Ketua Umum",
-      kategori: "apresiasi"
-    },
-    {
-      waktu: "12.15 - 13.15",
-      durasi: "60 menit",
-      sesi: "ISHOMA (Istirahat, Sholat, Makan)",
-      kegiatan: "Istirahat siang, sholat dzuhur berjamaah, dan makan siang bersama di area selasar Aula",
-      pic: "Divisi Konsumsi & Perlengkapan",
-      kategori: "istirahat"
-    },
-    {
-      waktu: "13.15 - 14.45",
-      durasi: "90 menit",
-      sesi: "Sidang Pleno III (Sidang Komisi)",
-      kegiatan: "Pembahasan Komisi A (AD/ART & Regulasi Organisasi), Komisi B (Garis Besar Haluan Program Kerja & Rekomendasi Masa Depan), serta pleno pengesahan hasil komisi",
-      pic: "Presidium Sidang & Ketua Komisi",
-      kategori: "sidang"
-    },
-    {
-      waktu: "14.45 - 16.30",
-      durasi: "105 menit",
-      sesi: "Sidang Pleno IV (Suksesi & Pemilihan)",
-      kegiatan: "Verifikasi berkas calon Ketua Umum, penyampaian visi misi calon, uji panelis/tanya jawab terbuka, musyawarah mufakat / pemungutan suara pemilihan Ketua Umum baru",
-      pic: "Presidium Sidang & Panitia Pemilihan",
-      kategori: "pemilihan"
-    },
-    {
-      waktu: "16.30 - 17.15",
-      durasi: "45 menit",
-      sesi: "Pleno V (Pengesahan & Serah Terima)",
-      kegiatan: "Pembacaan Surat Keputusan (SK) Pengesahan Ketua Umum Terpilih, prosesi serah terima pataka bendera HIPMI, serta pidato perdana Ketua Umum baru",
-      pic: "Presidium Sidang & BPH",
-      kategori: "pelantikan"
-    },
-    {
-      waktu: "17.15 - 17.45",
-      durasi: "30 menit",
-      sesi: "Closing Ceremony & Dokumentasi",
-      kegiatan: "Doa penutup, ucapan selamat dari seluruh peserta, foto bersama seluruh jajaran delegasi di panggung Aula, dan ramah tamah",
-      pic: "Divisi Acara & Dokumentasi",
-      kategori: "penutupan"
-    }
+    { id: 1, waktu: "08.00–08.45", durasi: "45 Menit", sesi: "Registrasi & Verifikasi", badge: "Pleno Terbuka", uraian: "Registrasi delegasi ormawa, verifikasi presensi anggota aktif, dan coffee break pagi.", pic: "Sekretariat & Keamanan" },
+    { id: 2, waktu: "08.45–09.05", durasi: "20 Menit", sesi: "Upacara Pembukaan", badge: "Seremonial", uraian: "Menyanyikan Lagu Kebangsaan Indonesia Raya, Mars Telkom University, Hymne HIPMI & Mars HIPMI.", pic: "Sie Acara & Dirigen" },
+    { id: 3, waktu: "09.05–09.15", durasi: "10 Menit", sesi: "Laporan Ketua Pelaksana", badge: "Laporan", uraian: "Laporan kesiapan sidang dan pertanggungjawaban kepanitiaan oleh Yossika Putra Erlangga.", pic: "Ketua Pelaksana" },
+    { id: 4, waktu: "09.15–09.30", durasi: "15 Menit", sesi: "Sambutan Ketua Umum HIPMI", badge: "Pidato", uraian: "Pidato refleksi kepengurusan satu periode oleh Raden Aurel Aditya Kusumawaningyun.", pic: "Ketua Umum" },
+    { id: 5, waktu: "09.30–09.55", durasi: "25 Menit", sesi: "Sambutan Pembina & Pimpinan Kampus", badge: "Pengesahan", uraian: "Apresiasi Pembina dan sambutan pembukaan resmi oleh Pimpinan Telkom University Purwokerto.", pic: "Pimpinan & Pembina" },
+    { id: 6, waktu: "09.55–10.10", durasi: "15 Menit", sesi: "Doa & Dokumentasi Resmi", badge: "Dokumentasi", uraian: "Pembacaan doa kelancaran sidang bersama seluruh hadirin dilanjutkan foto bersama.", pic: "Sie Acara & Medkraf" },
+    { id: 7, waktu: "10.10–11.00", durasi: "50 Menit", sesi: "Sidang Pleno I (Agenda & Tatib)", badge: "Sidang Pleno", uraian: "Pembahasan klausul tata tertib persidangan, hak suara, mekanisme interupsi, dan kuorum.", pic: "Presidium Sementara" },
+    { id: 8, waktu: "11.00–11.20", durasi: "20 Menit", sesi: "Pemilihan Presidium Tetap", badge: "Suksesi", uraian: "Musyawarah pemilihan tiga Presidium Sidang Tetap dan serah terima palu sidang resmi.", pic: "Presidium Tetap" },
+    { id: 9, waktu: "11.20–12.00", durasi: "40 Menit", sesi: "Sidang Pleno II (Pembacaan LPJ Bag. 1)", badge: "Akuntabilitas", uraian: "Pemamparan Laporan Pertanggungjawaban BPH dan Departemen Kabinet Artha Jayana.", pic: "BPH & Seluruh Kadep" },
+    { id: 10, waktu: "12.00–13.00", durasi: "60 Menit", sesi: "ISHOMA (Istirahat, Sholat, Makan)", badge: "Istirahat", uraian: "Sholat Dzuhur berjamaah dan makan siang bersama di area selasar aula.", pic: "Sie Konsumsi" },
+    { id: 11, waktu: "13.00–14.00", durasi: "60 Menit", sesi: "Sidang Pleno II (Pandangan & Pengesahan LPJ)", badge: "Pengesahan", uraian: "Penyampaian pandangan umum fraksi, tanggapan BPH, dan pengesahan LPJ secara aklamasi.", pic: "Presidium Tetap" },
+    { id: 12, waktu: "14.00–14.25", durasi: "25 Menit", sesi: "Demisioner & Piagam Apresiasi", badge: "Seremonial", uraian: "Pernyataan demisioner pengurus Kabinet Artha Jayana dan penyerahan piagam apresiasi.", pic: "SC & Pembina HIPMI" },
+    { id: 13, waktu: "14.25–15.15", durasi: "50 Menit", sesi: "Sidang Pleno III (Sidang Komisi)", badge: "Komisi", uraian: "Pemaparan hasil Komisi A (AD/ART), Komisi B (Pedoman Organisasi), dan Komisi C (Rekomendasi Proker).", pic: "Presidium & Komisi" },
+    { id: 14, waktu: "15.15–15.35", durasi: "20 Menit", sesi: "Coffee Break & Sholat Ashar", badge: "Istirahat", uraian: "Sholat Ashar dan snack sore di area hospitality.", pic: "Sie Konsumsi" },
+    { id: 15, waktu: "15.35–16.35", durasi: "60 Menit", sesi: "Sidang Pleno IV (Debat & Pemilihan Ketum)", badge: "Suksesi", uraian: "Uji kelayakan, debat visi-misi calon ketua umum baru, dan pemungutan suara formatur.", pic: "Panlih & Presidium" },
+    { id: 16, waktu: "16.35–17.00", durasi: "25 Menit", sesi: "Penetapan Ketua Umum Terpilih", badge: "Ketetapan", uraian: "Penandatanganan berita acara penetapan Ketua Umum definitif Periode 2026/2027.", pic: "Presidium & Ketum Terpilih" },
+    { id: 17, waktu: "17.00–17.30", durasi: "30 Menit", sesi: "Serah Terima Pataka & Penutupan", badge: "Penutupan", uraian: "Penyerahan Pataka bendera kebesaran HIPMI, pidato perdana formatur, dan ketukan palu penutup.", pic: "Presidium Sidang & MC" }
   ],
 
+  // Susunan Panitia Lengkap
   susunanPanitia: {
-    pengarah: [
-      { jabatan: "Pelindung", nama: "[ISI/SESUAIKAN: Rektor / Wakil Rektor Bidang Kemahasiswaan Tel-U Purwokerto]" },
-      { jabatan: "Penasihat / Pembina", nama: "[ISI/SESUAIKAN: Dosen Pembina UKM HIPMI PT Telkom University Purwokerto]" },
-      { jabatan: "Penanggung Jawab", nama: "[ISI/SESUAIKAN: Nama Ketua Umum HIPMI PT Periode Berjalan]" }
+    pelindung: { jabatan: "Direktur Telkom University Purwokerto", nama: "Dr. Tenia Wahyuningrum, S.Kom., M.T.", nip: "07820045-1" },
+    pengarah: { jabatan: "Wakil Direktur Bidang Akademik & Riset", nama: "Dr. Catur Nugroho, S.Sos., M.I.Kom.", nip: "14780035-1" },
+    penanggungJawab: { jabatan: "Kepala Urusan Kemahasiswaan, Karier, dan Alumni", nama: "Kadarisman, S.Si.", nip: "22960016" },
+    pembina: { jabatan: "Pembina UKM HIPMI PT Tel-U Purwokerto", nama: "Kurnia Indah Sumunar, S.E., M.S.Ak", nip: "25910001" },
+    ketuaPanitiaPengarah: { jabatan: "Ketua Panitia Pengarah", nama: "Faizah, S.TP., M.Si.", nip: "0608129203" },
+    steeringCommittee: [
+      { nama: "Raden Aurel Aditya Kusumawaningyun", nim: "103112430267", prodi: "S1 Teknik Informatika, 2024" },
+      { nama: "Raihan Marzo Yudhistira", nim: "104062430159", prodi: "S1 Bisnis Digital, 2024" },
+      { nama: "Bintang Putra Angkasa", nim: "103112330012", prodi: "S1 Teknik Informatika, 2023" }
     ],
-    bphKepanitiaan: [
-      { jabatan: "Ketua Pelaksana", nama: "Yossika Putra Erlangga", nim: "[ISI/SESUAIKAN: 2311102xxx]", roleDesc: "Memimpin koordinasi menyeluruh persiapan, negosiasi perizinan Aula, pengawasan teknis & anggaran, serta bertanggung jawab penuh atas kelancaran MUBES." },
-      { jabatan: "Wakil Ketua Pelaksana", nama: "[ISI/SESUAIKAN: Nama Wakil Ketua]", nim: "[ISI/SESUAIKAN: NIM]", roleDesc: "Mendampingi Ketua Pelaksana, memonitor kesiapan logistik lapangan, dan mengkoordinasikan flow internal antar divisi panitia." },
-      { jabatan: "Sekretaris I", nama: "[ISI/SESUAIKAN: Nama Sekretaris 1]", nim: "[ISI/SESUAIKAN: NIM]", roleDesc: "Mengelola surat-menyurat resmi, surat peminjaman aula, lembar pengesahan proposal, dan arsip berkas LPJ." },
-      { jabatan: "Sekretaris II", nama: "[ISI/SESUAIKAN: Nama Sekretaris 2]", nim: "[ISI/SESUAIKAN: NIM]", roleDesc: "Mencatat notulensi persidangan, menyiapkan draf tata tertib, absensi presensi peserta, dan rangkuman SK keputusan." },
-      { jabatan: "Bendahara Pelaksana", nama: "[ISI/SESUAIKAN: Nama Bendahara]", nim: "[ISI/SESUAIKAN: NIM]", roleDesc: "Menyusun rekapitulasi RAB, mengontrol arus kas kepanitiaan, mencatat nota belanja, dan menyusun laporan keuangan kegiatan." }
+    ketuaPelaksana: { nama: "Yossika Putra Erlangga", nim: "103112430026", prodi: "S1 Teknik Informatika, 2024" },
+    wakilKetuaPelaksana: { nama: "Hanif Fathur Rohman", nim: "104062400132", prodi: "S1 Bisnis Digital, 2024" },
+    sekretaris: [
+      { nama: "Salumita Ardiana", nim: "109092530004", prodi: "S1 Rekayasa Perangkat Lunak, 2025" },
+      { nama: "Azra Shiefi Maulidina", nim: "102102430029", prodi: "S1 Sistem Informasi, 2024" }
+    ],
+    bendahara: [
+      { nama: "Muhammad Naufal Hanif", nim: "103122400057", prodi: "S1 Rekayasa Perangkat Lunak, 2024" },
+      { nama: "Nabilah", nim: "109112530029", prodi: "S1 Bisnis Digital, 2025" }
     ],
     divisi: [
       {
-        namaDivisi: "Divisi Acara & Persidangan",
-        koordinator: "[ISI/SESUAIKAN: Nama Koordinator Acara]",
-        anggota: [
-          "[ISI/SESUAIKAN: Anggota 1]",
-          "[ISI/SESUAIKAN: Anggota 2]",
-          "[ISI/SESUAIKAN: Anggota 3]"
-        ],
+        namaDivisi: "Acara & Persidangan",
+        koordinator: "Aisyah Akhmad (103112430106)",
         tugas: [
-          "Menyusun time keeper dan memandu alur rundown dari pembukaan hingga penutupan.",
-          "Menyiapkan draft tata tertib sidang, berkas komisi, palu sidang, dan teks janji sumpah pengurus.",
-          "Menugaskan Master of Ceremony (MC), pembaca doa, dan dirigen lagu Indonesia Raya & Mars HIPMI."
+          "Menyusun draf tata tertib persidangan, konsideran surat ketetapan MUBES, dan time-management sidang",
+          "Memfasilitasi jalannya Sidang Pleno I s.d. IV bersama Presidium Sidang",
+          "Menyiapkan teks serah terima jabatan, pataka organisasi, dan susunan seremonial resmi"
         ]
       },
       {
-        namaDivisi: "Divisi Kesekretariatan",
-        koordinator: "[ISI/SESUAIKAN: Nama Koordinator Kesekretariatan]",
-        anggota: [
-          "[ISI/SESUAIKAN: Anggota 1]",
-          "[ISI/SESUAIKAN: Anggota 2]"
-        ],
+        namaDivisi: "Hubungan Masyarakat & Protokoler",
+        koordinator: "Ma’ruf Sarifudin (103112400128)",
         tugas: [
-          "Mencetak bundel draft proposal dan berkas persidangan untuk seluruh peserta & delegasi.",
-          "Membuat ID Card kepanitiaan dan kartu suara peserta sidang.",
-          "Menyiapkan meja registrasi digital/manual serta mendistribusikan seminar kit / berkas LPJ."
+          "Mendistribusikan surat undangan resmi kepada Direktorat Kampus, Pembina, Demisioner, dan Ormawa",
+          "Menyambut dan mendampingi tamu VIP civitas akademika dan dewan penasihat",
+          "Mengelola registrasi daftar hadir fisik dan barcode digital"
         ]
       },
       {
-        namaDivisi: "Divisi Humas & Publikasi",
-        koordinator: "[ISI/SESUAIKAN: Nama Koordinator Humas]",
-        anggota: [
-          "[ISI/SESUAIKAN: Anggota 1]",
-          "[ISI/SESUAIKAN: Anggota 2]"
-        ],
+        namaDivisi: "Media Kreatif, Publikasi & IT",
+        koordinator: "Azevedo Ardhani (104062400055)",
         tugas: [
-          "Menyebarkan surat undangan resmi ke jajaran pengurus, demisioner, BPC HIPMI Banyumas, dan perwakilan Ormawa kampus.",
-          "Mempublikasikan countdown dan teaser informasi MUBES di media sosial HIPMI Tel-U.",
-          "Menjadi penghubung komunikasi utama dengan pihak eksternal dan tamu kehormatan."
+          "Merancang visual backdrop 4x3m, ID card panitia-peserta, sertifikat, dan materi presentasi sidang",
+          "Mengelola portal web interaktif MUBES, live rekapitulasi formatur, dan dokumentasi foto/video",
+          "Memastikan siaran publikasi media sosial resmi HIPMI berjalan real-time"
         ]
       },
       {
-        namaDivisi: "Divisi Perlengkapan & Logistik (Venue Aula)",
-        koordinator: "[ISI/SESUAIKAN: Nama Koordinator Perlengkapan]",
-        anggota: [
-          "[ISI/SESUAIKAN: Anggota 1]",
-          "[ISI/SESUAIKAN: Anggota 2]",
-          "[ISI/SESUAIKAN: Anggota 3]"
-        ],
+        namaDivisi: "Perlengkapan & Logistik",
+        koordinator: "Hilman Kanzi (109082500214)",
         tugas: [
-          "Mengawal proses perizinan teknis dan check-in inventaris Aula kampus Tel-U Purwokerto.",
-          "Menata layout panggung presidium, bendera merah putih, bendera pataka HIPMI, podium, dan meja registrasi.",
-          "Menguji kelistrikan, mic wireless, sound system aula, kabel proyektor HDMI, dan pointer slide presentasi."
+          "Menyediakan palu sidang kayu mahoni, taplak meja hijau presidium, dan bendera pataka",
+          "Memastikan suplai sound system aula, 4 unit microphone wireless, proyektor, kabel listrik, dan genset siaga",
+          "Menjamin sterilisasi ruangan sebelum acara dan operasi semut kebersihan pasca sidang"
         ]
       },
       {
-        namaDivisi: "Divisi Konsumsi",
-        koordinator: "[ISI/SESUAIKAN: Nama Koordinator Konsumsi]",
-        anggota: [
-          "[ISI/SESUAIKAN: Anggota 1]",
-          "[ISI/SESUAIKAN: Anggota 2]"
-        ],
+        namaDivisi: "Keamanan & Ketertiban Sidang",
+        koordinator: "Muhamad Naufal Ammar (103112430036)",
         tugas: [
-          "Menyiapkan snack pagi dan kopi/teh untuk sesi pembukaan dan tamu VIP.",
-          "Mengkoordinasikan pemesanan, pengecekan ketepatan waktu, dan distribusi makan siang (ISHOMA) untuk seluruh peserta.",
-          "Menyediakan air mineral galon/botol di meja presidium sidang dan area peserta."
+          "Menjaga ketertiban pintu masuk aula dan memastikan hanya peserta terverifikasi yang memasuki ruang sidang",
+          "Mengamankan kotak suara dan surat suara berstempel pada Sidang Pleno IV",
+          "Berkoordinasi dengan Satpam kampus untuk manajemen parkir kendaraan"
         ]
       },
       {
-        namaDivisi: "Divisi Dokumentasi & Multimedia",
-        koordinator: "[ISI/SESUAIKAN: Nama Koordinator Dokum]",
-        anggota: [
-          "[ISI/SESUAIKAN: Anggota 1]",
-          "[ISI/SESUAIKAN: Anggota 2]"
-        ],
+        namaDivisi: "Konsumsi & Kesejahteraan",
+        koordinator: "Almas Mustika Putri Ramadhani (104062400069)",
         tugas: [
-          "Mendokumentasikan seluruh rangkaian sidang dalam bentuk foto resolusi tinggi dan video cinematic.",
-          "Menyiapkan slide presentasi materi pembukaan, countdown timer layar, dan banner digital aula.",
-          "Menyusun video dokumentasi kilas balik kepengurusan dan after-movie resmi MUBES."
+          "Mengatur pengadaan 100 kotak makan siang higienis tepat waktu sebelum sesi ISHOMA",
+          "Menyediakan snack box pagi, coffee break sore, dan air mineral botol/galon",
+          "Menyediakan posko P3K dan obat-obatan ringan di sudut aula"
         ]
       }
     ]
   },
 
+  // Rencana Anggaran Biaya (RAB) Lengkap
   rab: {
-    mataUang: "IDR",
-    totalEstimasi: 5850000,
+    total: 6000000,
     kategori: [
       {
-        nama: "Kesekretariatan & Persidangan",
-        persentase: 18,
-        subtotal: 1050000,
+        nama: "1. Kesekretariatan & Persidangan",
+        subtotal: 860000,
+        persentase: 14.3,
         items: [
-          { no: 1, uraian: "Penggandaan Draft Materi Sidang & Berkas LPJ", volume: "100 eksemplar", satuan: 4500, jumlah: 450000, catatan: "Dicetak ringkas 15 halaman bolak-balik [ISI/SESUAIKAN]" },
-          { no: 2, uraian: "ID Card Panitia & Co-Card Peserta Sidang", volume: "120 pcs", satuan: 3500, jumlah: 420000, catatan: "Bahan art paper + tali lanyard [ISI/SESUAIKAN]" },
-          { no: 3, uraian: "Surat Suara Pemilihan & Kertas Berita Acara", volume: "2 rim", satuan: 65000, jumlah: 130000, catatan: "HVS A4 80gr [ISI/SESUAIKAN]" },
-          { no: 4, uraian: "Sewa Palu Sidang & Bantalan Kayu", volume: "1 set", satuan: 50000, jumlah: 50000, catatan: "Kebutuhan sidang pleno [ISI/SESUAIKAN]" }
+          { no: "1.1", uraian: "Kertas HVS A4 80gr untuk Draf Tatib & LPJ", volume: "3 Rim", satuan: 55000, jumlah: 165000, catatan: "Kemahasiswaan" },
+          { no: "1.2", uraian: "Map Folio Berkas Konsideran & Ketetapan", volume: "2 Pack", satuan: 35000, jumlah: 70000, catatan: "Kas Internal" },
+          { no: "1.3", uraian: "Tinta Printer & Penggandaan Berkas Sidang", volume: "1 Paket", satuan: 250000, jumlah: 250000, catatan: "Kemahasiswaan" },
+          { no: "1.4", uraian: "Stempel Panitia MUBES & Tinta Bak", volume: "1 Paket", satuan: 75000, jumlah: 75000, catatan: "Kas Internal" },
+          { no: "1.5", uraian: "Sertifikat Pengurus Demisioner & Panitia", volume: "60 Lembar", satuan: 5000, jumlah: 300000, catatan: "Iuran Peserta" }
         ]
       },
       {
-        nama: "Publikasi, Dekorasi & Visual",
-        persentase: 15,
-        subtotal: 880000,
+        nama: "2. Perlengkapan & Sarana Prasarana",
+        subtotal: 825000,
+        persentase: 13.75,
         items: [
-          { no: 5, uraian: "Cetak Backdrop Panggung Utama Aula (4 x 2.5 meter)", volume: "1 buah", satuan: 280000, jumlah: 280000, catatan: "Bahan flexi korea doff anti-pantul [ISI/SESUAIKAN]" },
-          { no: 6, uraian: "X-Banner Informasi Alur & Barcode Berkas", volume: "2 buah", satuan: 85000, jumlah: 170000, catatan: "Diletakkan di pintu masuk Aula [ISI/SESUAIKAN]" },
-          { no: 7, uraian: "Plakat Apresiasi Pengurus / Dosen Pembina", volume: "3 buah", satuan: 110000, jumlah: 330000, catatan: "Akrilik premium [ISI/SESUAIKAN]" },
-          { no: 8, uraian: "Sertifikat Panitia & Pengurus (Kertas Linen)", volume: "50 lembar", satuan: 2000, jumlah: 100000, catatan: "Sertifikat penghargaan fisik [ISI/SESUAIKAN]" }
+          { no: "2.1", uraian: "Palu Sidang Kayu Mahoni & Tatakan Resmi", volume: "1 Set", satuan: 150000, jumlah: 150000, catatan: "Kas Internal" },
+          { no: "2.2", uraian: "Banner Backdrop Panggung Aula 4x3 Meter", volume: "1 Paket", satuan: 300000, jumlah: 300000, catatan: "Kemahasiswaan" },
+          { no: "2.3", uraian: "X-Banner Alur Persidangan & Registrasi", volume: "2 Buah", satuan: 85000, jumlah: 170000, catatan: "Kas Internal" },
+          { no: "2.4", uraian: "Baterai Mic Wireless Alkaline Cadangan", volume: "8 Pasang", satuan: 20000, jumlah: 160000, catatan: "Kas Internal" },
+          { no: "2.5", uraian: "Kantong Sampah Pilah (Trash Bag)", volume: "3 Pack", satuan: 15000, jumlah: 45000, catatan: "Kas Internal" }
         ]
       },
       {
-        nama: "Konsumsi (Peserta, Tamu & Panitia)",
-        persentase: 44,
-        subtotal: 2570000,
+        nama: "3. Konsumsi & Hospitality",
+        subtotal: 2930000,
+        persentase: 48.8,
         items: [
-          { no: 9, uraian: "Snack Box Pagi (Tamu Undangan & Peserta)", volume: "120 box", satuan: 7000, jumlah: 840000, catatan: "3 kue + air mineral cup [ISI/SESUAIKAN]" },
-          { no: 10, uraian: "Makan Siang Prasmanan / Bento Box (ISHOMA)", volume: "120 box", satuan: 13000, jumlah: 1560000, catatan: "Nasi bento komplit lauk ayam & sayur [ISI/SESUAIKAN]" },
-          { no: 11, uraian: "Air Mineral Botol 330ml (Meja Presidium & VIP)", volume: "2 dus", satuan: 45000, jumlah: 90000, catatan: "Untuk meja sidang dan tamu VIP [ISI/SESUAIKAN]" },
-          { no: 12, uraian: "Air Mineral Galon Refill + Cup Dispenser", volume: "4 galon", satuan: 20000, jumlah: 80000, catatan: "Disediakan gratis di selasar Aula [ISI/SESUAIKAN]" }
+          { no: "3.1", uraian: "Makan Siang Peserta, Delegasi & Tamu VIP", volume: "100 Kotak", satuan: 20000, jumlah: 2000000, catatan: "Kemahasiswaan" },
+          { no: "3.2", uraian: "Snack Box Pagi & Coffee Break", volume: "100 Kotak", satuan: 8000, jumlah: 800000, catatan: "Iuran Peserta" },
+          { no: "3.3", uraian: "Air Mineral Botol Tamu & Pimpinan Sidang", volume: "2 Dus", satuan: 45000, jumlah: 90000, catatan: "Kas Internal" },
+          { no: "3.4", uraian: "Air Mineral Galon Refill Peserta Aula", volume: "5 Galon", satuan: 8000, jumlah: 40000, catatan: "Kas Internal" }
         ]
       },
       {
-        nama: "Logistik, Kebersihan & Aula",
-        persentase: 13,
-        subtotal: 750000,
+        nama: "4. Publikasi, Humas & Penghargaan",
+        subtotal: 1040000,
+        persentase: 17.3,
         items: [
-          { no: 13, uraian: "Kebersihan & Operasional Pengawas Aula", volume: "1 paket", satuan: 350000, jumlah: 350000, catatan: "Insentif petugas pendamping fasilitas kampus [ISI/SESUAIKAN]" },
-          { no: 14, uraian: "Lakban Kain, Plastik Sampah, & Baterai Mic Wireless", volume: "1 paket", satuan: 150000, jumlah: 150000, catatan: "Kebutuhan sound system & kabel panggung [ISI/SESUAIKAN]" },
-          { no: 15, uraian: "P3K Ringan & Medis Darurat", volume: "1 paket", satuan: 100000, jumlah: 100000, catatan: "Minyak kayu putih, tolak angin, obat pereda pusing [ISI/SESUAIKAN]" },
-          { no: 16, uraian: "Bunga Meja Presidium & Kain Taplak Cadangan", volume: "1 paket", satuan: 150000, jumlah: 150000, catatan: "Dekorasi panggung resmi [ISI/SESUAIKAN]" }
+          { no: "4.1", uraian: "ID Card Lanyard Panitia & Peserta Sidang", volume: "80 Pcs", satuan: 8000, jumlah: 640000, catatan: "Iuran Peserta" },
+          { no: "4.2", uraian: "Plakat Akrilik Penghargaan Pembina & Tamu", volume: "2 Plakat", satuan: 150000, jumlah: 300000, catatan: "Kemahasiswaan" },
+          { no: "4.3", uraian: "Biaya Komunikasi & Koordinasi Undangan", volume: "1 Paket", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" }
         ]
       },
       {
-        nama: "Dana Cadangan & Biaya Tak Terduga",
-        persentase: 10,
-        subtotal: 600000,
+        nama: "5. Keamanan & Medis Operasional",
+        subtotal: 345000,
+        persentase: 5.75,
         items: [
-          { no: 17, uraian: "Alokasi Dana Tak Terduga (Emergency Contingency)", volume: "1 paket", satuan: 600000, jumlah: 600000, catatan: "Mengantisipasi lonjakan peserta, print darurat, kabel tambahan [ISI/SESUAIKAN]" }
+          { no: "5.1", uraian: "Kotak P3K, Minyak Kayu Putih & Obat Ringan", volume: "1 Paket", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" },
+          { no: "5.2", uraian: "Dana Taktis & Kebutuhan Darurat Sidang", volume: "1 Paket", satuan: 245000, jumlah: 245000, catatan: "Kas Internal" }
         ]
       }
-    ]
+    ],
+    pemasukan: [
+      { no: 1, sumber: "Dana Kemahasiswaan Telkom University Purwokerto", volume: 1, satuan: "Paket", harga: 2500000, jumlah: 2500000, keterangan: "Kemahasiswaan" },
+      { no: 2, sumber: "Kas Internal UKM HIPMI PT Telkom Purwokerto", volume: 1, satuan: "Paket", harga: 1500000, jumlah: 1500000, keterangan: "Kas Internal" },
+      { no: 3, sumber: "Iuran Kontribusi Mandiri Pengurus BPH & Peserta", volume: 40, satuan: "Orang", harga: 50000, jumlah: 2000000, keterangan: "Iuran Internal" }
+    ],
+    totalPemasukan: 6000000,
+    totalPengeluaran: 6000000,
+    selisih: 0
   },
 
+  // Mitigasi Risiko
   mitigasiRisiko: [
     {
       id: "R-01",
-      kategori: "Akademik & Konten",
-      risiko: "Keterlambatan Kesiapan LPJ dari Departemen Tertentu",
-      level: "Tinggi",
-      dampak: "Sidang Pleno II terhambat, waktu molor, dan berpotensi menunda agenda pemilihan formatur baru.",
+      kategori: "Alur & Tata Tertib Persidangan",
+      level: "Sedang",
+      risiko: "Perdebatan Interupsi Alot & Potensi Deadlock Fraksi",
+      dampak: "Jadwal sidang mundur, ketegangan antar fraksi pengusung calon formatur.",
       mitigasi: [
-        "Menetapkan deadline submit H-7 sebelum hari pelaksanaan MUBES kepada seluruh Kepala Departemen.",
-        "Mewajibkan simulasi internal pra-MUBES bersama BPH Inti pada H-3 untuk review kelengkapan data & nota keuangan.",
-        "Menyiapkan template presentasi dan template dokumen ringkasan LPJ standar agar format seragam dan cepat dikompilasi."
+        "Penerapan SOP Tata Tertib persidangan baku dengan batasan waktu interupsi 2 menit",
+        "Penunjukan 3 Presidium Sidang berkompeten dan berwibawa tinggi",
+        "Mediasi informal oleh Steering Committee (SC) jika terjadi kebuntuan musyawarah"
       ]
     },
     {
       id: "R-02",
-      kategori: "Konstitusi & Kehadiran",
-      risiko: "Kuorum Peserta Sidang Tidak Terpenuhi",
-      level: "Tinggi",
-      dampak: "Sidang pleno tidak dapat dibuka secara legal sesuai AD/ART, tertundanya pengesahan regulasi dan formatur.",
+      kategori: "Kelistrikan & Sarana Audio Visual",
+      level: "Kritis",
+      risiko: "Padam Listrik Kampus & Lonjakan Beban Audio/Visual",
+      dampak: "Audio mati, tampilan layar proyektor padam, proses rekapitulasi terhenti.",
       mitigasi: [
-        "Pemberitahuan resmi dan konfirmasi RSVP kehadiran via Google Form & grup WhatsApp mulai H-14.",
-        "Mengadopsi aturan penundaan/skorsing resmi (2 x 15 menit) dalam Tata Tertib Sidang, setelah itu sidang dinyatakan sah melanjutkan agenda dengan peserta yang hadir.",
-        "Divisi Humas melakukan follow-up intensif dan menyediakan absensi presensi digital real-time."
+        "Koordinasi resmi dengan Bagian Logistik Sarpras kampus Telkom University",
+        "Penyediaan genset otomatis siap pakai dan UPS pada server/laptop operator",
+        "Penempatan alat pemadam api ringan (APAR) di dekat panel listrik utama"
       ]
     },
     {
       id: "R-03",
-      kategori: "Tempat & Fasilitas",
-      risiko: "Bentrok Jadwal / Kendala Izin Peminjaman Aula Kampus",
-      level: "Kritis",
-      dampak: "Acara tidak memiliki venue utama representatif, relokasi mendadak memicu kekacauan peserta dan citra organisasi menurun.",
+      kategori: "Konsumsi & Kebugaran Fisik",
+      level: "Sedang",
+      risiko: "Keterlambatan Distribusi Katering & Peserta Kelelahan",
+      dampak: "Konsentrasi peserta buyar, gangguan maag/asam lambung di tengah sidang.",
       mitigasi: [
-        "Pengajuan surat peminjaman resmi dilakukan minimal 3-4 minggu sebelum tanggal kegiatan (H-30).",
-        "Melakukan audiensi langsung dengan Bagian Logistik / Kemahasiswaan Telkom University Purwokerto oleh Ketua Panitia (Yossika).",
-        "Menyiapkan Plan B: Ruang Auditorium Gedung D / Ruang Sidang Bersama kampus sebagai cadangan darurat jika Aula Utama digunakan agenda mendesak rektorat."
+        "Sampling vendor katering terpercaya dengan garansi pengiriman 1 jam sebelum ISHOMA",
+        "Penyediaan posko P3K dengan obat maag, oksigen portable, dan air galon berkala",
+        "Pengaturan ventilasi pendingin AC aula secara optimal di suhu 22–24°C"
       ]
     },
     {
       id: "R-04",
-      kategori: "Teknis & Kelistrikan",
-      risiko: "Gangguan Sound System, Mic Wireless Mati, atau Proyektor HDMI Eror",
-      level: "Sedang",
-      dampak: "Suara presidium tidak terdengar jelas, presentasi materi LPJ tidak terbaca, suasana sidang menjadi gaduh dan tidak khidmat.",
+      kategori: "Keamanan & Sterilisasi Ruang",
+      level: "Rendah",
+      risiko: "Penyusup Liar & Kehilangan Barang Bawaan Peserta",
+      dampak: "Kegaduhan di dalam ruangan dan hilangnya aset pribadi peserta sidang.",
       mitigasi: [
-        "Uji coba gladi bersih (Sound & Display Check) bersama teknisi kampus pada H-1 sore hari di Aula.",
-        "Menyediakan kabel konverter cadangan (Type-C to HDMI, VGA, USB Hub) dan minimal 2 set baterai alkaline cadangan untuk mic.",
-        "Menyimpan file materi presentasi LPJ di flashdisk ganda serta diakses offline tanpa bergantung pada koneksi internet."
+        "Pemberlakuan ID card resmi ber-barcode warna khusus bagi panitia dan delegasi",
+        "Pengawasan ketat pada pintu masuk utama oleh tim keamanan panitia",
+        "Koordinasi terpadu dengan satuan pengamanan (Satpam) Telkom University Purwokerto"
       ]
     },
     {
       id: "R-05",
-      kategori: "Dinamika Sidang",
-      risiko: "Potensi Deadlock / Perdebatan Berkepanjangan Saat Pemilihan Presidium & Ketua Baru",
+      kategori: "Pemungutan Suara & Integritas Data",
       level: "Tinggi",
-      dampak: "Waktu sidang membengkak melewati jam operasional kampus (melewati batas malam), suasana menjadi tegang.",
+      risiko: "Sengketa Rekapitulasi Suara & Surat Suara Rusak",
+      dampak: "Keabsahan pemilihan Ketua Umum dipertanyakan, memicu gugatan hasil sidang.",
       mitigasi: [
-        "Menunjuk presidium sidang yang memiliki pengalaman sidang formal organisasi dan bersikap netral tegas.",
-        "Membatasi interupsi dan durasi bicara per peserta maksimal 2-3 menit sesuai aturan tata tertib.",
-        "Mekanisme voting tertutup yang jelas jika musyawarah mufakat tidak mencapai titik temu dalam batas waktu 2 x 10 menit."
+        "Surat suara dicetak dengan nomor seri rahasia dan dibubuhi stempel basah panlih",
+        "Penghitungan suara disaksikan oleh saksi mandiri dari masing-masing calon ketua",
+        "Tampilan rekapitulasi diproyeksikan langsung secara transparan di layar panggung utama"
       ]
     },
     {
       id: "R-06",
-      kategori: "Jadwal & Agenda Kampus",
-      risiko: "Konflik Jadwal dengan Agenda Akademik (Kuis/UAS/Tugas Besar/Event Universitas)",
-      level: "Sedang",
-      dampak: "Tingkat kehadiran anggota rendah karena prioritas perkuliahan, fokus peserta terpecah.",
+      kategori: "Dokumentasi & Konsideran Hukum",
+      level: "Tinggi",
+      risiko: "Draf Berkas Konsideran Ketetapan Tertinggal / Hilang",
+      dampak: "Hambatan dalam penerbitan Surat Keputusan (SK) pelantikan oleh Rektorat.",
       mitigasi: [
-        "Melakukan sinkronisasi kalender akademik Telkom University Purwokerto sebelum memfinalisasi tanggal kegiatan.",
-        "Memilih hari Sabtu/Minggu di luar pekan ujian (UTS/UAS) atau di masa tenang perkuliahan.",
-        "Menerbitkan surat izin dispensasi resmi bertanda tangan pembina kemahasiswaan bagi panitia dan presidium jika ada sesi persiapan di hari aktif."
+        "Penyimpanan ganda hardcopy bertanda tangan basah dalam map arsip arsiparis",
+        "Digitalisasi PDF real-time yang langsung diunggah ke repositori cloud resmi HIPMI",
+        "Penyerahan salinan resmi langsung kepada Ka.Ur Kemahasiswaan pasca acara"
       ]
     }
-  ],
-
-  suratPeminjamanAula: {
-    nomor: "[ISI/SESUAIKAN: 012/PAN-MUBES/HIPMI-TUP/V/2026]",
-    lampiran: "1 (satu) Berkas Proposal",
-    perihal: "Permohonan Izin Peminjaman Tempat & Fasilitas Aula",
-    kepada: "Yth. Kepala Bagian Logistik & Pengelolaan Fasilitas\nc.q. Bagian Kemahasiswaan Telkom University Purwokerto\ndi Tempat",
-    isiSurat: [
-      "Dengan hormat,",
-      "Sehubungan dengan akan diselenggarakannya agenda tahunan Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia Perguruan Tinggi (HIPMI PT) Telkom University Purwokerto Periode [ISI/SESUAIKAN: 2026/2027], kami selaku Panitia Pelaksana bermaksud mengajukan permohonan izin peminjaman tempat beserta fasilitas pendukung.",
-      "Adapun rincian kegiatan dimaksud adalah sebagai berikut:\n• Nama Kegiatan : Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto\n• Hari, Tanggal  : [ISI/SESUAIKAN: Sabtu, 16 Mei 2026]\n• Waktu          : 07.30 – 18.00 WIB (termasuk persiapan dan sterilisasi venue)\n• Tempat         : Aula Telkom University Purwokerto\n• Jumlah Peserta : ± 120 Orang (Pengurus, Anggota, Demisioner, dan Tamu Undangan)",
-      "Guna mendukung kelancaran kegiatan tersebut, kami juga memohon izin pemanfaatan fasilitas pendukung Aula berupa:\n1. Sound system dan 4 (empat) buah microphone wireless\n2. LCD Projector dan screen layar panggung utama\n3. Kursi peserta (120 unit) beserta 1 meja panjang presidium panggung\n4. Akses daya listrik dan pendingin ruangan (AC)\n5. Podium sambutan dan tiang bendera",
-      "Kami berkomitmen untuk senantiasa menjaga kebersihan, ketertiban, serta mematuhi seluruh tata tertib penggunaan fasilitas kampus yang berlaku. Sebagai bahan pertimbangan Bapak/Ibu, kami lampirkan 1 (satu) berkas proposal kegiatan.",
-      "Demikian surat permohonan ini kami sampaikan. Atas perhatian, dukungan, dan kerja sama yang baik dari pihak kampus, kami ucapkan terima kasih."
-    ]
-  },
-
-  suratUndangan: {
-    nomor: "[ISI/SESUAIKAN: 014/PAN-MUBES/HIPMI-TUP/V/2026]",
-    lampiran: "1 (satu) Lembar Rundown Acara",
-    perihal: "Undangan Menghadiri Musyawarah Besar (MUBES) HIPMI PT",
-    kepada: "Yth. [ISI/SESUAIKAN: Nama Penerima / Delegasi / Pengurus / Demisioner]\ndi Tempat",
-    isiSurat: [
-      "Dengan hormat,",
-      "Dalam rangka menuntaskan amanah konstitusi organisasi serta melanjutkan estafet kepemimpinan pengusaha muda, Panitia Pelaksana Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto mengundang Saudara/i untuk hadir dan berpartisipasi aktif dalam kegiatan MUBES tahunan.",
-      "Acara akan diselenggarakan pada:\n• Hari, Tanggal : [ISI/SESUAIKAN: Sabtu, 16 Mei 2026]\n• Waktu         : 08.00 WIB s.d. Selesai\n• Tempat        : Aula Kampus Telkom University Purwokerto\n• Dresscode     : Kemeja / Jas Almamater / PDH Organisasi / Bebas Rapi Bersepatu",
-      "Kehadiran dan gagasan konstruktif dari Saudara/i sangat kami harapkan demi terwujudnya masa depan UKM HIPMI PT yang progresif, mandiri, dan berdaya saing.",
-      "Demikian undangan ini kami sampaikan. Atas perhatian dan kesediaan hadirnya, kami ucapkan terima kasih."
-    ]
-  }
+  ]
 };
 
+// Pastikan dapat diakses baik di browser maupun di Node.js
 if (typeof window !== 'undefined') {
   window.MUBES_DATA = MUBES_DATA;
 }

@@ -1325,6 +1325,97 @@
       .rab-container-card { padding: 1.5rem 1rem; }
       .photo-grid-showcase { grid-template-columns: 1fr; }
     }
+  
+    /* ════ 9 DEPARTEMEN ARTHA JAYANA STYLES ════ */
+    .dept-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .dept-ig-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: rgba(225, 48, 108, 0.12);
+      border: 1px solid rgba(225, 48, 108, 0.3);
+      color: #f43f5e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .dept-ig-btn:hover {
+      background: rgba(225, 48, 108, 0.25);
+      border-color: #f43f5e;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .dept-box-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .dept-leaders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .dept-person-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-fine);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .dept-person-pill.leader-pill {
+      border-left: 3px solid var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+    }
+    .dept-person-pill .person-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #fff;
+    }
+    .dept-person-pill .person-role {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .dept-person-pill .person-prodi {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+    }
+    .dept-staff-chips {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.4rem;
+    }
+    .staff-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.75rem;
+    }
+    .staff-chip strong {
+      color: #e2e8f0;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+    .staff-chip span {
+      color: var(--text-dim);
+      font-size: 0.7rem;
+    }
+
   </style>
 </head>
 <body>
@@ -1714,51 +1805,66 @@
         </div>
 
         <div class="org-chart-wrap">
-          <!-- Level 1: Pengarah -->
+          <!-- Level 1: Pengarah & Pimpinan Kampus -->
           <div class="org-row-level gsap-reveal">
             <div class="org-box">
-              <div class="org-role-lbl">Pelindung & Penasihat</div>
-              <div class="org-person-name">Pimpinan & Pembina Tel-U</div>
-              <div class="org-person-sub">[ISI/SESUAIKAN: Rektorat & Kemahasiswaan]</div>
+              <div class="org-role-lbl">Pelindung</div>
+              <div class="org-person-name">Dr. Tenia Wahyuningrum, S.Kom., M.T.</div>
+              <div class="org-person-sub">Direktur Telkom University Purwokerto &bull; NIP. 07820045-1</div>
+            </div>
+            <div class="org-box">
+              <div class="org-role-lbl">Pengarah</div>
+              <div class="org-person-name">Dr. Catur Nugroho, S.Sos., M.I.Kom.</div>
+              <div class="org-person-sub">Wakil Direktur Bidang Akademik & Riset &bull; NIP. 14780035-1</div>
             </div>
             <div class="org-box">
               <div class="org-role-lbl">Penanggung Jawab</div>
-              <div class="org-person-name">Ketua Umum HIPMI PT</div>
-              <div class="org-person-sub">[ISI/SESUAIKAN: Nama Ketum Berjalan]</div>
+              <div class="org-person-name">Kadarisman, S.Si.</div>
+              <div class="org-person-sub">Ka.Ur Kemahasiswaan, Karier, dan Alumni &bull; NIP. 22960016</div>
+            </div>
+            <div class="org-box">
+              <div class="org-role-lbl">Pembina UKM</div>
+              <div class="org-person-name">Kurnia Indah Sumunar, S.E., M.S.Ak</div>
+              <div class="org-person-sub">Pembina HIPMI PT TUP &bull; NIP. 25910001</div>
             </div>
           </div>
 
-          <!-- Level 2: Ketua Pelaksana -->
+          <!-- Level 2: Steering Committee & Ketua Pelaksana -->
           <div class="org-row-level gsap-reveal">
+            <div class="org-box">
+              <div class="org-role-lbl">Steering Committee (SC)</div>
+              <div class="org-person-name" style="font-size:1.15rem;">Raden Aurel Aditya Kusumawaningyun</div>
+              <div class="org-person-sub">Ketua Umum HIPMI PT TUP &bull; S1 Teknik Informatika (2024)</div>
+            </div>
             <div class="org-box prime">
               <div class="org-role-lbl">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 <span>Ketua Pelaksana MUBES</span>
               </div>
               <div class="org-person-name" style="font-size:1.35rem;">Yossika Putra Erlangga</div>
-              <div class="org-person-sub" style="color:var(--text-sub);">S1 Teknik Informatika &bull; Staff HIPMI PT</div>
+              <div class="org-person-sub" style="color:var(--text-sub);">S1 Teknik Informatika (2024) &bull; NIM. 103112430026</div>
               <p style="font-size:0.82rem; color:var(--text-sub); margin-top:0.6rem; line-height:1.45;">
                 Memimpin koordinasi perizinan Aula, pengelolaan anggaran, dan eksekusi teknis persidangan MUBES.
               </p>
             </div>
           </div>
 
-          <!-- Level 3: BPH Inti -->
+          <!-- Level 3: BPH Inti MUBES -->
           <div class="org-row-level gsap-reveal">
             <div class="org-box">
               <div class="org-role-lbl">Wakil Ketua Pelaksana</div>
-              <div class="org-person-name">[ISI/SESUAIKAN: Nama]</div>
-              <div class="org-person-sub">Logistik & Operasional Lapangan</div>
+              <div class="org-person-name">Hanif Fathur Rohman</div>
+              <div class="org-person-sub">S1 Bisnis Digital (2024) &bull; NIM. 104062400132</div>
             </div>
             <div class="org-box">
-              <div class="org-role-lbl">Sekretaris I & II</div>
-              <div class="org-person-name">[ISI/SESUAIKAN: Nama]</div>
-              <div class="org-person-sub">Persuratan Aula, Proposal & Notulensi</div>
+              <div class="org-role-lbl">Sekretaris Panitia</div>
+              <div class="org-person-name">Salumita Ardiana</div>
+              <div class="org-person-sub">S1 Rekayasa Perangkat Lunak (2025) &bull; NIM. 109092530004</div>
             </div>
             <div class="org-box">
-              <div class="org-role-lbl">Bendahara Pelaksana</div>
-              <div class="org-person-name">[ISI/SESUAIKAN: Nama]</div>
-              <div class="org-person-sub">Rekapitulasi Kas & Pengendalian RAB</div>
+              <div class="org-role-lbl">Bendahara Panitia</div>
+              <div class="org-person-name">Muhammad Naufal Hanif</div>
+              <div class="org-person-sub">S1 Rekayasa Perangkat Lunak (2024) &bull; NIM. 103122400057</div>
             </div>
           </div>
 
@@ -1945,26 +2051,73 @@
       const data = window.MUBES_DATA;
       if (!data) return;
 
-      // 1. Render LPJ Departments
+      // 1. Render 9 Departemen Resmi Kabinet Artha Jayana (Data Rilis Instagram Resmi)
       const lpjCont = document.getElementById("lpjContainer");
-      if (lpjCont && data.departemenLpj) {
-        lpjCont.innerHTML = data.departemenLpj.map(dep => `
-          <div class="lpj-card gsap-card">
-            <div class="lpj-top-row">
-              <span class="lpj-code-badge">${dep.kode}</span>
-              <span style="font-size:0.72rem; color:var(--text-dim); font-weight:800; letter-spacing:0.08em; text-transform:uppercase;">LPJ TERFOKUS</span>
-            </div>
-            <h3 class="lpj-card-title">${dep.nama}</h3>
-            <p class="lpj-focus-text">${dep.fokus}</p>
-            <div class="lpj-proker-box">
-              <div class="lpj-proker-lbl">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <span>Fokus Program Kerja Utama</span>
+      const deptList = data.departemenKabinet || data.departemenLpj;
+      if (lpjCont && deptList) {
+        lpjCont.innerHTML = deptList.map(dep => {
+          // Leadership HTML
+          const leadersHtml = dep.pimpinan && dep.pimpinan.length > 0 ? `
+            <div class="dept-pimpinan-box">
+              <div class="dept-box-label">Pimpinan Departemen</div>
+              <div class="dept-leaders-list">
+                ${dep.pimpinan.map(p => `
+                  <div class="dept-person-pill leader-pill">
+                    <span class="person-name">${p.nama}</span>
+                    <span class="person-role">${p.jabatan || 'Kepala Departemen'}</span>
+                    <span class="person-prodi">${p.prodi}</span>
+                  </div>
+                `).join("")}
               </div>
-              <div class="lpj-proker-val">${dep.prokerUtama}</div>
             </div>
-          </div>
-        `).join("");
+          ` : '';
+
+          // Staff HTML
+          const staffHtml = dep.staf && dep.staf.length > 0 ? `
+            <div class="dept-staf-box">
+              <div class="dept-box-label">Staf Departemen (${dep.staf.length} Orang)</div>
+              <div class="dept-staff-chips">
+                ${dep.staf.map(s => `
+                  <div class="staff-chip">
+                    <strong>${s.nama}</strong>
+                    <span>${s.prodi}</span>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          ` : '';
+
+          // Instagram Link Button
+          const igBtnHtml = dep.instagramUrl ? `
+            <a href="${dep.instagramUrl}" target="_blank" rel="noopener noreferrer" class="dept-ig-btn" title="Buka Rilis Resmi Instagram Departemen ${dep.nama}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              <span>Rilis Instagram</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+            </a>
+          ` : '';
+
+          return `
+            <div class="lpj-card dept-card gsap-card">
+              <div class="lpj-top-row">
+                <span class="lpj-code-badge">${dep.kode || 'HIPMI'}</span>
+                ${igBtnHtml}
+              </div>
+              <h3 class="lpj-card-title">${dep.nama}</h3>
+              <p class="lpj-focus-text">${dep.deskripsi || dep.fokus}</p>
+              
+              ${leadersHtml}
+              ${staffHtml}
+
+              <div class="lpj-proker-box">
+                <div class="lpj-proker-lbl">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>Fokus Program Kerja & LPJ</span>
+                </div>
+                <div class="lpj-proker-val">${dep.prokerUtama || dep.fokus}</div>
+              </div>
+            </div>
+          `;
+        }).join("");
       }
 
       // 2. Render Rundown Timeline
