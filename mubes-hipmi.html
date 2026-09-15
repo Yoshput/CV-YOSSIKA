@@ -2433,19 +2433,19 @@
           <!-- Level 3: BPH Inti MUBES -->
           <div class="org-row-level gsap-reveal">
             <div class="org-box">
-              <div class="org-role-lbl">Wakil Ketua Pelaksana</div>
-              <div class="org-person-name">Hanif Fathur Rohman</div>
-              <div class="org-person-sub">S1 Bisnis Digital (2024) &bull; NIM. 104062400132</div>
+              <div class="org-role-lbl">Ketua Pelaksana</div>
+              <div class="org-person-name">Yossika Putra Erlangga</div>
+              <div class="org-person-sub">S1 Teknik Informatika (2024) &bull; NIM. 103112430026</div>
             </div>
             <div class="org-box">
               <div class="org-role-lbl">Sekretaris Panitia</div>
-              <div class="org-person-name">Salumita Ardiana</div>
+              <div class="org-person-name">Salumita Ardiana (Salum)</div>
               <div class="org-person-sub">S1 Rekayasa Perangkat Lunak (2025) &bull; NIM. 109092530004</div>
             </div>
             <div class="org-box">
               <div class="org-role-lbl">Bendahara Panitia</div>
-              <div class="org-person-name">Muhammad Naufal Hanif</div>
-              <div class="org-person-sub">S1 Rekayasa Perangkat Lunak (2024) &bull; NIM. 103122400057</div>
+              <div class="org-person-name">Nuriyatul Wafiroh (Afi)</div>
+              <div class="org-person-sub">S1 Teknik Logistik (2024) &bull; NIM. 104062400057</div>
             </div>
           </div>
 
@@ -2474,28 +2474,28 @@
         <div class="rab-container-card gsap-reveal">
           <div class="rab-header-banner">
             <div>
-              <div class="rab-banner-sub">Total Estimasi Kebutuhan Biaya MUBES :</div>
-              <div style="font-size:0.85rem; color:var(--text-sub);">Skala 120 Orang Peserta, Tamu VIP & Panitia</div>
+              <div class="rab-banner-sub">Total Anggaran Biaya Pelaksanaan MUBES :</div>
+              <div style="font-size:0.85rem; color:var(--text-sub);">Didukung Dana Kemahasiswaan Tel-U (Rp 800.000,-) & Kas Internal</div>
             </div>
-            <div class="rab-grand-amount tabular">Rp 5.850.000,-</div>
+            <div class="rab-grand-amount tabular">Rp 2.000.000,-</div>
           </div>
 
           <!-- Progress bar -->
           <div class="rab-bar-track">
-            <div class="bar-seg seg-konsumsi" style="width: 44%;" title="Konsumsi (44%)"></div>
-            <div class="bar-seg seg-sekretariat" style="width: 18%;" title="Kesekretariatan (18%)"></div>
-            <div class="bar-seg seg-publikasi" style="width: 15%;" title="Publikasi & Dekorasi (15%)"></div>
-            <div class="bar-seg seg-logistik" style="width: 13%;" title="Logistik & Aula (13%)"></div>
-            <div class="bar-seg seg-cadangan" style="width: 10%;" title="Dana Cadangan (10%)"></div>
+            <div class="bar-seg seg-konsumsi" style="width: 37.5%;" title="Konsumsi & Hospitality (37.5%)"></div>
+            <div class="bar-seg seg-logistik" style="width: 22.5%;" title="Perlengkapan & Aula (22.5%)"></div>
+            <div class="bar-seg seg-sekretariat" style="width: 17.5%;" title="Kesekretariatan (17.5%)"></div>
+            <div class="bar-seg seg-publikasi" style="width: 15.0%;" title="Publikasi & Sertifikat (15.0%)"></div>
+            <div class="bar-seg seg-cadangan" style="width: 7.5%;" title="Dana Taktis (7.5%)"></div>
           </div>
 
           <!-- Legend -->
           <div class="rab-legend-wrap">
-            <div class="legend-box"><span class="legend-color-dot seg-konsumsi"></span> Konsumsi (44% &bull; Rp 2.570.000)</div>
-            <div class="legend-box"><span class="legend-color-dot seg-sekretariat"></span> Kesekretariatan (18% &bull; Rp 1.050.000)</div>
-            <div class="legend-box"><span class="legend-color-dot seg-publikasi"></span> Publikasi & Plakat (15% &bull; Rp 880.000)</div>
-            <div class="legend-box"><span class="legend-color-dot seg-logistik"></span> Logistik Aula (13% &bull; Rp 750.000)</div>
-            <div class="legend-box"><span class="legend-color-dot seg-cadangan"></span> Cadangan Darurat (10% &bull; Rp 600.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-konsumsi"></span> Konsumsi Hospitality (37.5% &bull; Rp 750.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-logistik"></span> Perlengkapan Aula (22.5% &bull; Rp 450.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-sekretariat"></span> Kesekretariatan (17.5% &bull; Rp 350.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-publikasi"></span> Publikasi Sertifikat (15.0% &bull; Rp 300.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-cadangan"></span> Dana Taktis (7.5% &bull; Rp 150.000)</div>
           </div>
         </div>
 
@@ -2757,21 +2757,31 @@
       // 2. Render Rundown Timeline
       renderRundown(data.rundown);
 
-      // 3. Render Divisions
+      // 3. Render Divisions (Lengkap dengan Koordinator & Anggota Panitia MUBES)
       const divCont = document.getElementById("divisionsContainer");
       if (divCont && data.susunanPanitia && data.susunanPanitia.divisi) {
-        divCont.innerHTML = data.susunanPanitia.divisi.map(div => `
-          <div class="division-item-card gsap-card">
-            <h4 class="division-name-head">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>${div.namaDivisi}</span>
-            </h4>
-            <div class="division-leader-text">Koordinator: ${div.koordinator}</div>
-            <ul class="division-tasks-list">
-              ${div.tugas.map(t => `<li class="div-task-row">${t}</li>`).join("")}
-            </ul>
-          </div>
-        `).join("");
+        divCont.innerHTML = data.susunanPanitia.divisi.map(div => {
+          const anggotaHtml = div.anggota && div.anggota.length > 0 ? `
+            <div style="margin-top:0.45rem; margin-bottom:0.65rem;">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-sub);">Anggota Divisi: </span>
+              <span style="font-size:0.78rem; font-weight:600; color:var(--text-main);">${div.anggota.join(", ")}</span>
+            </div>
+          ` : '';
+
+          return `
+            <div class="division-item-card gsap-card">
+              <h4 class="division-name-head">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>${div.namaDivisi}</span>
+              </h4>
+              <div class="division-leader-text">Koordinator: <strong>${div.koordinator}</strong></div>
+              ${anggotaHtml}
+              <ul class="division-tasks-list">
+                ${div.tugas.map(t => `<li class="div-task-row">${t}</li>`).join("")}
+              </ul>
+            </div>
+          `;
+        }).join("");
       }
 
       // 4. Render RAB Table

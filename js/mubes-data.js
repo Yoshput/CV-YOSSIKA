@@ -35,7 +35,7 @@ const MUBES_DATA = {
     nimSekretarisPelaksana: "109092530004",
     prodiSekretarisPelaksana: "S1 Rekayasa Perangkat Lunak, 2025",
 
-    bendaharaPelaksana: "Muhammad Naufal Hanif",
+    bendaharaPelaksana: "Nuriyatul Wafiroh (Afi)",
     nimBendaharaPelaksana: "103122400057",
     prodiBendaharaPelaksana: "S1 Rekayasa Perangkat Lunak, 2024",
 
@@ -324,68 +324,81 @@ const MUBES_DATA = {
       { nama: "Bintang Putra Angkasa", nim: "103112330012", prodi: "S1 Teknik Informatika, 2023" }
     ],
     ketuaPelaksana: { nama: "Yossika Putra Erlangga", nim: "103112430026", prodi: "S1 Teknik Informatika, 2024" },
-    wakilKetuaPelaksana: { nama: "Hanif Fathur Rohman", nim: "104062400132", prodi: "S1 Bisnis Digital, 2024" },
     sekretaris: [
-      { nama: "Salumita Ardiana", nim: "109092530004", prodi: "S1 Rekayasa Perangkat Lunak, 2025" },
-      { nama: "Azra Shiefi Maulidina", nim: "102102430029", prodi: "S1 Sistem Informasi, 2024" }
+      { nama: "Salumita Ardiana", nim: "109092530004", prodi: "S1 Rekayasa Perangkat Lunak, 2025" }
     ],
     bendahara: [
-      { nama: "Muhammad Naufal Hanif", nim: "103122400057", prodi: "S1 Rekayasa Perangkat Lunak, 2024" },
-      { nama: "Nabilah", nim: "109112530029", prodi: "S1 Bisnis Digital, 2025" }
+      { nama: "Nuriyatul Wafiroh (Afi)", nim: "104062400057", prodi: "S1 Teknik Logistik, 2024" }
     ],
     divisi: [
       {
-        namaDivisi: "Acara & Persidangan",
-        koordinator: "Aisyah Akhmad (103112430106)",
+        namaDivisi: "Kaderisasi & Keanggotaan (KK)",
+        koordinator: "Siska Yulianti (102092400041)",
+        anggota: ["Cindy Dwi Cahyaningsih", "Aulia Nurussyifa (Syifa)", "Hanif Fathur Rohman"],
         tugas: [
-          "Menyusun draf tata tertib persidangan, konsideran surat ketetapan MUBES, dan time-management sidang",
-          "Memfasilitasi jalannya Sidang Pleno I s.d. IV bersama Presidium Sidang",
-          "Menyiapkan teks serah terima jabatan, pataka organisasi, dan susunan seremonial resmi"
+          "Verifikasi presensi dan database keanggotaan aktif UKM HIPMI PT",
+          "Mengelola registrasi delegasi dan hak suara anggota sidang MUBES",
+          "Memfasilitasi forum apresiasi kader dan pengenalan kepengurusan"
         ]
       },
       {
-        namaDivisi: "Hubungan Masyarakat & Protokoler",
-        koordinator: "Ma’ruf Sarifudin (103112400128)",
+        namaDivisi: "Pengembangan Organisasi (PO)",
+        koordinator: "Muhammad Firdaus Ardiansyah (109082500126)",
+        anggota: ["Putri Rahma Wati"],
         tugas: [
-          "Mendistribusikan surat undangan resmi kepada Direktorat Kampus, Pembina, Demisioner, dan Ormawa",
-          "Menyambut dan mendampingi tamu VIP civitas akademika dan dewan penasihat",
-          "Mengelola registrasi daftar hadir fisik dan barcode digital"
+          "Menyusun draf tata tertib persidangan dan evaluasi AD/ART organisasi",
+          "Menyiapkan konsideran ketetapan sidang dan berita acara serah terima",
+          "Mendampingi Presidium Sidang dalam tata kelola persidangan"
         ]
       },
       {
-        namaDivisi: "Media Kreatif, Publikasi & IT",
-        koordinator: "Azevedo Ardhani (104062400055)",
+        namaDivisi: "Inkubasi Bisnis (IB)",
+        koordinator: "Finsa Annisa (105022400015)",
+        anggota: ["Nayaka Shafwan Bagas Adi Prasetyo"],
         tugas: [
-          "Merancang visual backdrop 4x3m, ID card panitia-peserta, sertifikat, dan materi presentasi sidang",
-          "Mengelola portal web interaktif MUBES, live rekapitulasi formatur, dan dokumentasi foto/video",
-          "Memastikan siaran publikasi media sosial resmi HIPMI berjalan real-time"
+          "Menyiapkan materi evaluasi program kerja inkubasi dan pitching",
+          "Mengelola koordinasi kebutuhan konsumsi dan akomodasi tamu persidangan",
+          "Membantu kelancaran teknis operasional forum sidang pleno"
         ]
       },
       {
-        namaDivisi: "Perlengkapan & Logistik",
-        koordinator: "Hilman Kanzi (109082500214)",
-        tugas: [
-          "Menyediakan palu sidang kayu mahoni, taplak meja hijau presidium, dan bendera pataka",
-          "Memastikan suplai sound system aula, 4 unit microphone wireless, proyektor, kabel listrik, dan genset siaga",
-          "Menjamin sterilisasi ruangan sebelum acara dan operasi semut kebersihan pasca sidang"
-        ]
-      },
-      {
-        namaDivisi: "Keamanan & Ketertiban Sidang",
-        koordinator: "Muhamad Naufal Ammar (103112430036)",
-        tugas: [
-          "Menjaga ketertiban pintu masuk aula dan memastikan hanya peserta terverifikasi yang memasuki ruang sidang",
-          "Mengamankan kotak suara dan surat suara berstempel pada Sidang Pleno IV",
-          "Berkoordinasi dengan Satpam kampus untuk manajemen parkir kendaraan"
-        ]
-      },
-      {
-        namaDivisi: "Konsumsi & Kesejahteraan",
+        namaDivisi: "Enterprise",
         koordinator: "Almas Mustika Putri Ramadhani (104062400069)",
+        anggota: ["Syahda Nur Lathifah"],
         tugas: [
-          "Mengatur pengadaan 100 kotak makan siang higienis tepat waktu sebelum sesi ISHOMA",
-          "Menyediakan snack box pagi, coffee break sore, dan air mineral botol/galon",
-          "Menyediakan posko P3K dan obat-obatan ringan di sudut aula"
+          "Pengelolaan merchandise resmi MUBES, plakat penghargaan, dan tanda terima",
+          "Mengatur inventaris perlengkapan sidang, banner panggung, dan meja presidium",
+          "Memastikan seluruh logistik fisik aula tertata rapi"
+        ]
+      },
+      {
+        namaDivisi: "Harmonisasi Eksternal (Harex)",
+        koordinator: "Nefiesta Fatmaidy Udiya (Nafiesta)",
+        anggota: [],
+        tugas: [
+          "Distribusi surat undangan resmi kepada Direktorat, Ormawa kampus, dan alumni",
+          "Protokoler penyambutan tamu VIP civitas akademika dan pembina",
+          "Menjaga ketertiban ruang sidang dan alur keluar-masuk delegasi"
+        ]
+      },
+      {
+        namaDivisi: "Media Kreatif (Medkraf)",
+        koordinator: "M. Devfan Adefrid Sutopo (Defvan)",
+        anggota: ["Najla Azizah Daniel", "Zahra Primanda Shafira (Fira)"],
+        tugas: [
+          "Desain visual backdrop panggung aula 4x3 meter dan materi presentasi",
+          "Dokumentasi fotografi, videografi, dan siaran pers publikasi MUBES",
+          "Pengelolaan live feed visual persidangan dan publikasi media sosial resmi"
+        ]
+      },
+      {
+        namaDivisi: "Teknologi Informasi (TI)",
+        koordinator: "Divisi TI HIPMI",
+        anggota: [],
+        tugas: [
+          "Pengembangan dan pemeliharaan portal digital resmi MUBES",
+          "Pengelolaan sistem presensi barcode dan live rekapitulasi formatur",
+          "Dukungan teknis audio visual, proyektor, dan jaringan internet aula"
         ]
       }
     ]
@@ -393,70 +406,65 @@ const MUBES_DATA = {
 
   // Rencana Anggaran Biaya (RAB) Lengkap
   rab: {
-    total: 6000000,
+    total: 2000000,
+    alokasiKemahasiswaan: 800000,
     kategori: [
       {
         nama: "1. Kesekretariatan & Persidangan",
-        subtotal: 860000,
-        persentase: 14.3,
+        subtotal: 350000,
+        persentase: 17.5,
         items: [
-          { no: "1.1", uraian: "Kertas HVS A4 80gr untuk Draf Tatib & LPJ", volume: "3 Rim", satuan: 55000, jumlah: 165000, catatan: "Kemahasiswaan" },
-          { no: "1.2", uraian: "Map Folio Berkas Konsideran & Ketetapan", volume: "2 Pack", satuan: 35000, jumlah: 70000, catatan: "Kas Internal" },
-          { no: "1.3", uraian: "Tinta Printer & Penggandaan Berkas Sidang", volume: "1 Paket", satuan: 250000, jumlah: 250000, catatan: "Kemahasiswaan" },
-          { no: "1.4", uraian: "Stempel Panitia MUBES & Tinta Bak", volume: "1 Paket", satuan: 75000, jumlah: 75000, catatan: "Kas Internal" },
-          { no: "1.5", uraian: "Sertifikat Pengurus Demisioner & Panitia", volume: "60 Lembar", satuan: 5000, jumlah: 300000, catatan: "Iuran Peserta" }
+          { no: "1.1", uraian: "Kertas HVS A4 80gr untuk Draf Tatib & LPJ", volume: "2 Rim", satuan: 55000, jumlah: 110000, catatan: "Kemahasiswaan (Rp800k)" },
+          { no: "1.2", uraian: "Tinta Printer & Penggandaan Berkas Sidang", volume: "1 Paket", satuan: 140000, jumlah: 140000, catatan: "Kemahasiswaan (Rp800k)" },
+          { no: "1.3", uraian: "Map Folio & Konsideran Ketetapan Sidang", volume: "1 Pack", satuan: 40000, jumlah: 40000, catatan: "Kas Internal" },
+          { no: "1.4", uraian: "Stempel Panitia MUBES & Bak Tinta", volume: "1 Paket", satuan: 60000, jumlah: 60000, catatan: "Kas Internal" }
         ]
       },
       {
-        nama: "2. Perlengkapan & Sarana Prasarana",
-        subtotal: 825000,
-        persentase: 13.75,
+        nama: "2. Perlengkapan & Sarana Aula",
+        subtotal: 450000,
+        persentase: 22.5,
         items: [
-          { no: "2.1", uraian: "Palu Sidang Kayu Mahoni & Tatakan Resmi", volume: "1 Set", satuan: 150000, jumlah: 150000, catatan: "Kas Internal" },
-          { no: "2.2", uraian: "Banner Backdrop Panggung Aula 4x3 Meter", volume: "1 Paket", satuan: 300000, jumlah: 300000, catatan: "Kemahasiswaan" },
-          { no: "2.3", uraian: "X-Banner Alur Persidangan & Registrasi", volume: "2 Buah", satuan: 85000, jumlah: 170000, catatan: "Kas Internal" },
-          { no: "2.4", uraian: "Baterai Mic Wireless Alkaline Cadangan", volume: "8 Pasang", satuan: 20000, jumlah: 160000, catatan: "Kas Internal" },
-          { no: "2.5", uraian: "Kantong Sampah Pilah (Trash Bag)", volume: "3 Pack", satuan: 15000, jumlah: 45000, catatan: "Kas Internal" }
+          { no: "2.1", uraian: "Banner Backdrop Panggung Aula 4x3 Meter", volume: "1 Paket", satuan: 250000, jumlah: 250000, catatan: "Kemahasiswaan (Rp800k)" },
+          { no: "2.2", uraian: "Palu Sidang & Perlengkapan Presidium", volume: "1 Set", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" },
+          { no: "2.3", uraian: "Baterai Mic Wireless & Trash Bag Pilah", volume: "1 Paket", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" }
         ]
       },
       {
         nama: "3. Konsumsi & Hospitality",
-        subtotal: 2930000,
-        persentase: 48.8,
+        subtotal: 750000,
+        persentase: 37.5,
         items: [
-          { no: "3.1", uraian: "Makan Siang Peserta, Delegasi & Tamu VIP", volume: "100 Kotak", satuan: 20000, jumlah: 2000000, catatan: "Kemahasiswaan" },
-          { no: "3.2", uraian: "Snack Box Pagi & Coffee Break", volume: "100 Kotak", satuan: 8000, jumlah: 800000, catatan: "Iuran Peserta" },
-          { no: "3.3", uraian: "Air Mineral Botol Tamu & Pimpinan Sidang", volume: "2 Dus", satuan: 45000, jumlah: 90000, catatan: "Kas Internal" },
-          { no: "3.4", uraian: "Air Mineral Galon Refill Peserta Aula", volume: "5 Galon", satuan: 8000, jumlah: 40000, catatan: "Kas Internal" }
+          { no: "3.1", uraian: "Makan Siang Presidium, Tamu Undangan & Pembina", volume: "15 Kotak", satuan: 20000, jumlah: 300000, catatan: "Kemahasiswaan (Rp800k)" },
+          { no: "3.2", uraian: "Snack Box Pagi & Coffee Break Pembukaan", volume: "35 Kotak", satuan: 10000, jumlah: 350000, catatan: "Iuran Panitia" },
+          { no: "3.3", uraian: "Air Mineral Botol VIP & Galon Refill Aula", volume: "1 Paket", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" }
         ]
       },
       {
-        nama: "4. Publikasi, Humas & Penghargaan",
-        subtotal: 1040000,
-        persentase: 17.3,
+        nama: "4. Publikasi, Dokumentasi & Sertifikat",
+        subtotal: 300000,
+        persentase: 15.0,
         items: [
-          { no: "4.1", uraian: "ID Card Lanyard Panitia & Peserta Sidang", volume: "80 Pcs", satuan: 8000, jumlah: 640000, catatan: "Iuran Peserta" },
-          { no: "4.2", uraian: "Plakat Akrilik Penghargaan Pembina & Tamu", volume: "2 Plakat", satuan: 150000, jumlah: 300000, catatan: "Kemahasiswaan" },
-          { no: "4.3", uraian: "Biaya Komunikasi & Koordinasi Undangan", volume: "1 Paket", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" }
+          { no: "4.1", uraian: "Sertifikat Panitia & Pengurus Demisioner", volume: "40 Lembar", satuan: 5000, jumlah: 200000, catatan: "Iuran Panitia" },
+          { no: "4.2", uraian: "ID Card Lanyard Panitia Pelaksana", volume: "20 Pcs", satuan: 5000, jumlah: 100000, catatan: "Iuran Panitia" }
         ]
       },
       {
-        nama: "5. Keamanan & Medis Operasional",
-        subtotal: 345000,
-        persentase: 5.75,
+        nama: "5. Dana Taktis Operasional",
+        subtotal: 150000,
+        persentase: 7.5,
         items: [
-          { no: "5.1", uraian: "Kotak P3K, Minyak Kayu Putih & Obat Ringan", volume: "1 Paket", satuan: 100000, jumlah: 100000, catatan: "Kas Internal" },
-          { no: "5.2", uraian: "Dana Taktis & Kebutuhan Darurat Sidang", volume: "1 Paket", satuan: 245000, jumlah: 245000, catatan: "Kas Internal" }
+          { no: "5.1", uraian: "Kotak P3K, Obat Ringan & Kebutuhan Darurat", volume: "1 Paket", satuan: 150000, jumlah: 150000, catatan: "Kas Internal" }
         ]
       }
     ],
     pemasukan: [
-      { no: 1, sumber: "Dana Kemahasiswaan Telkom University Purwokerto", volume: 1, satuan: "Paket", harga: 2500000, jumlah: 2500000, keterangan: "Kemahasiswaan" },
-      { no: 2, sumber: "Kas Internal UKM HIPMI PT Telkom Purwokerto", volume: 1, satuan: "Paket", harga: 1500000, jumlah: 1500000, keterangan: "Kas Internal" },
-      { no: 3, sumber: "Iuran Kontribusi Mandiri Pengurus BPH & Peserta", volume: 40, satuan: "Orang", harga: 50000, jumlah: 2000000, keterangan: "Iuran Internal" }
+      { no: 1, sumber: "Dana Kemahasiswaan Telkom University Purwokerto", volume: 1, satuan: "Paket", harga: 800000, jumlah: 800000, keterangan: "Kemahasiswaan (Acc)" },
+      { no: 2, sumber: "Kas Internal UKM HIPMI PT Telkom Purwokerto", volume: 1, satuan: "Paket", harga: 550000, jumlah: 550000, keterangan: "Kas Internal" },
+      { no: 3, sumber: "Iuran Kontribusi Mandiri Panitia Pelaksana", volume: 1, satuan: "Paket", harga: 650000, jumlah: 650000, keterangan: "Iuran Panitia" }
     ],
-    totalPemasukan: 6000000,
-    totalPengeluaran: 6000000,
+    totalPemasukan: 2000000,
+    totalPengeluaran: 2000000,
     selisih: 0
   },
 
