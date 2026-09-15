@@ -17,10 +17,14 @@
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
-  <!-- Apple SF-style & Executive Google Fonts -->
+  <!-- Resource Hints & Google Fonts Optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap"></noscript>
+  <link rel="preload" as="image" href="assets/img/logo-hipmi-pt-telu-official.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/logo-artha-jayana.webp" type="image/webp">
 
   <style>
     :root {
@@ -359,7 +363,7 @@
 
     /* Live Countdown Widget — Apple Dynamic Island Style */
     .countdown-widget {
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(20, 15, 9, 0.82);
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 1.5rem 2rem;
@@ -410,7 +414,7 @@
 
     /* Interactive Theme Previewer */
     .theme-preview-card {
-      background: rgba(17, 24, 39, 0.65);
+      background: rgba(22, 17, 10, 0.78);
       border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
       padding: 1.5rem 1.75rem;
@@ -905,7 +909,7 @@
       transform: translateY(-4px);
     }
     .org-box.prime {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(15, 23, 42, 0.85));
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(22, 16, 10, 0.88));
       border-color: var(--border-accent-strong);
       box-shadow: 0 10px 30px var(--gold-glow), inset 0 1px 0 rgba(255,255,255,0.15);
       min-width: 260px;
@@ -1086,7 +1090,7 @@
       border-bottom: 1px solid var(--border-fine);
     }
     table.data-table th {
-      background: rgba(11, 17, 32, 0.9);
+      background: rgba(20, 15, 9, 0.92);
       font-family: var(--font-display);
       font-weight: 700;
       color: #fff;
@@ -1246,7 +1250,7 @@
 
     /* ════ CTA BANNER ════ */
     .cta-executive-banner {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(11, 17, 32, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(20, 15, 9, 0.95) 100%);
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 3.5rem 2.5rem;
@@ -1283,7 +1287,7 @@
       left: 1.25rem;
       right: 1.25rem;
       z-index: 99;
-      background: rgba(11, 17, 32, 0.88);
+      background: rgba(22, 16, 10, 0.9);
       backdrop-filter: blur(20px) saturate(190%);
       -webkit-backdrop-filter: blur(20px) saturate(190%);
       border: 1px solid var(--border-accent);
@@ -1644,7 +1648,7 @@
     /* ════ OFFICIAL EMBLEM SHOWCASE ════ */
     .official-emblem-showcase {
       margin-top: 3rem;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(30, 41, 59, 0.5));
+      background: linear-gradient(135deg, rgba(20, 15, 9, 0.82), rgba(35, 26, 15, 0.6));
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 2.25rem 2.5rem;
@@ -1939,6 +1943,29 @@
       color: #fff;
     }
 
+
+    /* ════ HARDWARE ACCELERATION & GPU COMPOSITING ════ */
+    .apple-nav, .floating-ios-bar, .marquee-track, .iphone-mockup, .dept-card, .timeline-card {
+      will-change: transform;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    img {
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .table-scroll-wrap {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-accent) var(--bg-surface);
+    }
+    .table-scroll-wrap::-webkit-scrollbar {
+      height: 6px;
+    }
+    .table-scroll-wrap::-webkit-scrollbar-thumb {
+      background: var(--border-accent);
+      border-radius: 4px;
+    }
+
   </style>
 </head>
 <body>
@@ -1950,8 +1977,8 @@
     <div class="container nav-content">
       <a href="#hero" class="nav-brand-group">
         <div class="brand-emblems">
-          <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT Tel-U" class="brand-logo-img">
-          <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="brand-logo-img">
+          <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT Tel-U" class="brand-logo-img" width="38" height="38" decoding="async">
+          <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="brand-logo-img" width="38" height="38" decoding="async">
         </div>
         <div class="brand-text-col">
           <span class="brand-title">MUBES HIPMI PT</span>
@@ -2014,8 +2041,8 @@
         <!-- Dual Emblem Hero Badge -->
         <div class="dual-emblem-badge gsap-hero-el">
           <div class="emblem-pair">
-            <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT Telkom Purwokerto" class="emblem-icon">
-            <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="emblem-icon">
+            <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT Telkom Purwokerto" class="emblem-icon" width="32" height="32" decoding="async">
+            <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="emblem-icon" width="32" height="32" decoding="async">
           </div>
           <div class="emblem-label">
             HIPMI PT TELKOM PURWOKERTO &bull; <span>KABINET ARTHA JAYANA</span>
@@ -2166,7 +2193,7 @@
         <div class="official-emblem-showcase gsap-reveal">
           <div class="emblem-card-item">
             <div class="emblem-img-wrap">
-              <img src="assets/img/logo-hipmi-pt-telu-official.png" alt="Segel Resmi HIPMI PT Telkom Purwokerto" class="emblem-large-img">
+              <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="Segel Resmi HIPMI PT Telkom Purwokerto" class="emblem-large-img" width="80" height="80" loading="lazy" decoding="async">
             </div>
             <div class="emblem-info-wrap">
               <span class="emblem-badge-tag">Badan Otonom Kemahasiswaan</span>
@@ -2181,7 +2208,7 @@
 
           <div class="emblem-card-item">
             <div class="emblem-img-wrap">
-              <img src="assets/img/logo-artha-jayana.png" alt="Lambang Emas 3D Kabinet Artha Jayana" class="emblem-large-img artha-gold-img">
+              <img src="assets/img/logo-artha-jayana.webp" alt="Lambang Emas 3D Kabinet Artha Jayana" class="emblem-large-img artha-gold-img" width="80" height="80" loading="lazy" decoding="async">
             </div>
             <div class="emblem-info-wrap">
               <span class="emblem-badge-tag gold-badge">Identitas Kepengurusan 2025/2026</span>
@@ -2528,19 +2555,19 @@
 
         <div class="photo-grid-showcase gsap-reveal">
           <div class="gallery-frame">
-            <img src="assets/img/foto-kegiatan/06-hipmi/foto-departemen-kaderisasi-dan-keanggotaan.webp" alt="Departemen Kaderisasi" loading="lazy">
+            <img src="assets/img/foto-kegiatan/06-hipmi/foto-departemen-kaderisasi-dan-keanggotaan.webp" alt="Departemen Kaderisasi" loading="lazy" decoding="async" width="400" height="260">
             <div class="gallery-overlay-lbl">Departemen Kaderisasi & Keanggotaan</div>
           </div>
           <div class="gallery-frame">
-            <img src="assets/img/foto-kegiatan/06-hipmi/foto-departement-okk.webp" alt="Departemen OKK HIPMI" loading="lazy">
+            <img src="assets/img/foto-kegiatan/06-hipmi/foto-departement-okk.webp" alt="Departemen OKK HIPMI" loading="lazy" decoding="async" width="400" height="260">
             <div class="gallery-overlay-lbl">Sinergi Departemen OKK</div>
           </div>
           <div class="gallery-frame">
-            <img src="assets/img/foto-kegiatan/06-hipmi/foto-05-dokumentasi.webp" alt="Dokumentasi Pertemuan HIPMI" loading="lazy">
+            <img src="assets/img/foto-kegiatan/06-hipmi/foto-05-dokumentasi.webp" alt="Dokumentasi Pertemuan HIPMI" loading="lazy" decoding="async" width="400" height="260">
             <div class="gallery-overlay-lbl">Rapat Koordinasi Pengurus</div>
           </div>
           <div class="gallery-frame">
-            <img src="assets/img/foto-kegiatan/06-hipmi/foto-profile-yossika-kaderisasi-dan-keanggotaan.webp" alt="Yossika HIPMI" loading="lazy">
+            <img src="assets/img/foto-kegiatan/06-hipmi/foto-profile-yossika-kaderisasi-dan-keanggotaan.webp" alt="Yossika HIPMI" loading="lazy" decoding="async" width="400" height="260">
             <div class="gallery-overlay-lbl">Yossika Putra &bull; Ketua Panitia MUBES</div>
           </div>
         </div>
@@ -2552,8 +2579,8 @@
       <div class="container">
         <div class="cta-executive-banner gsap-reveal">
           <div style="display:flex; justify-content:center; gap:0.75rem; margin-bottom:1.25rem;">
-            <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI" style="height:44px; width:auto;">
-            <img src="assets/img/logo-artha-jayana.webp" alt="Artha Jayana" style="height:44px; width:auto;">
+            <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI" style="height:44px; width:auto;" width="44" height="44" loading="lazy" decoding="async">
+            <img src="assets/img/logo-artha-jayana.webp" alt="Artha Jayana" style="height:44px; width:auto;" width="44" height="44" loading="lazy" decoding="async">
           </div>
           <h2 class="cta-h2">Unduh & Cetak Dokumen Proposal Resmi</h2>
           <p class="cta-p">
@@ -2585,8 +2612,8 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-emblems">
-        <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI" class="footer-logo">
-        <img src="assets/img/logo-artha-jayana.webp" alt="Artha Jayana" class="footer-logo">
+        <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI" class="footer-logo" width="36" height="36" loading="lazy" decoding="async">
+        <img src="assets/img/logo-artha-jayana.webp" alt="Artha Jayana" class="footer-logo" width="36" height="36" loading="lazy" decoding="async">
       </div>
       <div class="footer-lead">UKM HIPMI PT TELKOM UNIVERSITY PURWOKERTO</div>
       <p style="margin-bottom:0.4rem; color:var(--gold); font-weight:700;">KABINET ARTHA JAYANA &bull; PERIODE 2026/2027</p>
@@ -2595,9 +2622,9 @@
   </footer>
 
   <!-- Single Source of Truth & Vendor Scripts -->
-  <script src="js/mubes-data.js"></script>
-  <script src="js/vendor/gsap.min.js"></script>
-  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/mubes-data.min.js" defer></script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
 
   <!-- Interactive & GSAP Animation Script -->
   <script>
@@ -2674,7 +2701,7 @@
                   <!-- Instagram In-App Header -->
                   <div class="ig-header-bar">
                     <div class="ig-user-profile">
-                      <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT" class="ig-user-avatar">
+                      <img src="assets/img/logo-hipmi-pt-telu-official.webp" alt="HIPMI PT" class="ig-user-avatar" width="28" height="28" loading="lazy" decoding="async">
                       <div class="ig-user-info">
                         <span class="ig-user-handle">hipmitelkompurwokerto</span>
                         <span class="ig-user-subtitle">Kabinet Artha Jayana</span>
@@ -2685,7 +2712,7 @@
 
                   <!-- Instagram Poster Canvas -->
                   <div class="ig-poster-viewport">
-                    <img src="${posterSrc}" alt="Poster Resmi ${dep.nama}" loading="lazy">
+                    <img src="${posterSrc}" alt="Poster Resmi ${dep.nama}" loading="lazy" decoding="async" width="290" height="362">
                   </div>
 
                   <!-- Instagram In-App Actions -->
