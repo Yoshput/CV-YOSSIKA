@@ -10,6 +10,10 @@ const MUBES_DATA = {
   meta: {
     namaKegiatan: "Musyawarah Besar (MUBES) Himpunan Pengusaha Muda Indonesia (HIPMI) Perguruan Tinggi Telkom University Purwokerto",
     namaSingkat: "MUBES HIPMI PT Tel-U Purwokerto",
+    kabinet: "Kabinet Artha Jayana",
+    logoHipmi: "assets/img/logo-hipmi-telu.webp",
+    logoArthaJayana: "assets/img/logo-artha-jayana.webp",
+    logoEmblem: "assets/img/hipmi-artha-jayana-emblem.webp",
     periode: "2026/2027",
     tahun: "2026",
     statusDraft: "DRAFT PROPOSAL — SIAP REVIEW & PENGESAHAN",

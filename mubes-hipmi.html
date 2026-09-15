@@ -3,47 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MUBES HIPMI PT Telkom University Purwokerto — Gambaran Lengkap & Rundown Acara</title>
-  <meta name="description" content="Microsite resmi persiapan Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto. Informasi lengkap rundown sidang, struktur kepanitiaan, LPJ departemen, RAB, dan mitigasi risiko.">
-  <meta name="keywords" content="MUBES HIPMI, HIPMI PT Telkom University Purwokerto, Yossika Putra Erlangga, Musyawarah Besar, UKM HIPMI Tel-U, Proposal MUBES">
+  <title>MUBES HIPMI PT Telkom University Purwokerto — Kabinet Artha Jayana</title>
+  <meta name="description" content="Portal Resmi Persiapan Musyawarah Besar (MUBES) UKM HIPMI PT Telkom University Purwokerto — Kabinet Artha Jayana. Laporan Pertanggungjawaban (LPJ) per departemen, rundown sidang, bagan panitia, RAB, dan mitigasi risiko.">
+  <meta name="keywords" content="MUBES HIPMI, HIPMI PT Telkom University Purwokerto, Kabinet Artha Jayana, Yossika Putra Erlangga, Musyawarah Besar, Wirausaha Mahasiswa">
   <meta name="author" content="Yossika Putra Erlangga (Ketua Panitia MUBES)">
 
-  <!-- OpenGraph for WhatsApp & Social Sharing -->
+  <!-- OpenGraph for Social / WhatsApp Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="MUBES HIPMI PT Telkom University Purwokerto — Gambaran Lengkap Acara">
-  <meta property="og:description" content="Agenda Musyawarah Besar tahunan HIPMI PT Tel-U Purwokerto: Evaluasi LPJ per departemen, apresiasi pengurus, dan suksesi kepemimpinan wirausaha muda.">
-  <meta property="og:image" content="https://www.yossikaputra.my.id/assets/img/foto-kegiatan/06-hipmi/foto-departemen-kaderisasi-dan-keanggotaan.webp">
+  <meta property="og:title" content="MUBES HIPMI PT Tel-U Purwokerto — Kabinet Artha Jayana">
+  <meta property="og:description" content="Agenda Musyawarah Besar tahunan HIPMI PT Tel-U Purwokerto: Evaluasi LPJ departemen, apresiasi pengurus, dan suksesi kepemimpinan wirausaha muda.">
+  <meta property="og:image" content="https://www.yossikaputra.my.id/assets/img/hipmi-artha-jayana-emblem.webp">
   <meta property="og:url" content="https://www.yossikaputra.my.id/mubes-hipmi.html">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
-  <!-- Google Fonts -->
+  <!-- Apple SF-style & Executive Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-dark: #080c14;
-      --bg-surface: #0f172a;
-      --bg-card: rgba(30, 41, 59, 0.7);
-      --bg-card-hover: rgba(51, 65, 85, 0.85);
-      --border: rgba(255, 255, 255, 0.1);
-      --border-accent: rgba(245, 158, 11, 0.35);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg-base: #060911;
+      --bg-elevated: #0b1120;
+      --bg-surface: rgba(15, 23, 42, 0.72);
+      --glass-card: rgba(17, 24, 39, 0.65);
+      --glass-card-hover: rgba(30, 41, 59, 0.85);
+      --border-fine: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(212, 175, 55, 0.35);
+      --border-accent-strong: #d4af37;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
       --text-dim: #64748b;
-      --accent: #f59e0b;
-      --accent-glow: rgba(245, 158, 11, 0.25);
-      --accent-secondary: #0ea5e9;
-      --accent-green: #10b981;
-      --accent-red: #ef4444;
-      --navy-deep: #0b1f3a;
-      --font-display: 'Space Grotesk', -apple-system, sans-serif;
-      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
+      --gold: #d4af37;
+      --gold-bright: #f59e0b;
+      --gold-glow: rgba(212, 175, 55, 0.22);
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --sky: #38bdf8;
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
       --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -56,27 +59,28 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text);
+      background-color: var(--bg-base);
+      color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Ambient background glow */
-    .ambient-glow {
+    /* Ambient Lighting Mesh */
+    .ambient-mesh {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       background: 
-        radial-gradient(circle at 20% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 80% 45%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(217, 119, 6, 0.09) 0%, transparent 55%);
+        radial-gradient(ellipse 65% 50% at 50% -5%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 90% 70%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
     }
 
     .container {
@@ -86,47 +90,51 @@
       z-index: 1;
     }
 
-    /* Top Sticky Header */
-    .site-nav {
+    /* Tabular figures for precise numeric alignment */
+    .tabular {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+    }
+
+    /* ════ APPLE LIQUID GLASS HEADER ════ */
+    .apple-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 12, 20, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(6, 9, 17, 0.82);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border-bottom: 1px solid var(--border-fine);
       height: 72px;
       display: flex;
       align-items: center;
+      transition: var(--transition);
     }
-    .nav-inner {
+    .nav-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
     }
-    .brand-wrap {
+    .nav-brand-group {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.9rem;
       text-decoration: none;
-      color: var(--text);
+      color: var(--text-main);
     }
-    .hipmi-badge-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #f59e0b, #b45309);
-      color: #000;
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1rem;
+    .brand-emblems {
       display: flex;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+      gap: 0.4rem;
     }
-    .brand-text-block {
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    }
+    .brand-text-col {
       display: flex;
       flex-direction: column;
     }
@@ -134,32 +142,35 @@
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 1.05rem;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
       line-height: 1.15;
     }
-    .brand-sub {
+    .brand-kabinet {
       font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 700;
+      color: var(--gold);
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
     }
 
-    .nav-menu {
+    .nav-links-wrap {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.4rem;
       list-style: none;
     }
-    .nav-link {
-      color: var(--text-muted);
+    .nav-a {
+      color: var(--text-sub);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
       transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
-    .nav-link:hover {
-      color: var(--accent);
+    .nav-a:hover {
+      color: var(--gold);
     }
     .nav-actions {
       display: flex;
@@ -167,40 +178,48 @@
       gap: 0.75rem;
     }
 
+    /* Buttons with Apple Tactile Feedback */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
       padding: 0.65rem 1.35rem;
-      border-radius: 9999px;
+      border-radius: var(--radius-full);
       font-size: 0.88rem;
       font-weight: 700;
       text-decoration: none;
       transition: var(--transition);
       cursor: pointer;
-      border: none;
+      border: 1px solid transparent;
       white-space: nowrap;
       font-family: var(--font-body);
     }
-    .btn-primary {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #000;
-      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+    .btn:active {
+      transform: scale(0.97);
     }
-    .btn-primary:hover {
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #050811;
+      box-shadow: 0 4px 20px var(--gold-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+      border-color: #d4af37;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #f59e0b, #d4af37);
       transform: translateY(-2px);
-      box-shadow: 0 6px 26px rgba(245, 158, 11, 0.5);
+      box-shadow: 0 6px 26px rgba(212, 175, 55, 0.45);
       color: #000;
     }
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border);
-      color: var(--text);
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-fine);
+      color: var(--text-main);
     }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--accent);
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-accent);
       color: #fff;
       transform: translateY(-2px);
     }
@@ -209,19 +228,45 @@
       font-size: 0.82rem;
     }
 
-    /* Mobile hamburger */
-    .mobile-menu-toggle {
-      display: none;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
+    /* ════ EXECUTIVE MARQUEE TICKER ════ */
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(11, 17, 32, 0.7);
+      border-top: 1px solid var(--border-fine);
+      border-bottom: 1px solid var(--border-fine);
+      padding: 0.55rem 0;
+      user-select: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-slide 34s linear infinite;
+      gap: 2rem;
+    }
+    .marquee-item {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      cursor: pointer;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+    }
+    .marquee-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px var(--gold);
+    }
+    @keyframes marquee-slide {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
 
     /* ════ HERO SECTION ════ */
@@ -230,103 +275,113 @@
       text-align: center;
       position: relative;
     }
-    .hero-kicker {
+
+    /* Dual Emblem Floating Badge */
+    .dual-emblem-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1.1rem;
-      border-radius: 9999px;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      gap: 0.85rem;
+      background: rgba(17, 24, 39, 0.75);
+      border: 1px solid var(--border-accent);
+      padding: 0.45rem 1.25rem 0.45rem 0.65rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.75rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .emblem-pair {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .emblem-icon {
+      height: 32px;
+      width: 32px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    }
+    .emblem-label {
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
-      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      color: #fff;
     }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+    .emblem-label span {
+      color: var(--gold);
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
       font-weight: 800;
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       color: #fff;
       margin-bottom: 1.25rem;
-      max-width: 980px;
+      max-width: 1040px;
       margin-inline: auto;
     }
     .hero-title span {
-      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 80%, #fb923c 100%);
+      background: linear-gradient(135deg, #ffffff 40%, var(--gold) 85%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-desc {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-muted);
-      max-width: 760px;
-      margin: 0 auto 2.25rem;
-      line-height: 1.6;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
     }
 
-    /* Live Countdown Box */
-    .countdown-card {
+    /* Live Countdown Widget — Apple Dynamic Island Style */
+    .countdown-widget {
       background: rgba(15, 23, 42, 0.75);
       border: 1px solid var(--border-accent);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border-radius: var(--radius-lg);
       padding: 1.5rem 2rem;
-      max-width: 680px;
+      max-width: 640px;
       margin: 0 auto 2.5rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
-    .countdown-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      margin-bottom: 1rem;
+    .countdown-top-lbl {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
     }
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 0.85rem;
     }
-    .time-slot {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
+    .countdown-slot {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-sm);
       padding: 0.85rem 0.5rem;
     }
-    .time-val {
+    .slot-num {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
-      line-height: 1;
       color: #fff;
+      line-height: 1;
       margin-bottom: 0.2rem;
     }
-    .time-lbl {
+    .slot-name {
       font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-dim);
@@ -334,133 +389,142 @@
       letter-spacing: 0.08em;
     }
 
-    /* Theme Switcher in Hero */
-    .theme-picker-wrap {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--border);
+    /* Interactive Theme Previewer */
+    .theme-preview-card {
+      background: rgba(17, 24, 39, 0.65);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
-      max-width: 820px;
+      padding: 1.5rem 1.75rem;
+      max-width: 860px;
       margin: 0 auto 2.5rem;
       text-align: left;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    .theme-picker-head {
+    .theme-nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 0.85rem;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 0.9rem;
     }
-    .theme-picker-title {
-      font-size: 0.82rem;
+    .theme-nav-title {
+      font-size: 0.8rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .theme-options-tabs {
+    .theme-tab-pills {
       display: flex;
       gap: 0.4rem;
       flex-wrap: wrap;
     }
-    .theme-tab-btn {
+    .theme-pill-btn {
       padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-fine);
+      color: var(--text-sub);
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
+      font-family: var(--font-body);
     }
-    .theme-tab-btn:hover {
+    .theme-pill-btn:hover {
       color: #fff;
       background: rgba(255, 255, 255, 0.1);
     }
-    .theme-tab-btn.active {
-      background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
+    .theme-pill-btn.active {
+      background: var(--gold);
+      color: #060911;
+      border-color: var(--gold);
+      box-shadow: 0 2px 12px var(--gold-glow);
     }
-    .active-theme-display {
-      font-size: 1.05rem;
+    .theme-active-title {
+      font-size: 1.08rem;
       font-weight: 700;
       color: #fff;
       line-height: 1.45;
       margin-bottom: 0.4rem;
     }
-    .active-theme-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+    .theme-active-desc {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.55;
     }
 
-    /* Hero Quick Stats */
-    .hero-stats-row {
+    /* Hero Key Stats */
+    .hero-stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-      max-width: 900px;
+      gap: 1.5rem;
+      max-width: 940px;
       margin: 0 auto;
       padding-top: 2rem;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-fine);
     }
-    .stat-item {
+    .stat-box {
       text-align: center;
     }
-    .stat-number {
+    .stat-val-text {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: #fff;
       line-height: 1.1;
     }
-    .stat-label {
+    .stat-lbl-text {
       font-size: 0.78rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--text-sub);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 0.25rem;
+      letter-spacing: 0.06em;
+      margin-top: 0.3rem;
     }
 
-    /* ════ SECTIONS COMMON ════ */
+    /* ════ SECTIONS ════ */
     .section {
-      padding: 5rem 0;
+      padding: 5.5rem 0;
       position: relative;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-fine);
     }
     .section-head {
-      margin-bottom: 3.25rem;
+      margin-bottom: 3.5rem;
       text-align: center;
     }
-    .section-kicker {
+    .section-eyebrow {
       font-family: var(--font-display);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: var(--accent);
+      color: var(--gold);
       margin-bottom: 0.5rem;
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
     }
-    .section-title {
+    .section-h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
       color: #fff;
       margin-bottom: 0.85rem;
     }
-    .section-sub {
+    .section-subtext {
       font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 680px;
+      color: var(--text-sub);
+      max-width: 720px;
       margin-inline: auto;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ════ SIKLUS ORGANISASI CARDS ════ */
@@ -468,35 +532,35 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.75rem;
-      margin-bottom: 3rem;
     }
     .cycle-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--glass-card);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      padding: 2rem;
+      padding: 2.25rem 2rem;
       transition: var(--transition);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
       position: relative;
-      overflow: hidden;
     }
     .cycle-card:hover {
       transform: translateY(-4px);
       border-color: var(--border-accent);
-      background: var(--bg-card-hover);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      background: var(--glass-card-hover);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
-    .cycle-icon {
-      width: 52px;
-      height: 52px;
+    .cycle-svg-wrap {
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      color: var(--accent);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.4rem;
     }
     .cycle-title {
       font-family: var(--font-display);
@@ -505,22 +569,25 @@
       color: #fff;
       margin-bottom: 0.6rem;
     }
-    .cycle-desc {
+    .cycle-body {
       font-size: 0.92rem;
-      color: var(--text-muted);
+      color: var(--text-sub);
       line-height: 1.6;
     }
 
-    /* ════ 3-PILLAR BENEFIT TOGGLE ════ */
-    .benefit-box {
+    /* ════ 3-PILLAR BENEFIT TABS ════ */
+    .benefit-panel {
       background: var(--bg-surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-lg);
       padding: 2.5rem;
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-    .pillar-nav {
+    .pillar-tabs {
       display: flex;
       justify-content: center;
       gap: 0.75rem;
@@ -529,57 +596,68 @@
     }
     .pillar-btn {
       padding: 0.65rem 1.4rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-fine);
+      color: var(--text-sub);
       font-weight: 700;
       font-size: 0.88rem;
       cursor: pointer;
       transition: var(--transition);
+      font-family: var(--font-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .pillar-btn.active {
-      background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
-      box-shadow: 0 4px 16px var(--accent-glow);
+      background: var(--gold);
+      color: #060911;
+      border-color: var(--gold);
+      box-shadow: 0 4px 18px var(--gold-glow);
     }
-    .pillar-content-pane {
+    .pillar-pane {
       display: none;
     }
-    .pillar-content-pane.active {
+    .pillar-pane.active {
       display: block;
       animation: fadeIn 0.3s ease;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     .benefit-list {
       list-style: none;
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 1rem;
     }
-    .benefit-item {
+    .benefit-row {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
+      gap: 1.1rem;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-fine);
       padding: 1.25rem 1.5rem;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
     }
-    .benefit-check {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 1.1rem;
-      line-height: 1;
+    .benefit-row:hover {
+      border-color: var(--border-accent);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .check-svg-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       margin-top: 0.15rem;
     }
-    .benefit-text {
+    .benefit-desc {
       font-size: 0.95rem;
-      color: var(--text);
+      color: var(--text-main);
       line-height: 1.6;
     }
 
@@ -590,97 +668,103 @@
       gap: 1.5rem;
     }
     .lpj-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--glass-card);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      padding: 1.75rem;
+      padding: 1.85rem;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
     .lpj-card:hover {
-      border-color: var(--accent);
+      border-color: var(--border-accent);
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     }
-    .lpj-top {
+    .lpj-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1rem;
     }
-    .lpj-badge {
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: var(--accent);
+    .lpj-code-badge {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold);
       font-family: var(--font-display);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 800;
       padding: 0.25rem 0.65rem;
       border-radius: 6px;
       letter-spacing: 0.08em;
     }
-    .lpj-name {
+    .lpj-card-title {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 0.6rem;
     }
-    .lpj-fokus {
+    .lpj-focus-text {
       font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.55;
+      color: var(--text-sub);
+      line-height: 1.6;
       margin-bottom: 1.25rem;
       flex-grow: 1;
     }
     .lpj-proker-box {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-fine);
+      border-radius: var(--radius-sm);
       padding: 0.85rem 1rem;
     }
     .lpj-proker-lbl {
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: 0.72rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
+      letter-spacing: 0.1em;
+      color: var(--gold);
       margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
     }
     .lpj-proker-val {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: #e2e8f0;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
-    /* ════ INTERACTIVE RUNDOWN TIMELINE ════ */
-    .rundown-controls {
+    /* ════ RUNDOWN TIMELINE ════ */
+    .rundown-filters {
       display: flex;
       justify-content: center;
       gap: 0.5rem;
       margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
-    .rundown-filter-btn {
-      padding: 0.45rem 1rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
+    .filter-btn {
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-fine);
+      color: var(--text-sub);
       font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
+      font-family: var(--font-body);
     }
-    .rundown-filter-btn.active {
-      background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
+    .filter-btn.active {
+      background: var(--gold);
+      color: #060911;
+      border-color: var(--gold);
     }
 
     .timeline-stream {
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
       position: relative;
       padding-left: 2rem;
@@ -689,11 +773,11 @@
       content: '';
       position: absolute;
       left: 7px;
-      top: 10px;
-      bottom: 10px;
+      top: 15px;
+      bottom: 15px;
       width: 2px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), var(--accent));
-      opacity: 0.4;
+      background: linear-gradient(to bottom, var(--gold), var(--sky), var(--gold));
+      opacity: 0.35;
     }
     .timeline-node {
       position: relative;
@@ -702,28 +786,29 @@
     .timeline-dot {
       position: absolute;
       left: -2rem;
-      top: 1.25rem;
+      top: 1.35rem;
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: var(--bg-dark);
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 10px var(--accent);
+      background: var(--bg-base);
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 10px var(--gold);
     }
     .timeline-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--glass-card);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
       padding: 1.5rem 1.75rem;
       transition: var(--transition);
-      cursor: pointer;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
     .timeline-card:hover {
-      background: var(--bg-card-hover);
+      background: var(--glass-card-hover);
       border-color: var(--border-accent);
       transform: translateX(4px);
     }
-    .timeline-header {
+    .timeline-header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -731,161 +816,171 @@
       flex-wrap: wrap;
       margin-bottom: 0.5rem;
     }
-    .timeline-time-badge {
+    .timeline-time-pill {
       font-family: var(--font-display);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 700;
-      color: var(--accent);
-      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.1);
       padding: 0.25rem 0.65rem;
       border-radius: 6px;
-      border: 1px solid rgba(245, 158, 11, 0.25);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
-    .timeline-duration {
+    .timeline-dur-text {
       font-size: 0.75rem;
       color: var(--text-dim);
       font-weight: 600;
     }
-    .timeline-sesi-title {
+    .timeline-title-text {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 0.35rem;
     }
-    .timeline-desc {
+    .timeline-desc-text {
       font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.55;
+      color: var(--text-sub);
+      line-height: 1.6;
       margin-bottom: 0.85rem;
     }
-    .timeline-pic-row {
+    .timeline-pic-tag {
       display: flex;
       align-items: center;
       gap: 0.4rem;
       font-size: 0.8rem;
-      color: var(--accent-secondary);
+      color: var(--sky);
       font-weight: 600;
     }
 
-    /* ════ ORG CHART & KEPANITIAAN ════ */
+    /* ════ ORG CHART ════ */
     .org-chart-wrap {
       max-width: 1040px;
       margin: 0 auto;
     }
-    .org-level {
+    .org-row-level {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
     }
-    .org-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+    .org-box {
+      background: var(--glass-card);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
+      padding: 1.35rem 1.65rem;
       text-align: center;
       transition: var(--transition);
-      min-width: 220px;
+      min-width: 240px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    .org-card:hover {
-      border-color: var(--accent);
+    .org-box:hover {
+      border-color: var(--border-accent);
       transform: translateY(-4px);
     }
-    .org-card.lead {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9));
-      border-color: var(--accent);
-      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.2);
-      min-width: 280px;
+    .org-box.prime {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(15, 23, 42, 0.85));
+      border-color: var(--border-accent-strong);
+      box-shadow: 0 10px 30px var(--gold-glow), inset 0 1px 0 rgba(255,255,255,0.15);
+      min-width: 300px;
     }
-    .org-role {
-      font-size: 0.75rem;
+    .org-role-lbl {
+      font-size: 0.74rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
+      letter-spacing: 0.12em;
+      color: var(--gold);
       margin-bottom: 0.35rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
-    .org-name {
+    .org-person-name {
       font-family: var(--font-display);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #fff;
     }
-    .org-nim {
+    .org-person-sub {
       font-size: 0.78rem;
       color: var(--text-dim);
       margin-top: 0.2rem;
     }
 
-    /* Division Grid */
-    .division-grid {
+    /* Divisions */
+    .divisions-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
-    .div-card {
+    .division-item-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      padding: 1.5rem;
+      padding: 1.6rem;
       transition: var(--transition);
     }
-    .div-card:hover {
-      border-color: var(--accent);
+    .division-item-card:hover {
+      border-color: var(--border-accent);
       transform: translateY(-3px);
     }
-    .div-title {
+    .division-name-head {
       font-family: var(--font-display);
       font-size: 1.05rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-    .div-coord {
-      font-size: 0.85rem;
-      color: var(--accent);
+    .division-leader-text {
+      font-size: 0.84rem;
+      color: var(--gold);
       font-weight: 600;
       margin-bottom: 0.85rem;
       padding-bottom: 0.65rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-fine);
     }
-    .div-tasks {
+    .division-tasks-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
-    .div-task-item {
+    .div-task-row {
       font-size: 0.82rem;
-      color: var(--text-muted);
+      color: var(--text-sub);
       line-height: 1.45;
       position: relative;
       padding-left: 1.1rem;
     }
-    .div-task-item::before {
-      content: '•';
+    .div-task-row::before {
+      content: '—';
       position: absolute;
       left: 0;
-      color: var(--accent);
+      color: var(--gold);
       font-weight: 800;
     }
 
-    /* ════ RAB SECTION (VISUAL & TABLE) ════ */
-    .rab-visual-box {
+    /* ════ RAB SECTION ════ */
+    .rab-container-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-lg);
-      padding: 2.25rem;
+      padding: 2.5rem;
       max-width: 1040px;
       margin: 0 auto 2.5rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
-    .rab-total-banner {
+    .rab-header-banner {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -893,156 +988,161 @@
       flex-wrap: wrap;
       margin-bottom: 1.75rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-fine);
     }
-    .rab-total-title {
-      font-size: 0.85rem;
+    .rab-banner-sub {
+      font-size: 0.82rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      color: var(--text-sub);
     }
-    .rab-total-amount {
+    .rab-grand-amount {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 800;
-      color: var(--accent);
+      color: var(--gold);
       line-height: 1;
     }
-    .rab-progress-bar {
-      height: 16px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.06);
+    .rab-bar-track {
+      height: 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       overflow: hidden;
       margin-bottom: 1.25rem;
     }
-    .progress-segment {
+    .bar-seg {
       height: 100%;
-      transition: width 0.5s ease;
+      transition: width 0.6s ease;
     }
-    .seg-1 { background: #f59e0b; }
-    .seg-2 { background: #38bdf8; }
-    .seg-3 { background: #10b981; }
-    .seg-4 { background: #a855f7; }
-    .seg-5 { background: #f43f5e; }
+    .seg-konsumsi { background: #d4af37; }
+    .seg-sekretariat { background: #38bdf8; }
+    .seg-publikasi { background: #10b981; }
+    .seg-logistik { background: #a855f7; }
+    .seg-cadangan { background: #f43f5e; }
 
-    .rab-legend-grid {
+    .rab-legend-wrap {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 1rem;
     }
-    .legend-item {
+    .legend-box {
       display: flex;
       align-items: center;
       gap: 0.6rem;
       font-size: 0.82rem;
+      color: var(--text-main);
     }
-    .legend-dot {
-      width: 12px;
-      height: 12px;
+    .legend-color-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 3px;
       flex-shrink: 0;
     }
 
-    /* RAB Table Details */
-    .rab-table-wrap {
+    /* Table */
+    .table-scroll-wrap {
       max-width: 1040px;
       margin: 0 auto;
       overflow-x: auto;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      background: var(--bg-card);
+      background: var(--glass-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    table.web-table {
+    table.data-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
       font-size: 0.88rem;
     }
-    table.web-table th, table.web-table td {
-      padding: 0.85rem 1.15rem;
-      border-bottom: 1px solid var(--border);
+    table.data-table th, table.data-table td {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--border-fine);
     }
-    table.web-table th {
-      background: rgba(15, 23, 42, 0.9);
+    table.data-table th {
+      background: rgba(11, 17, 32, 0.9);
       font-family: var(--font-display);
       font-weight: 700;
       color: #fff;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
     }
-    table.web-table tr:hover td {
+    table.data-table tr:hover td {
       background: rgba(255, 255, 255, 0.02);
     }
-    table.web-table .cat-row td {
-      background: rgba(245, 158, 11, 0.08);
+    table.data-table .group-row td {
+      background: rgba(212, 175, 55, 0.08);
       font-family: var(--font-display);
       font-weight: 800;
-      color: var(--accent);
+      color: var(--gold);
       border-top: 1px solid var(--border-accent);
     }
 
-    /* ════ MITIGASI RISIKO MATRIX CARDS ════ */
-    .mitigasi-grid {
+    /* ════ MITIGASI RISIKO MATRIX ════ */
+    .mitigasi-matrix {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
     }
-    .mitigasi-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+    .risk-panel {
+      background: var(--glass-card);
+      border: 1px solid var(--border-fine);
       border-radius: var(--radius-md);
-      padding: 1.75rem;
+      padding: 1.85rem;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
-    .mitigasi-card:hover {
+    .risk-panel:hover {
       border-color: var(--border-accent);
       transform: translateY(-4px);
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     }
-    .risk-header {
+    .risk-top-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 0.75rem;
       gap: 0.5rem;
     }
-    .risk-id {
+    .risk-code {
       font-family: var(--font-display);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--gold);
     }
-    .risk-level-badge {
-      font-size: 0.72rem;
+    .severity-pill {
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      padding: 0.2rem 0.55rem;
-      border-radius: 9999px;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
     }
-    .level-kritis {
-      background: rgba(239, 68, 68, 0.2);
-      border: 1px solid #ef4444;
+    .sev-kritis {
+      background: rgba(244, 63, 94, 0.18);
+      border: 1px solid #f43f5e;
       color: #fca5a5;
     }
-    .level-tinggi {
-      background: rgba(245, 158, 11, 0.2);
+    .sev-tinggi {
+      background: rgba(245, 158, 11, 0.18);
       border: 1px solid #f59e0b;
       color: #fde68a;
     }
-    .level-sedang {
-      background: rgba(14, 165, 233, 0.2);
-      border: 1px solid #0ea5e9;
+    .sev-sedang {
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid #38bdf8;
       color: #bae6fd;
     }
-    .risk-title {
+    .risk-heading {
       font-family: var(--font-display);
       font-size: 1.1rem;
       font-weight: 700;
@@ -1050,65 +1150,66 @@
       margin-bottom: 0.6rem;
       line-height: 1.35;
     }
-    .risk-impact {
+    .risk-impact-box {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-sub);
       margin-bottom: 1.25rem;
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 6px;
-      padding: 0.65rem 0.85rem;
-      border-left: 3px solid rgba(239, 68, 68, 0.6);
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 0.75rem 0.95rem;
+      border-left: 3px solid rgba(244, 63, 94, 0.7);
     }
-    .risk-solution-list {
+    .risk-mitigations {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
       margin-top: auto;
     }
-    .risk-solution-item {
+    .mitigation-point {
       font-size: 0.82rem;
       color: #e2e8f0;
       line-height: 1.45;
       position: relative;
-      padding-left: 1.15rem;
+      padding-left: 1.25rem;
     }
-    .risk-solution-item::before {
+    .mitigation-point::before {
       content: '✓';
       position: absolute;
       left: 0;
-      color: var(--accent-green);
+      color: var(--emerald);
       font-weight: 800;
     }
 
-    /* ════ PHOTO GALLERY HIPMI ════ */
-    .gallery-grid {
+    /* ════ PHOTO GALLERY ════ */
+    .photo-grid-showcase {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
       max-width: 1100px;
       margin: 0 auto;
     }
-    .photo-item {
+    .gallery-frame {
       border-radius: var(--radius-md);
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-fine);
       aspect-ratio: 4 / 3;
       background: var(--bg-surface);
       position: relative;
       transition: var(--transition);
     }
-    .photo-item:hover {
+    .gallery-frame:hover {
       transform: scale(1.02);
-      border-color: var(--accent);
+      border-color: var(--border-accent);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
     }
-    .photo-item img {
+    .gallery-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .photo-caption {
+    .gallery-overlay-lbl {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -1120,226 +1221,282 @@
       color: #fff;
     }
 
-    /* ════ CTA PROPOSAL DOWNLOAD ════ */
-    .cta-banner {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(11, 31, 58, 0.9) 100%);
+    /* ════ CTA BANNER ════ */
+    .cta-executive-banner {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(11, 17, 32, 0.95) 100%);
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 3.5rem 2.5rem;
       text-align: center;
       max-width: 960px;
       margin: 0 auto;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.12);
     }
-    .cta-title {
+    .cta-h2 {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       font-weight: 800;
       color: #fff;
       margin-bottom: 0.85rem;
     }
-    .cta-sub {
+    .cta-p {
       font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 620px;
+      color: var(--text-sub);
+      max-width: 640px;
       margin: 0 auto 2rem;
     }
-    .cta-actions {
+    .cta-btn-group {
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
-    /* Floating Quick Bar for Mobile */
-    .mobile-floating-bar {
+    /* Floating Quick Bar Mobile */
+    .floating-ios-bar {
       display: none;
       position: fixed;
-      bottom: 1rem;
-      left: 1rem;
-      right: 1rem;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
       z-index: 99;
-      background: rgba(15, 23, 42, 0.94);
-      backdrop-filter: blur(14px);
+      background: rgba(11, 17, 32, 0.88);
+      backdrop-filter: blur(20px) saturate(190%);
+      -webkit-backdrop-filter: blur(20px) saturate(190%);
       border: 1px solid var(--border-accent);
-      border-radius: 9999px;
-      padding: 0.5rem 0.75rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border-radius: var(--radius-full);
+      padding: 0.5rem 0.85rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
       justify-content: space-between;
       align-items: center;
     }
-    .mobile-float-text {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      padding-left: 0.5rem;
+    .float-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #fff;
+      padding-left: 0.4rem;
+    }
+    .float-title span {
+      color: var(--gold);
     }
 
     /* Footer */
     .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
+      border-top: 1px solid var(--border-fine);
+      padding: 3.5rem 0;
       text-align: center;
       color: var(--text-dim);
       font-size: 0.85rem;
     }
-    .footer-brand {
+    .footer-emblems {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .footer-logo {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+    .footer-lead {
       font-family: var(--font-display);
       font-size: 1.1rem;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     /* Responsive */
     @media (max-width: 900px) {
-      .nav-menu { display: none; }
-      .mobile-menu-toggle { display: flex; }
+      .nav-links-wrap { display: none; }
       .cycle-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-stats-row { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .mobile-floating-bar { display: flex; }
+      .photo-grid-showcase { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .floating-ios-bar { display: flex; }
     }
     @media (max-width: 600px) {
       .hero { padding: 3rem 0 2rem; }
-      .countdown-card { padding: 1.25rem 1rem; }
-      .time-slot { padding: 0.6rem 0.2rem; }
-      .stat-number { font-size: 1.6rem; }
-      .benefit-box { padding: 1.5rem 1rem; }
-      .rab-visual-box { padding: 1.5rem 1rem; }
-      .gallery-grid { grid-template-columns: 1fr; }
+      .countdown-widget { padding: 1.25rem 1rem; }
+      .slot-num { font-size: 1.6rem; }
+      .benefit-panel { padding: 1.5rem 1rem; }
+      .rab-container-card { padding: 1.5rem 1rem; }
+      .photo-grid-showcase { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="ambient-mesh" aria-hidden="true"></div>
 
-  <!-- ════ HEADER NAVBAR ════ -->
-  <header class="site-nav">
-    <div class="container nav-inner">
-      <a href="#hero" class="brand-wrap">
-        <div class="hipmi-badge-logo">H</div>
-        <div class="brand-text-block">
+  <!-- ════ APPLE FROSTED GLASS NAVIGATION ════ -->
+  <header class="apple-nav">
+    <div class="container nav-content">
+      <a href="#hero" class="nav-brand-group">
+        <div class="brand-emblems">
+          <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI PT Tel-U" class="brand-logo-img">
+          <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="brand-logo-img">
+        </div>
+        <div class="brand-text-col">
           <span class="brand-title">MUBES HIPMI PT</span>
-          <span class="brand-sub">Tel-U Purwokerto 2026</span>
+          <span class="brand-kabinet">Kabinet Artha Jayana</span>
         </div>
       </a>
 
       <nav>
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#latar-belakang" class="nav-link">Latar Belakang</a></li>
-          <li><a href="#tujuan-manfaat" class="nav-link">Tujuan & Manfaat</a></li>
-          <li><a href="#departemen" class="nav-link">LPJ Departemen</a></li>
-          <li><a href="#rundown" class="nav-link">Rundown Sidang</a></li>
-          <li><a href="#panitia" class="nav-link">Struktur Panitia</a></li>
-          <li><a href="#rab" class="nav-link">RAB</a></li>
-          <li><a href="#mitigasi" class="nav-link">Mitigasi Risiko</a></li>
+        <ul class="nav-links-wrap">
+          <li><a href="#latar-belakang" class="nav-a">Konstitusi</a></li>
+          <li><a href="#tujuan-manfaat" class="nav-a">Tujuan</a></li>
+          <li><a href="#departemen" class="nav-a">LPJ</a></li>
+          <li><a href="#rundown" class="nav-a">Rundown</a></li>
+          <li><a href="#panitia" class="nav-a">Panitia</a></li>
+          <li><a href="#rab" class="nav-a">RAB</a></li>
+          <li><a href="#mitigasi" class="nav-a">Mitigasi</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-primary btn-sm">
-          📄 Cetak Proposal PDF
+        <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-gold btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Proposal PDF</span>
         </a>
-        <a href="index.html" class="btn btn-secondary btn-sm">
-          Portofolio Yossika ↗
+        <a href="index.html" class="btn btn-glass btn-sm">
+          <span>Portofolio</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
     </div>
   </header>
 
+  <!-- ════ EXECUTIVE MARQUEE TICKER ════ -->
+  <div class="marquee-container" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span> Akuntabilitas Teruji</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Transparansi LPJ</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Suksesi Kepemimpinan</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Pejuang Pengusaha</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Pengusaha Pejuang</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> HIPMI PT Telkom University Purwokerto</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Kabinet Artha Jayana</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Musyawarah Besar 2026</span>
+      <!-- Repeated for seamless loop -->
+      <span class="marquee-item"><span class="marquee-dot"></span> Akuntabilitas Teruji</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Transparansi LPJ</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Suksesi Kepemimpinan</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Pejuang Pengusaha</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Pengusaha Pejuang</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> HIPMI PT Telkom University Purwokerto</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Kabinet Artha Jayana</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Musyawarah Besar 2026</span>
+    </div>
+  </div>
+
   <main>
     <!-- ════ HERO SECTION ════ -->
     <section class="hero" id="hero">
       <div class="container">
-        <div class="hero-kicker">
-          <span class="pulse-dot"></span>
-          <span>Agenda Tahunan Konstitusi & Regenerasi</span>
+        <!-- Dual Emblem Hero Badge -->
+        <div class="dual-emblem-badge gsap-hero-el">
+          <div class="emblem-pair">
+            <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI PT Telkom Purwokerto" class="emblem-icon">
+            <img src="assets/img/logo-artha-jayana.webp" alt="Kabinet Artha Jayana" class="emblem-icon">
+          </div>
+          <div class="emblem-label">
+            HIPMI PT TELKOM PURWOKERTO &bull; <span>KABINET ARTHA JAYANA</span>
+          </div>
         </div>
 
-        <h1 class="hero-title">
+        <h1 class="hero-title gsap-hero-el">
           Musyawarah Besar (MUBES)<br>
-          <span>UKM HIPMI PT Telkom University Purwokerto</span>
+          <span>Estafet Wirausaha Muda Berintegritas</span>
         </h1>
 
-        <p class="hero-desc">
-          Forum musyawarah konstitusional tertinggi: Evaluasi LPJ program kerja per departemen, pemberian apresiasi pengurus periode berjalan, dan estafet kepemimpinan wirausaha muda kampus.
+        <p class="hero-desc gsap-hero-el">
+          Forum konstitusional musyawarah tertinggi UKM HIPMI PT Telkom University Purwokerto — evaluasi laporan pertanggungjawaban (LPJ) per departemen, apresiasi pengurus periode berjalan, dan regenerasi kepemimpinan masa depan.
         </p>
 
-        <!-- Live Countdown Timer -->
-        <div class="countdown-card">
-          <div class="countdown-label">
-            <span>⏱️ Menghitung Hari Menuju Pelaksanaan MUBES</span>
+        <!-- Live Countdown Widget -->
+        <div class="countdown-widget gsap-hero-el">
+          <div class="countdown-top-lbl">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Menghitung Hari Menuju Hari-H Pelaksanaan</span>
           </div>
           <div class="countdown-grid">
-            <div class="time-slot">
-              <div class="time-val" id="cntDays">60</div>
-              <div class="time-lbl">Hari</div>
+            <div class="countdown-slot">
+              <div class="slot-num tabular" id="cntDays">00</div>
+              <div class="slot-name">Hari</div>
             </div>
-            <div class="time-slot">
-              <div class="time-val" id="cntHours">14</div>
-              <div class="time-lbl">Jam</div>
+            <div class="countdown-slot">
+              <div class="slot-num tabular" id="cntHours">00</div>
+              <div class="slot-name">Jam</div>
             </div>
-            <div class="time-slot">
-              <div class="time-val" id="cntMinutes">32</div>
-              <div class="time-lbl">Menit</div>
+            <div class="countdown-slot">
+              <div class="slot-num tabular" id="cntMinutes">00</div>
+              <div class="slot-name">Menit</div>
             </div>
-            <div class="time-slot">
-              <div class="time-val" id="cntSeconds">45</div>
-              <div class="time-lbl">Detik</div>
+            <div class="countdown-slot">
+              <div class="slot-num tabular" id="cntSeconds">00</div>
+              <div class="slot-name">Detik</div>
             </div>
           </div>
         </div>
 
-        <!-- Interactive Theme Switcher -->
-        <div class="theme-picker-wrap">
-          <div class="theme-picker-head">
-            <span class="theme-picker-title">Pilih & Pratinjau Opsi Tema MUBES :</span>
-            <div class="theme-options-tabs" id="themeTabGroup">
-              <button class="theme-tab-btn active" onclick="switchTheme(1)">Tema 1 (Utama)</button>
-              <button class="theme-tab-btn" onclick="switchTheme(2)">Tema 2</button>
-              <button class="theme-tab-btn" onclick="switchTheme(3)">Tema 3</button>
+        <!-- Interactive Theme Previewer -->
+        <div class="theme-preview-card gsap-hero-el">
+          <div class="theme-nav-bar">
+            <div class="theme-nav-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Alternatif Tema Musyawarah Besar :</span>
+            </div>
+            <div class="theme-tab-pills" id="themeTabGroup">
+              <button class="theme-pill-btn active" onclick="switchTheme(1)">Tema 1 (Utama)</button>
+              <button class="theme-pill-btn" onclick="switchTheme(2)">Tema 2</button>
+              <button class="theme-pill-btn" onclick="switchTheme(3)">Tema 3</button>
             </div>
           </div>
-          <div class="active-theme-display" id="activeThemeTitle">
+          <div class="theme-active-title" id="activeThemeTitle">
             "Navigating Synergy: Melahirkan Pemimpin Pengusaha Muda yang Adaptif, Akuntabel, dan Berkelanjutan"
           </div>
-          <div class="active-theme-desc" id="activeThemeDesc">
+          <div class="theme-active-desc" id="activeThemeDesc">
             Menekankan pentingnya kolaborasi antar departemen, pertanggungjawaban program kerja yang transparan, dan kesiapan suksesi kepengurusan baru di era wirausaha digital.
           </div>
         </div>
 
-        <!-- Action CTAs -->
-        <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:2.5rem;">
-          <a href="#rundown" class="btn btn-primary">
-            ⏱️ Jelajahi Rundown Sidang
+        <!-- Hero Actions -->
+        <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:2.8rem;" class="gsap-hero-el">
+          <a href="#rundown" class="btn btn-gold">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Rundown Sidang Pleno</span>
           </a>
-          <a href="#panitia" class="btn btn-secondary">
-            👥 Org Chart Kepanitiaan
+          <a href="#panitia" class="btn btn-glass">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span>Struktur Kepanitiaan</span>
           </a>
-          <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-secondary">
-            🖨️ Buka Proposal Siap Cetak (A4) ↗
+          <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-glass">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Proposal Siap Cetak (A4)</span>
           </a>
         </div>
 
-        <!-- Hero Stats Row -->
-        <div class="hero-stats-row">
-          <div class="stat-item">
-            <div class="stat-number">120+</div>
-            <div class="stat-label">Target Peserta</div>
+        <!-- Hero Quick Stats Row -->
+        <div class="hero-stats-grid gsap-hero-el">
+          <div class="stat-box">
+            <div class="stat-val-text tabular" data-counter="120">120+</div>
+            <div class="stat-lbl-text">Target Peserta</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Sesi Pleno Sidang</div>
+          <div class="stat-box">
+            <div class="stat-val-text tabular" data-counter="5">5</div>
+            <div class="stat-lbl-text">Sesi Pleno Sidang</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Departemen LPJ</div>
+          <div class="stat-box">
+            <div class="stat-val-text tabular" data-counter="5">5</div>
+            <div class="stat-lbl-text">Departemen LPJ</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">Aula</div>
-            <div class="stat-label">Venue Kampus Tel-U</div>
+          <div class="stat-box">
+            <div class="stat-val-text tabular" style="color:var(--gold);">Aula</div>
+            <div class="stat-lbl-text">Venue Kampus Tel-U</div>
           </div>
         </div>
       </div>
@@ -1348,107 +1505,146 @@
     <!-- ════ SECTION 1: LATAR BELAKANG & SIKLUS ORGANISASI ════ -->
     <section class="section" id="latar-belakang">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Konstitusi & Urgensi</span>
-          <h2 class="section-title">Fondasi Musyawarah Besar</h2>
-          <p class="section-sub">
-            MUBES adalah pilar tertinggi suksesi HIPMI PT Telkom University Purwokerto. Menegakkan prinsip akuntabilitas program kerja dan menjaga siklus kepemimpinan yang sehat.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>Konstitusi & Urgensi</span>
+          </span>
+          <h2 class="section-h2">Fondasi Musyawarah Besar</h2>
+          <p class="section-subtext">
+            MUBES adalah pilar tertinggi suksesi HIPMI PT Telkom University Purwokerto — menegakkan akuntabilitas program kerja dan menjaga siklus kepemimpinan yang sehat.
           </p>
         </div>
 
         <div class="cycle-grid">
-          <div class="cycle-card">
-            <div class="cycle-icon">📊</div>
+          <div class="cycle-card gsap-card">
+            <div class="cycle-svg-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
             <h3 class="cycle-title">1. Evaluasi LPJ Objektif</h3>
-            <p class="cycle-desc">
-              Bukan evaluasi umum biasa. Setiap departemen mempertanggungjawabkan realisasi program kerja, efisiensi kas, dan kendala lapangan secara terukur dan transparan.
+            <p class="cycle-body">
+              Bukan sekadar evaluasi umum biasa. Setiap departemen mempertanggungjawabkan realisasi program kerja, efisiensi kas, dan kendala lapangan secara terukur dan transparan.
             </p>
           </div>
 
-          <div class="cycle-card">
-            <div class="cycle-icon">🏆</div>
+          <div class="cycle-card gsap-card">
+            <div class="cycle-svg-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
             <h3 class="cycle-title">2. Apresiasi Pengurus</h3>
-            <p class="cycle-desc">
+            <p class="cycle-body">
               Pemberian penghargaan resmi kepada jajaran pengurus, koordinator divisi, dan staf periode berjalan atas dedikasi dan waktu yang dicurahkan demi kemajuan HIPMI PT.
             </p>
           </div>
 
-          <div class="cycle-card">
-            <div class="cycle-icon">🚀</div>
+          <div class="cycle-card gsap-card">
+            <div class="cycle-svg-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </div>
             <h3 class="cycle-title">3. Regenerasi Formatur</h3>
-            <p class="cycle-desc">
-              Penyempurnaan aturan tata tertib dan AD/ART, diikuti pemilihan Ketua Umum baru yang demokratis, berintegritas, dan menjunjung semboyan <em>Pejuang Pengusaha</em>.
+            <p class="cycle-body">
+              Penyempurnaan tata tertib persidangan dan AD/ART, diikuti suksesi Ketua Umum baru yang demokratis, berintegritas, dan menjunjung semboyan <em>Pejuang Pengusaha</em>.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ════ SECTION 2: TUJUAN & MANFAAT (3-PILLAR TOGGLE) ════ -->
-    <section class="section" id="tujuan-manfaat" style="background: rgba(15, 23, 42, 0.4);">
+    <!-- ════ SECTION 2: TUJUAN & MANFAAT (3-PILLAR) ════ -->
+    <section class="section" id="tujuan-manfaat" style="background: rgba(11, 17, 32, 0.4);">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Dampak & Esensi</span>
-          <h2 class="section-title">Tujuan & Manfaat Multi-Pihak</h2>
-          <p class="section-sub">
-            Pelaksanaan MUBES memberikan kontribusi konkret dan berkelanjutan bagi organisasi, anggota, serta kampus Telkom University Purwokerto.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Dampak & Esensi</span>
+          </span>
+          <h2 class="section-h2">Tujuan & Manfaat Multi-Pihak</h2>
+          <p class="section-subtext">
+            Pelaksanaan MUBES memberikan kontribusi konkret dan terukur bagi organisasi, anggota, serta kampus Telkom University Purwokerto.
           </p>
         </div>
 
-        <div class="benefit-box">
-          <div class="pillar-nav">
-            <button class="pillar-btn active" onclick="switchPillar('organisasi')">🏢 Bagi UKM HIPMI PT</button>
-            <button class="pillar-btn" onclick="switchPillar('anggota')">🎓 Bagi Anggota & Kader</button>
-            <button class="pillar-btn" onclick="switchPillar('kampus')">🏛️ Bagi Telkom University</button>
+        <div class="benefit-panel gsap-reveal">
+          <div class="pillar-tabs">
+            <button class="pillar-btn active" onclick="switchPillar('organisasi')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+              <span>Bagi UKM HIPMI PT</span>
+            </button>
+            <button class="pillar-btn" onclick="switchPillar('anggota')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span>Bagi Anggota & Kader</span>
+            </button>
+            <button class="pillar-btn" onclick="switchPillar('kampus')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Bagi Telkom University</span>
+            </button>
           </div>
 
-          <div class="pillar-content-pane active" id="pane-organisasi">
+          <div class="pillar-pane active" id="pane-organisasi">
             <ul class="benefit-list">
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Menjamin Kesinambungan Kepemimpinan:</strong> Estafet tongkat kepengurusan berjalan teratur tanpa kekosongan kekuasaan (vacuum of power).</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Menjamin Kesinambungan Kepemimpinan:</strong> Estafet tongkat kepengurusan berjalan teratur tanpa kekosongan kekuasaan (vacuum of power).</div>
               </li>
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Transparansi & Akuntabilitas Tata Kelola:</strong> Seluruh laporan pertanggungjawaban (LPJ) keuangan dan kegiatan terdokumentasi rapi untuk arsip organisasi.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Transparansi & Akuntabilitas Tata Kelola:</strong> Seluruh laporan pertanggungjawaban (LPJ) keuangan dan kegiatan terdokumentasi rapi untuk arsip organisasi.</div>
               </li>
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Panduan Strategis Pengurus Baru:</strong> Rekomendasi sidang komisi menjadi kompas haluan kerja bagi kepengurusan periode berikutnya.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Panduan Strategis Pengurus Baru:</strong> Rekomendasi sidang komisi menjadi kompas haluan kerja bagi kepengurusan periode berikutnya.</div>
               </li>
             </ul>
           </div>
 
-          <div class="pillar-content-pane" id="pane-anggota">
+          <div class="pillar-pane" id="pane-anggota">
             <ul class="benefit-list">
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Kawah Candra Dimuka Kepemimpinan:</strong> Kader mahasiswa belajar langsung etika persidangan formal, berargumen logis, dan tata kelola musyawarah mufakat.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Kawah Candra Dimuka Kepemimpinan:</strong> Kader mahasiswa belajar langsung etika persidangan formal, berargumen logis, dan tata kelola musyawarah mufakat.</div>
               </li>
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Ruang Aspirasi Demokratis:</strong> Setiap anggota memiliki hak suara dan ruang untuk menyampaikan kritik serta masukan konstruktif demi kemajuan bersama.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Ruang Aspirasi Demokratis:</strong> Setiap anggota memiliki hak suara dan ruang untuk menyampaikan kritik serta masukan konstruktif demi kemajuan bersama.</div>
               </li>
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Networking Pengusaha Muda:</strong> Mempererat silaturahmi antar-angkatan, anggota aktif, dan para alumni demisioner HIPMI PT Tel-U Purwokerto.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Networking Pengusaha Muda:</strong> Mempererat silaturahmi antar-angkatan, anggota aktif, dan para alumni demisioner HIPMI PT Tel-U Purwokerto.</div>
               </li>
             </ul>
           </div>
 
-          <div class="pillar-content-pane" id="pane-kampus">
+          <div class="pillar-pane" id="pane-kampus">
             <ul class="benefit-list">
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Penguatan Indikator Kinerja Kemahasiswaan:</strong> Memperkuat citra Telkom University Purwokerto dalam mencetak mahasiswa aktif, tertib organisasi, dan berjiwa wirausaha.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Penguatan Indikator Kinerja Kemahasiswaan:</strong> Memperkuat citra Telkom University Purwokerto dalam mencetak mahasiswa aktif, tertib organisasi, dan berjiwa wirausaha.</div>
               </li>
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Kaderisasi Berkelanjutan:</strong> Menjaga eksistensi UKM HIPMI PT sebagai inkubator bisnis mahasiswa yang aktif berkontribusi pada akreditasi kampus.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Kaderisasi Berkelanjutan:</strong> Menjaga eksistensi UKM HIPMI PT sebagai inkubator bisnis mahasiswa yang aktif berkontribusi pada akreditasi kampus.</div>
               </li>
-              <li class="benefit-item">
-                <span class="benefit-check">✓</span>
-                <div class="benefit-text"><strong>Iklim Organisasi Sehat:</strong> Menjadi teladan ormawa yang menjunjung tinggi ketertiban administrasi, kepatuhan perizinan sarana, dan pelaporan SPJ yang bersih.</div>
+              <li class="benefit-row">
+                <div class="check-svg-box">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="benefit-desc"><strong>Iklim Organisasi Sehat:</strong> Menjadi teladan ormawa yang menjunjung tinggi ketertiban administrasi, kepatuhan perizinan sarana, dan pelaporan SPJ yang bersih.</div>
               </li>
             </ul>
           </div>
@@ -1459,11 +1655,14 @@
     <!-- ════ SECTION 3: LPJ DEPARTEMEN ════ -->
     <section class="section" id="departemen">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Akuntabilitas Kinerja</span>
-          <h2 class="section-title">Struktur LPJ Per Departemen</h2>
-          <p class="section-sub">
-            Format pertanggungjawaban dirancang terfokus per departemen, menguji realisasi program kerja, efisiensi anggaran, dan tantangan riil di lapangan.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Akuntabilitas Proker</span>
+          </span>
+          <h2 class="section-h2">Laporan Pertanggungjawaban Departemen</h2>
+          <p class="section-subtext">
+            Format LPJ terfokus per departemen, menguji realisasi program kerja, efisiensi anggaran, dan evaluasi tantangan riil di lapangan.
           </p>
         </div>
 
@@ -1473,22 +1672,25 @@
       </div>
     </section>
 
-    <!-- ════ SECTION 4: VISUAL RUNDOWN TIMELINE ════ -->
-    <section class="section" id="rundown" style="background: rgba(15, 23, 42, 0.4);">
+    <!-- ════ SECTION 4: RUNDOWN SIDANG ════ -->
+    <section class="section" id="rundown" style="background: rgba(11, 17, 32, 0.4);">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Susunan Acara Sidang</span>
-          <h2 class="section-title">Visual Rundown Interaktif</h2>
-          <p class="section-sub">
-            Jadwal persidangan dari registrasi, sidang pleno, LPJ departemen, hingga penetapan formatur dan penutupan di Aula Tel-U Purwokerto.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Susunan Acara Sidang</span>
+          </span>
+          <h2 class="section-h2">Rundown Sidang Interaktif</h2>
+          <p class="section-subtext">
+            Alur persidangan dari registrasi delegasi, sidang pleno pembukaan, LPJ per departemen, hingga penetapan formatur dan penutupan di Aula Tel-U Purwokerto.
           </p>
         </div>
 
-        <div class="rundown-controls" id="rundownFilters">
-          <button class="rundown-filter-btn active" onclick="filterRundown('all')">Semua Sesi (10 Agenda)</button>
-          <button class="rundown-filter-btn" onclick="filterRundown('pagi')">Pagi (Pembukaan & LPJ)</button>
-          <button class="rundown-filter-btn" onclick="filterRundown('siang')">Siang (ISHOMA & Komisi)</button>
-          <button class="rundown-filter-btn" onclick="filterRundown('sore')">Sore (Pemilihan & Penutupan)</button>
+        <div class="rundown-filters gsap-reveal" id="rundownFilters">
+          <button class="filter-btn active" onclick="filterRundown('all')">Semua Sesi</button>
+          <button class="filter-btn" onclick="filterRundown('pagi')">Pagi (Pembukaan & LPJ)</button>
+          <button class="filter-btn" onclick="filterRundown('siang')">Siang (ISHOMA & Komisi)</button>
+          <button class="filter-btn" onclick="filterRundown('sore')">Sore (Pemilihan & Penutupan)</button>
         </div>
 
         <div class="timeline-stream" id="timelineStream">
@@ -1497,113 +1699,122 @@
       </div>
     </section>
 
-    <!-- ════ SECTION 5: STRUKTUR PANITIA & ORG CHART ════ -->
+    <!-- ════ SECTION 5: STRUKTUR PANITIA ════ -->
     <section class="section" id="panitia">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Kepanitiaan MUBES</span>
-          <h2 class="section-title">Struktur Organisasi Panitia</h2>
-          <p class="section-sub">
-            Tim panitia pelaksana yang dipimpin oleh Yossika Putra Erlangga beserta jajaran koordinator divisi yang bertanggung jawab atas kesiapan acara di Aula.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Kepanitiaan MUBES</span>
+          </span>
+          <h2 class="section-h2">Struktur Organisasi Panitia</h2>
+          <p class="section-subtext">
+            Tim panitia pelaksana yang dipimpin oleh Yossika Putra Erlangga beserta jajaran koordinator divisi yang bertanggung jawab penuh atas kesiapan Aula dan sidang.
           </p>
         </div>
 
         <div class="org-chart-wrap">
-          <!-- Level 1: Pengarah & Ketum -->
-          <div class="org-level">
-            <div class="org-card">
-              <div class="org-role">Pelindung & Penasihat</div>
-              <div class="org-name">Pimpinan & Pembina Tel-U</div>
-              <div class="org-nim">[ISI/SESUAIKAN: Rektor & Pembina Kemahasiswaan]</div>
+          <!-- Level 1: Pengarah -->
+          <div class="org-row-level gsap-reveal">
+            <div class="org-box">
+              <div class="org-role-lbl">Pelindung & Penasihat</div>
+              <div class="org-person-name">Pimpinan & Pembina Tel-U</div>
+              <div class="org-person-sub">[ISI/SESUAIKAN: Rektorat & Kemahasiswaan]</div>
             </div>
-            <div class="org-card">
-              <div class="org-role">Penanggung Jawab</div>
-              <div class="org-name">Ketua Umum HIPMI PT</div>
-              <div class="org-nim">[ISI/SESUAIKAN: Nama Ketum Berjalan]</div>
+            <div class="org-box">
+              <div class="org-role-lbl">Penanggung Jawab</div>
+              <div class="org-person-name">Ketua Umum HIPMI PT</div>
+              <div class="org-person-sub">[ISI/SESUAIKAN: Nama Ketum Berjalan]</div>
             </div>
           </div>
 
           <!-- Level 2: Ketua Pelaksana -->
-          <div class="org-level">
-            <div class="org-card lead">
-              <div class="org-role">Ketua Pelaksana MUBES</div>
-              <div class="org-name" style="font-size:1.35rem; color:#fff;">Yossika Putra Erlangga</div>
-              <div class="org-nim">S1 Teknik Informatika &bull; Staff HIPMI PT</div>
-              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem; line-height:1.4;">
-                Memimpin koordinasi perizinan Aula, pengelolaan anggaran, dan eksekusi teknis persidangan.
+          <div class="org-row-level gsap-reveal">
+            <div class="org-box prime">
+              <div class="org-role-lbl">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>Ketua Pelaksana MUBES</span>
+              </div>
+              <div class="org-person-name" style="font-size:1.35rem;">Yossika Putra Erlangga</div>
+              <div class="org-person-sub" style="color:var(--text-sub);">S1 Teknik Informatika &bull; Staff HIPMI PT</div>
+              <p style="font-size:0.82rem; color:var(--text-sub); margin-top:0.6rem; line-height:1.45;">
+                Memimpin koordinasi perizinan Aula, pengelolaan anggaran, dan eksekusi teknis persidangan MUBES.
               </p>
             </div>
           </div>
 
           <!-- Level 3: BPH Inti -->
-          <div class="org-level">
-            <div class="org-card">
-              <div class="org-role">Wakil Ketua</div>
-              <div class="org-name">[ISI/SESUAIKAN: Nama]</div>
-              <div class="org-nim">Logistik & Operasional Lapangan</div>
+          <div class="org-row-level gsap-reveal">
+            <div class="org-box">
+              <div class="org-role-lbl">Wakil Ketua Pelaksana</div>
+              <div class="org-person-name">[ISI/SESUAIKAN: Nama]</div>
+              <div class="org-person-sub">Logistik & Operasional Lapangan</div>
             </div>
-            <div class="org-card">
-              <div class="org-role">Sekretaris I & II</div>
-              <div class="org-name">[ISI/SESUAIKAN: Nama]</div>
-              <div class="org-nim">Persuratan Aula, Proposal & Notulensi</div>
+            <div class="org-box">
+              <div class="org-role-lbl">Sekretaris I & II</div>
+              <div class="org-person-name">[ISI/SESUAIKAN: Nama]</div>
+              <div class="org-person-sub">Persuratan Aula, Proposal & Notulensi</div>
             </div>
-            <div class="org-card">
-              <div class="org-role">Bendahara</div>
-              <div class="org-name">[ISI/SESUAIKAN: Nama]</div>
-              <div class="org-nim">Anggaran, Nota & Rekapitulasi RAB</div>
+            <div class="org-box">
+              <div class="org-role-lbl">Bendahara Pelaksana</div>
+              <div class="org-person-name">[ISI/SESUAIKAN: Nama]</div>
+              <div class="org-person-sub">Rekapitulasi Kas & Pengendalian RAB</div>
             </div>
           </div>
 
           <!-- Divisions Grid -->
-          <div class="division-grid" id="divisionsContainer">
+          <div class="divisions-grid" id="divisionsContainer">
             <!-- Populated by JS -->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ════ SECTION 6: RANCANGAN ANGGARAN BIAYA (RAB) ════ -->
-    <section class="section" id="rab" style="background: rgba(15, 23, 42, 0.4);">
+    <!-- ════ SECTION 6: RAB ════ -->
+    <section class="section" id="rab" style="background: rgba(11, 17, 32, 0.4);">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Transparansi Anggaran</span>
-          <h2 class="section-title">Rancangan Anggaran Biaya (RAB)</h2>
-          <p class="section-sub">
-            Alokasi anggaran realistis berskala 120 peserta di Aula Telkom University Purwokerto dengan breakdown per kategori kebutuhan.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Transparansi Finansial</span>
+          </span>
+          <h2 class="section-h2">Rancangan Anggaran Biaya (RAB)</h2>
+          <p class="section-subtext">
+            Alokasi anggaran terinci skala 120 peserta di Aula Telkom University Purwokerto dengan visualisasi proporsi biaya per pos belanja.
           </p>
         </div>
 
-        <div class="rab-visual-box">
-          <div class="rab-total-banner">
+        <div class="rab-container-card gsap-reveal">
+          <div class="rab-header-banner">
             <div>
-              <div class="rab-total-title">Total Estimasi Kebutuhan Biaya MUBES :</div>
-              <div style="font-size:0.85rem; color:var(--text-muted);">Estimasi 120 Orang Peserta, Tamu VIP & Panitia</div>
+              <div class="rab-banner-sub">Total Estimasi Kebutuhan Biaya MUBES :</div>
+              <div style="font-size:0.85rem; color:var(--text-sub);">Skala 120 Orang Peserta, Tamu VIP & Panitia</div>
             </div>
-            <div class="rab-total-amount">Rp 5.850.000,-</div>
+            <div class="rab-grand-amount tabular">Rp 5.850.000,-</div>
           </div>
 
           <!-- Progress bar -->
-          <div class="rab-progress-bar">
-            <div class="progress-segment seg-1" style="width: 44%;" title="Konsumsi (44%)"></div>
-            <div class="progress-segment seg-2" style="width: 18%;" title="Kesekretariatan (18%)"></div>
-            <div class="progress-segment seg-3" style="width: 15%;" title="Publikasi & Dekorasi (15%)"></div>
-            <div class="progress-segment seg-4" style="width: 13%;" title="Logistik & Aula (13%)"></div>
-            <div class="progress-segment seg-5" style="width: 10%;" title="Dana Cadangan (10%)"></div>
+          <div class="rab-bar-track">
+            <div class="bar-seg seg-konsumsi" style="width: 44%;" title="Konsumsi (44%)"></div>
+            <div class="bar-seg seg-sekretariat" style="width: 18%;" title="Kesekretariatan (18%)"></div>
+            <div class="bar-seg seg-publikasi" style="width: 15%;" title="Publikasi & Dekorasi (15%)"></div>
+            <div class="bar-seg seg-logistik" style="width: 13%;" title="Logistik & Aula (13%)"></div>
+            <div class="bar-seg seg-cadangan" style="width: 10%;" title="Dana Cadangan (10%)"></div>
           </div>
 
           <!-- Legend -->
-          <div class="rab-legend-grid">
-            <div class="legend-item"><span class="legend-dot seg-1"></span> Konsumsi (44% &bull; Rp 2.570.000)</div>
-            <div class="legend-item"><span class="legend-dot seg-2"></span> Kesekretariatan (18% &bull; Rp 1.050.000)</div>
-            <div class="legend-item"><span class="legend-dot seg-3"></span> Publikasi & Plakat (15% &bull; Rp 880.000)</div>
-            <div class="legend-item"><span class="legend-dot seg-4"></span> Logistik Aula (13% &bull; Rp 750.000)</div>
-            <div class="legend-item"><span class="legend-dot seg-5"></span> Cadangan Darurat (10% &bull; Rp 600.000)</div>
+          <div class="rab-legend-wrap">
+            <div class="legend-box"><span class="legend-color-dot seg-konsumsi"></span> Konsumsi (44% &bull; Rp 2.570.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-sekretariat"></span> Kesekretariatan (18% &bull; Rp 1.050.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-publikasi"></span> Publikasi & Plakat (15% &bull; Rp 880.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-logistik"></span> Logistik Aula (13% &bull; Rp 750.000)</div>
+            <div class="legend-box"><span class="legend-color-dot seg-cadangan"></span> Cadangan Darurat (10% &bull; Rp 600.000)</div>
           </div>
         </div>
 
         <!-- Table Details -->
-        <div class="rab-table-wrap">
-          <table class="web-table" id="rabTable">
+        <div class="table-scroll-wrap gsap-reveal">
+          <table class="data-table" id="rabTable">
             <thead>
               <tr>
                 <th style="width: 6%;">No</th>
@@ -1624,47 +1835,53 @@
     <!-- ════ SECTION 7: MITIGASI RISIKO ════ -->
     <section class="section" id="mitigasi">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Kesiapan & Kontingensi</span>
-          <h2 class="section-title">Matriks Mitigasi Risiko</h2>
-          <p class="section-sub">
-            Rencana antisipasi preventif dan kuratif untuk memastikan persidangan berjalan lancar tanpa hambatan teknis maupun prosedural.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Kesiapan & Kontingensi</span>
+          </span>
+          <h2 class="section-h2">Matriks Mitigasi Risiko</h2>
+          <p class="section-subtext">
+            Rencana antisipasi preventif dan kuratif untuk memastikan persidangan berjalan tertib tanpa hambatan teknis maupun prosedural.
           </p>
         </div>
 
-        <div class="mitigasi-grid" id="mitigasiGrid">
+        <div class="mitigasi-matrix" id="mitigasiGrid">
           <!-- Populated by JS -->
         </div>
       </div>
     </section>
 
     <!-- ════ SECTION 8: DOKUMENTASI KEGIATAN HIPMI ════ -->
-    <section class="section" id="galeri" style="background: rgba(15, 23, 42, 0.4);">
+    <section class="section" id="galeri" style="background: rgba(11, 17, 32, 0.4);">
       <div class="container">
-        <div class="section-head">
-          <span class="section-kicker">Jejak Langkah Pengurus</span>
-          <h2 class="section-title">Dokumentasi & Sinergi HIPMI PT</h2>
-          <p class="section-sub">
-            Potret kebersamaan dan kegiatan pengurus UKM HIPMI PT Telkom University Purwokerto selama periode kepengurusan berjalan.
+        <div class="section-head gsap-reveal">
+          <span class="section-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Sinergi Nyata Pengurus</span>
+          </span>
+          <h2 class="section-h2">Dokumentasi & Kiprah HIPMI PT</h2>
+          <p class="section-subtext">
+            Potret sinergi dan dinamika kegiatan pengurus UKM HIPMI PT Telkom University Purwokerto selama periode kepengurusan berjalan.
           </p>
         </div>
 
-        <div class="gallery-grid">
-          <div class="photo-item">
+        <div class="photo-grid-showcase gsap-reveal">
+          <div class="gallery-frame">
             <img src="assets/img/foto-kegiatan/06-hipmi/foto-departemen-kaderisasi-dan-keanggotaan.webp" alt="Departemen Kaderisasi" loading="lazy">
-            <div class="photo-caption">Departemen Kaderisasi & Keanggotaan</div>
+            <div class="gallery-overlay-lbl">Departemen Kaderisasi & Keanggotaan</div>
           </div>
-          <div class="photo-item">
+          <div class="gallery-frame">
             <img src="assets/img/foto-kegiatan/06-hipmi/foto-departement-okk.webp" alt="Departemen OKK HIPMI" loading="lazy">
-            <div class="photo-caption">Sinergi Departemen OKK</div>
+            <div class="gallery-overlay-lbl">Sinergi Departemen OKK</div>
           </div>
-          <div class="photo-item">
+          <div class="gallery-frame">
             <img src="assets/img/foto-kegiatan/06-hipmi/foto-05-dokumentasi.webp" alt="Dokumentasi Pertemuan HIPMI" loading="lazy">
-            <div class="photo-caption">Rapat Koordinasi Pengurus</div>
+            <div class="gallery-overlay-lbl">Rapat Koordinasi Pengurus</div>
           </div>
-          <div class="photo-item">
+          <div class="gallery-frame">
             <img src="assets/img/foto-kegiatan/06-hipmi/foto-profile-yossika-kaderisasi-dan-keanggotaan.webp" alt="Yossika HIPMI" loading="lazy">
-            <div class="photo-caption">Yossika Putra &bull; Ketua Panitia MUBES</div>
+            <div class="gallery-overlay-lbl">Yossika Putra &bull; Ketua Panitia MUBES</div>
           </div>
         </div>
       </div>
@@ -1673,17 +1890,22 @@
     <!-- ════ SECTION 9: CTA PROPOSAL ════ -->
     <section class="section">
       <div class="container">
-        <div class="cta-banner">
-          <h2 class="cta-title">Siap Review Dokumen Proposal Lengkap?</h2>
-          <p class="cta-sub">
-            Dokumen proposal formal sudah disusun lengkap dengan cover resmi, lembar pengesahan tanda tangan, BAB I–X, serta lampiran surat peminjaman Aula kampus.
+        <div class="cta-executive-banner gsap-reveal">
+          <div style="display:flex; justify-content:center; gap:0.75rem; margin-bottom:1.25rem;">
+            <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI" style="height:44px; width:auto;">
+            <img src="assets/img/logo-artha-jayana.webp" alt="Artha Jayana" style="height:44px; width:auto;">
+          </div>
+          <h2 class="cta-h2">Unduh & Cetak Dokumen Proposal Resmi</h2>
+          <p class="cta-p">
+            Dokumen proposal formal siap cetak A4 atau simpan PDF lengkap dengan kop surat resmi, lembar pengesahan tanda tangan, BAB I–X, serta lampiran surat izin Aula kampus.
           </p>
-          <div class="cta-actions">
-            <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-primary" style="font-size:1rem; padding:0.85rem 2rem;">
-              📄 Buka & Cetak Proposal Resmi (A4 PDF) ↗
+          <div class="cta-btn-group">
+            <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-gold" style="font-size:1rem; padding:0.85rem 2.2rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Buka Proposal Resmi (A4 PDF)</span>
             </a>
-            <a href="index.html" class="btn btn-secondary" style="font-size:1rem; padding:0.85rem 1.8rem;">
-              Kembali ke Portofolio Yossika
+            <a href="index.html" class="btn btn-glass" style="font-size:1rem; padding:0.85rem 1.8rem;">
+              <span>Kembali ke Portofolio Yossika</span>
             </a>
           </div>
         </div>
@@ -1692,26 +1914,32 @@
   </main>
 
   <!-- Floating Mobile Quick Bar -->
-  <div class="mobile-floating-bar">
-    <div class="mobile-float-text">MUBES HIPMI PT 2026</div>
+  <div class="floating-ios-bar">
+    <div class="float-title">MUBES <span>HIPMI PT</span></div>
     <div style="display:flex; gap:0.4rem;">
-      <a href="#rundown" class="btn btn-secondary btn-sm">Jadwal</a>
-      <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-primary btn-sm">Cetak PDF ↗</a>
+      <a href="#rundown" class="btn btn-glass btn-sm">Jadwal</a>
+      <a href="proposal-mubes-hipmi.html" target="_blank" class="btn btn-gold btn-sm">Proposal PDF ↗</a>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-brand">UKM HIPMI PT TELKOM UNIVERSITY PURWOKERTO</div>
-      <p style="margin-bottom:0.5rem;">Panitia Pelaksana Musyawarah Besar (MUBES) Periode 2026/2027</p>
-      <p>Ketua Pelaksana: <strong>Yossika Putra Erlangga</strong> &bull; Dibuat untuk koordinasi kampus & transparansi persiapan MUBES.</p>
+      <div class="footer-emblems">
+        <img src="assets/img/logo-hipmi-telu.webp" alt="HIPMI" class="footer-logo">
+        <img src="assets/img/logo-artha-jayana.webp" alt="Artha Jayana" class="footer-logo">
+      </div>
+      <div class="footer-lead">UKM HIPMI PT TELKOM UNIVERSITY PURWOKERTO</div>
+      <p style="margin-bottom:0.4rem; color:var(--gold); font-weight:700;">KABINET ARTHA JAYANA &bull; PERIODE 2026/2027</p>
+      <p>Panitia Pelaksana Musyawarah Besar (MUBES) &bull; Ketua Pelaksana: <strong>Yossika Putra Erlangga</strong></p>
     </div>
   </footer>
 
-  <!-- Load Single Source of Truth -->
+  <!-- Single Source of Truth & Vendor Scripts -->
   <script src="js/mubes-data.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
 
-  <!-- Interactive Logic -->
+  <!-- Interactive & GSAP Animation Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const data = window.MUBES_DATA;
@@ -1721,15 +1949,18 @@
       const lpjCont = document.getElementById("lpjContainer");
       if (lpjCont && data.departemenLpj) {
         lpjCont.innerHTML = data.departemenLpj.map(dep => `
-          <div class="lpj-card">
-            <div class="lpj-top">
-              <span class="lpj-badge">${dep.kode}</span>
-              <span style="font-size:0.75rem; color:var(--text-dim); font-weight:700;">LPJ TERFOKUS</span>
+          <div class="lpj-card gsap-card">
+            <div class="lpj-top-row">
+              <span class="lpj-code-badge">${dep.kode}</span>
+              <span style="font-size:0.72rem; color:var(--text-dim); font-weight:800; letter-spacing:0.08em; text-transform:uppercase;">LPJ TERFOKUS</span>
             </div>
-            <h3 class="lpj-name">${dep.nama}</h3>
-            <p class="lpj-fokus">${dep.fokus}</p>
+            <h3 class="lpj-card-title">${dep.nama}</h3>
+            <p class="lpj-focus-text">${dep.fokus}</p>
             <div class="lpj-proker-box">
-              <div class="lpj-proker-lbl">Fokus Program Kerja Utama :</div>
+              <div class="lpj-proker-lbl">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Fokus Program Kerja Utama</span>
+              </div>
               <div class="lpj-proker-val">${dep.prokerUtama}</div>
             </div>
           </div>
@@ -1743,11 +1974,14 @@
       const divCont = document.getElementById("divisionsContainer");
       if (divCont && data.susunanPanitia && data.susunanPanitia.divisi) {
         divCont.innerHTML = data.susunanPanitia.divisi.map(div => `
-          <div class="div-card">
-            <h4 class="div-title">📌 ${div.namaDivisi}</h4>
-            <div class="div-coord">Koordinator: ${div.koordinator}</div>
-            <ul class="div-tasks">
-              ${div.tugas.map(t => `<li class="div-task-item">${t}</li>`).join("")}
+          <div class="division-item-card gsap-card">
+            <h4 class="division-name-head">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>${div.namaDivisi}</span>
+            </h4>
+            <div class="division-leader-text">Koordinator: ${div.koordinator}</div>
+            <ul class="division-tasks-list">
+              ${div.tugas.map(t => `<li class="div-task-row">${t}</li>`).join("")}
             </ul>
           </div>
         `).join("");
@@ -1757,9 +1991,9 @@
       const rabBody = document.getElementById("rabTableBody");
       if (rabBody && data.rab && data.rab.kategori) {
         let html = "";
-        data.rab.kategori.forEach((kat, ki) => {
+        data.rab.kategori.forEach((kat) => {
           html += `
-            <tr class="cat-row">
+            <tr class="group-row">
               <td colspan="5">${kat.nama} — Subtotal: Rp ${kat.subtotal.toLocaleString('id-ID')} (${kat.persentase}%)</td>
             </tr>
           `;
@@ -1769,8 +2003,8 @@
                 <td>${it.no}</td>
                 <td><strong>${it.uraian}</strong><br><small style="color:var(--text-dim);">${it.catatan}</small></td>
                 <td>${it.volume}</td>
-                <td>Rp ${it.satuan.toLocaleString('id-ID')}</td>
-                <td style="color:var(--accent); font-weight:700;">Rp ${it.jumlah.toLocaleString('id-ID')}</td>
+                <td class="tabular">Rp ${it.satuan.toLocaleString('id-ID')}</td>
+                <td class="tabular" style="color:var(--gold); font-weight:700;">Rp ${it.jumlah.toLocaleString('id-ID')}</td>
               </tr>
             `;
           });
@@ -1782,21 +2016,24 @@
       const mitGrid = document.getElementById("mitigasiGrid");
       if (mitGrid && data.mitigasiRisiko) {
         mitGrid.innerHTML = data.mitigasiRisiko.map(r => {
-          let lvlClass = "level-sedang";
-          if (r.level.toLowerCase().includes("kritis")) lvlClass = "level-kritis";
-          else if (r.level.toLowerCase().includes("tinggi")) lvlClass = "level-tinggi";
+          let lvlClass = "sev-sedang";
+          if (r.level.toLowerCase().includes("kritis")) lvlClass = "sev-kritis";
+          else if (r.level.toLowerCase().includes("tinggi")) lvlClass = "sev-tinggi";
 
           return `
-            <div class="mitigasi-card">
-              <div class="risk-header">
-                <span class="risk-id">${r.id} &bull; ${r.kategori}</span>
-                <span class="risk-level-badge ${lvlClass}">${r.level}</span>
+            <div class="risk-panel gsap-card">
+              <div class="risk-top-meta">
+                <span class="risk-code">${r.id} &bull; ${r.kategori}</span>
+                <span class="severity-pill ${lvlClass}">${r.level}</span>
               </div>
-              <h3 class="risk-title">${r.risiko}</h3>
-              <div class="risk-impact"><strong>Dampak:</strong> ${r.dampak}</div>
-              <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-green); margin-bottom:0.4rem;">Rencana Mitigasi :</div>
-              <ul class="risk-solution-list">
-                ${r.mitigasi.map(m => `<li class="risk-solution-item">${m}</li>`).join("")}
+              <h3 class="risk-heading">${r.risiko}</h3>
+              <div class="risk-impact-box"><strong>Dampak:</strong> ${r.dampak}</div>
+              <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--emerald); margin-bottom:0.4rem; display:flex; align-items:center; gap:0.35rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Rencana Tindakan Mitigasi</span>
+              </div>
+              <ul class="risk-mitigations">
+                ${r.mitigasi.map(m => `<li class="mitigation-point">${m}</li>`).join("")}
               </ul>
             </div>
           `;
@@ -1805,9 +2042,12 @@
 
       // 6. Start Live Countdown
       initCountdown(data.waktuTempat.countdownTarget);
+
+      // 7. Initialize GSAP Animations
+      initGsapMotion();
     });
 
-    // Theme Picker Switcher
+    // Theme Switcher
     function switchTheme(id) {
       const data = window.MUBES_DATA;
       if (!data || !data.temaOptions) return;
@@ -1818,16 +2058,16 @@
       document.getElementById("activeThemeTitle").textContent = `"${t.judul}"`;
       document.getElementById("activeThemeDesc").textContent = t.deskripsi;
 
-      const buttons = document.querySelectorAll("#themeTabGroup .theme-tab-btn");
+      const buttons = document.querySelectorAll("#themeTabGroup .theme-pill-btn");
       buttons.forEach((btn, idx) => {
         if (idx === (id - 1)) btn.classList.add("active");
         else btn.classList.remove("active");
       });
     }
 
-    // 3-Pillar Benefit Switcher
+    // 3-Pillar Switcher
     function switchPillar(id) {
-      const panes = document.querySelectorAll(".pillar-content-pane");
+      const panes = document.querySelectorAll(".pillar-pane");
       panes.forEach(p => p.classList.remove("active"));
 
       const activePane = document.getElementById(`pane-${id}`);
@@ -1835,7 +2075,7 @@
 
       const btns = document.querySelectorAll(".pillar-btn");
       btns.forEach(b => b.classList.remove("active"));
-      event.target.classList.add("active");
+      event.currentTarget.classList.add("active");
     }
 
     // Rundown Filter
@@ -1843,16 +2083,16 @@
       const data = window.MUBES_DATA;
       if (!data) return;
 
-      document.querySelectorAll("#rundownFilters .rundown-filter-btn").forEach(b => b.classList.remove("active"));
-      event.target.classList.add("active");
+      document.querySelectorAll("#rundownFilters .filter-btn").forEach(b => b.classList.remove("active"));
+      event.currentTarget.classList.add("active");
 
       let filtered = data.rundown;
       if (cat === "pagi") {
-        filtered = data.rundown.slice(0, 5); // Pra-acara s/d Apresiasi
+        filtered = data.rundown.slice(0, 5);
       } else if (cat === "siang") {
-        filtered = data.rundown.slice(5, 7); // ISHOMA & Pleno III
+        filtered = data.rundown.slice(5, 7);
       } else if (cat === "sore") {
-        filtered = data.rundown.slice(7, 10); // Pleno IV s/d Penutupan
+        filtered = data.rundown.slice(7, 10);
       }
 
       renderRundown(filtered);
@@ -1863,18 +2103,21 @@
       if (!stream) return;
 
       stream.innerHTML = items.map(item => `
-        <div class="timeline-node">
+        <div class="timeline-node gsap-card">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="timeline-header">
-              <span class="timeline-time-badge">⏰ ${item.waktu}</span>
-              <span class="timeline-duration">${item.durasi}</span>
+            <div class="timeline-header-row">
+              <span class="timeline-time-pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>${item.waktu}</span>
+              </span>
+              <span class="timeline-dur-text">${item.durasi}</span>
             </div>
-            <h4 class="timeline-sesi-title">${item.sesi}</h4>
-            <p class="timeline-desc">${item.kegiatan}</p>
-            <div class="timeline-pic-row">
-              <span>👤 PIC :</span>
-              <strong>${item.pic}</strong>
+            <h4 class="timeline-title-text">${item.sesi}</h4>
+            <p class="timeline-desc-text">${item.kegiatan}</p>
+            <div class="timeline-pic-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>PIC: <strong>${item.pic}</strong></span>
             </div>
           </div>
         </div>
@@ -1910,6 +2153,64 @@
 
       update();
       setInterval(update, 1000);
+    }
+
+    // GSAP ScrollTrigger Animations
+    function initGsapMotion() {
+      if (!window.gsap) return;
+
+      if (window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
+      // Hero Entrance Timeline
+      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTl.fromTo(".gsap-hero-el", 
+        { opacity: 0, y: 24 }, 
+        { opacity: 1, y: 0, duration: 0.85, stagger: 0.12 }
+      );
+
+      // ScrollTrigger for Section Headers
+      if (window.ScrollTrigger) {
+        document.querySelectorAll(".gsap-reveal").forEach(el => {
+          gsap.fromTo(el,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.75,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none"
+              }
+            }
+          );
+        });
+
+        // Stagger for Cards
+        const cardTriggers = [".cycle-grid", ".lpj-grid", ".divisions-grid", ".mitigasi-matrix", ".photo-grid-showcase"];
+        cardTriggers.forEach(sel => {
+          const container = document.querySelector(sel);
+          if (!container) return;
+          gsap.fromTo(container.children,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.65,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: container,
+                start: "top 82%",
+                toggleActions: "play none none none"
+              }
+            }
+          );
+        });
+      }
     }
   </script>
 </body>
