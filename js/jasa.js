@@ -173,18 +173,29 @@ function initFaqAccordion() {
   });
 }
 
-/* ── GSAP Reveal Animations ── */
+/* ── GSAP Reveal Animations with Fail-Safe Visibility ── */
 function initGsapAnimations() {
-  if (!window.gsap) return;
+  // Safety fallback: if GSAP or ScrollTrigger fails to load, ensure all content is 100% visible
+  const forceVisibility = () => {
+    document.querySelectorAll('.jasa-price-card, .jasa-trust-card, .jasa-step-card, .jasa-faq-item, .jasa-cta-card, .jasa-section-header').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  };
+
+  if (!window.gsap) {
+    forceVisibility();
+    return;
+  }
 
   // Hero Reveal
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  tl.fromTo('.jasa-header', { y: -25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
-    .fromTo('.jasa-hero-badge-wrap', { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5 }, '-=0.3')
-    .fromTo('.jasa-hero-title', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75 }, '-=0.3')
-    .fromTo('.jasa-hero-sub', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, '-=0.4')
-    .fromTo('.jasa-hero-highlights .jasa-highlight-pill', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, stagger: 0.08 }, '-=0.3')
-    .fromTo('.jasa-hero-actions .jasa-btn', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.1 }, '-=0.3');
+  tl.fromTo('.jasa-header', { y: -25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, clearProps: 'opacity,transform' })
+    .fromTo('.jasa-hero-badge-wrap', { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, clearProps: 'opacity,transform' }, '-=0.3')
+    .fromTo('.jasa-hero-title', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, clearProps: 'opacity,transform' }, '-=0.3')
+    .fromTo('.jasa-hero-sub', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, clearProps: 'opacity,transform' }, '-=0.4')
+    .fromTo('.jasa-hero-highlights .jasa-highlight-pill', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, stagger: 0.08, clearProps: 'opacity,transform' }, '-=0.3')
+    .fromTo('.jasa-hero-actions .jasa-btn', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, clearProps: 'opacity,transform' }, '-=0.3');
 
   // ScrollTrigger Register
   if (window.ScrollTrigger) {
@@ -192,88 +203,177 @@ function initGsapAnimations() {
 
     // Section Titles
     document.querySelectorAll('.jasa-section-header').forEach(header => {
-      gsap.from(header.children, {
-        scrollTrigger: {
-          trigger: header,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: 'power3.out'
-      });
+      gsap.fromTo(header.children,
+        { y: 25, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power3.out',
+          clearProps: 'opacity,transform',
+          scrollTrigger: {
+            trigger: header,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+            once: true
+          }
+        }
+      );
     });
 
     // Pricing Cards Stagger
-    gsap.from('.jasa-price-card', {
-      scrollTrigger: {
-        trigger: '.jasa-pricing-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      },
-      y: 45,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.12,
-      ease: 'power3.out'
-    });
+    gsap.fromTo('.jasa-price-card',
+      { y: 35, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.65,
+        stagger: 0.1,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform',
+        scrollTrigger: {
+          trigger: '.jasa-pricing-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
     // Trust Cards Stagger
-    gsap.from('.jasa-trust-card', {
-      scrollTrigger: {
-        trigger: '.jasa-trust-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      },
-      y: 40,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.15,
-      ease: 'power3.out'
-    });
+    gsap.fromTo('.jasa-trust-card',
+      { y: 35, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.65,
+        stagger: 0.12,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform',
+        scrollTrigger: {
+          trigger: '.jasa-trust-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
     // Steps Cards Stagger
-    gsap.from('.jasa-step-card', {
-      scrollTrigger: {
-        trigger: '.jasa-steps-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      },
-      y: 35,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.14,
-      ease: 'power3.out'
-    });
+    gsap.fromTo('.jasa-step-card',
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.65,
+        stagger: 0.12,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform',
+        scrollTrigger: {
+          trigger: '.jasa-steps-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
     // FAQ Items Stagger
-    gsap.from('.jasa-faq-item', {
-      scrollTrigger: {
-        trigger: '.jasa-faq-list',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      },
-      y: 25,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: 'power3.out'
-    });
+    gsap.fromTo('.jasa-faq-item',
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.55,
+        stagger: 0.08,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform',
+        scrollTrigger: {
+          trigger: '.jasa-faq-list',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
     // CTA Banner Reveal
-    gsap.from('.jasa-cta-card', {
-      scrollTrigger: {
-        trigger: '.jasa-cta-section',
-        start: 'top 82%',
-        toggleActions: 'play none none none'
-      },
-      y: 40,
-      scale: 0.98,
-      opacity: 0,
-      duration: 0.85,
-      ease: 'power3.out'
-    });
+    gsap.fromTo('.jasa-cta-card',
+      { y: 35, scale: 0.98, opacity: 0 },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        duration: 0.75,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform',
+        scrollTrigger: {
+          trigger: '.jasa-cta-section',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
   }
+
+  // Handle direct hash navigation (e.g. #trust, #cara-order)
+  function handleHashJump() {
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.querySelectorAll('.jasa-trust-card, .jasa-step-card, .jasa-price-card, .jasa-faq-item, .jasa-section-header').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+      }
+      if (window.ScrollTrigger) {
+        ScrollTrigger.refresh();
+      }
+    }
+  }
+
+  handleHashJump();
+  window.addEventListener('hashchange', handleHashJump);
+
+  // Smooth scroll links & instant visibility assurance
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', () => {
+      const targetId = anchor.getAttribute('href').substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.querySelectorAll('.jasa-trust-card, .jasa-step-card, .jasa-price-card').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        setTimeout(() => {
+          if (window.ScrollTrigger) ScrollTrigger.refresh();
+        }, 300);
+      }
+    });
+  });
+
+  // Fail-safe Watchdogs: ensure no card remains invisible if viewport calculations misfire
+  setTimeout(() => {
+    document.querySelectorAll('.jasa-trust-card, .jasa-step-card, .jasa-price-card, .jasa-faq-item').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 150) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }, 400);
+
+  setTimeout(() => {
+    document.querySelectorAll('.jasa-trust-card, .jasa-step-card').forEach(el => {
+      if (getComputedStyle(el).opacity === '0') {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+  }, 1000);
 }
+

@@ -5,6 +5,10 @@
     {
       "source": "/jasa",
       "destination": "/jasa/index.html"
+    },
+    {
+      "source": "/dokumentasi",
+      "destination": "/details.html"
     }
   ]
 }

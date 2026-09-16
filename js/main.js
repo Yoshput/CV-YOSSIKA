@@ -1469,6 +1469,8 @@ function initMusicPlayer() {
   let audio = null;
   let isPlaying = false;
 
+  const drawerBtn = document.getElementById('drawerMusicBtn');
+
   btn.addEventListener('click', () => {
     if (!audio) {
       audio = new Audio(tracks[currentIdx]);
@@ -1483,16 +1485,25 @@ function initMusicPlayer() {
     if (isPlaying) {
       audio.pause();
       btn.innerHTML = '🎵';
+      if (drawerBtn) drawerBtn.textContent = '🎵 Putar Musik';
       btn.setAttribute('aria-label', 'Play Background Music');
       isPlaying = false;
     } else {
       audio.play().then(() => {
         btn.innerHTML = '⏸️';
+        if (drawerBtn) drawerBtn.textContent = '⏸️ Jeda Musik';
         btn.setAttribute('aria-label', 'Pause Background Music');
         isPlaying = true;
       }).catch(() => {});
     }
   });
+
+  if (drawerBtn) {
+    drawerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.click();
+    });
+  }
 }
 
 /* ==========================================================================

@@ -9,6 +9,7 @@ const I18N_DATA = {
     // Navigation
     "nav.about": "About",
     "nav.projects": "Projects",
+    "nav.jasa": "Jasa Web",
     "nav.designs": "Designs",
     "nav.business": "Business",
     "nav.journey": "Journey",
@@ -20,7 +21,7 @@ const I18N_DATA = {
     "nav.allWorks": "All Works",
 
     // Hero
-    "hero.badge": "Available for Opportunities",
+    "hero.badge": "Open for Web Projects · View Pricing →",
     "hero.role": "Informatics Student · Telkom University Purwokerto",
     "hero.bio": "Semester 4 Informatics undergraduate bridging robust network infrastructure with modern digital design. TKJ background from SMK Telkom Purwokerto, now specializing in Fullstack Web Development, AI/ML integration, and clean UI/UX.",
     "hero.ctaCv": "View CV",
@@ -127,6 +128,7 @@ const I18N_DATA = {
     // Navigation
     "nav.about": "Tentang",
     "nav.projects": "Project",
+    "nav.jasa": "Jasa Web",
     "nav.designs": "Desain",
     "nav.business": "Bisnis",
     "nav.journey": "Pengalaman",
@@ -138,7 +140,7 @@ const I18N_DATA = {
     "nav.allWorks": "Semua Karya",
 
     // Hero
-    "hero.badge": "Terbuka untuk Peluang Baru",
+    "hero.badge": "Open Jasa Pembuatan Website · Cek Harga →",
     "hero.role": "Mahasiswa TI · Telkom University Purwokerto",
     "hero.bio": "Mahasiswa S1 Teknik Informatika Semester 4 yang menjembatani infrastruktur jaringan andal dengan sentuhan desain modern. Latar belakang TKJ dari SMK Telkom Purwokerto, kini fokus pada Fullstack Web, integrasi AI/ML, dan UI/UX.",
     "hero.ctaCv": "Lihat CV",
