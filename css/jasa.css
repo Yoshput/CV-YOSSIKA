@@ -1,0 +1,1084 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   YOSSIKA PUTRA ERLANGGA — HALAMAN JASA & PRICELIST WEBSITE
+   Design Standard: Apple HIG & ANTI-AI-SLOP Manifesto (No generic emojis,
+   liquid glass, precision SVG icons, tabular-nums, 60fps GSAP)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --jasa-bg: #07090e;
+  --jasa-bg-elevated: #0e121d;
+  --jasa-bg-surface: #141927;
+  --jasa-surface-glass: rgba(16, 22, 36, 0.72);
+  --jasa-surface-card: rgba(18, 24, 40, 0.65);
+  --jasa-surface-hover: rgba(26, 35, 58, 0.85);
+  --jasa-border: rgba(255, 255, 255, 0.08);
+  --jasa-border-hover: rgba(165, 180, 252, 0.35);
+  --jasa-border-highlight: rgba(255, 255, 255, 0.16);
+  --jasa-text-primary: #f8fafc;
+  --jasa-text-muted: #94a3b8;
+  --jasa-text-dim: #64748b;
+  --jasa-accent: #a5b4fc;
+  --jasa-accent-light: #c7d2fe;
+  --jasa-accent-glow: rgba(165, 180, 252, 0.22);
+  --jasa-cyan: #38bdf8;
+  --jasa-green: #34d399;
+  --jasa-amber: #fbbf24;
+  --jasa-radius-sm: 8px;
+  --jasa-radius-md: 14px;
+  --jasa-radius-lg: 20px;
+  --jasa-radius-xl: 26px;
+  --jasa-radius-full: 9999px;
+  --jasa-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  --jasa-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Plus Jakarta Sans', sans-serif;
+  --jasa-transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --jasa-bg: #f8fafc;
+  --jasa-bg-elevated: #ffffff;
+  --jasa-bg-surface: #f1f5f9;
+  --jasa-surface-glass: rgba(255, 255, 255, 0.82);
+  --jasa-surface-card: rgba(255, 255, 255, 0.9);
+  --jasa-surface-hover: #ffffff;
+  --jasa-border: rgba(0, 0, 0, 0.08);
+  --jasa-border-hover: rgba(79, 70, 229, 0.3);
+  --jasa-border-highlight: rgba(0, 0, 0, 0.12);
+  --jasa-text-primary: #0f172a;
+  --jasa-text-muted: #475569;
+  --jasa-text-dim: #64748b;
+  --jasa-accent: #4f46e5;
+  --jasa-accent-light: #6366f1;
+  --jasa-accent-glow: rgba(79, 70, 229, 0.15);
+  --jasa-cyan: #0284c7;
+  --jasa-green: #059669;
+  --jasa-amber: #d97706;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body.jasa-body {
+  font-family: var(--jasa-font-body);
+  background-color: var(--jasa-bg);
+  color: var(--jasa-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ambient Visual Mesh Background */
+.jasa-ambient-glow {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  background:
+    radial-gradient(ellipse 65% 55% at 20% 15%, var(--jasa-accent-glow) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 75%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
+}
+
+.jasa-container {
+  width: min(100% - 2.5rem, 1220px);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ════ NAVBAR ════ */
+.jasa-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--jasa-surface-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--jasa-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.jasa-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.jasa-brand {
+  font-family: var(--jasa-font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--jasa-text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.jasa-brand-sparkle {
+  color: var(--jasa-accent);
+}
+
+.jasa-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  list-style: none;
+}
+
+.jasa-nav-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--jasa-text-muted);
+  text-decoration: none;
+  transition: color var(--jasa-transition);
+}
+
+.jasa-nav-link:hover,
+.jasa-nav-link.active {
+  color: var(--jasa-text-primary);
+}
+
+.jasa-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Apple Squircle Buttons */
+.jasa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--jasa-radius-full);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--jasa-transition);
+  font-family: inherit;
+}
+
+.jasa-btn:active {
+  transform: scale(0.97);
+}
+
+.jasa-btn-primary {
+  background: var(--jasa-text-primary);
+  color: var(--jasa-bg);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.jasa-btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.jasa-btn-accent {
+  background: var(--jasa-accent);
+  color: #07090e;
+  font-weight: 700;
+  box-shadow: 0 4px 20px var(--jasa-accent-glow);
+}
+
+.jasa-btn-accent:hover {
+  background: var(--jasa-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px var(--jasa-accent-glow);
+}
+
+.jasa-btn-glass {
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  color: var(--jasa-text-primary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.jasa-btn-glass:hover {
+  border-color: var(--jasa-border-hover);
+  background: var(--jasa-surface-hover);
+  transform: translateY(-2px);
+}
+
+.jasa-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--jasa-border);
+  background: var(--jasa-surface-card);
+  color: var(--jasa-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--jasa-transition);
+}
+
+.jasa-icon-btn:hover {
+  border-color: var(--jasa-border-hover);
+  background: var(--jasa-surface-hover);
+  transform: translateY(-1px);
+}
+
+.jasa-hamburger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--jasa-radius-sm);
+  border: 1px solid var(--jasa-border);
+  background: var(--jasa-surface-card);
+  color: var(--jasa-text-primary);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ════ HERO SECTION ════ */
+.jasa-hero {
+  padding: 5.5rem 0 3.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.jasa-hero-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--jasa-radius-full);
+  background: rgba(165, 180, 252, 0.1);
+  border: 1px solid rgba(165, 180, 252, 0.25);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--jasa-accent);
+  margin-bottom: 1.5rem;
+}
+
+.jasa-live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--jasa-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--jasa-green);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.jasa-hero-title {
+  font-family: var(--jasa-font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--jasa-text-primary);
+  margin-bottom: 1.25rem;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.jasa-hero-title-highlight {
+  background: linear-gradient(135deg, var(--jasa-text-primary) 30%, var(--jasa-accent) 80%, var(--jasa-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.jasa-hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  color: var(--jasa-text-muted);
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  line-height: 1.65;
+}
+
+.jasa-hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.jasa-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--jasa-radius-full);
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--jasa-text-primary);
+}
+
+.jasa-highlight-pill svg {
+  color: var(--jasa-green);
+}
+
+.jasa-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ════ CATEGORY TABS (FILTER) ════ */
+.jasa-tabs-section {
+  padding: 2rem 0 1.5rem;
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+  background: var(--jasa-surface-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--jasa-border);
+  margin-bottom: 3.5rem;
+}
+
+.jasa-tabs-wrapper {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding: 0.4rem 0.2rem 0.6rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
+}
+
+.jasa-tabs-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.jasa-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: var(--jasa-radius-full);
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  color: var(--jasa-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--jasa-transition);
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.jasa-tab-btn:hover {
+  color: var(--jasa-text-primary);
+  border-color: var(--jasa-border-hover);
+  background: var(--jasa-surface-hover);
+}
+
+.jasa-tab-btn.active {
+  background: var(--jasa-text-primary);
+  color: var(--jasa-bg);
+  border-color: var(--jasa-text-primary);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* ════ PRICING SECTION & CARDS ════ */
+.jasa-pricing-section {
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+.jasa-section-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.jasa-eyebrow {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--jasa-accent);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.jasa-section-title {
+  font-family: var(--jasa-font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--jasa-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.jasa-section-sub {
+  font-size: 1rem;
+  color: var(--jasa-text-muted);
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.jasa-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  perspective: 1200px;
+}
+
+/* Apple Frosted Glass Card with 3D Tilt */
+.jasa-price-card {
+  position: relative;
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  border-radius: var(--jasa-radius-lg);
+  padding: 2.2rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 0 var(--jasa-border-highlight),
+    0 16px 36px -10px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.jasa-price-card:hover {
+  border-color: var(--jasa-border-hover);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+    0 24px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 30px var(--jasa-accent-glow);
+}
+
+.jasa-price-card.featured {
+  border-color: rgba(165, 180, 252, 0.4);
+  background: linear-gradient(170deg, rgba(26, 33, 56, 0.8) 0%, rgba(18, 24, 40, 0.7) 100%);
+}
+
+.jasa-card-popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: linear-gradient(135deg, var(--jasa-accent) 0%, var(--jasa-cyan) 100%);
+  color: #07090e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--jasa-radius-full);
+  box-shadow: 0 4px 15px rgba(165, 180, 252, 0.4);
+}
+
+.jasa-card-head {
+  margin-bottom: 1.5rem;
+}
+
+.jasa-card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--jasa-accent);
+  margin-bottom: 0.5rem;
+}
+
+.jasa-card-name {
+  font-family: var(--jasa-font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--jasa-text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.jasa-card-desc {
+  font-size: 0.88rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.5;
+  min-height: 42px;
+}
+
+/* Price Display (Tabular-nums mandatory) */
+.jasa-card-price-wrap {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--jasa-border);
+  border-bottom: 1px solid var(--jasa-border);
+  margin-bottom: 1.5rem;
+}
+
+.jasa-card-price-lbl {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--jasa-text-dim);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.jasa-card-price-val {
+  font-family: var(--jasa-font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--jasa-text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.jasa-card-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--jasa-cyan);
+}
+
+/* Features Checklist */
+.jasa-card-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.jasa-card-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.87rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.5;
+}
+
+.jasa-card-check-icon {
+  width: 17px;
+  height: 17px;
+  color: var(--jasa-green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.jasa-card-action {
+  margin-top: auto;
+}
+
+.jasa-card-action .jasa-btn {
+  width: 100%;
+}
+
+/* Addon & Maintenance Cards */
+.jasa-addons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.jasa-addon-card {
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  border-radius: var(--jasa-radius-lg);
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all var(--jasa-transition);
+}
+
+.jasa-addon-card:hover {
+  border-color: var(--jasa-border-hover);
+  transform: translateY(-3px);
+}
+
+.jasa-addon-title {
+  font-family: var(--jasa-font-display);
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--jasa-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.jasa-addon-price {
+  font-family: var(--jasa-font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--jasa-accent);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.75rem;
+}
+
+.jasa-addon-desc {
+  font-size: 0.88rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+/* Official Disclaimer Box */
+.jasa-official-note {
+  margin-top: 2.5rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: var(--jasa-radius-md);
+  background: rgba(165, 180, 252, 0.06);
+  border: 1px solid rgba(165, 180, 252, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.jasa-note-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--jasa-accent);
+  flex-shrink: 0;
+}
+
+.jasa-note-text {
+  font-size: 0.86rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.5;
+}
+
+.jasa-note-text strong {
+  color: var(--jasa-text-primary);
+}
+
+/* ════ TRUST-BUILDER SECTION ════ */
+.jasa-trust-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--jasa-border);
+}
+
+.jasa-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.jasa-trust-card {
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  border-radius: var(--jasa-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--jasa-transition);
+  text-decoration: none;
+  color: inherit;
+}
+
+.jasa-trust-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--jasa-border-hover);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.jasa-trust-media {
+  aspect-ratio: 16 / 10;
+  background: var(--jasa-bg-surface);
+  overflow: hidden;
+  position: relative;
+}
+
+.jasa-trust-media img,
+.jasa-trust-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.jasa-trust-card:hover .jasa-trust-media img,
+.jasa-trust-card:hover .jasa-trust-media video {
+  transform: scale(1.04);
+}
+
+.jasa-trust-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--jasa-radius-full);
+  background: rgba(9, 10, 15, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--jasa-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.jasa-trust-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.jasa-trust-title {
+  font-family: var(--jasa-font-display);
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--jasa-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.jasa-trust-desc {
+  font-size: 0.86rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.jasa-trust-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.jasa-pill-sm {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--jasa-radius-full);
+  background: var(--jasa-surface-hover);
+  border: 1px solid var(--jasa-border);
+  color: var(--jasa-text-muted);
+}
+
+.jasa-trust-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--jasa-accent);
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--jasa-border);
+}
+
+/* ════ STEPS / CARA ORDER ════ */
+.jasa-steps-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--jasa-border);
+}
+
+.jasa-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+.jasa-step-card {
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  border-radius: var(--jasa-radius-lg);
+  padding: 2.2rem 1.85rem;
+  position: relative;
+  transition: all var(--jasa-transition);
+}
+
+.jasa-step-card:hover {
+  border-color: var(--jasa-border-hover);
+  transform: translateY(-4px);
+}
+
+.jasa-step-num {
+  font-family: var(--jasa-font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--jasa-accent);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.jasa-step-title {
+  font-family: var(--jasa-font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--jasa-text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.jasa-step-desc {
+  font-size: 0.88rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.6;
+}
+
+/* ════ FAQ ACCORDION ════ */
+.jasa-faq-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--jasa-border);
+}
+
+.jasa-faq-list {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jasa-faq-item {
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  border-radius: var(--jasa-radius-md);
+  overflow: hidden;
+  transition: border-color var(--jasa-transition), background var(--jasa-transition);
+}
+
+.jasa-faq-item:hover,
+.jasa-faq-item.active {
+  border-color: var(--jasa-border-hover);
+}
+
+.jasa-faq-question {
+  width: 100%;
+  padding: 1.35rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: none;
+  border: none;
+  color: var(--jasa-text-primary);
+  font-family: var(--jasa-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--jasa-transition);
+}
+
+.jasa-faq-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--jasa-accent);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jasa-faq-item.active .jasa-faq-icon {
+  transform: rotate(180deg);
+}
+
+.jasa-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease;
+  padding: 0 1.6rem;
+}
+
+.jasa-faq-item.active .jasa-faq-answer {
+  padding: 0 1.6rem 1.35rem;
+}
+
+.jasa-faq-answer p {
+  font-size: 0.92rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.7;
+}
+
+/* ════ FINAL CTA BANNER ════ */
+.jasa-cta-section {
+  padding: 5rem 0 6.5rem;
+  position: relative;
+}
+
+.jasa-cta-card {
+  position: relative;
+  border-radius: var(--jasa-radius-xl);
+  background: radial-gradient(circle at 50% 0%, rgba(165, 180, 252, 0.15) 0%, rgba(14, 18, 29, 0.85) 75%);
+  border: 1px solid var(--jasa-border-hover);
+  padding: 4.5rem 2.5rem;
+  text-align: center;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.jasa-cta-title {
+  font-family: var(--jasa-font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  color: var(--jasa-text-primary);
+  margin-bottom: 1rem;
+}
+
+.jasa-cta-sub {
+  font-size: 1.08rem;
+  color: var(--jasa-text-muted);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
+.jasa-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ════ FOOTER ════ */
+.jasa-footer {
+  border-top: 1px solid var(--jasa-border);
+  padding: 2.5rem 0;
+  font-size: 0.86rem;
+  color: var(--jasa-text-muted);
+}
+
+.jasa-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jasa-footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.jasa-footer-links a {
+  color: var(--jasa-text-muted);
+  text-decoration: none;
+  transition: color var(--jasa-transition);
+}
+
+.jasa-footer-links a:hover {
+  color: var(--jasa-text-primary);
+}
+
+/* ════ RESPONSIVE BREAKPOINTS (375px, 768px, 1024px, 1440px) ════ */
+@media (max-width: 1024px) {
+  .jasa-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .jasa-trust-grid,
+  .jasa-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .jasa-nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--jasa-bg-elevated);
+    border-bottom: 1px solid var(--jasa-border);
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+    display: none;
+    z-index: 150;
+  }
+
+  .jasa-nav-menu.open {
+    display: flex;
+  }
+
+  .jasa-hamburger {
+    display: flex;
+  }
+
+  .jasa-pricing-grid,
+  .jasa-addons-grid,
+  .jasa-trust-grid,
+  .jasa-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .jasa-footer-inner {
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .jasa-hero {
+    padding: 4rem 0 2.5rem;
+  }
+
+  .jasa-cta-card {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .jasa-container {
+    width: min(100% - 1.75rem, 1220px);
+  }
+
+  .jasa-price-card {
+    padding: 1.75rem 1.35rem;
+  }
+
+  .jasa-hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+  }
+
+  .jasa-hero-sub {
+    font-size: 0.95rem;
+  }
+
+  .jasa-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.84rem;
+  }
+}
