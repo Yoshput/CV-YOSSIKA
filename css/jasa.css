@@ -838,6 +838,81 @@ body.jasa-body {
   color: var(--jasa-text-primary);
 }
 
+.jasa-trust-footer-cta {
+  margin-top: 3rem;
+  background: var(--jasa-surface-card);
+  border: 1px solid var(--jasa-border);
+  border-radius: var(--jasa-radius-lg);
+  padding: 2.25rem 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  transition: border-color var(--jasa-transition), transform var(--jasa-transition);
+}
+
+.jasa-trust-footer-cta:hover {
+  border-color: var(--jasa-border-hover);
+  transform: translateY(-2px);
+}
+
+.jasa-trust-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.jasa-trust-cta-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.jasa-trust-cta-eyebrow {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--jasa-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
+}
+
+.jasa-trust-cta-title {
+  font-family: var(--jasa-font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 800;
+  color: var(--jasa-text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.45rem;
+}
+
+.jasa-trust-cta-desc {
+  font-size: 0.92rem;
+  color: var(--jasa-text-muted);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+.jasa-trust-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .jasa-trust-footer-cta {
+    padding: 1.75rem 1.4rem;
+  }
+  .jasa-trust-cta-actions {
+    width: 100%;
+  }
+  .jasa-trust-cta-actions .jasa-btn {
+    width: 100%;
+  }
+}
+
 /* ════ STEPS / CARA ORDER ════ */
 .jasa-steps-section {
   padding: 5.5rem 0;

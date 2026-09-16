@@ -1034,19 +1034,31 @@
       box-shadow: 0 6px 22px var(--accent-glow);
     }
 
-    /* Mobile Drawer Promo Card */
+    /* Mobile Drawer Promo Card (STRICTLY HIDDEN ON DESKTOP) */
+    .drawer-jasa-item,
+    li.drawer-jasa-item,
+    .nav-links .drawer-jasa-item,
+    .nav-links li.drawer-jasa-item,
+    .nav-links a.drawer-jasa-promo,
+    .drawer-jasa-promo,
+    .drawer-extra-actions,
+    li.drawer-extra-actions,
+    .nav-links li.drawer-extra-actions {
+      display: none !important;
+    }
+
     .drawer-jasa-promo {
-      display: none;
       width: 100%;
-      padding: 1.25rem 1.4rem;
+      padding: 1.15rem 1.25rem;
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at 100% 0%, rgba(165, 180, 252, 0.2) 0%, rgba(17, 19, 26, 0.95) 75%);
-      border: 1px solid rgba(165, 180, 252, 0.35);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      background: radial-gradient(circle at 100% 0%, rgba(165, 180, 252, 0.16) 0%, rgba(17, 19, 26, 0.95) 75%);
+      border: 1px solid rgba(165, 180, 252, 0.3);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
       text-decoration: none;
       margin-bottom: 0.75rem;
       transition: all var(--transition);
       box-sizing: border-box;
+      white-space: normal !important;
     }
 
     .drawer-jasa-promo:active {
@@ -1057,27 +1069,30 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 0.35rem;
+      white-space: normal !important;
     }
 
     .drawer-jasa-title {
       font-family: var(--font-display);
-      font-size: 1.12rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--txt);
       margin-bottom: 0.25rem;
+      white-space: normal !important;
     }
 
     .drawer-jasa-desc {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--txt-muted);
       line-height: 1.45;
       margin-bottom: 0.75rem;
+      white-space: normal !important;
     }
 
     .drawer-jasa-btn {
@@ -1085,18 +1100,18 @@
       align-items: center;
       justify-content: center;
       gap: 0.45rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.82rem;
+      padding: 0.48rem 0.9rem;
+      font-size: 0.8rem;
       font-weight: 700;
       border-radius: var(--radius-full);
       background: var(--accent);
       color: #090a0f;
       width: 100%;
       box-sizing: border-box;
+      white-space: nowrap !important;
     }
 
     .drawer-extra-actions {
-      display: none;
       width: 100%;
       gap: 0.75rem;
       margin-top: 0.75rem;
@@ -1155,11 +1170,22 @@
         display: inline-flex !important;
       }
 
-      .drawer-jasa-promo {
+      .drawer-jasa-item,
+      li.drawer-jasa-item,
+      .nav-links .drawer-jasa-item,
+      .nav-links li.drawer-jasa-item {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .drawer-jasa-promo,
+      .nav-links a.drawer-jasa-promo {
         display: block !important;
       }
 
-      .drawer-extra-actions {
+      .drawer-extra-actions,
+      li.drawer-extra-actions,
+      .nav-links li.drawer-extra-actions {
         display: flex !important;
       }
 
@@ -1231,6 +1257,16 @@
       </div>
       <div class="preloader-quote">Crafting high-performance digital experiences</div>
     </div>
+    <script>
+      setTimeout(function() {
+        var p = document.getElementById('appPreloader');
+        if (p && p.style.display !== 'none' && getComputedStyle(p).display !== 'none') {
+          p.style.transition = 'opacity 0.4s ease';
+          p.style.opacity = '0';
+          setTimeout(function() { p.style.display = 'none'; }, 400);
+        }
+      }, 1500);
+    </script>
   </div>
 
 
@@ -1357,7 +1393,7 @@
               <div class="stat-lbl" data-i18n="hero.statCerts">Certifications</div>
             </div>
             <div>
-              <div class="stat-val">7</div>
+              <div class="stat-val">11+</div>
               <div class="stat-lbl" data-i18n="hero.statProjects">Featured Works</div>
             </div>
             <div>
@@ -1441,6 +1477,106 @@
         </div>
 
         <div class="projects-grid">
+          <!-- Sistem POS Operasional IRIS Optik I See You -->
+          <article class="project-card" onclick="openProjectModal('pos_iris')">
+            <div class="project-media">
+              <div class="project-badge-pos">
+                <span class="pill pill-blue">Enterprise POS</span>
+              </div>
+              <video class="card-video-loop" src="assets/img/project-web/pos-iris/pos-iris-preview.mp4" poster="assets/img/project-web/pos-iris/pos-iris-poster.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Sistem POS Operasional IRIS — Optik I See You</h3>
+              <p class="project-tagline">Integrated multi-branch retail POS &amp; clinic operations system — queue management, AI Smart TV vocal calling, refraction records, cashier, and automated WhatsApp alerts.</p>
+              <div class="project-tech">
+                <span class="pill pill-green">POS Engine</span>
+                <span class="pill pill-blue">Multi-Branch Sync</span>
+                <span class="pill pill-purple">Alice AI Voice</span>
+                <span class="pill pill-amber">Thermal Printing</span>
+                <span class="pill pill-cyan">WhatsApp API</span>
+              </div>
+              <div class="project-action-row">
+                <span data-i18n="projects.viewDetail">View Detail →</span>
+                <span style="font-size:0.8rem;color:var(--txt-muted);">Internal System ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- MUBES HIPMI System -->
+          <article class="project-card" onclick="openProjectModal('mubes_hipmi')">
+            <div class="project-media">
+              <div class="project-badge-pos">
+                <span class="pill pill-amber">Enterprise Org</span>
+              </div>
+              <video class="card-video-loop" src="assets/img/project-web/mubes-hipmi/mubes-preview.mp4" poster="assets/img/project-web/mubes-hipmi/mubes-poster.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Sistem Konstitusi &amp; RAB MUBES HIPMI</h3>
+              <p class="project-tagline">Comprehensive organizational governance platform for BPC HIPMI — digital constitution articles, real-time E-Voting, and automated multi-budget RAB financial management.</p>
+              <div class="project-tech">
+                <span class="pill pill-amber">E-Voting</span>
+                <span class="pill pill-blue">Next.js</span>
+                <span class="pill pill-green">RAB Engine</span>
+                <span class="pill pill-purple">Constitution</span>
+                <span class="pill pill-cyan">PDF Export</span>
+              </div>
+              <div class="project-action-row">
+                <span data-i18n="projects.viewDetail">View Detail →</span>
+                <span style="font-size:0.8rem;color:var(--txt-muted);">BPC HIPMI ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Photobooth AI HIPMI -->
+          <article class="project-card" onclick="openProjectModal('photobooth_hipmi')">
+            <div class="project-media">
+              <div class="project-badge-pos">
+                <span class="pill pill-purple">Web Vision App</span>
+              </div>
+              <video class="card-video-loop" src="assets/img/project-web/photobooth-hipmi/photobooth-hipmi-preview.mp4" poster="assets/img/project-web/photobooth-hipmi/photobooth-hipmi-poster.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Photobooth AI / Web App HIPMI</h3>
+              <p class="project-tagline">Interactive event photobooth web application for BPC HIPMI — browser camera capture, custom branding frames, real-time filters, and instant high-res QR download.</p>
+              <div class="project-tech">
+                <span class="pill pill-purple">Canvas API</span>
+                <span class="pill pill-cyan">WebRTC</span>
+                <span class="pill pill-pink">Photo Strip</span>
+                <span class="pill pill-amber">QR Download</span>
+                <span class="pill pill-green">PWA Ready</span>
+              </div>
+              <div class="project-action-row">
+                <span data-i18n="projects.viewDetail">View Detail →</span>
+                <span style="font-size:0.8rem;color:var(--txt-muted);">Interactive Kiosk ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- IMI Marketing Intelligence -->
+          <article class="project-card" onclick="openProjectModal('imi_iseeyou')">
+            <div class="project-media">
+              <div class="project-badge-pos">
+                <span class="pill pill-cyan">Marketing AI</span>
+              </div>
+              <video class="card-video-loop" src="assets/img/project-web/imi-iseeyou/imi-preview.mp4" poster="assets/img/project-web/imi-iseeyou/imi-poster.webp" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338"></video>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">IMI — I See You Marketing Intelligence</h3>
+              <p class="project-tagline">Enterprise AI marketing intelligence and retail analytics suite — customer lifetime value, multi-branch campaign ROAS, cohort segmentation, and predictive sales forecasting.</p>
+              <div class="project-tech">
+                <span class="pill pill-cyan">Customer Cohort</span>
+                <span class="pill pill-green">Predictive AI</span>
+                <span class="pill pill-blue">ROAS Tracker</span>
+                <span class="pill pill-purple">Sales Forecast</span>
+                <span class="pill pill-amber">Multi-Branch</span>
+              </div>
+              <div class="project-action-row">
+                <span data-i18n="projects.viewDetail">View Detail →</span>
+                <span style="font-size:0.8rem;color:var(--txt-muted);">Analytics Suite ↗</span>
+              </div>
+            </div>
+          </article>
+
           <!-- Optik I See You -->
           <article class="project-card" onclick="openProjectModal('optik_iseeyou')">
             <div class="project-media">

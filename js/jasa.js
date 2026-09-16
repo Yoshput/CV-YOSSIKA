@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardTilt();
   initFaqAccordion();
   initGsapAnimations();
+  initCardVideos();
 });
 
 /* ── Theme Toggle ── */
@@ -375,5 +376,26 @@ function initGsapAnimations() {
       }
     });
   }, 1000);
+}
+
+/* ── Card Video Loop Autoplay ── */
+function initCardVideos() {
+  const vids = document.querySelectorAll('.card-video-loop');
+  if (!vids.length) return;
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const vid = entry.target;
+        if (entry.isIntersecting) {
+          vid.play().catch(() => {});
+        } else {
+          vid.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+    vids.forEach(v => observer.observe(v));
+  } else {
+    vids.forEach(v => v.play().catch(() => {}));
+  }
 }
 

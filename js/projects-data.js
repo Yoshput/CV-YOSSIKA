@@ -4,6 +4,345 @@
  */
 
 const PROJECTS_DATA = {
+  pos_iris: {
+    id: "pos_iris",
+    status: "completed",
+    statusBadge: {
+      en: "Enterprise POS",
+      id: "Sistem Kasir & POS"
+    },
+    title: "Sistem POS Operasional IRIS — Optik I See You",
+    role: "Lead Systems Architect & POS Developer",
+    year: "2026",
+    category: "development",
+    tech: [
+      "Point of Sale (POS)",
+      "Next.js",
+      "Thermal Receipt",
+      "Multi-Branch Sync",
+      "Barcode Scanner",
+      "Alice AI Voice",
+      "WhatsApp Fonnte API"
+    ],
+    techClasses: ["pill-green", "pill-blue", "pill-purple", "pill-cyan", "pill-amber", "pill-pink", "pill-blue"],
+    tagline: {
+      en: "Multi-branch retail POS & clinic operations system — tablet queue registration, Smart TV Alice AI vocal calling, optometrist refraction records, cashier, and automated WhatsApp updates.",
+      id: "Ekosistem operasional retail & POS kasir multi-cabang terpadu — antrian Smart TV Alice AI, rekam medis refraksi, kasir cabang, workflow lab faset lensa, dan notifikasi WhatsApp."
+    },
+    desc: {
+      en: "IRIS (I See You Retail & Information System) is an enterprise operational portal and Point of Sale ecosystem developed for Optik I See You across 4 retail branches (Purwokerto, Purbalingga, Wonosobo, and Cilacap). Built to streamline the entire customer journey from self-service tablet registration, smart queue announcement on Smart TVs with crystal-clear voice (Alice AI), optometrist eye exam refractions with digital medical records, branch POS cashier verification, central optical lab lens cutting (faset) workflow tracking, to automated WhatsApp ready-for-pickup notifications via Fonnte API.",
+      id: "IRIS (I See You Retail & Information System) adalah ekosistem portal operasional dan sistem Point of Sale (POS) enterprise yang dibangun untuk jaringan Optik I See You di 4 cabang (Purwokerto, Purbalingga, Wonosobo, dan Cilacap). Menangani seluruh alur pelanggan secara terintegrasi: registrasi mandiri tablet customer, antrean Smart TV dengan panggilan suara jernih (Alice AI), modul rekam medis pemeriksaan refraksi mata, kasir cabang, pelacakan proses laboratorium faset & perakitan lensa pusat, hingga pengiriman notifikasi otomatis via WhatsApp Fonnte saat kacamata selesai dirakit."
+    },
+    features: {
+      en: [
+        "Multi-Branch Unified Architecture syncing Purwokerto, Cilacap, Wonosobo, and Purbalingga",
+        "Self-service Customer Tablet Registration with automated queue ticket generation (#001, #002)",
+        "Smart TV Waiting Lounge Display with real-time Alice AI vocal announcement",
+        "Optometrist Medical Examination & Refraction record management (SPH, CYL, AXIS, ADD, PD)",
+        "Branch Cashier & Order Dispatching directly into central lens cutting queue",
+        "Central Optical Lab (Faset) processing dashboard with automated WhatsApp customer alerts"
+      ],
+      id: [
+        "Arsitektur Terpadu Multi-Cabang sinkronisasi data Purwokerto, Cilacap, Wonosobo, dan Purbalingga",
+        "Registrasi Mandiri Tablet Pelanggan dengan pencetakan & penerbitan nomor antrian otomatis",
+        "Layar Antrian Smart TV Ruang Tunggu dengan panggilan suara otomatis jernih Alice AI",
+        "Modul Rekam Medis & Pemeriksaan Refraksi Mata terstruktur (SPH, CYL, AXIS, ADD, PD)",
+        "Konfirmasi Kasir Cabang & Penerusan Order otomatis ke antrian laboratorium perakitan lensa",
+        "Laboratorium Faset Lensa Pusat dengan integrasi notifikasi otomatis WhatsApp pelanggan"
+      ]
+    },
+    laptopShowcase: "assets/img/project-web/pos-iris/pos-iris-laptop-showcase.webp",
+    cardShowcase: "assets/img/project-web/pos-iris/pos-iris-laptop-showcase.webp",
+    video: "assets/img/project-web/pos-iris/pos-iris-demo.mp4",
+    previewMp4: "assets/img/project-web/pos-iris/pos-iris-preview.mp4",
+    previewWebp: "assets/img/project-web/pos-iris/pos-iris-poster.webp",
+    gif: "assets/img/project-web/pos-iris/pos-iris.gif",
+    images: [
+      "assets/img/project-web/pos-iris/pos-iris-laptop-showcase.webp",
+      "assets/img/project-web/pos-iris/pos-iris-portal.webp",
+      "assets/img/project-web/pos-iris/pos-iris-registrasi-tablet.webp",
+      "assets/img/project-web/pos-iris/pos-iris-smart-tv.webp",
+      "assets/img/project-web/pos-iris/pos-iris-refraksi-rekam-medis.webp",
+      "assets/img/project-web/pos-iris/pos-iris-kasir-cabang.webp",
+      "assets/img/project-web/pos-iris/pos-iris-lab-faset.webp"
+    ],
+    imageCaptions: {
+      en: [
+        "MacBook 3D Showcase: IRIS POS Multi-Branch Retail Management Ecosystem",
+        "Operational Portal: Branch navigation & centralized staff gateway across 4 branches",
+        "Customer Self-Service Tablet: Automated queue booking & customer registration",
+        "Smart TV Waiting Area Display: Real-time visual queue & Alice AI vocal announcement",
+        "Optometrist Clinic Exam: Digital refraction records (SPH, CYL, AXIS, ADD, PD)",
+        "Branch POS Cashier: Order verification, payment processing, & lens dispatch",
+        "Central Optical Lab: Real-time lens cutting (faset) pipeline & automated WhatsApp ready alerts"
+      ],
+      id: [
+        "Mockup 3D MacBook: Ekosistem IRIS POS & Operasional Retail Multi-Cabang",
+        "Portal Operasional: Navigasi cabang & portal staf terpusat lintas 4 cabang",
+        "Tablet Registrasi Mandiri: Pendaftaran customer & penerbitan tiket antrean otomatis",
+        "Layar Antrian Smart TV: Tampilan visual antrean ruang tunggu dengan suara Alice AI",
+        "Modul Refraksi Optometris: Rekam medis pemeriksaan mata digital (SPH, CYL, AXIS, ADD, PD)",
+        "Dashboard Kasir Cabang: Verifikasi pesanan, pembayaran kasir, & penerusan ke lab faset",
+        "Laboratorium Faset Pusat: Pelacakan pemotongan lensa & notifikasi otomatis WhatsApp siap ambil"
+      ]
+    },
+    actions: [
+      { text: "Video Demo POS ↗", link: "assets/img/project-web/pos-iris/pos-iris-demo.mp4", primary: true },
+      { text: "Web Optik I See You ↗", link: "https://optikiseeyou.com", primary: false }
+    ]
+  },
+  mubes_hipmi: {
+    id: "mubes_hipmi",
+    status: "completed",
+    statusBadge: {
+      en: "Enterprise Organization",
+      id: "Sistem Konstitusi & RAB"
+    },
+    title: "Sistem Konstitusi & RAB MUBES HIPMI",
+    role: "Lead Fullstack Developer",
+    year: "2026",
+    category: "development",
+    tech: [
+      "Next.js",
+      "Tailwind CSS",
+      "E-Voting System",
+      "RAB Multi-Anggaran",
+      "Digital Constitution",
+      "Real-time Analytics",
+      "PDF Export"
+    ],
+    techClasses: ["pill-amber", "pill-blue", "pill-green", "pill-purple", "pill-cyan", "pill-pink", "pill-blue"],
+    tagline: {
+      en: "Comprehensive organizational governance platform for BPC HIPMI — digital constitution articles, real-time E-Voting, and automated multi-budget RAB financial management.",
+      id: "Platform tata kelola musyawarah & organisasi terpadu BPC HIPMI — amandemen pasal konstitusi digital, e-voting voting suara real-time, dan manajemen RAB multi-anggaran otomatis."
+    },
+    desc: {
+      en: "Sistem Konstitusi & RAB MUBES HIPMI is a full-fledged enterprise management platform tailored for BPC HIPMI's Musyawarah Daerah / Cabang. It digitizes the entire organizational governance workflow: real-time constitutional articles inspection and amendment tracking, cryptographic e-voting with live quorum tallying, and an automated multi-budget RAB (Rencana Anggaran Biaya) financial management dashboard capable of tracking expenditures, allocations, and instant reporting exports.",
+      id: "Sistem Konstitusi & RAB MUBES HIPMI adalah platform manajemen enterprise yang dibangun khusus untuk Musyawarah Cabang/Daerah BPC HIPMI. Mendigitalkan seluruh alur musyawarah dan tata kelola organisasi: telaah & amandemen pasal konstitusi secara digital, pemungutan suara e-voting real-time dengan rekapitulasi kuorum instan, hingga sistem manajemen keuangan RAB (Rencana Anggaran Biaya) multi-pos terotomatisasi dengan audit anggaran dan ekspor laporan terperinci."
+    },
+    features: {
+      en: [
+        "Digital Constitution Management with chapter & article indexing and instant amendment tracking",
+        "Secure Real-Time E-Voting with voter validation, secret ballot encryption, and instant quorum tallying",
+        "Comprehensive RAB Multi-Budget Engine with automated balance calculations and financial tracking",
+        "Live Conference Dashboard featuring session agenda, participant attendance, and voting results",
+        "Role-Based Access Control for Steering Committee, Organizing Committee, and Voting Delegates",
+        "Automated Official Report Generation and high-resolution PDF export for congress proceedings"
+      ],
+      id: [
+        "Sistem Manajemen Konstitusi & AD/ART digital dengan penomoran bab/pasal dan catatan amandemen interaktif",
+        "Pemungutan Suara E-Voting Kriptografis aman dengan validasi pemilih terdaftar dan rekap suara kuorum real-time",
+        "Engine Keuangan RAB Multi-Anggaran dengan kalkulasi saldo otomatis dan pelacakan realisasi biaya",
+        "Layar Konferensi & Dashboard Utama menampilkan agenda sidang pleno, kehadiran peserta, dan hasil suara",
+        "Hak Akses Berjenjang (RBAC) untuk Steering Committee (SC), Organizing Committee (OC), dan Peserta Sidang",
+        "Ekspor Otomatis Berita Acara Resmi dan notulensi sidang dalam format dokumen PDF beresolusi tinggi"
+      ]
+    },
+    laptopShowcase: "assets/img/project-web/mubes-hipmi/mubes-laptop-showcase.webp",
+    cardShowcase: "assets/img/project-web/mubes-hipmi/mubes-laptop-showcase.webp",
+    video: "assets/img/project-web/mubes-hipmi/mubes-demo.mp4",
+    previewMp4: "assets/img/project-web/mubes-hipmi/mubes-preview.mp4",
+    previewWebp: "assets/img/project-web/mubes-hipmi/mubes-poster.webp",
+    gif: "assets/img/project-web/mubes-hipmi/mubes.gif",
+    images: [
+      "assets/img/project-web/mubes-hipmi/mubes-laptop-showcase.webp",
+      "assets/img/project-web/mubes-hipmi/mubes-dashboard-overview.webp",
+      "assets/img/project-web/mubes-hipmi/mubes-konstitusi-pasal.webp",
+      "assets/img/project-web/mubes-hipmi/mubes-rab-anggaran.webp",
+      "assets/img/project-web/mubes-hipmi/mubes-evoting-suara.webp",
+      "assets/img/project-web/mubes-hipmi/mubes-rekapitulasi-hasil.webp"
+    ],
+    imageCaptions: {
+      en: [
+        "MacBook 3D Showcase: MUBES HIPMI Constitution & Financial Budget Governance Platform",
+        "Command Center Dashboard: Real-time congress agenda, delegate attendance, and plenary sessions",
+        "Digital Constitution Portal: Chapter, article, and amendment tracking interface",
+        "RAB Financial Management: Multi-budget expenditure allocation and auto-calculated balance sheet",
+        "Secure E-Voting Interface: Delegate ballot submission with real-time quorum tallying",
+        "Congress Results Summary: Official vote distribution tally and automated report generator"
+      ],
+      id: [
+        "Mockup 3D MacBook: Platform Tata Kelola Konstitusi & Sistem RAB MUBES HIPMI",
+        "Dashboard Pusat Sidang: Agenda kongres real-time, absensi delegasi, dan pemantauan sidang pleno",
+        "Portal Konstitusi Digital: Indeks bab, pasal per pasal, dan catatan revisi draf sidang",
+        "Sistem Manajemen Keuangan RAB: Alokasi multi-pos anggaran dan kalkulasi neraca otomatis",
+        "Modul E-Voting Terenkripsi: Pemungutan suara delegasi resmi dengan validasi kuorum langsung",
+        "Rekapitulasi Hasil Pemilihan: Distribusi perolehan suara sah dan penerbitan berita acara otomatis"
+      ]
+    },
+    actions: [
+      { text: "Video Demo MUBES ↗", link: "assets/img/project-web/mubes-hipmi/mubes-demo.mp4", primary: true },
+      { text: "Buka Dokumentasi 📖", link: "/dokumentasi", primary: false }
+    ]
+  },
+  photobooth_hipmi: {
+    id: "photobooth_hipmi",
+    status: "completed",
+    statusBadge: {
+      en: "Interactive Web App",
+      id: "Photobooth AI & Web App"
+    },
+    title: "Photobooth AI / Web App HIPMI",
+    role: "Lead Creative Developer & Web Vision Engineer",
+    year: "2026",
+    category: "development",
+    tech: [
+      "Next.js",
+      "Canvas API",
+      "MediaDevices API",
+      "Real-time Filters",
+      "QR Code Generator",
+      "Cloud Storage",
+      "PWA"
+    ],
+    techClasses: ["pill-purple", "pill-cyan", "pill-pink", "pill-amber", "pill-green", "pill-blue", "pill-purple"],
+    tagline: {
+      en: "Interactive event photobooth web application for BPC HIPMI — browser camera capture, custom branding frames, real-time filters, and instant high-res QR download.",
+      id: "Aplikasi web photobooth interaktif untuk event BPC HIPMI — tangkapan kamera langsung di browser, bingkai custom elegan, filter real-time, dan unduh foto resolusi tinggi via QR Code."
+    },
+    desc: {
+      en: "Photobooth AI / Web App HIPMI is a modern, high-engagement browser-based photobooth software built for BPC HIPMI gala and conferences. Designed to run smoothly on tablets, laptops, and touch kiosks without native app installation. It features live webcam stream processing, customizable official HIPMI branded frame templates, multi-photo strip layouts, real-time visual enhancements, and instantaneous cloud upload paired with dynamic QR codes for attendees to download their HD photos straight to their smartphones within seconds.",
+      id: "Photobooth AI / Web App HIPMI adalah aplikasi photobooth interaktif berbasis web yang dibangun untuk perhelatan gala dinner dan konferensi akbar BPC HIPMI. Berjalan mulus di layar sentuh kiosk, tablet, maupun laptop tanpa perlu instalasi aplikasi rumit. Dilengkapi pemrosesan kamera live beresolusi tinggi, pilihan template bingkai resmi HIPMI yang mewah, layout strip multi-pose, filter estetika real-time, serta unggahan awan kilat dengan kode QR dinamis agar tamu dapat mengunduh foto jernih langsung ke smartphone dalam hitungan detik."
+    },
+    features: {
+      en: [
+        "Live Browser Camera Capture utilizing WebRTC and MediaDevices API with automatic aspect ratio lock",
+        "Official Custom Branded Frames tailored for HIPMI gala events with gold-foil aesthetic accents",
+        "Multi-Photo Strip Collage layouts (1-shot hero, 3-shot vertical strip, 4-grid commemorative collage)",
+        "Interactive Touch Countdown & Shutter trigger with flash visual feedback",
+        "Instant Dynamic QR Code generation for one-tap mobile download without typing URLs",
+        "PWA offline-ready architecture designed for high-traffic exhibition booths and kiosk stations"
+      ],
+      id: [
+        "Tangkapan Kamera Browser Real-time dengan WebRTC & MediaDevices API dengan penguncian rasio otomatis",
+        "Pilihan Bingkai Custom Resmi HIPMI dengan desain elegan beraksen emas dan tipografi modern",
+        "Tata Letak Cetak & Kolase Multi-Foto (single hero portrait, 3-strip foto vertikal, dan 4-grid kolase)",
+        "Hitung Mundur Interaktif & Pemicu Shutter layar sentuh dengan efek visual flash kamera",
+        "Penerbitan QR Code Dinamis Instan untuk unduh cepat ke HP pengunjung tanpa perlu ketik alamat web",
+        "Arsitektur PWA Ringan dan responsif, optimal digunakan di stan photobooth kiosk maupun tablet portabel"
+      ]
+    },
+    laptopShowcase: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-laptop-showcase.webp",
+    cardShowcase: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-laptop-showcase.webp",
+    video: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-demo.mp4",
+    previewMp4: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-preview.mp4",
+    previewWebp: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-poster.webp",
+    gif: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi.gif",
+    images: [
+      "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-laptop-showcase.webp",
+      "assets/img/project-web/photobooth-hipmi/photobooth-camera-live.webp",
+      "assets/img/project-web/photobooth-hipmi/photobooth-template-selector.webp",
+      "assets/img/project-web/photobooth-hipmi/photobooth-capture-countdown.webp",
+      "assets/img/project-web/photobooth-hipmi/photobooth-filter-processing.webp",
+      "assets/img/project-web/photobooth-hipmi/photobooth-qr-download.webp"
+    ],
+    imageCaptions: {
+      en: [
+        "MacBook 3D Showcase: HIPMI Interactive Event Photobooth Web Application",
+        "Live Camera Viewport: Real-time sensor feed with aspect-ratio framing and lighting balance",
+        "Frame & Template Selector: Curated catalog of official HIPMI event frames and multi-shot strip layouts",
+        "Interactive Countdown Shutter: Visual pulse countdown with synchronized shutter flash trigger",
+        "Real-Time Image Processing: Canvas rendering pipeline for borders, branding badges, and tone grading",
+        "Instant QR Download Station: Attendees scan dynamic QR code to save ultra HD photos directly to mobile"
+      ],
+      id: [
+        "Mockup 3D MacBook: Aplikasi Web Photobooth Interaktif Event HIPMI",
+        "Viewport Kamera Live: Feed sensor kamera real-time dengan panduan proporsi dan pencahayaan seimbang",
+        "Pemilih Bingkai & Template: Pilihan bingkai resmi event HIPMI dan layout kolase strip multi-pose",
+        "Shutter Hitung Mundur Interaktif: Animasi hitung mundur visual dengan simulasi kilatan flash kamera",
+        "Pipeline Pemrosesan Canvas: Penggabungan foto, logo resmi, bingkai grafis, dan filter warna",
+        "Stasiun Unduh QR Instan: Tamu memindai kode QR dinamis untuk menyimpan foto HD langsung ke smartphone"
+      ]
+    },
+    actions: [
+      { text: "Video Demo Photobooth ↗", link: "assets/img/project-web/photobooth-hipmi/photobooth-hipmi-demo.mp4", primary: true },
+      { text: "Coba Aplikasi Web 📷", link: "/jasa", primary: false }
+    ]
+  },
+  imi_iseeyou: {
+    id: "imi_iseeyou",
+    status: "completed",
+    statusBadge: {
+      en: "AI & Marketing Intelligence",
+      id: "Intelligence & Analitik Bisnis"
+    },
+    title: "IMI — I See You Marketing Intelligence",
+    role: "Lead Analytics Architect & AI Engineer",
+    year: "2026",
+    category: "development",
+    tech: [
+      "Next.js",
+      "Tailwind CSS",
+      "Chart.js / Recharts",
+      "Predictive AI",
+      "Customer Cohorts",
+      "ROAS Analytics",
+      "Multi-Branch KPIs"
+    ],
+    techClasses: ["pill-cyan", "pill-green", "pill-blue", "pill-purple", "pill-amber", "pill-pink", "pill-cyan"],
+    tagline: {
+      en: "Enterprise AI marketing intelligence and retail analytics suite — customer lifetime value, multi-branch campaign ROAS, cohort segmentation, and predictive sales forecasting.",
+      id: "Platform kecerdasan pemasaran & analitik retail terpadu berbasis AI — pelacakan ROAS kampanye multi-cabang, analisis kohort pelanggan, segmentasi demografis, dan prediksi tren penjualan."
+    },
+    desc: {
+      en: "IMI (I See You Marketing Intelligence) is an advanced decision-support and data intelligence platform developed for Optik I See You. It aggregates customer transactional touchpoints, optometry service records, and omnichannel advertising campaigns across all branches (Purwokerto, Purbalingga, Wonosobo, Cilacap). Powered by smart clustering algorithms and predictive modeling, IMI provides management with actionable visibility into customer retention cohorts, frame/lens product velocity, advertising Return on Ad Spend (ROAS), customer lifetime value (LTV), and seasonal sales forecasting.",
+      id: "IMI (I See You Marketing Intelligence) adalah platform data intelligence dan analitik prediktif enterprise yang dikembangkan untuk manajemen Optik I See You. Mengonsolidasikan data transaksi pelanggan, rekam periksa mata, dan kampanye periklanan digital lintas 4 cabang (Purwokerto, Purbalingga, Wonosobo, dan Cilacap). Ditenagai algoritma segmentasi cerdas dan model perkiraan penjualan, IMI memberikan visibilitas komprehensif atas retensi kohort pelanggan, kecepatan perputaran produk frame/lensa, efektivitas belanja iklan (ROAS), serta proyeksi tren permintaan musim berikutnya."
+    },
+    features: {
+      en: [
+        "Unified Multi-Branch Marketing Dashboard aggregating retail velocity across 4 major branch locations",
+        "Customer Cohort Retention Analysis mapping repeat purchase cycles and optometry re-examination curves",
+        "Omnichannel Campaign ROAS Tracker correlating ad spend with actual in-store point-of-sale conversions",
+        "Demographic & Geographic Intelligence analyzing eyewear preference patterns across regional customer groups",
+        "AI Predictive Sales Forecasting projecting revenue trajectories and inventory replenishment requirements",
+        "Automated Executive Insights & Executive Reporting exportable in presentation-ready PDF and CSV formats"
+      ],
+      id: [
+        "Dashboard Terpadu Pemasaran Multi-Cabang merangkum performa retail 4 cabang dalam visual interaktif",
+        "Analisis Retensi Kohort Pelanggan memetakan siklus beli ulang kacamata dan jadwal pemeriksaan mata berkala",
+        "Pelacak ROAS Kampanye Multikanal menghubungkan biaya iklan digital dengan transaksi kasir POS di toko fisik",
+        "Analisis Demografi & Geografis mengidentifikasi preferensi model frame sesuai rentang usia dan wilayah cabang",
+        "Model Prediktif Tren Penjualan berbasis AI memproyeksikan target omset dan estimasi kebutuhan restok lensa",
+        "Ringkasan Eksekutif Terotomatisasi siap diekspor ke dokumen laporan PDF dan format data CSV dengan satu klik"
+      ]
+    },
+    laptopShowcase: "assets/img/project-web/imi-iseeyou/imi-laptop-showcase.webp",
+    cardShowcase: "assets/img/project-web/imi-iseeyou/imi-laptop-showcase.webp",
+    video: "assets/img/project-web/imi-iseeyou/imi-demo.mp4",
+    previewMp4: "assets/img/project-web/imi-iseeyou/imi-preview.mp4",
+    previewWebp: "assets/img/project-web/imi-iseeyou/imi-poster.webp",
+    gif: "assets/img/project-web/imi-iseeyou/imi.gif",
+    images: [
+      "assets/img/project-web/imi-iseeyou/imi-laptop-showcase.webp",
+      "assets/img/project-web/imi-iseeyou/imi-analytics-overview.webp",
+      "assets/img/project-web/imi-iseeyou/imi-customer-cohort.webp",
+      "assets/img/project-web/imi-iseeyou/imi-campaign-roas.webp",
+      "assets/img/project-web/imi-iseeyou/imi-demographic-insights.webp",
+      "assets/img/project-web/imi-iseeyou/imi-sales-forecast.webp"
+    ],
+    imageCaptions: {
+      en: [
+        "MacBook 3D Showcase: IMI Marketing Intelligence & Retail Predictive Analytics Suite",
+        "Executive Command Dashboard: High-level KPI summary, revenue velocity, and footfall metrics",
+        "Customer Cohort Retention Matrix: Longitudinal analysis of customer return and lens replacement rates",
+        "Digital Advertising ROAS Tracker: Spend efficiency, conversion rates, and acquisition cost analytics",
+        "Demographic & Regional Insights: Customer age, gender, and product style preference distribution",
+        "AI Predictive Sales Forecasting: Historical regression modeling for forward-looking sales estimations"
+      ],
+      id: [
+        "Mockup 3D MacBook: Ekosistem IMI Marketing Intelligence & Analitik Bisnis Retail",
+        "Dashboard Utama Eksekutif: Rangkuman KPI omset harian, pertumbuhan pelanggan, dan kunjungan cabang",
+        "Matriks Retensi Kohort Pelanggan: Analisis frekuensi kunjungan ulang dan waktu pergantian lensa pelanggan",
+        "Pelacak Efektivitas Iklan (ROAS): Perbandingan biaya promosi dengan omset nyata kasir cabang",
+        "Wawasan Demografi & Preferensi Wilayah: Distribusi usia customer dan kategori model frame paling diminati",
+        "Prediksi Tren Penjualan AI: Pemodelan regresi tren untuk estimasi pendapatan dan persiapan stok gudang"
+      ]
+    },
+    actions: [
+      { text: "Video Demo IMI ↗", link: "assets/img/project-web/imi-iseeyou/imi-demo.mp4", primary: true },
+      { text: "Web Optik I See You ↗", link: "https://optikiseeyou.com", primary: false }
+    ]
+  },
   optik_iseeyou: {
     id: "optik_iseeyou",
     status: "completed",

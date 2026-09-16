@@ -3,7 +3,7 @@
  * Ultra-slick, interactive, GSAP-powered architecture with Fullscreen Case Studies.
  */
 
-const PROJECT_ORDER = ['optik_iseeyou', 'gesture', 'food', 'macabae', 'ngertiindia', 'gymplanner', 'thrift'];
+const PROJECT_ORDER = ['pos_iris', 'mubes_hipmi', 'photobooth_hipmi', 'imi_iseeyou', 'optik_iseeyou', 'gesture', 'food', 'macabae', 'ngertiindia', 'gymplanner', 'thrift'];
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize i18n
@@ -210,7 +210,7 @@ function animateHeroStats() {
   const stats = [
     { selector: '.hero-stats > div:nth-child(1) .stat-val', end: 6, suffix: '+' },
     { selector: '.hero-stats > div:nth-child(2) .stat-val', end: 12, suffix: '+' },
-    { selector: '.hero-stats > div:nth-child(3) .stat-val', end: 7, suffix: '+' },
+    { selector: '.hero-stats > div:nth-child(3) .stat-val', end: 8, suffix: '+' },
     { selector: '.hero-stats > div:nth-child(4) .stat-val', end: 100, suffix: '%' }
   ];
 
@@ -1240,6 +1240,10 @@ function buildWorksGrid(cat) {
   const lang = isEn ? 'en' : 'id';
 
   const showcaseMap = {
+    'pos_iris': 'assets/img/project-web/pos-iris/pos-iris-laptop-showcase.webp',
+    'mubes_hipmi': 'assets/img/project-web/mubes-hipmi/mubes-laptop-showcase.webp',
+    'photobooth_hipmi': 'assets/img/project-web/photobooth-hipmi/photobooth-hipmi-laptop-showcase.webp',
+    'imi_iseeyou': 'assets/img/project-web/imi-iseeyou/imi-laptop-showcase.webp',
     'gymplanner': 'assets/img/project-web/gym-planner/gym-planner-showcase.webp',
     'ngertiindia': 'assets/img/project-web/ngertiin-dia/ngertiin-dia-showcase.webp',
     'macabae': 'assets/img/project-web/maca-bae/macabae-laptop-showcase.webp',
@@ -1418,12 +1422,13 @@ Key Facts:
 - Yossika Putra Erlangga: S1 Informatics Engineering at Telkom University Purwokerto (Semester 4, GPA 3.65).
 - Background: TKJ at SMK Telkom Purwokerto.
 - Projects:
-  1. Optik I See You (optikiseeyou.com): Web app for optical chain with real-time AR glasses try-on, AI photobooth, Next.js 15, Three.js, MediaPipe Vision, and branch booking.
-  2. GestureFlow v3.0: Real-time SIBI Sign Language AI with MediaPipe Hands.
-  3. Food-TYU: Campus e-canteen with Midtrans digital payment and TyU-Pay.
-  4. MacaBae: Digital library with AI assistant (MacaBot) on Laravel & Gemini API.
-  5. Ngertiin Dia: Self-care & couple sync app with Gemini 2.5 Flash & PWA.
-  6. Gym Planner: 7-day custom splits & TDEE calculation PWA.
+  1. Sistem POS Operasional IRIS — Optik I See You: Enterprise retail POS and operational system across 4 branches with Smart TV queue calling (Alice AI), tablet customer registration, optometrist eye exam refractions, cashier dispatch, central lens lab workflow, and automated WhatsApp notifications.
+  2. Optik I See You (optikiseeyou.com): Web app for optical chain with real-time AR glasses try-on, AI photobooth, Next.js 15, Three.js, MediaPipe Vision, and branch booking.
+  3. GestureFlow v3.0: Real-time SIBI Sign Language AI with MediaPipe Hands.
+  4. Food-TYU: Campus e-canteen with Midtrans digital payment and TyU-Pay.
+  5. MacaBae: Digital library with AI assistant (MacaBot) on Laravel & Gemini API.
+  6. Ngertiin Dia: Self-care & couple sync app with Gemini 2.5 Flash & PWA.
+  7. Gym Planner: 7-day custom splits & TDEE calculation PWA.
 - Business: Mango Nyeni (artisan sago dessert beverage co-founder).
 - Events & Leadership: Head of Security at Market Day 4.0, Security at INFENTRA 2025, TULC Season II, WPI 2025, Staff at UKM HIPMI PT Telkom University Purwokerto.
 - Work Experience: Service Technician Intern (PKL) at PT Telkom Akses (fiber optic splicing, GPON ONT setup).
