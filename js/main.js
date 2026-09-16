@@ -1418,7 +1418,7 @@ Key Facts:
 - Yossika Putra Erlangga: S1 Informatics Engineering at Telkom University Purwokerto (Semester 4, GPA 3.65).
 - Background: TKJ at SMK Telkom Purwokerto.
 - Projects:
-  1. Optik I See You (optikiseeyou.com): Web app for optical chain with real-time AR glasses try-on, AI photobooth, Next.js 15, Three.js, MediaPipe Vision, and branch booking. (Status: Ongoing Development).
+  1. Optik I See You (optikiseeyou.com): Web app for optical chain with real-time AR glasses try-on, AI photobooth, Next.js 15, Three.js, MediaPipe Vision, and branch booking.
   2. GestureFlow v3.0: Real-time SIBI Sign Language AI with MediaPipe Hands.
   3. Food-TYU: Campus e-canteen with Midtrans digital payment and TyU-Pay.
   4. MacaBae: Digital library with AI assistant (MacaBot) on Laravel & Gemini API.

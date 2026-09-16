@@ -6,11 +6,7 @@
 const PROJECTS_DATA = {
   optik_iseeyou: {
     id: "optik_iseeyou",
-    status: "in_progress",
-    statusBadge: {
-      en: "In Progress / Ongoing Development",
-      id: "Sedang Dikembangkan / Active Development"
-    },
+    status: "completed",
     title: "Optik I See You — AR Try-On & Optical Store Website",
     role: "Lead Fullstack & Web AI Developer",
     year: "2026",
