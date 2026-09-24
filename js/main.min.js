@@ -5,7 +5,64 @@
 
 const PROJECT_ORDER = ['pos_iris', 'mubes_hipmi', 'photobooth_hipmi', 'imi_iseeyou', 'optik_iseeyou', 'gesture', 'food', 'macabae', 'ngertiindia', 'gymplanner', 'thrift'];
 
+/* ==========================================================================
+   GLOBAL PROJECT MEDIA ERROR FALLBACK SYSTEM
+   Guarantees zero blank / gray boxes across all project cards & sections
+   ========================================================================== */
+window.handleMediaError = function(mediaEl) {
+  if (!mediaEl || mediaEl.dataset.fallbackApplied) return;
+  mediaEl.dataset.fallbackApplied = 'true';
+
+  const container = mediaEl.closest('.project-media, .jasa-trust-media, .doc-media, .cert-media, .design-media') || mediaEl.parentElement;
+  if (!container) return;
+
+  // Find nearest title for initials and label
+  const card = mediaEl.closest('.project-card, .jasa-trust-card, .doc-card, .cert-card, .design-card');
+  let title = 'Project Showcase';
+  if (card) {
+    const titleEl = card.querySelector('.project-title, .jasa-trust-title, .doc-title, .cert-title, .design-title');
+    if (titleEl) title = titleEl.textContent.trim();
+  } else if (mediaEl.alt) {
+    title = mediaEl.alt;
+  }
+
+  // Extract initials (e.g. GestureFlow v3.0 -> GF)
+  const cleanTitle = title.replace(/[^a-zA-Z0-9\s]/g, '').trim();
+  const words = cleanTitle.split(/\s+/).filter(Boolean);
+  let initials = 'YP';
+  if (words.length >= 2) {
+    initials = (words[0][0] + words[1][0]).toUpperCase();
+  } else if (words.length === 1 && words[0].length >= 2) {
+    initials = words[0].substring(0, 2).toUpperCase();
+  }
+
+  // Hide failing media element
+  mediaEl.style.display = 'none';
+
+  // Check if fallback already exists in container
+  if (!container.querySelector('.project-media-fallback')) {
+    const fallback = document.createElement('div');
+    fallback.className = 'project-media-fallback';
+    fallback.innerHTML = `
+      <div class="fallback-initials-badge">${initials}</div>
+      <div class="fallback-title">${title.split('—')[0].trim()}</div>
+      <span class="fallback-badge">✦ Interactive Project</span>
+    `;
+    container.appendChild(fallback);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Global Media Fallback Listener (Capture phase catches img & video error events)
+  window.addEventListener('error', (e) => {
+    const target = e.target;
+    if (target && (target.tagName === 'IMG' || target.tagName === 'VIDEO')) {
+      if (target.closest('.project-media, .jasa-trust-media, .doc-media, .cert-media, .design-media')) {
+        window.handleMediaError(target);
+      }
+    }
+  }, true);
+
   // Auto-open case study if ?project=... is present in URL
   const urlParams = new URLSearchParams(window.location.search);
   const projParam = urlParams.get('project');
@@ -621,6 +678,15 @@ function initScrollTriggerSections() {
 function initCardVideos() {
   const cardVideos = document.querySelectorAll('.card-video-loop');
   if (!cardVideos.length) return;
+
+  cardVideos.forEach(vid => {
+    vid.addEventListener('error', () => {
+      if (typeof window.handleMediaError === 'function') {
+        window.handleMediaError(vid);
+      }
+    });
+  });
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2379,8 +2445,8 @@ function buildWorksGrid(cat) {
     'thrift': 'assets/img/project-web/thrift-space/thrift-space-hero-showcase.webp',
     'mango_nyeni': 'assets/img/project-bisnis/mango-nyeni/mango-nyeni-showcase.webp',
     'optik_iseeyou': 'assets/img/project-web/optik-iseeyou/optik-iseeyou-landing.webp',
-    'gesture': 'assets/img/project-web/Gesture-Isyarat/gesture-isyarat-preview.webp',
-    'food': 'assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-landing.webp'
+    'gesture': 'assets/img/project-web/gesture-isyarat/gesture-isyarat-poster.webp',
+    'food': 'assets/img/project-web/food-tyu/food-tyu-web-pemesanan-makanan-landing.webp'
   };
 
   Object.values(window.PROJECTS_DATA).forEach(item => {
@@ -2398,7 +2464,7 @@ function buildWorksGrid(cat) {
 
     card.innerHTML = `
       <div class="project-media">
-        <img src="${cardThumb}" alt="${item.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="${cardThumb}" alt="${item.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="handleMediaError(this)">
       </div>
       <div class="project-body">
         <div class="project-title">${item.title.split('—')[0].trim()}</div>
