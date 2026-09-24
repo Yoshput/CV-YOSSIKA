@@ -1,4 +1,17 @@
+# Universal Crawler Rules
 User-agent: *
 Allow: /
+Disallow: /assets/proposal/
+Disallow: /scripts/
 
+# Googlebot Specific Rules
+User-agent: Googlebot
+Allow: /
+
+# Bingbot Specific Rules
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap Location
 Sitemap: https://yossikaputra.my.id/sitemap.xml

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="id" data-theme="dark">
 <head>
   <script>
     (function() {
@@ -14,6 +14,17 @@
     html.preloader-skipped #appPreloader {
       display: none !important;
     }
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
   </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -23,48 +34,65 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
-  <title>Yossika Putra Erlangga — Software Engineer & Network Specialist | Portfolio</title>
-  <meta name="description" content="Official portfolio of Yossika Putra Erlangga — Informatics Engineering student at Telkom University Purwokerto, Fullstack Web Developer, Network Specialist, and Creative Technologist.">
-  <meta name="keywords" content="Yossika Putra Erlangga, Yossika Putra, Yoshput, Portfolio, Telkom University Purwokerto, Software Engineer, Network Specialist, Fullstack Developer, Next.js, AR Try-On, Optik I See You, Indonesia">
+
+  <!-- Primary SEO Meta Tags -->
+  <title>Yossika Putra | Fullstack Software Engineer &amp; Jasa Pembuatan Website Purwokerto</title>
+  <meta name="title" content="Yossika Putra | Fullstack Software Engineer &amp; Jasa Pembuatan Website Purwokerto">
+  <meta name="description" content="Portfolio resmi Yossika Putra, Fullstack Software Engineer &amp; spesialis jasa pembuatan website di Purwokerto, Banyumas, Jawa Tengah. Solusi web app modern, sistem POS ritel, dan integrasi AI cerdas. Konsultasi langsung via WA!">
+  <meta name="keywords" content="Yossika Putra, Yossika Putra Erlangga, Jasa Pembuatan Website Purwokerto, Web Developer Purwokerto, Software Engineer Purwokerto, Jasa Website Banyumas, Fullstack Developer Jawa Tengah, Telkom University Purwokerto, Sistem POS Kasir, AI Developer">
   <meta name="author" content="Yossika Putra Erlangga">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://yossikaputra.my.id/">
+
+  <!-- Multi-Search-Engine Verification -->
+  <meta name="msvalidate.01" content="[akan saya isi kodenya setelah daftar]">
   <meta name="yb-token" content="">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://www.yossikaputra.my.id/">
+
+  <!-- International & Language Targeting (Hreflang) -->
+  <link rel="alternate" hreflang="id" href="https://yossikaputra.my.id/">
+  <link rel="alternate" hreflang="en" href="https://yossikaputra.my.id/">
+  <link rel="alternate" hreflang="x-default" href="https://yossikaputra.my.id/">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.yossikaputra.my.id/">
-  <meta property="og:title" content="Yossika Putra Erlangga — Software Engineer & Network Specialist">
-  <meta property="og:description" content="Official portfolio of Yossika Putra Erlangga — Informatics undergraduate, Fullstack Web Developer & Network Specialist.">
-  <meta property="og:image" content="https://www.yossikaputra.my.id/assets/img/foto-jas-fresh.webp">
-  <meta property="og:site_name" content="Yossika Putra Erlangga Portfolio">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="id_ID">
+  <meta property="og:url" content="https://yossikaputra.my.id/">
+  <meta property="og:title" content="Yossika Putra | Fullstack Software Engineer &amp; Jasa Pembuatan Website Purwokerto">
+  <meta property="og:description" content="Portfolio resmi Yossika Putra — Fullstack Software Engineer &amp; jasa pembuatan website modern di Purwokerto, Banyumas, Jawa Tengah. Web app, POS ritel, &amp; integrasi AI.">
+  <meta property="og:image" content="https://yossikaputra.my.id/assets/img/foto-jas-fresh.webp">
+  <meta property="og:site_name" content="Yossika Putra Portfolio">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:locale:alternate" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yossika Putra Erlangga — Portfolio">
-  <meta name="twitter:description" content="Informatics Engineering student, Fullstack Web Developer & Network Specialist.">
-  <meta name="twitter:image" content="https://www.yossikaputra.my.id/assets/img/foto-jas-fresh.webp">
+  <meta name="twitter:title" content="Yossika Putra | Fullstack Developer &amp; Jasa Website Purwokerto">
+  <meta name="twitter:description" content="Portfolio resmi Yossika Putra — Software Engineer &amp; jasa bikin website profesional di Purwokerto, Banyumas. Dikerjakan langsung tanpa outsource.">
+  <meta name="twitter:image" content="https://yossikaputra.my.id/assets/img/foto-jas-fresh.webp">
 
-  <!-- Schema.org JSON-LD Structured Data -->
+  <!-- Schema.org JSON-LD Structured Data with LocalBusiness & Freshness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://www.yossikaputra.my.id/#person",
+        "@id": "https://yossikaputra.my.id/#person",
         "name": "Yossika Putra Erlangga",
         "alternateName": ["Yossika Putra", "Yossika", "Yoshput"],
-        "url": "https://www.yossikaputra.my.id",
-        "image": "https://www.yossikaputra.my.id/assets/img/foto-jas-fresh.webp",
-        "jobTitle": "Software Engineer & Network Specialist",
-        "description": "Undergraduate Informatics Engineering student at Telkom University Purwokerto specializing in web development, AI integration, and computer networking.",
+        "url": "https://yossikaputra.my.id",
+        "image": "https://yossikaputra.my.id/assets/img/foto-jas-fresh.webp",
+        "jobTitle": "Fullstack Software Engineer & Web Developer",
+        "description": "Undergraduate Informatics Engineering student at Telkom University Purwokerto specializing in modern web applications, retail POS systems, and AI workflows based in Purwokerto, Banyumas, Jawa Tengah.",
         "alumniOf": [
           { "@type": "EducationalOrganization", "name": "Telkom University Purwokerto" },
           { "@type": "EducationalOrganization", "name": "SMK Telkom Purwokerto" }
         ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Purwokerto",
+          "addressRegion": "Jawa Tengah",
+          "addressCountry": "ID"
+        },
         "sameAs": [
           "https://www.linkedin.com/in/yossikaputraerlangga/",
           "https://github.com/yoshput",
@@ -72,21 +100,61 @@
         ]
       },
       {
-        "@type": "ProfessionalService",
-        "@id": "https://www.yossikaputra.my.id/#services",
-        "name": "Jasa Pembuatan Website & Solusi AI — Yossika Putra",
-        "url": "https://www.yossikaputra.my.id/#jasa-preview",
+        "@type": ["ProfessionalService", "LocalBusiness"],
+        "@id": "https://yossikaputra.my.id/#localbusiness",
+        "name": "Yossika Putra — Jasa Pembuatan Website Purwokerto & Software Engineer",
+        "alternateName": ["Yossika Web Studio", "Jasa Pembuatan Website Purwokerto", "Yossika Putra Erlangga"],
+        "url": "https://yossikaputra.my.id/jasa",
+        "image": "https://yossikaputra.my.id/assets/img/foto-jas-fresh.webp",
         "telephone": "+6287778683766",
-        "priceRange": "Rp 800.000 - Rp 15.000.000",
-        "founder": { "@id": "https://www.yossikaputra.my.id/#person" },
-        "areaServed": "Indonesia"
+        "priceRange": "Rp 600.000 - Rp 15.000.000",
+        "currenciesAccepted": "IDR",
+        "paymentAccepted": "Cash, Bank Transfer, QRIS",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. DI Panjaitan No. 128, Karangreja, Purwokerto Kidul",
+          "addressLocality": "Purwokerto",
+          "addressRegion": "Jawa Tengah",
+          "postalCode": "53147",
+          "addressCountry": "ID"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -7.4243,
+          "longitude": 109.2472
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "08:00",
+            "closes": "21:00"
+          }
+        ],
+        "areaServed": [
+          { "@type": "City", "name": "Purwokerto" },
+          { "@type": "AdministrativeArea", "name": "Banyumas" },
+          { "@type": "AdministrativeArea", "name": "Jawa Tengah" },
+          { "@type": "Country", "name": "Indonesia" }
+        ],
+        "founder": { "@id": "https://yossikaputra.my.id/#person" },
+        "knowsAbout": [
+          "Web Development",
+          "Jasa Pembuatan Website",
+          "Point of Sale System",
+          "Artificial Intelligence",
+          "Fullstack Software Engineering"
+        ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://www.yossikaputra.my.id/#website",
-        "url": "https://www.yossikaputra.my.id",
-        "name": "Yossika Putra Erlangga Portfolio",
-        "publisher": { "@id": "https://www.yossikaputra.my.id/#person" }
+        "@id": "https://yossikaputra.my.id/#website",
+        "url": "https://yossikaputra.my.id",
+        "name": "Yossika Putra Portfolio & Jasa Website Purwokerto",
+        "description": "Portfolio resmi dan layanan jasa pembuatan website profesional di Purwokerto oleh Yossika Putra",
+        "publisher": { "@id": "https://yossikaputra.my.id/#person" },
+        "inLanguage": ["id-ID", "en-US"],
+        "dateModified": "2026-09-24"
       }
     ]
   }
