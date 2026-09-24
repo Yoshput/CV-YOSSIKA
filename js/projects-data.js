@@ -446,15 +446,15 @@ const PROJECTS_DATA = {
         "Integrasi Text-to-Speech untuk membacakan hasil terjemahan isyarat"
       ]
     },
-    video: "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-demo.mp4",
-    previewWebp: "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-preview.webp",
+    video: "assets/img/project-web/gesture-isyarat/gesture-isyarat-demo.mp4",
+    previewWebp: "assets/img/project-web/gesture-isyarat/gesture-isyarat-poster.webp",
     images: [
-      "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-landing-page.webp",
-      "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-home-page.webp",
-      "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-a-z.webp",
-      "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-game-quiz.webp",
-      "assets/img/project-web/Gesture-Isyarat/gesture-isyarat-photobooth.webp",
-      "assets/img/project-web/Gesture-Isyarat/testing-alphabet-b.webp"
+      "assets/img/project-web/gesture-isyarat/gesture-isyarat-landing-page.webp",
+      "assets/img/project-web/gesture-isyarat/gesture-isyarat-home-page.webp",
+      "assets/img/project-web/gesture-isyarat/gesture-isyarat-a-z.webp",
+      "assets/img/project-web/gesture-isyarat/gesture-isyarat-game-quiz.webp",
+      "assets/img/project-web/gesture-isyarat/gesture-isyarat-photobooth.webp",
+      "assets/img/project-web/gesture-isyarat/testing-alphabet-b.webp"
     ],
     imageCaptions: {
       en: [
@@ -516,19 +516,19 @@ const PROJECTS_DATA = {
       ]
     },
     images: [
-      "assets/img/project-web/Food-TYU/food-tyu-dashboard-overview.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-ai-assistant.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-daftar-kantin.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-menu-kantin.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-lokasi-kampus.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-landing.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-home.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-form-daftar.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-midtrans.webp",
-      "assets/img/project-web/Food-TYU/food-tyu-web-pemesanan-makanan-midtrans-metode.webp"
+      "assets/img/project-web/food-tyu/food-tyu-dashboard-overview.webp",
+      "assets/img/project-web/food-tyu/food-tyu-ai-assistant.webp",
+      "assets/img/project-web/food-tyu/food-tyu-daftar-kantin.webp",
+      "assets/img/project-web/food-tyu/food-tyu-menu-kantin.webp",
+      "assets/img/project-web/food-tyu/food-tyu-lokasi-kampus.webp",
+      "assets/img/project-web/food-tyu/food-tyu-web-pemesanan-makanan-landing.webp",
+      "assets/img/project-web/food-tyu/food-tyu-web-pemesanan-makanan-home.webp",
+      "assets/img/project-web/food-tyu/food-tyu-web-pemesanan-makanan-form-daftar.webp",
+      "assets/img/project-web/food-tyu/food-tyu-web-pemesanan-makanan-midtrans.webp",
+      "assets/img/project-web/food-tyu/food-tyu-web-pemesanan-makanan-midtrans-metode.webp"
     ],
-    video: "assets/img/project-web/Food-TYU/food-tyu-demo.mp4",
-    previewWebp: "assets/img/project-web/Food-TYU/food-tyu-preview.webp",
+    video: "assets/img/project-web/food-tyu/food-tyu-demo.mp4",
+    previewWebp: "assets/img/project-web/food-tyu/food-tyu-preview.webp",
     imageCaptions: {
       en: [
         "Student Dashboard Overview: Personalized greeting, active orders, and TyU-Pay balance status",

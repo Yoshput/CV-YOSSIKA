@@ -748,6 +748,94 @@ button {
   z-index: 2;
 }
 
+/* ── Branded Media Fallback System (Prevents empty/blank gray boxes) ── */
+.project-media-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.18) 0%, rgba(15, 23, 42, 0.95) 75%);
+  border-radius: inherit;
+  user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.project-media-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(165, 180, 252, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.fallback-initials-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.fallback-title {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f8fafc;
+  max-width: 85%;
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.fallback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+[data-theme="light"] .project-media-fallback {
+  background: radial-gradient(circle at 50% 30%, rgba(79, 70, 229, 0.12) 0%, rgba(241, 245, 249, 0.95) 75%);
+}
+
+[data-theme="light"] .fallback-initials-badge {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #4f46e5;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .fallback-title {
+  color: #0f172a;
+}
+
 .project-body {
   padding: 0.5rem 1.35rem 1.5rem;
   display: flex;
@@ -3828,7 +3916,7 @@ body.modal-open {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding-top: calc(var(--nav-height) + 1.5rem);
+  padding-top: calc(var(--nav-height) + 1.75rem);
   padding-bottom: 0;
   background: radial-gradient(circle at 50% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 65%),
               radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 60%);
@@ -3849,6 +3937,7 @@ body.modal-open {
   justify-content: space-between;
   align-items: flex-start;
   z-index: 5;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
   position: relative;
   gap: 2rem;
@@ -3858,10 +3947,10 @@ body.modal-open {
   height: 94px;
   overflow: hidden;
   position: relative;
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem 0.5rem;
   margin-left: clamp(0.5rem, 2vw, 1.25rem);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 78%, transparent 100%);
 }
 
 .hero-ticker-track {
@@ -4304,7 +4393,7 @@ body.modal-open {
 /* Responsive adjustments for Marcus Vane Hero */
 @media (max-width: 1024px) {
   .hero.hero-cinematic {
-    padding-top: max(5.75rem, calc(env(safe-area-inset-top) + 4.75rem));
+    padding-top: max(6.25rem, calc(env(safe-area-inset-top) + 5.25rem));
   }
   .hero-top-row {
     flex-direction: column;
@@ -4325,27 +4414,27 @@ body.modal-open {
     font-size: clamp(4.2rem, 16vw, 9.5rem);
   }
   .hero-portrait-stage {
-    max-height: 76vh;
+    max-height: 80vh;
   }
   .hero-portrait-cutout {
-    max-height: 74vh;
-    max-width: clamp(340px, 60vw, 580px);
+    max-height: 78vh;
+    max-width: clamp(360px, 64vw, 680px);
   }
 }
 
 @media (max-width: 768px) {
   .hero.hero-cinematic {
-    padding-top: max(5.25rem, calc(env(safe-area-inset-top) + 4.25rem));
+    padding-top: max(5.75rem, calc(env(safe-area-inset-top) + 4.75rem));
   }
   .hero-giant-line {
     font-size: clamp(3.8rem, 17vw, 8.5rem);
   }
   .hero-portrait-stage {
-    max-height: 70vh;
+    max-height: 74vh;
   }
   .hero-portrait-cutout {
-    max-height: 68vh;
-    max-width: clamp(300px, 75vw, 500px);
+    max-height: 72vh;
+    max-width: clamp(340px, 82vw, 580px);
   }
   .hero-cta-group {
     width: 100%;
@@ -4358,7 +4447,7 @@ body.modal-open {
 
 @media (max-width: 480px) {
   .hero.hero-cinematic {
-    padding-top: max(4.75rem, calc(env(safe-area-inset-top) + 3.75rem));
+    padding-top: max(5.25rem, calc(env(safe-area-inset-top) + 4.25rem));
   }
   .hero-top-row {
     gap: 0.85rem;
@@ -4378,11 +4467,11 @@ body.modal-open {
     font-size: clamp(3.2rem, 18vw, 6.8rem);
   }
   .hero-portrait-stage {
-    max-height: 64vh;
+    max-height: 68vh;
   }
   .hero-portrait-cutout {
-    max-height: 62vh;
-    max-width: clamp(280px, 88vw, 440px);
+    max-height: 66vh;
+    max-width: clamp(300px, 92vw, 500px);
   }
 }
 
@@ -4394,40 +4483,11 @@ body.modal-open {
     font-size: clamp(2.8rem, 18vw, 5.5rem);
   }
   .hero-portrait-stage {
-    max-height: 60vh;
-  }
-  .hero-portrait-cutout {
-    max-height: 58vh;
-    max-width: clamp(260px, 92vw, 360px);
-  }
-}
-
-@media (max-width: 576px) {
-  .hero.hero-cinematic {
-    padding-top: 5.5rem;
-  }
-  .hero-top-row {
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  .hero-roles-stack {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.75rem;
-  }
-  .hero-role-item {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-  }
-  .hero-giant-line {
-    font-size: clamp(3.8rem, 18vw, 7.2rem);
-  }
-  .hero-portrait-stage {
-    max-height: 65vh;
+    max-height: 64vh;
   }
   .hero-portrait-cutout {
     max-height: 62vh;
-    max-width: min(440px, 95vw);
+    max-width: clamp(280px, 95vw, 420px);
   }
 }
 

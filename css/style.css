@@ -748,6 +748,94 @@ button {
   z-index: 2;
 }
 
+/* ── Branded Media Fallback System (Prevents empty/blank gray boxes) ── */
+.project-media-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.18) 0%, rgba(15, 23, 42, 0.95) 75%);
+  border-radius: inherit;
+  user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.project-media-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(165, 180, 252, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.fallback-initials-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.fallback-title {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f8fafc;
+  max-width: 85%;
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.fallback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+[data-theme="light"] .project-media-fallback {
+  background: radial-gradient(circle at 50% 30%, rgba(79, 70, 229, 0.12) 0%, rgba(241, 245, 249, 0.95) 75%);
+}
+
+[data-theme="light"] .fallback-initials-badge {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #4f46e5;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .fallback-title {
+  color: #0f172a;
+}
+
 .project-body {
   padding: 0.5rem 1.35rem 1.5rem;
   display: flex;
