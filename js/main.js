@@ -6,12 +6,43 @@
 const PROJECT_ORDER = ['pos_iris', 'mubes_hipmi', 'photobooth_hipmi', 'imi_iseeyou', 'optik_iseeyou', 'gesture', 'food', 'macabae', 'ngertiindia', 'gymplanner', 'thrift'];
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Auto-open case study if ?project=... is present in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const projParam = urlParams.get('project');
+  if (projParam) {
+    setTimeout(() => {
+      openProjectModal(projParam);
+    }, 350);
+  }
+
+  // Language Switcher Logic
+  const langToggleBtn = document.getElementById('langToggleBtn');
+  const langText = document.getElementById('langText');
+  function updateLangUI(lang) {
+    if (langText) langText.textContent = lang.toUpperCase();
+  }
+  if (window.I18N) {
+    updateLangUI(window.I18N.current || 'id');
+  }
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      const cur = window.I18N ? window.I18N.current : 'id';
+      const next = cur === 'id' ? 'en' : 'id';
+      if (window.I18N) window.I18N.setLanguage(next);
+      updateLangUI(next);
+      if (typeof playClickSound === 'function') playClickSound();
+    });
+  }
+
   // 1. Initialize i18n
   if (window.I18N) {
     window.I18N.init();
   }
 
-  // 2. Theme Toggle (Dark / Light)
+  // 2. Initialize Lenis Smooth Inertia Scroll
+  initLenisSmoothScroll();
+
+  // 3. Theme Toggle (Dark / Light) with SVG Icons
   const themeToggleBtn = document.getElementById('themeToggleBtn');
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
@@ -24,32 +55,26 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
       updateThemeIcon(next);
+      playClickSound();
     });
   }
 
   function updateThemeIcon(theme) {
     if (!themeToggleBtn) return;
-    themeToggleBtn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+    themeToggleBtn.innerHTML = theme === 'dark'
+      ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>'
+      : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
     themeToggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
   }
 
-  // 3. Language Toggle Button in Header
-  const langToggleBtn = document.getElementById('langToggleBtn');
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      const cur = window.I18N ? window.I18N.current : 'en';
-      const next = cur === 'en' ? 'id' : 'en';
-      if (window.I18N) window.I18N.setLanguage(next);
-    });
-  }
-
-  // 4. Mobile Navigation Menu
+  // 5. Mobile Navigation Menu
   const hamburger = document.getElementById('hamburgerBtn');
   const navLinks = document.getElementById('navLinks');
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+      playClickSound();
     });
 
     navLinks.querySelectorAll('a').forEach(link => {
@@ -57,12 +82,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Active Nav on Scroll
+  // 6. Active Nav & Dynamic Compact Navbar on Scroll
   const sections = document.querySelectorAll('section[id]');
   const navAnchors = document.querySelectorAll('.nav-links a');
+  const siteHeader = document.getElementById('siteHeader');
+  const navBackToTop = document.getElementById('navBackToTopBtn');
+
+  if (navBackToTop) {
+    navBackToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      playClickSound();
+    });
+  }
+
+  window.scrollToTop = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // Morph navbar to compact pill on scroll & control nav CTA visibility
+    if (siteHeader) {
+      if (scrollY > 120) {
+        siteHeader.classList.add('scrolled-compact');
+      } else if (scrollY < 70) {
+        siteHeader.classList.remove('scrolled-compact');
+      }
+    }
+
+    const navCtaBtn = document.querySelector('.nav-cta-btn');
+    if (navCtaBtn) {
+      if (scrollY > 320) {
+        navCtaBtn.classList.add('scrolled-show');
+      } else {
+        navCtaBtn.classList.remove('scrolled-show');
+      }
+    }
+
+    const mobileTopBtn = document.getElementById('mobileFloatingTopBtn');
+    if (mobileTopBtn) {
+      if (scrollY > 300) {
+        mobileTopBtn.classList.add('visible');
+      } else {
+        mobileTopBtn.classList.remove('visible');
+      }
+    }
+
     let currentId = '';
-    const scrollPos = window.scrollY + 140;
+    const scrollPos = scrollY + 140;
     sections.forEach(sec => {
       if (scrollPos >= sec.offsetTop) {
         currentId = sec.id;
@@ -74,10 +143,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { passive: true });
 
-  // 6. Interactive ID Card Lanyard (Event-driven Physics — 0% Idle CPU)
-  initOptimizedLanyard();
+  // 7. Ambient Cursor Spotlight
+  initCursorSpotlight();
 
-  // 7. Journey Accordion Toggles
+  // 7b. Marcus Vane Cinematic Hero & Parallax Controller
+  initMarcusHero();
+
+  // 8. Three.js Hero 3D Particle Canvas
+  initHeroThreeCanvas();
+
+  // 9. 3D Holographic ID Card (360° Drag & Cursor Track)
+  init3DHolographicCard();
+
+  // 10. Web Audio API Synthesizer & Sound FX Toggle
+  initSoundFx();
+
+  // 11. Command Palette (Cmd+K)
+  initCommandPalette();
+
+  // 12. Interactive Live Price Calculator
+  initPriceCalculator();
+
+  // 13. Journey Accordion Toggles
   document.querySelectorAll('.timeline-toggle-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -88,22 +175,26 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = isExpanded 
         ? (isEn ? 'Hide Responsibilities' : 'Tutup Tanggung Jawab')
         : (isEn ? 'Show Responsibilities' : 'Lihat Tanggung Jawab');
+      playClickSound();
     });
   });
 
-  // 8. Feedback Form Submission & Profanity Filter
+  // 14. Feedback Form Submission & Profanity Filter
   initFeedbackForm();
 
-  // 9. Chatbot Lazy Initialization
+  // 15. Chatbot Lazy Initialization
   initChatbotLauncher();
 
-  // 10. Background Music Player (Lazy instantiated)
+  // 16. Background Music Player (Lazy instantiated)
   initMusicPlayer();
 
-  // 11. Autoplay Looping Media Observers
+  // 17. Autoplay Looping Media Observers
   initCardVideos();
 
-  // 12. Preloader & GSAP Animations
+  // 17b. Event Documentation Auto-Slideshow (smooth 2.8s crossfade)
+  initDocCardSlideshow();
+
+  // 18. Preloader & GSAP Animations
   if (window.gsap) {
     initPreloaderAndAnimations();
   } else {
@@ -112,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 12. Global Escape Listener to close any open modal/case study
+  // 19. Global Escape Listener to close any open modal/case study
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeCaseStudy();
@@ -120,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeCVModal();
       closeAllWorksModal();
       closeLightbox();
+      closeCmdPalette();
       const langModal = document.getElementById('langModal');
       if (langModal) langModal.classList.remove('active');
     }
@@ -134,10 +226,23 @@ function initPreloaderAndAnimations() {
   const counterEl = document.getElementById('preloaderCounter');
   const barEl = document.getElementById('preloaderBar');
 
+  // If user has already visited in this session, skip preloader immediately!
+  try {
+    if (sessionStorage.getItem('yp_visited')) {
+      if (preloader) {
+        preloader.style.display = 'none';
+        preloader.setAttribute('aria-hidden', 'true');
+      }
+      initHeroEntrance();
+      return;
+    }
+  } catch (e) {}
+
   let isDone = false;
   function finishPreloader() {
     if (isDone) return;
     isDone = true;
+    try { sessionStorage.setItem('yp_visited', '1'); } catch (e) {}
 
     if (window.gsap) {
       gsap.to('.preloader-content', {
@@ -236,25 +341,44 @@ function initHeroEntrance() {
   if (!window.gsap) return;
 
   const heroTL = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  const isMobile = window.innerWidth <= 992;
 
-  heroTL
-    .fromTo('.site-header', { y: -35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
-    .fromTo('.hero-tag', { scale: 0.8, y: 20, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: 'back.out(1.8)' }, '-=0.3')
-    .fromTo('.hero-name span', { y: 55, opacity: 0, rotationX: 20 }, { y: 0, opacity: 1, rotationX: 0, duration: 0.75, stagger: 0.12, ease: 'power4.out' }, '-=0.3')
-    .fromTo('.hero-role', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.4')
-    .fromTo('.hero-desc', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.4')
-    .fromTo('.hero-socials .pill', { scale: 0.85, opacity: 0, y: 15 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'back.out(1.6)' }, '-=0.3')
-    .fromTo('.hero-actions .btn', { y: 25, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, stagger: 0.08, ease: 'back.out(1.4)' }, '-=0.3')
-    .fromTo('.hero-stats > div', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 }, '-=0.4')
-    .fromTo('.id-card-body', { scale: 0.85, opacity: 0, rotationY: 25, rotationX: 15, y: 40 }, { scale: 1, opacity: 1, rotationY: 0, rotationX: 0, y: 0, duration: 0.9, ease: 'power4.out' }, '-=0.7');
+  if (isMobile) {
+    // ════ MOBILE HERO: 3D Holographic ID Card Enters FIRST with High-Impact Pop ════
+    heroTL
+      .fromTo('.site-header', { y: -35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+      .fromTo('.id-card-3d-wrap', 
+        { scale: 0.72, opacity: 0, rotationY: -35, rotationX: 25, y: 35 }, 
+        { scale: 1, opacity: 1, rotationY: 0, rotationX: 0, y: 0, duration: 1.05, ease: 'elastic.out(1, 0.75)' }
+      )
+      .fromTo('.hero-tag', { scale: 0.85, y: 15, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.8)' }, '-=0.4')
+      .fromTo('.hero-name span', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power4.out' }, '-=0.3')
+      .fromTo('.hero-role', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, '-=0.3')
+      .fromTo('.hero-desc', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, '-=0.3')
+      .fromTo('.hero-socials .pill', { scale: 0.85, opacity: 0, y: 12 }, { scale: 1, opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'back.out(1.5)' }, '-=0.25')
+      .fromTo('.hero-actions .btn, .hero-actions a.btn', { y: 20, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, stagger: 0.06, ease: 'back.out(1.4)' }, '-=0.25')
+      .fromTo('.hero-stats > div', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, stagger: 0.06 }, '-=0.3');
+  } else {
+    // ════ DESKTOP HERO: Balanced Split 3D Grid Entrance ════
+    heroTL
+      .fromTo('.site-header', { y: -35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+      .fromTo('.hero-tag', { scale: 0.8, y: 20, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: 'back.out(1.8)' }, '-=0.3')
+      .fromTo('.hero-name span', { y: 55, opacity: 0, rotationX: 20 }, { y: 0, opacity: 1, rotationX: 0, duration: 0.75, stagger: 0.12, ease: 'power4.out' }, '-=0.3')
+      .fromTo('.hero-role', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.4')
+      .fromTo('.hero-desc', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.4')
+      .fromTo('.hero-socials .pill', { scale: 0.85, opacity: 0, y: 15 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'back.out(1.6)' }, '-=0.3')
+      .fromTo('.hero-actions .btn, .hero-actions a.btn', { y: 25, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, stagger: 0.08, ease: 'back.out(1.4)' }, '-=0.3')
+      .fromTo('.hero-stats > div', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 }, '-=0.4')
+      .fromTo('.id-card-3d-wrap', { scale: 0.82, opacity: 0, rotationY: 30, rotationX: 15, y: 40 }, { scale: 1, opacity: 1, rotationY: 0, rotationX: 0, y: 0, duration: 0.95, ease: 'power4.out' }, '-=0.7');
+  }
 
   animateHeroStats();
 
-  // Continuous ambient float on ID card
-  gsap.to('#idCardBody', {
-    y: -8,
-    rotationZ: 1.2,
-    duration: 3.5,
+  // Continuous ambient floating tilt on 3D card
+  gsap.to('#idCard3D', {
+    y: -10,
+    rotationZ: 0.8,
+    duration: 3.8,
     repeat: -1,
     yoyo: true,
     ease: 'sine.inOut'
@@ -265,7 +389,7 @@ function initScrollTriggerSections() {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // B. ScrollTrigger Animations for Page Sections
+  // ScrollTrigger Animations for Page Sections
   if (window.ScrollTrigger) {
     // Section Headers
     document.querySelectorAll('.section-head').forEach(head => {
@@ -283,6 +407,50 @@ function initScrollTriggerSections() {
       });
     });
 
+    // Bento Grid Cards
+    gsap.from('.bento-grid .bento-card', {
+      scrollTrigger: {
+        trigger: '.bento-grid',
+        start: 'top 82%',
+        toggleActions: 'play none none none'
+      },
+      y: 45,
+      opacity: 0,
+      duration: 0.85,
+      stagger: 0.14,
+      ease: 'power3.out'
+    });
+
+    // Dedicated Jasa Section & Showcase Box Entrance
+    gsap.fromTo('.jasa-showcase-box',
+      { opacity: 0, y: 55, scale: 0.97 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.85,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#jasa-preview',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    gsap.from('.calc-container', {
+      scrollTrigger: {
+        trigger: '.calc-container',
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      scale: 0.96,
+      y: 30,
+      opacity: 0,
+      duration: 0.85,
+      ease: 'power3.out'
+    });
+
     // Projects Grid
     gsap.from('.projects-grid .project-card', {
       scrollTrigger: {
@@ -294,6 +462,20 @@ function initScrollTriggerSections() {
       opacity: 0,
       duration: 0.85,
       stagger: 0.16,
+      ease: 'power3.out'
+    });
+
+    // Jasa Teaser Banner Scroll Reveal (Smooth pop-up with breathing room)
+    gsap.from('.jasa-teaser-banner', {
+      scrollTrigger: {
+        trigger: '.jasa-teaser-banner',
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      },
+      y: 40,
+      opacity: 0,
+      scale: 0.98,
+      duration: 0.85,
       ease: 'power3.out'
     });
 
@@ -457,21 +639,280 @@ function initCardVideos() {
 }
 
 /* ==========================================================================
-   OPTIMIZED EVENT-DRIVEN LANYARD PHYSICS
+   DOCUMENTATION CARDS AUTO-SLIDESHOW
+   Smoothly cross-fades photos every 2.8s on event cards
    ========================================================================== */
-function initOptimizedLanyard() {
-  const card = document.getElementById('idCardBody');
-  const zone = document.querySelector('.id-card-wrap');
-  if (!card || !zone) return;
+function initDocCardSlideshow() {
+  const docMediaContainers = document.querySelectorAll('.doc-media[data-images]');
+  if (!docMediaContainers.length) return;
+
+  docMediaContainers.forEach((container, cardIdx) => {
+    let images = [];
+    try {
+      images = JSON.parse(container.getAttribute('data-images') || '[]');
+    } catch (e) {
+      return;
+    }
+    if (!Array.isArray(images) || images.length <= 1) return;
+
+    const initialImg = container.querySelector('img');
+    const altBase = initialImg ? initialImg.getAttribute('alt') : 'Dokumentasi Acara';
+    container.innerHTML = '';
+
+    const slideImgs = [];
+    images.forEach((src, idx) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `${altBase} (${idx + 1})`;
+      img.width = 400;
+      img.height = 250;
+      img.loading = idx === 0 ? 'eager' : 'lazy';
+      img.className = idx === 0 ? 'slide-active' : 'slide-inactive';
+      container.appendChild(img);
+      slideImgs.push(img);
+    });
+
+    const dotsWrap = document.createElement('div');
+    dotsWrap.className = 'doc-slideshow-dots';
+    dotsWrap.setAttribute('aria-hidden', 'true');
+    const dots = [];
+    images.forEach((_, idx) => {
+      const dot = document.createElement('span');
+      dot.className = idx === 0 ? 'doc-dot active' : 'doc-dot';
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    });
+    container.appendChild(dotsWrap);
+
+    let currentIndex = 0;
+    let isPaused = false;
+
+    function nextSlide() {
+      if (isPaused) return;
+      const prevIndex = currentIndex;
+      currentIndex = (currentIndex + 1) % images.length;
+
+      slideImgs[prevIndex].classList.remove('slide-active');
+      slideImgs[prevIndex].classList.add('slide-inactive');
+
+      slideImgs[currentIndex].classList.remove('slide-inactive');
+      slideImgs[currentIndex].classList.add('slide-active');
+
+      dots[prevIndex].classList.remove('active');
+      dots[currentIndex].classList.add('active');
+    }
+
+    // Stagger start time so cards cycle rhythmically and independently
+    const delayOffset = cardIdx * 450;
+    setTimeout(() => {
+      setInterval(nextSlide, 2800);
+    }, delayOffset);
+
+    // Pause on hover
+    const parentCard = container.closest('.doc-card');
+    if (parentCard) {
+      parentCard.addEventListener('mouseenter', () => { isPaused = true; });
+      parentCard.addEventListener('mouseleave', () => { isPaused = false; });
+    }
+  });
+}
+
+/* ==========================================================================
+   1. LENIS SMOOTH INERTIA SCROLL ENGINE
+   ========================================================================== */
+let lenisInstance = null;
+
+function initLenisSmoothScroll() {
+  if (typeof Lenis === 'undefined') return;
+
+  try {
+    lenisInstance = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5
+    });
+    window.lenisInstance = lenisInstance;
+
+    const scrollProgressBar = document.getElementById('scrollProgress');
+
+    lenisInstance.on('scroll', (e) => {
+      if (window.ScrollTrigger) ScrollTrigger.update();
+      if (scrollProgressBar) {
+        const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalScroll > 0 ? (e.animatedScroll / totalScroll) * 100 : 0;
+        scrollProgressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }
+    });
+
+    if (window.gsap) {
+      gsap.ticker.add((time) => {
+        lenisInstance.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenisInstance.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+  } catch (err) {
+    console.warn('Lenis initialization notice:', err);
+  }
+}
+
+/* ==========================================================================
+   2. THREE.JS INTERACTIVE 3D HERO CANVAS
+   ========================================================================== */
+function initHeroThreeCanvas() {
+  const canvas = document.getElementById('heroCanvas3D');
+  const heroSection = document.getElementById('hero');
+  if (!canvas || !heroSection || typeof THREE === 'undefined') return;
+
+  try {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, heroSection.clientWidth / heroSection.clientHeight, 0.1, 1000);
+    camera.position.z = 25;
+
+    const isMobile = window.innerWidth <= 768;
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !isMobile, powerPreference: 'high-performance' });
+    renderer.setSize(heroSection.clientWidth, heroSection.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
+
+    // Particle constellation
+    const particleCount = isMobile ? 320 : 650;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+
+    const color1 = new THREE.Color(0x38bdf8); // Cyan
+    const color2 = new THREE.Color(0x6366f1); // Indigo
+    const color3 = new THREE.Color(0x34d399); // Emerald
+
+    for (let i = 0; i < particleCount; i++) {
+      const i3 = i * 3;
+      positions[i3] = (Math.random() - 0.5) * 45;
+      positions[i3 + 1] = (Math.random() - 0.5) * 35;
+      positions[i3 + 2] = (Math.random() - 0.5) * 30;
+
+      const mixed = Math.random() < 0.5 ? color1.clone().lerp(color2, Math.random()) : color2.clone().lerp(color3, Math.random());
+      colors[i3] = mixed.r;
+      colors[i3 + 1] = mixed.g;
+      colors[i3 + 2] = mixed.b;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: isMobile ? 0.35 : 0.48,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      blending: THREE.AdditiveBlending
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+
+    function onPointerMove(e) {
+      const x = e.clientX - window.innerWidth / 2;
+      const y = e.clientY - window.innerHeight / 2;
+      targetX = x * 0.0007;
+      targetY = y * 0.0007;
+    }
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+    let isHeroVisible = true;
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        isHeroVisible = entry.isIntersecting;
+      }, { threshold: 0.05 });
+      observer.observe(heroSection);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (!isHeroVisible) return;
+
+      mouseX += (targetX - mouseX) * 0.05;
+      mouseY += (targetY - mouseY) * 0.05;
+
+      particles.rotation.y += 0.0012 + mouseX * 0.02;
+      particles.rotation.x += 0.0006 + mouseY * 0.02;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      if (!heroSection) return;
+      camera.aspect = heroSection.clientWidth / heroSection.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(heroSection.clientWidth, heroSection.clientHeight);
+    }, { passive: true });
+  } catch (err) {
+    console.warn('Three.js hero canvas notice:', err);
+  }
+}
+
+/* ==========================================================================
+   3. 3D HOLOGRAPHIC INTERACTIVE PROFILE CARD (360° Drag & Parallax)
+   ========================================================================== */
+function flipIdCard(e) {
+  if (e) e.stopPropagation();
+  const card = document.getElementById('idCard3D');
+  if (!card) return;
+  card.classList.toggle('flipped');
+  playFlipSound();
+}
+window.flipIdCard = flipIdCard;
+
+function init3DHolographicCard() {
+  const wrap = document.getElementById('idCard3DWrap');
+  const card = document.getElementById('idCard3D');
+  if (!wrap || !card) return;
 
   let isDragging = false;
   let startX = 0, startY = 0;
-  let posX = 0, posY = 0;
+  let rotX = 0, rotY = 0;
+  let curRotX = 0, curRotY = 0;
 
+  // Desktop hover parallax
+  wrap.addEventListener('mousemove', (e) => {
+    if (isDragging) return;
+    const rect = wrap.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    const rY = (x / (rect.width / 2)) * 18;
+    const rX = -(y / (rect.height / 2)) * 18;
+
+    card.style.transform = `rotateY(${rY.toFixed(2)}deg) rotateX(${rX.toFixed(2)}deg)`;
+
+    const glareX = ((e.clientX - rect.left) / rect.width) * 100;
+    const glareY = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--glare-x', glareX + '%');
+    card.style.setProperty('--glare-y', glareY + '%');
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    if (isDragging) return;
+    card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    setTimeout(() => { card.style.transition = 'transform 0.1s ease-out'; }, 600);
+  });
+
+  // Touch drag / Pointer drag for 360 rotation
   function onPointerDown(e) {
+    if (e.target.closest('.id-card-flip-btn')) return;
     isDragging = true;
-    startX = e.clientX - posX;
-    startY = e.clientY - posY;
+    startX = e.clientX || (e.touches && e.touches[0].clientX);
+    startY = e.clientY || (e.touches && e.touches[0].clientY);
     card.style.transition = 'none';
     window.addEventListener('pointermove', onPointerMove, { passive: false });
     window.addEventListener('pointerup', onPointerUp);
@@ -480,42 +921,731 @@ function initOptimizedLanyard() {
 
   function onPointerMove(e) {
     if (!isDragging) return;
-    e.preventDefault();
-    const rawX = e.clientX - startX;
-    const rawY = e.clientY - startY;
-    const dist = Math.hypot(rawX, rawY);
-    const maxStretch = 180;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    const deltaX = clientX - startX;
+    const deltaY = clientY - startY;
 
-    if (dist > maxStretch) {
-      const angle = Math.atan2(rawY, rawX);
-      posX = Math.cos(angle) * maxStretch;
-      posY = Math.sin(angle) * maxStretch;
-    } else {
-      posX = rawX;
-      posY = rawY;
-    }
+    curRotY = rotY + deltaX * 0.45;
+    curRotX = Math.max(-40, Math.min(40, rotX - deltaY * 0.35));
 
-    const rotZ = posX * 0.12;
-    const rotY = Math.max(-20, Math.min(20, posX * 0.1));
-    const rotX = Math.max(-18, Math.min(18, -posY * 0.1));
-
-    card.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, 0) rotateZ(${rotZ.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg) rotateX(${rotX.toFixed(1)}deg)`;
+    card.style.transform = `rotateY(${curRotY.toFixed(1)}deg) rotateX(${curRotX.toFixed(1)}deg)`;
   }
 
   function onPointerUp() {
     if (!isDragging) return;
     isDragging = false;
+    rotY = curRotY % 360;
+    rotX = curRotX;
+
     window.removeEventListener('pointermove', onPointerMove);
     window.removeEventListener('pointerup', onPointerUp);
     window.removeEventListener('pointercancel', onPointerUp);
 
-    card.style.transition = 'transform 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    posX = 0;
-    posY = 0;
-    card.style.transform = 'translate3d(0, 0, 0) rotateZ(0deg) rotateY(0deg) rotateX(0deg)';
+    card.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+    card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    rotX = 0;
+    rotY = 0;
+    setTimeout(() => { card.style.transition = 'transform 0.1s ease-out'; }, 700);
   }
 
-  card.addEventListener('pointerdown', onPointerDown);
+  wrap.addEventListener('pointerdown', onPointerDown);
+}
+
+/* ==========================================================================
+   4. WEB AUDIO API SYNTHESIZER & HAPTIC SOUND FX
+   ========================================================================== */
+let audioCtx = null;
+let soundFxEnabled = localStorage.getItem('soundFxEnabled') !== 'false'; // default true
+
+function getAudioContext() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) audioCtx = new AudioContext();
+  }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function playHoverBlip() {
+  if (!soundFxEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.04);
+    gain.gain.setValueAtTime(0.025, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.04);
+  } catch (err) {}
+}
+
+function playClickSound() {
+  if (!soundFxEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(600, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.06);
+    gain.gain.setValueAtTime(0.06, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.06);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.06);
+  } catch (err) {}
+}
+
+function playFlipSound() {
+  if (!soundFxEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(320, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(740, ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.05, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.12);
+  } catch (err) {}
+}
+
+function toggleSoundFx() {
+  soundFxEnabled = !soundFxEnabled;
+  localStorage.setItem('soundFxEnabled', soundFxEnabled);
+  updateSoundFxUI();
+  if (soundFxEnabled) playClickSound();
+}
+window.toggleSoundFx = toggleSoundFx;
+
+function updateSoundFxUI() {
+  const btn = document.getElementById('soundFxBtn');
+  const status = document.getElementById('soundFxStatus');
+  if (btn) btn.classList.toggle('active', soundFxEnabled);
+  if (status) status.textContent = soundFxEnabled ? 'SFX ON' : 'SFX OFF';
+}
+
+function initSoundFx() {
+  updateSoundFxUI();
+  const triggers = document.querySelectorAll(
+    '.btn, .nav-cta-btn, .nav-links a, .icon-btn, .calc-plan-btn, .calc-addon-item, .proj-filter-btn, .jasa-tab-btn, .sound-toggle-btn, .id-card-flip-btn, .timeline-toggle-btn, .project-card, .design-card, .doc-card, .cert-card'
+  );
+  triggers.forEach(el => {
+    el.addEventListener('mouseenter', () => playHoverBlip(), { passive: true });
+    el.addEventListener('click', () => playClickSound(), { passive: true });
+  });
+}
+
+/* ==========================================================================
+   5. COMMAND PALETTE (CMD+K / SPOTLIGHT SEARCH)
+   ========================================================================== */
+const CMD_ITEMS = [
+  { id: 'jasa_wa', title: 'Order Jasa Web via WhatsApp', category: 'Layanan', action: () => window.open('https://wa.me/6287778683766?text=Halo%20Mas%20Yossika,%20saya%20tertarik%20order%20pembuatan%20website.', '_blank'), badge: 'WhatsApp' },
+  { id: 'calc', title: 'Kalkulator Biaya & Fitur Web', category: 'Layanan', action: () => { const el = document.getElementById('priceCalculator'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, badge: 'Estimator' },
+  { id: 'jasa_page', title: 'Buka Halaman Jasa & Pricelist Lengkap', category: 'Halaman', action: () => { window.location.href = '/jasa'; }, badge: 'Pricelist' },
+  { id: 'proj_pos', title: 'Proyek: Sistem POS Operasional IRIS (Optik I See You)', category: 'Proyek', action: () => openProjectModal('pos_iris'), badge: 'Case Study' },
+  { id: 'proj_mubes', title: 'Proyek: Sistem Konstitusi & RAB MUBES HIPMI', category: 'Proyek', action: () => openProjectModal('mubes_hipmi'), badge: 'Case Study' },
+  { id: 'proj_photo', title: 'Proyek: Photobooth AI Web App HIPMI', category: 'Proyek', action: () => openProjectModal('photobooth_hipmi'), badge: 'Vision AI' },
+  { id: 'proj_imi', title: 'Proyek: IMI Marketing Intelligence', category: 'Proyek', action: () => openProjectModal('imi_iseeyou'), badge: 'Predictive AI' },
+  { id: 'projects_all', title: 'Jelajahi Semua Proyek & Portfolio', category: 'Navigasi', action: () => openAllWorksModal(), badge: 'Gallery' },
+  { id: 'cv_modal', title: 'Lihat Curriculum Vitae (PDF)', category: 'Resume', action: () => openCVModal(), badge: 'CV' },
+  { id: 'capabilities', title: 'Lihat Keahlian & Tech Arsenal', category: 'Navigasi', action: () => { const el = document.getElementById('capabilities'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, badge: 'Skills' },
+  { id: 'contact', title: 'Kirim Pesan Langsung (Contact Form)', category: 'Kontak', action: () => { const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, badge: 'Contact' },
+  { id: 'github', title: 'Buka Profil GitHub (@yoshput)', category: 'Social', action: () => window.open('https://github.com/yoshput', '_blank'), badge: 'GitHub' },
+  { id: 'linkedin', title: 'Buka Profil LinkedIn (Yossika Putra)', category: 'Social', action: () => window.open('https://www.linkedin.com/in/yossikaputraerlangga/', '_blank'), badge: 'LinkedIn' },
+  { id: 'yosbot', title: 'Tanya YosBot AI Assistant', category: 'AI', action: () => { const launcher = document.getElementById('chatbotLauncher'); if (launcher) launcher.click(); }, badge: 'Chatbot' }
+];
+
+/* ==========================================================================
+   MODAL SCROLL LOCK & OVERSCROLL HELPERS
+   ========================================================================== */
+function lockBodyScroll() {
+  document.documentElement.classList.add('modal-open');
+  document.body.classList.add('modal-open');
+  if (window.lenisInstance) {
+    try { window.lenisInstance.stop(); } catch (e) {}
+  }
+  if (window.ScrollTrigger) {
+    ScrollTrigger.getAll().forEach(st => st.disable(false));
+  }
+}
+window.lockBodyScroll = lockBodyScroll;
+
+function unlockBodyScroll() {
+  const anyOpen = document.querySelector('.case-study-overlay.active, .modal-overlay.active, .cmd-palette-overlay.active, .lightbox-overlay.active');
+  if (!anyOpen) {
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    if (window.lenisInstance) {
+      try { window.lenisInstance.start(); } catch (e) {}
+    }
+    if (window.ScrollTrigger) {
+      ScrollTrigger.getAll().forEach(st => st.enable(false));
+    }
+  }
+}
+window.unlockBodyScroll = unlockBodyScroll;
+
+let selectedCmdIndex = 0;
+let filteredCmdItems = [...CMD_ITEMS];
+
+function openCmdPalette() {
+  const overlay = document.getElementById('cmdPaletteOverlay');
+  const input = document.getElementById('cmdPaletteInput');
+  if (!overlay || !input) return;
+  overlay.classList.add('active');
+  lockBodyScroll();
+  input.value = '';
+  filteredCmdItems = [...CMD_ITEMS];
+  selectedCmdIndex = 0;
+  renderCmdList();
+  setTimeout(() => input.focus(), 60);
+  playClickSound();
+}
+window.openCmdPalette = openCmdPalette;
+
+function closeCmdPalette(e) {
+  if (e && e.target && e.target.closest && e.target.closest('.cmd-palette-modal') && e.type !== 'keydown') return;
+  const overlay = document.getElementById('cmdPaletteOverlay');
+  if (overlay) overlay.classList.remove('active');
+  unlockBodyScroll();
+}
+window.closeCmdPalette = closeCmdPalette;
+
+function renderCmdList() {
+  const list = document.getElementById('cmdPaletteList');
+  if (!list) return;
+  if (filteredCmdItems.length === 0) {
+    list.innerHTML = '<div style="padding:1.5rem;text-align:center;color:var(--txt-dim);font-size:0.9rem;">Tidak ada perintah yang sesuai kata kunci.</div>';
+    return;
+  }
+  list.innerHTML = filteredCmdItems.map((item, i) => `
+    <div class="cmd-palette-item ${i === selectedCmdIndex ? 'selected' : ''}" onclick="executeCmdItem(${i})">
+      <div class="cmd-palette-item-left">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span>${item.title}</span>
+      </div>
+      <span class="cmd-badge">${item.badge}</span>
+    </div>
+  `).join('');
+}
+
+function executeCmdItem(index) {
+  const item = filteredCmdItems[index];
+  if (item) {
+    closeCmdPalette();
+    item.action();
+  }
+}
+window.executeCmdItem = executeCmdItem;
+
+function initCommandPalette() {
+  const input = document.getElementById('cmdPaletteInput');
+  if (input) {
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      filteredCmdItems = CMD_ITEMS.filter(it => it.title.toLowerCase().includes(q) || it.category.toLowerCase().includes(q) || it.badge.toLowerCase().includes(q));
+      selectedCmdIndex = 0;
+      renderCmdList();
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedCmdIndex = (selectedCmdIndex + 1) % filteredCmdItems.length;
+        renderCmdList();
+        playHoverBlip();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedCmdIndex = (selectedCmdIndex - 1 + filteredCmdItems.length) % filteredCmdItems.length;
+        renderCmdList();
+        playHoverBlip();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        executeCmdItem(selectedCmdIndex);
+      } else if (e.key === 'Escape') {
+        closeCmdPalette();
+      }
+    });
+  }
+
+  // Keyboard shortcut listener (Cmd+K / Ctrl+K)
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      const overlay = document.getElementById('cmdPaletteOverlay');
+      if (overlay && overlay.classList.contains('active')) {
+        closeCmdPalette();
+      } else {
+        openCmdPalette();
+      }
+    } else if (e.key === 'Escape') {
+      closeCmdPalette();
+    }
+  });
+}
+
+/* ==========================================================================
+   6. DYNAMIC JASA PRICING CARDS & CATEGORY CONTROLLER
+   ========================================================================== */
+const JASA_DATA = {
+  landing_page: {
+    title: 'Landing Page High-Converting',
+    plans: [
+      {
+        name: 'Basic Landing',
+        price: 'Rp 300.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Cocok untuk promosi satu produk, presale event, atau UMKM yang butuh web online kilat.',
+        features: [
+          '1 Halaman Penuh Responsif Modern',
+          'Tombol CTA WhatsApp Langsung',
+          'Integrasi Google Maps & Sosmed',
+          'Kecepatan Load Kilat Sub-Detik',
+          'Pengerjaan Cepat 1 - 2 Hari'
+        ],
+        badge: 'STARTER',
+        featured: false,
+        btnText: 'Pilih Paket Basic'
+      },
+      {
+        name: 'Profesional',
+        price: 'Rp 500.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Paket paling dicari. Standar Apple HIG dengan copywriting persuasif yang bikin pengunjung terkesima.',
+        features: [
+          'Desain Premium High-Converting',
+          'Formulir Leads & Checkout WA Instan',
+          'Animasi Smooth GSAP & Glassmorphism',
+          'SEO Dasar Terindeks Google',
+          'Garansi Uptime & Bebas Bug 30 Hari',
+          'Pengerjaan 2 - 3 Hari'
+        ],
+        badge: 'POPULAR',
+        featured: true,
+        btnText: 'Order Paket Populer'
+      },
+      {
+        name: 'Business Pro',
+        price: 'Rp 1.500.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Solusi lengkap skala bisnis untuk kampanye iklan berbayar (Meta Ads / TikTok Ads / Google Ads).',
+        features: [
+          'Custom UI/UX Standar Brand Unik',
+          'Tracking Pixel Meta & Google Analytics',
+          'Integrasi AI Chatbot (Gemini / OpenAI)',
+          'Domain Resmi .com/.id + Cloud Server 1 Thn',
+          'Prioritas Pengerjaan 48 Jam'
+        ],
+        badge: 'ENTERPRISE',
+        featured: false,
+        btnText: 'Pilih Paket Business'
+      }
+    ]
+  },
+  company_profile: {
+    title: 'Company Profile Perusahaan & Lembaga',
+    plans: [
+      {
+        name: 'Lite Profile',
+        price: 'Rp 700.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Membangun kredibilitas instan untuk CV, startup baru, kantor konsultan, atau UMKM berkembang.',
+        features: [
+          'Hingga 4 Halaman Profil Lengkap',
+          'Desain Elegan, Rapi, & Mobile-First',
+          'Galeri Karya / Portofolio Klien',
+          'Tombol Inquiry & Direct Contact',
+          'Pengerjaan 3 - 5 Hari Kerja'
+        ],
+        badge: 'BASIC',
+        featured: false,
+        btnText: 'Pilih Lite Profile'
+      },
+      {
+        name: 'Business Suite',
+        price: 'Rp 1.500.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Standar korporasi modern dengan struktur informasi komprehensif dan performa Google Lighthouse 95+.',
+        features: [
+          'Hingga 8 Halaman Eksklusif & Dinamis',
+          'Desain Apple HIG Glassmorphism Modern',
+          'Katalog Layanan & Form Penawaran Resmi',
+          'Optimasi Kecepatan & SEO On-Page Lengkap',
+          'Garansi Teknis & Pemeliharaan 30 Hari',
+          'Pengerjaan 5 - 7 Hari Kerja'
+        ],
+        badge: 'POPULAR',
+        featured: true,
+        btnText: 'Order Business Suite'
+      },
+      {
+        name: 'Corporate Enterprise',
+        price: 'Rp 2.000.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Solusi prestisius untuk PT, yayasan besar, atau instansi yang menginginkan portal mandiri.',
+        features: [
+          'Unlimited Halaman / Section Standar',
+          'Dukungan Multi-Bahasa (ID / EN)',
+          'Email Bisnis Resmi (@perusahaan.com)',
+          'CMS / Panel Kelola Konten Mandiri',
+          'Dukungan Pemeliharaan Prioritas 3 Bulan'
+        ],
+        badge: 'FLAGSHIP',
+        featured: false,
+        btnText: 'Pilih Corporate'
+      }
+    ]
+  },
+  ecommerce: {
+    title: 'Toko Online & E-Commerce',
+    plans: [
+      {
+        name: 'Starter Store',
+        price: 'Rp 1.500.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Katalog belanja digital dengan alur pemesanan langsung masuk ke WhatsApp admin penjualan.',
+        features: [
+          'Katalog Produk hingga 50 SKU',
+          'Integrasi Keranjang & Checkout WhatsApp Otomatis',
+          'Kategori Produk & Pencarian Instan',
+          'Banner Slider Promosi & Diskon',
+          'Pengerjaan 5 - 7 Hari Kerja'
+        ],
+        badge: 'STARTER',
+        featured: false,
+        btnText: 'Pilih Starter Store'
+      },
+      {
+        name: 'Growth Store',
+        price: 'Rp 2.700.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Otomatisasi jualan online dengan payment gateway dan hitung ongkir otomatis se-Indonesia.',
+        features: [
+          'Katalog Produk hingga 250 SKU',
+          'Payment Gateway (QRIS, VA, E-Wallet otomatis)',
+          'Hitung Ongkos Kirim Otomatis (RajaOngkir)',
+          'Dashboard Laporan Penjualan & Order',
+          'Kupon Promo & Kode Diskon',
+          'Pengerjaan 7 - 10 Hari Kerja'
+        ],
+        badge: 'POPULAR',
+        featured: true,
+        btnText: 'Order Growth Store'
+      },
+      {
+        name: 'Custom Enterprise',
+        price: 'Rp 4.000.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Sistem marketplace atau e-commerce skala penuh dengan integrasi pergudangan dan multi-admin.',
+        features: [
+          'Unlimited SKU Produk & Variasi',
+          'Akun Member Pelanggan & Poin Reward',
+          'Manajemen Stok Multi-Gudang',
+          'Integrasi Notifikasi WhatsApp Gateway',
+          'Server Setup High-Traffic & Anti-Down'
+        ],
+        badge: 'ADVANCED',
+        featured: false,
+        btnText: 'Pilih Enterprise'
+      }
+    ]
+  },
+  sistem_digital: {
+    title: 'Sistem POS Kasir & Web App Operasional',
+    plans: [
+      {
+        name: 'Lite POS / Web App',
+        price: 'Rp 1.000.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Digitalisasi catatan manual bisnis Anda menjadi database cloud realtime yang rapi dan aman.',
+        features: [
+          'Modul Form Transaksi & Database Cloud',
+          'Dashboard Ringkasan Penjualan Harian',
+          'Export Laporan Transaksi ke Excel / PDF',
+          'Dapat Diakses dari HP, Tablet, & Laptop',
+          'Pengerjaan 5 - 7 Hari Kerja'
+        ],
+        badge: 'LITE',
+        featured: false,
+        btnText: 'Pilih Lite POS'
+      },
+      {
+        name: 'Standart POS Kasir',
+        price: 'Rp 1.800.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Sistem kasir profesional setara sistem IRIS Optik I See You yang telah teruji di lapangan nyata.',
+        features: [
+          'Sistem Kasir Kasir Cepat & Manajemen Stok',
+          'Multi-User Role (Kasir, Supervisor, Owner)',
+          'Cetak Struk Bluetooth & Scanner Barcode',
+          'Laporan Laba Rugi & Rekap Kas Otomatis',
+          'Garansi Maintenance & Pendampingan 60 Hari',
+          'Pengerjaan 10 - 14 Hari Kerja'
+        ],
+        badge: 'POPULAR',
+        featured: true,
+        btnText: 'Order Standart POS'
+      },
+      {
+        name: 'Custom Digital Ecosystem',
+        price: 'Rp 3.500.000+',
+        period: '/ proyek (estimasi sesuai fitur)',
+        desc: 'Rekayasa sistem enterprise kustom (ERP, CRM, AI Vision Scanner, atau sistem organisasi kampus).',
+        features: [
+          'Arsitektur Database Cloud Skalabilitas Tinggi',
+          'Integrasi AI Intelligence / Predictive Modeling',
+          'RESTful API Backend & Integrasi Hardware',
+          'Audit Log Keamanan & Enkripsi Data',
+          'Full Dokumentasi Sistem & Source Code'
+        ],
+        badge: 'CUSTOM ARCH',
+        featured: false,
+        btnText: 'Konsultasi Kustom'
+      }
+    ]
+  },
+  portfolio_web: {
+    title: 'Web Portofolio Pribadi & Resume Interaktif',
+    plans: [
+      {
+        name: 'Starter Portfolio',
+        price: 'Rp 150.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Profil digital modern pengganti linktree biasa untuk mahasiswa, freelancer, atau kreator konten.',
+        features: [
+          'Single Page Personal Branding',
+          'Tampilan Elegan & Responsif di Semua HP',
+          'Tautan Sosial Media & Kontak Langsung',
+          'Penyimpanan di Hosting Cloud Gratis Cepat',
+          'Pengerjaan Kilat 24 Jam'
+        ],
+        badge: 'STARTER',
+        featured: false,
+        btnText: 'Pilih Starter'
+      },
+      {
+        name: 'Pro Bento Portfolio',
+        price: 'Rp 300.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Portofolio kelas dunia dengan tata letak Bento Grid modern, mode gelap/terang, dan galeri karya interaktif.',
+        features: [
+          'Bento Grid Modern Layout',
+          'Dark / Light Mode Interaktif',
+          'Filter Kategori Karya & Proyek',
+          'Viewer CV / Resume Digital Interaktif',
+          'Pengerjaan 1 - 2 Hari'
+        ],
+        badge: 'POPULAR',
+        featured: true,
+        btnText: 'Order Pro Bento'
+      },
+      {
+        name: 'Executive Cinematic',
+        price: 'Rp 700.000',
+        period: '/ proyek (sekali bayar)',
+        desc: 'Portofolio interaktif tingkat tinggi dengan elemen 2.5D visual, sound effects elegan, dan domain pribadi terverifikasi.',
+        features: [
+          'Interactive 2.5D Cinematic Hero & Custom Stage',
+          'Audio Synthesizer Sound FX & Command Palette (⌘K)',
+          'Case Study Viewer Imersif Layar Penuh',
+          'Termasuk Domain .my.id / .com 1 Tahun',
+          'Optimasi Skor SEO & Lighthouse 95+'
+        ],
+        badge: 'EXECUTIVE',
+        featured: false,
+        btnText: 'Order Executive'
+      }
+    ]
+  }
+};
+
+let currentJasaCategory = 'landing_page';
+
+function renderJasaCards(catId) {
+  const container = document.getElementById('pricingTierCards');
+  if (!container) return;
+
+  const data = JASA_DATA[catId] || JASA_DATA['landing_page'];
+  currentJasaCategory = catId;
+
+  const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
+  container.innerHTML = data.plans.map(p => {
+    const waText = encodeURIComponent(`Halo Mas Yossika, saya tertarik dengan paket *${p.name}* untuk *${data.title}* (${p.price}). Bisa konsultasi sekarang?`);
+    const waUrl = `https://wa.me/6287778683766?text=${waText}`;
+
+    return `
+      <div class="pricing-card ${p.featured ? 'featured' : ''}">
+        ${p.badge ? `<div class="pricing-popular-badge">${p.badge}</div>` : ''}
+        <h3 class="pricing-tier-name">${p.name}</h3>
+        <p class="pricing-tier-desc">${p.desc}</p>
+        <div class="pricing-price-wrap">
+          <div class="pricing-price">${p.price}</div>
+          <div class="pricing-period">${p.period}</div>
+        </div>
+        <ul class="pricing-features">
+          ${p.features.map(f => `
+            <li class="pricing-feature-item">
+              ${checkSvg}
+              <span>${f}</span>
+            </li>
+          `).join('')}
+        </ul>
+        <a href="${waUrl}" target="_blank" rel="noopener" class="btn ${p.featured ? 'btn-primary' : 'btn-secondary'}" style="width:100%;text-align:center;justify-content:center;gap:0.5rem;font-weight:700;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span>${p.btnText}</span>
+        </a>
+      </div>
+    `;
+  }).join('');
+
+  if (window.gsap) {
+    gsap.fromTo(container.querySelectorAll('.pricing-card'),
+      { opacity: 0, y: 25, scale: 0.98 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.08, ease: 'power2.out' }
+    );
+  }
+}
+window.renderJasaCards = renderJasaCards;
+
+function selectJasaCategory(catId) {
+  document.querySelectorAll('.jasa-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-cat') === catId);
+  });
+  renderJasaCards(catId);
+  playClickSound();
+}
+window.selectJasaCategory = selectJasaCategory;
+
+/* ==========================================================================
+   7. INTERACTIVE LIVE PRICE & FEATURE ESTIMATOR
+   ========================================================================== */
+let currentPlan = { name: 'Landing Page', price: 800000, days: '3 - 5 Hari Kerja' };
+
+function selectCalcPlan(btn) {
+  document.querySelectorAll('.calc-plan-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentPlan = {
+    name: btn.getAttribute('data-plan'),
+    price: parseInt(btn.getAttribute('data-base'), 10),
+    days: btn.getAttribute('data-days')
+  };
+  playClickSound();
+  updateCalcTotal();
+}
+window.selectCalcPlan = selectCalcPlan;
+
+function toggleCalcAddon(label) {
+  const checkbox = label.querySelector('input[type="checkbox"]');
+  if (!checkbox) return;
+  setTimeout(() => {
+    label.classList.toggle('checked', checkbox.checked);
+    updateCalcTotal();
+  }, 10);
+  playClickSound();
+}
+window.toggleCalcAddon = toggleCalcAddon;
+
+function updateCalcTotal() {
+  let total = currentPlan.price;
+  const addonsText = [];
+
+  document.querySelectorAll('.calc-addons-list input[type="checkbox"]:checked').forEach(cb => {
+    total += parseInt(cb.value, 10);
+    addonsText.push(cb.getAttribute('data-addon'));
+  });
+
+  const totalEl = document.getElementById('calcTotalDisplay');
+  const timeEl = document.getElementById('calcTimeDisplay');
+  const waBtn = document.getElementById('calcWhatsAppBtn');
+
+  if (totalEl) totalEl.textContent = 'Rp ' + total.toLocaleString('id-ID');
+  if (timeEl) timeEl.textContent = currentPlan.days;
+
+  if (waBtn) {
+    let msg = `Halo Mas Yossika, saya tertarik order website tipe *${currentPlan.name}*`;
+    if (addonsText.length > 0) {
+      msg += ` dengan tambahan:\n- ${addonsText.join('\n- ')}`;
+    }
+    msg += `.\nEstimasi Total: *Rp ${total.toLocaleString('id-ID')}* (${currentPlan.days}). Mohon info ketersediaan slot pengerjaannya.`;
+    waBtn.href = 'https://wa.me/6287778683766?text=' + encodeURIComponent(msg);
+  }
+}
+
+function initPriceCalculator() {
+  renderJasaCards('landing_page');
+  updateCalcTotal();
+}
+
+/* ==========================================================================
+   7. PROJECTS FILTER CONTROLLER
+   ========================================================================== */
+function filterProjects(cat) {
+  document.querySelectorAll('.proj-filter-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === cat));
+  const cards = document.querySelectorAll('.projects-grid .project-card');
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    let match = true;
+    if (cat === 'pos') {
+      match = text.includes('pos') || text.includes('kasir') || text.includes('operasional') || text.includes('enterprise');
+    } else if (cat === 'ai') {
+      match = text.includes('ai') || text.includes('vision') || text.includes('photobooth') || text.includes('intelligence');
+    } else if (cat === 'webapp') {
+      match = text.includes('mubes') || text.includes('web app') || text.includes('system') || text.includes('optik') || text.includes('pos');
+    }
+    if (match) {
+      card.style.display = 'flex';
+      if (window.gsap) gsap.fromTo(card, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.35 });
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  playClickSound();
+}
+window.filterProjects = filterProjects;
+
+/* ==========================================================================
+   8. AMBIENT CURSOR SPOTLIGHT
+   ========================================================================== */
+function initCursorSpotlight() {
+  const spotlight = document.getElementById('cursorSpotlight');
+  if (!spotlight || window.innerWidth <= 768) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let curX = mouseX;
+  let curY = mouseY;
+
+  window.addEventListener('pointermove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+
+  function render() {
+    curX += (mouseX - curX) * 0.15;
+    curY += (mouseY - curY) * 0.15;
+    spotlight.style.transform = `translate3d(${curX}px, ${curY}px, 0)`;
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
 }
 
 /* ==========================================================================
@@ -1061,7 +2191,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
   // 10. Activate Overlay & Animate with GSAP
   const overlay = document.getElementById('caseStudyView');
   overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
   overlay.scrollTop = 0;
 
   if (!isImmersive) {
@@ -1071,7 +2201,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     if (mockupEl) { mockupEl.style.transform = 'none'; }
 
     if (window.gsap) {
-      gsap.fromTo(overlay, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' });
+      gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: 'power2.out', clearProps: 'transform' });
       gsap.fromTo('#csHeroTitle', { opacity: 0, scale: 0.96, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, delay: 0.1, ease: 'power3.out' });
 
       if (isIphoneMockup) {
@@ -1086,7 +2216,7 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     }
   } else {
     if (window.gsap) {
-      gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out', clearProps: 'transform' });
       gsap.fromTo('.cs-screen-item', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.035, delay: 0.25, ease: 'power2.out' });
     }
   }
@@ -1109,17 +2239,16 @@ window.closeCaseStudy = function() {
   if (window.gsap) {
     gsap.to(overlay, {
       opacity: 0,
-      y: 20,
-      duration: 0.28,
-      ease: 'power3.in',
+      duration: 0.25,
+      ease: 'power2.in',
       onComplete: () => {
         overlay.classList.remove('active');
-        document.body.style.overflow = '';
+        unlockBodyScroll();
       }
     });
   } else {
     overlay.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
   }
 };
 
@@ -1173,13 +2302,13 @@ window.openDocModal = function(id) {
   }
 
   document.getElementById('docModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
 };
 
 window.closeDocModal = function() {
   const modal = document.getElementById('docModal');
   if (modal) modal.classList.remove('active');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 };
 
 /* ==========================================================================
@@ -1196,13 +2325,13 @@ window.openCVModal = function() {
     cvLoaded = true;
   }
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
 };
 
 window.closeCVModal = function() {
   const modal = document.getElementById('cvModal');
   if (modal) modal.classList.remove('active');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 };
 
 /* ==========================================================================
@@ -1214,13 +2343,13 @@ window.openAllWorksModal = function() {
   const modal = document.getElementById('allWorksModal');
   buildWorksGrid('all');
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
 };
 
 window.closeAllWorksModal = function() {
   const modal = document.getElementById('allWorksModal');
   if (modal) modal.classList.remove('active');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 };
 
 window.filterWorks = function(cat) {
@@ -1419,7 +2548,7 @@ function initChatbotLauncher() {
 You are YosBot, the smart, friendly AI assistant for Yossika Putra Erlangga's portfolio.
 Answer questions directly and concisely matching the portfolio tone. Match the language of the user (English or Indonesian).
 Key Facts:
-- Yossika Putra Erlangga: S1 Informatics Engineering at Telkom University Purwokerto (Semester 4, GPA 3.65).
+- Yossika Putra Erlangga: S1 Informatics Engineering at Telkom University Purwokerto (Semester 4, GPA 3.85).
 - Background: TKJ at SMK Telkom Purwokerto.
 - Projects:
   1. Sistem POS Operasional IRIS — Optik I See You: Enterprise retail POS and operational system across 4 branches with Smart TV queue calling (Alice AI), tablet customer registration, optometrist eye exam refractions, cashier dispatch, central lens lab workflow, and automated WhatsApp notifications.
@@ -1520,16 +2649,137 @@ window.openLightbox = function(src) {
   if (modal && img) {
     img.src = src;
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
   }
 };
 
 window.closeLightbox = function() {
   const modal = document.getElementById('lightboxModal');
   if (modal) modal.classList.remove('active');
-  // Only restore overflow if case study is not open
-  const cs = document.getElementById('caseStudyView');
-  if (!cs || !cs.classList.contains('active')) {
-    document.body.style.overflow = '';
-  }
+  unlockBodyScroll();
 };
+
+/* ==========================================================================
+   MARCUS VANE CINEMATIC HERO CONTROLLER
+   ========================================================================== */
+function initMarcusHero() {
+  const wrapper = document.getElementById('heroLiquidWrapper');
+  const giantLine1 = document.getElementById('heroGiantLine1');
+  const giantLine2 = document.getElementById('heroGiantLine2');
+  const displaceMap = document.getElementById('heroLiquidDisplace');
+  const hero = document.getElementById('hero');
+  if (!hero || !wrapper) return;
+
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let targetTiltX = 0, targetTiltY = 0;
+  let currentTiltX = 0, currentTiltY = 0;
+  let targetTransX = 0, targetTransY = 0;
+  let currentTransX = 0, currentTransY = 0;
+  let currentDisplace = 0, targetDisplace = 0;
+  let isHeroInView = true;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      isHeroInView = entry.isIntersecting;
+    }, { threshold: 0.05 });
+    observer.observe(hero);
+  }
+
+  if (isFinePointer && !prefersReducedMotion) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const normX = (e.clientX - rect.left) / rect.width - 0.5;
+      const normY = (e.clientY - rect.top) / rect.height - 0.5;
+
+      targetTiltX = normY * -10;
+      targetTiltY = normX * 12;
+      targetTransX = normX * 22;
+      targetTransY = normY * 14;
+
+      if (giantLine1 && giantLine2) {
+        giantLine1.style.transform = `translate3d(${normX * -25}px, ${normY * -15}px, 0)`;
+        giantLine2.style.transform = `translate3d(${normX * 25}px, ${normY * 15}px, 0)`;
+      }
+    }, { passive: true });
+
+    hero.addEventListener('mouseenter', () => {
+      targetDisplace = 14;
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      targetTiltX = 0;
+      targetTiltY = 0;
+      targetTransX = 0;
+      targetTransY = 0;
+      targetDisplace = 0;
+      if (giantLine1 && giantLine2) {
+        giantLine1.style.transform = 'translate3d(0, 0, 0)';
+        giantLine2.style.transform = 'translate3d(0, 0, 0)';
+      }
+    });
+  }
+
+  let scrollParallaxY = 0;
+  window.addEventListener('scroll', () => {
+    if (!isHeroInView || prefersReducedMotion) return;
+    const scrollY = window.scrollY;
+    if (scrollY < 1200) {
+      scrollParallaxY = scrollY * 0.12;
+    }
+  }, { passive: true });
+
+  function updateMarcusLoop() {
+    requestAnimationFrame(updateMarcusLoop);
+    if (!isHeroInView || prefersReducedMotion) return;
+
+    currentTiltX += (targetTiltX - currentTiltX) * 0.08;
+    currentTiltY += (targetTiltY - currentTiltY) * 0.08;
+    currentTransX += (targetTransX - currentTransX) * 0.08;
+    currentTransY += (targetTransY - currentTransY) * 0.08;
+    currentDisplace += (targetDisplace - currentDisplace) * 0.06;
+
+    const posY = currentTransY + scrollParallaxY;
+    wrapper.style.transform = `perspective(1000px) translate3d(${currentTransX.toFixed(2)}px, ${posY.toFixed(2)}px, 0) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+
+    if (displaceMap) {
+      displaceMap.setAttribute('scale', currentDisplace.toFixed(1));
+    }
+  }
+  updateMarcusLoop();
+
+  // ════ NADIV SPACE-STYLE CINEMATIC SCROLL SINK & ZOOM OUT ════
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(['.hero-portrait-stage', '.hero-giant-line', '.hero-roles-stack', '.hero-brief-box'], {
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+      scale: 0.78,
+      y: 90,
+      opacity: 0,
+      ease: 'power1.out',
+      stagger: 0.04
+    });
+
+    gsap.fromTo('.operating-marquee', {
+      y: 30,
+      opacity: 0.8
+    }, {
+      scrollTrigger: {
+        trigger: '#hero',
+        start: '60% top',
+        end: 'bottom top',
+        scrub: 1
+      },
+      y: 0,
+      opacity: 1,
+      ease: 'power2.out'
+    });
+  }
+}

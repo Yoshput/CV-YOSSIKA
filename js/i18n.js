@@ -42,7 +42,7 @@ const I18N_DATA = {
     "about.eduKey": "Education",
     "about.eduVal": "S1 Informatics · Telkom University Purwokerto",
     "about.gpaKey": "GPA",
-    "about.gpaVal": "3.65 / 4.00",
+    "about.gpaVal": "3.85 / 4.00",
     "about.statusKey": "Status",
     "about.statusVal": "Semester 4 → 5 (Class of 2024)",
 
@@ -161,7 +161,7 @@ const I18N_DATA = {
     "about.eduKey": "Pendidikan",
     "about.eduVal": "S1 Teknik Informatika · Telkom University Purwokerto",
     "about.gpaKey": "IPK",
-    "about.gpaVal": "3.65 / 4.00",
+    "about.gpaVal": "3.85 / 4.00",
     "about.statusKey": "Status",
     "about.statusVal": "Semester 4 → 5 (Angkatan 2024)",
 
