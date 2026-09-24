@@ -9,6 +9,14 @@
     {
       "source": "/dokumentasi",
       "destination": "/details.html"
+    },
+    {
+      "source": "/assets/img/project-web/Gesture-Isyarat/:match*",
+      "destination": "/assets/img/project-web/gesture-isyarat/:match*"
+    },
+    {
+      "source": "/assets/img/project-web/Food-TYU/:match*",
+      "destination": "/assets/img/project-web/food-tyu/:match*"
     }
   ]
 }

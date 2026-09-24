@@ -1,47 +1,38 @@
 import re
 import os
-from urllib.parse import urlparse
 
 files = ['index.html', 'projects.html', 'jasa.html', 'jasa/index.html', 'dokumentasi/index.html', 'details.html']
-root = os.getcwd()
 
-print("--- AUDITING DUPLICATE META & TITLE TAGS ---")
+print("=================== SEO TECHNICAL AUDIT REPORT ===================")
 for f in files:
+    if not os.path.exists(f):
+        continue
     with open(f, 'r', encoding='utf-8') as fp:
         c = fp.read()
     
     titles = re.findall(r'<title>(.*?)</title>', c, re.I | re.DOTALL)
-    if len(titles) > 1:
-        print(f"WARNING: {f} has {len(titles)} <title> tags!")
-    
-    descriptions = re.findall(r'<meta[^>]+name=["\']description["\'][^>]*>', c, re.I)
-    if len(descriptions) > 1:
-        print(f"WARNING: {f} has {len(descriptions)} description meta tags!")
+    descriptions = re.findall(r'<meta[^>]+name=["\']description["\'][^>]+content=["\'](.*?)["\']', c, re.I | re.DOTALL)
+    if not descriptions:
+        descriptions = re.findall(r'<meta[^>]+content=["\'](.*?)["\'][^>]+name=["\']description["\']', c, re.I | re.DOTALL)
+    canonicals = re.findall(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](.*?)["\']', c, re.I)
+    h1s = re.findall(r'<h1[^>]*>(.*?)</h1>', c, re.I | re.DOTALL)
+    html_langs = re.findall(r'<html[^>]*lang=["\'](.*?)["\']', c, re.I)
+    hreflangs = re.findall(r'<link[^>]+hreflang=["\'](.*?)["\']', c, re.I)
+    bing = 'msvalidate.01' in c
+    schema = 'application/ld+json' in c
 
-    canonicals = re.findall(r'<link[^>]+rel=["\']canonical["\'][^>]*>', c, re.I)
-    if len(canonicals) > 1:
-        print(f"WARNING: {f} has {len(canonicals)} canonical tags!")
+    print(f"\nPAGE: {f}")
+    print(f"  • Lang: {html_langs[0] if html_langs else 'N/A'}")
+    print(f"  • Title ({len(titles)}): {titles[0].strip() if titles else 'MISSING'}")
+    print(f"  • Meta Description ({len(descriptions)}): {descriptions[0].strip()[:90]}..." if descriptions else "  • Meta Description: MISSING")
+    print(f"  • Canonical: {canonicals[0] if canonicals else 'MISSING'}")
+    print(f"  • H1 Count: {len(h1s)} (Expected: 1)")
+    for i, h in enumerate(h1s):
+        clean_h = re.sub(r'<[^>]+>', ' ', h)
+        clean_h = re.sub(r'\s+', ' ', clean_h).strip()
+        print(f"      H1[{i+1}]: {clean_h[:80]}")
+    print(f"  • Hreflangs ({len(hreflangs)}): {hreflangs}")
+    print(f"  • Bing Verification (<meta msvalidate.01>): {'PASSED' if bing else 'FAILED'}")
+    print(f"  • Schema JSON-LD: {'PASSED' if schema else 'FAILED'}")
 
-    # Check internal links
-    links = re.findall(r'href=["\']([^"\'#]+?)["\']', c, re.I)
-    for l in set(links):
-        if l.startswith('http') or l.startswith('mailto:') or l.startswith('tel:') or l.startswith('javascript:'):
-            continue
-        clean_path = l.split('?')[0]
-        if not clean_path:
-            continue
-        file_dir = os.path.dirname(f)
-        target = os.path.normpath(os.path.join(file_dir, clean_path))
-        target_root = os.path.normpath(os.path.join(root, clean_path.lstrip('/')))
-        exists = (
-            os.path.exists(target) or 
-            os.path.exists(target_root) or 
-            os.path.exists(target + '.html') or 
-            os.path.exists(target_root + '.html') or 
-            os.path.exists(os.path.join(target, 'index.html')) or 
-            os.path.exists(os.path.join(target_root, 'index.html'))
-        )
-        if not exists:
-            print(f"POTENTIAL BROKEN LINK in {f}: {l}")
-
-print("Audit finished successfully.")
+print("\n==================================================================")

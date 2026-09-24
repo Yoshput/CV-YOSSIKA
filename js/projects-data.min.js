@@ -446,7 +446,10 @@ const PROJECTS_DATA = {
         "Integrasi Text-to-Speech untuk membacakan hasil terjemahan isyarat"
       ]
     },
+    laptopShowcase: "assets/img/project-web/gesture-isyarat/gesture-isyarat-landing-page.webp",
+    cardShowcase: "assets/img/project-web/gesture-isyarat/gesture-isyarat-landing-page.webp",
     video: "assets/img/project-web/gesture-isyarat/gesture-isyarat-demo.mp4",
+    previewMp4: "assets/img/project-web/gesture-isyarat/gesture-isyarat-demo.mp4",
     previewWebp: "assets/img/project-web/gesture-isyarat/gesture-isyarat-poster.webp",
     images: [
       "assets/img/project-web/gesture-isyarat/gesture-isyarat-landing-page.webp",

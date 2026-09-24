@@ -1782,7 +1782,7 @@ function resetNormalHero(heroSection) {
         <span id="csHeroBadge" class="pill pill-purple">Featured Project</span>
       </div>
       <p class="cs-hero-tagline" id="csHeroTagline"></p>
-      <h1 class="cs-hero-title" id="csHeroTitle">PROJECT</h1>
+      <h2 class="cs-hero-title" id="csHeroTitle">PROJECT</h2>
       <div class="cs-hero-mockup-wrap">
         <div class="cs-browser-window" id="csHeroMockupWindow">
           <div class="cs-browser-header">
@@ -2011,6 +2011,16 @@ window.openCaseStudy = window.openProjectModal = function(id) {
         // Set poster: laptopShowcase → previewWebp → first image
         const posterSrc = data.laptopShowcase || data.previewWebp || (data.images && data.images[0]);
         if (posterSrc) vid.setAttribute('poster', posterSrc);
+        vid.onerror = function() {
+          if (data.laptopShowcase || (data.images && data.images[0])) {
+            const fallbackImg = document.createElement('img');
+            fallbackImg.src = data.laptopShowcase || data.images[0];
+            fallbackImg.alt = data.title;
+            fallbackImg.loading = 'eager';
+            heroMedia.innerHTML = '';
+            heroMedia.appendChild(fallbackImg);
+          }
+        };
         heroMedia.appendChild(vid);
         vid.play().catch(() => {});
       } else if (data.images && data.images[0]) {
