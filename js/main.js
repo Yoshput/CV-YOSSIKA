@@ -2543,13 +2543,24 @@ function initFeedbackForm() {
     statusEl.textContent = 'Sending message...';
 
     try {
-      const resp = await fetch('https://formspree.io/f/xaqgewoy', {
+      const resp = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message: msg, _subject: 'Message from Portfolio' })
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: 'adefe984-2299-4900-98b4-c513fab4e02c',
+          name: name,
+          email: email,
+          message: msg,
+          subject: `Pesan Baru Portofolio dari ${name}`,
+          from_name: 'Portofolio Yossika Putra'
+        })
       });
 
-      if (!resp.ok) throw new Error();
+      const result = await resp.json();
+      if (!resp.ok || !result.success) throw new Error(result.message || 'Failed');
 
       statusEl.style.color = 'var(--green)';
       statusEl.textContent = 'Message delivered successfully!';
