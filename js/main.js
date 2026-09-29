@@ -148,17 +148,29 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navBackToTop) {
     navBackToTop.addEventListener('click', (e) => {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollToTop();
       playClickSound();
     });
   }
 
   window.scrollToTop = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.lenisInstance) {
+      window.lenisInstance.scrollTo(0, { duration: 0.8 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
+
+    // Fallback progress bar update if Lenis is disabled or unavailable
+    const scrollProgressBar = document.getElementById('scrollProgress');
+    if (!window.lenisInstance && scrollProgressBar) {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalScroll > 0 ? scrollY / totalScroll : 0;
+      scrollProgressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+    }
 
     // Morph navbar to compact pill on scroll & control nav CTA visibility
     if (siteHeader) {
@@ -301,35 +313,44 @@ function initPreloaderAndAnimations() {
     isDone = true;
     try { sessionStorage.setItem('yp_visited', '1'); } catch (e) {}
 
+    // Immediately disable pointer-events so clicks/touches pass through without delay
+    if (preloader) preloader.style.pointerEvents = 'none';
+
     if (window.gsap) {
-      gsap.to('.preloader-content', {
-        opacity: 0,
-        y: -30,
-        scale: 0.95,
-        duration: 0.35,
-        ease: 'power2.in',
+      const pTL = gsap.timeline({
         onComplete: () => {
-          gsap.to('#appPreloader', {
-            yPercent: -100,
-            duration: 0.8,
-            ease: 'power4.inOut',
-            onComplete: () => {
-              if (preloader) {
-                preloader.style.display = 'none';
-                preloader.setAttribute('aria-hidden', 'true');
-              }
-            }
-          });
-          initHeroEntrance();
+          if (preloader) {
+            preloader.style.display = 'none';
+            preloader.setAttribute('aria-hidden', 'true');
+          }
         }
       });
+
+      pTL
+        .to('.preloader-content', {
+          opacity: 0,
+          y: -20,
+          scale: 0.96,
+          duration: 0.28,
+          ease: 'power2.out'
+        })
+        .to('#appPreloader', {
+          opacity: 0,
+          yPercent: -100,
+          duration: 0.52,
+          ease: 'power3.inOut'
+        }, '-=0.12');
+
+      // Seamlessly trigger hero entrance right as preloader glides away
+      initHeroEntrance();
     } else {
       if (preloader) {
         preloader.style.opacity = '0';
         setTimeout(() => {
           preloader.style.display = 'none';
+          preloader.setAttribute('aria-hidden', 'true');
           initHeroEntrance();
-        }, 400);
+        }, 300);
       }
     }
   }
@@ -339,8 +360,8 @@ function initPreloaderAndAnimations() {
       const progressObj = { value: 0 };
       gsap.to(progressObj, {
         value: 100,
-        duration: 1.15,
-        ease: 'power2.out',
+        duration: 0.85,
+        ease: 'power1.inOut',
         onUpdate: () => {
           const val = Math.floor(progressObj.value);
           if (counterEl) counterEl.textContent = String(val).padStart(2, '0') + '%';
@@ -351,16 +372,16 @@ function initPreloaderAndAnimations() {
     } else {
       let count = 0;
       const interval = setInterval(() => {
-        count += 5;
+        count += 8;
         if (counterEl) counterEl.textContent = String(Math.min(count, 100)).padStart(2, '0') + '%';
         if (barEl) barEl.style.width = Math.min(count, 100) + '%';
         if (count >= 100) {
           clearInterval(interval);
           finishPreloader();
         }
-      }, 45);
+      }, 30);
     }
-    setTimeout(finishPreloader, 1500); // Failsafe safety
+    setTimeout(finishPreloader, 1200); // Failsafe safety
   } else {
     initHeroEntrance();
   }
@@ -680,6 +701,7 @@ function initCardVideos() {
   if (!cardVideos.length) return;
 
   cardVideos.forEach(vid => {
+    try { vid.pause(); } catch(e) {}
     vid.addEventListener('error', () => {
       if (typeof window.handleMediaError === 'function') {
         window.handleMediaError(vid);
@@ -697,20 +719,21 @@ function initCardVideos() {
           vid.pause();
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
     cardVideos.forEach(v => observer.observe(v));
-  } else {
-    cardVideos.forEach(v => v.play().catch(() => {}));
   }
 }
 
 /* ==========================================================================
    DOCUMENTATION CARDS AUTO-SLIDESHOW
-   Smoothly cross-fades photos every 2.8s on event cards
+   Smoothly cross-fades photos on event cards when visible
    ========================================================================== */
 function initDocCardSlideshow() {
   const docMediaContainers = document.querySelectorAll('.doc-media[data-images]');
   if (!docMediaContainers.length) return;
+
+  const docSection = document.getElementById('dokumentasi') || document.querySelector('.docs-grid');
+  let isDocSectionVisible = false;
 
   docMediaContainers.forEach((container, cardIdx) => {
     let images = [];
@@ -754,7 +777,7 @@ function initDocCardSlideshow() {
     let isPaused = false;
 
     function nextSlide() {
-      if (isPaused) return;
+      if (isPaused || !isDocSectionVisible) return;
       const prevIndex = currentIndex;
       currentIndex = (currentIndex + 1) % images.length;
 
@@ -771,7 +794,7 @@ function initDocCardSlideshow() {
     // Stagger start time so cards cycle rhythmically and independently
     const delayOffset = cardIdx * 450;
     setTimeout(() => {
-      setInterval(nextSlide, 2800);
+      setInterval(nextSlide, 3000);
     }, delayOffset);
 
     // Pause on hover
@@ -781,6 +804,15 @@ function initDocCardSlideshow() {
       parentCard.addEventListener('mouseleave', () => { isPaused = false; });
     }
   });
+
+  if (docSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      isDocSectionVisible = entry.isIntersecting;
+    }, { threshold: 0.05 });
+    observer.observe(docSection);
+  } else {
+    isDocSectionVisible = true;
+  }
 }
 
 /* ==========================================================================
@@ -792,11 +824,19 @@ function initLenisSmoothScroll() {
   if (typeof Lenis === 'undefined') return;
 
   try {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     lenisInstance = new Lenis({
-      duration: 1.15,
+      duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
       smoothWheel: true,
-      touchMultiplier: 1.5
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.0,
+      syncTouch: false,
+      autoResize: true
     });
     window.lenisInstance = lenisInstance;
 
@@ -805,9 +845,8 @@ function initLenisSmoothScroll() {
     lenisInstance.on('scroll', (e) => {
       if (window.ScrollTrigger) ScrollTrigger.update();
       if (scrollProgressBar) {
-        const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = totalScroll > 0 ? (e.animatedScroll / totalScroll) * 100 : 0;
-        scrollProgressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+        const progress = typeof e.progress === 'number' ? e.progress : 0;
+        scrollProgressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
       }
     });
 
@@ -815,13 +854,14 @@ function initLenisSmoothScroll() {
       gsap.ticker.add((time) => {
         lenisInstance.raf(time * 1000);
       });
-      gsap.ticker.lagSmoothing(0);
+      gsap.ticker.lagSmoothing(500, 33);
     } else {
+      let rafId;
       function raf(time) {
         lenisInstance.raf(time);
-        requestAnimationFrame(raf);
+        rafId = requestAnimationFrame(raf);
       }
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
   } catch (err) {
     console.warn('Lenis initialization notice:', err);
@@ -847,7 +887,7 @@ function initHeroThreeCanvas() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
 
     // Particle constellation
-    const particleCount = isMobile ? 320 : 650;
+    const particleCount = isMobile ? 260 : 550;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -894,16 +934,14 @@ function initHeroThreeCanvas() {
     window.addEventListener('pointermove', onPointerMove, { passive: true });
 
     let isHeroVisible = true;
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(([entry]) => {
-        isHeroVisible = entry.isIntersecting;
-      }, { threshold: 0.05 });
-      observer.observe(heroSection);
-    }
+    let animFrameId = null;
 
     function animate() {
-      requestAnimationFrame(animate);
-      if (!isHeroVisible) return;
+      if (!isHeroVisible) {
+        animFrameId = null;
+        return;
+      }
+      animFrameId = requestAnimationFrame(animate);
 
       mouseX += (targetX - mouseX) * 0.05;
       mouseY += (targetY - mouseY) * 0.05;
@@ -913,6 +951,17 @@ function initHeroThreeCanvas() {
 
       renderer.render(scene, camera);
     }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        isHeroVisible = entry.isIntersecting;
+        if (isHeroVisible && !animFrameId) {
+          animate();
+        }
+      }, { threshold: 0.02 });
+      observer.observe(heroSection);
+    }
+
     animate();
 
     window.addEventListener('resize', () => {
@@ -1693,25 +1742,41 @@ window.filterProjects = filterProjects;
    ========================================================================== */
 function initCursorSpotlight() {
   const spotlight = document.getElementById('cursorSpotlight');
-  if (!spotlight || window.innerWidth <= 768) return;
+  if (!spotlight) return;
+
+  const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+  if (isCoarse || window.innerWidth <= 768) {
+    spotlight.style.display = 'none';
+    return;
+  }
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let curX = mouseX;
   let curY = mouseY;
+  let isRunning = false;
+
+  function render() {
+    if (!isRunning) return;
+    curX += (mouseX - curX) * 0.18;
+    curY += (mouseY - curY) * 0.18;
+    spotlight.style.transform = `translate3d(${curX.toFixed(1)}px, ${curY.toFixed(1)}px, 0)`;
+
+    if (Math.abs(mouseX - curX) > 0.5 || Math.abs(mouseY - curY) > 0.5) {
+      requestAnimationFrame(render);
+    } else {
+      isRunning = false;
+    }
+  }
 
   window.addEventListener('pointermove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!isRunning) {
+      isRunning = true;
+      requestAnimationFrame(render);
+    }
   }, { passive: true });
-
-  function render() {
-    curX += (mouseX - curX) * 0.15;
-    curY += (mouseY - curY) * 0.15;
-    spotlight.style.transform = `translate3d(${curX}px, ${curY}px, 0)`;
-    requestAnimationFrame(render);
-  }
-  requestAnimationFrame(render);
 }
 
 /* ==========================================================================
@@ -2753,7 +2818,6 @@ function initMarcusHero() {
   const wrapper = document.getElementById('heroLiquidWrapper');
   const giantLine1 = document.getElementById('heroGiantLine1');
   const giantLine2 = document.getElementById('heroGiantLine2');
-  const displaceMap = document.getElementById('heroLiquidDisplace');
   const hero = document.getElementById('hero');
   if (!hero || !wrapper) return;
 
@@ -2764,15 +2828,8 @@ function initMarcusHero() {
   let currentTiltX = 0, currentTiltY = 0;
   let targetTransX = 0, targetTransY = 0;
   let currentTransX = 0, currentTransY = 0;
-  let currentDisplace = 0, targetDisplace = 0;
   let isHeroInView = true;
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(([entry]) => {
-      isHeroInView = entry.isIntersecting;
-    }, { threshold: 0.05 });
-    observer.observe(hero);
-  }
+  let marcusRafId = null;
 
   if (isFinePointer && !prefersReducedMotion) {
     hero.addEventListener('mousemove', (e) => {
@@ -2791,16 +2848,11 @@ function initMarcusHero() {
       }
     }, { passive: true });
 
-    hero.addEventListener('mouseenter', () => {
-      targetDisplace = 14;
-    });
-
     hero.addEventListener('mouseleave', () => {
       targetTiltX = 0;
       targetTiltY = 0;
       targetTransX = 0;
       targetTransY = 0;
-      targetDisplace = 0;
       if (giantLine1 && giantLine2) {
         giantLine1.style.transform = 'translate3d(0, 0, 0)';
         giantLine2.style.transform = 'translate3d(0, 0, 0)';
@@ -2818,23 +2870,34 @@ function initMarcusHero() {
   }, { passive: true });
 
   function updateMarcusLoop() {
-    requestAnimationFrame(updateMarcusLoop);
-    if (!isHeroInView || prefersReducedMotion) return;
+    if (!isHeroInView || prefersReducedMotion) {
+      marcusRafId = null;
+      return;
+    }
+    marcusRafId = requestAnimationFrame(updateMarcusLoop);
 
     currentTiltX += (targetTiltX - currentTiltX) * 0.08;
     currentTiltY += (targetTiltY - currentTiltY) * 0.08;
     currentTransX += (targetTransX - currentTransX) * 0.08;
     currentTransY += (targetTransY - currentTransY) * 0.08;
-    currentDisplace += (targetDisplace - currentDisplace) * 0.06;
 
     const posY = currentTransY + scrollParallaxY;
     wrapper.style.transform = `perspective(1000px) translate3d(${currentTransX.toFixed(2)}px, ${posY.toFixed(2)}px, 0) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
-
-    if (displaceMap) {
-      displaceMap.setAttribute('scale', currentDisplace.toFixed(1));
-    }
   }
-  updateMarcusLoop();
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      isHeroInView = entry.isIntersecting;
+      if (isHeroInView && !marcusRafId && !prefersReducedMotion) {
+        updateMarcusLoop();
+      }
+    }, { threshold: 0.02 });
+    observer.observe(hero);
+  }
+
+  if (!prefersReducedMotion) {
+    updateMarcusLoop();
+  }
 
   // ════ NADIV SPACE-STYLE CINEMATIC SCROLL SINK & ZOOM OUT ════
   if (window.gsap && window.ScrollTrigger) {
@@ -2845,7 +2908,7 @@ function initMarcusHero() {
         trigger: '#hero',
         start: 'top top',
         end: 'bottom top',
-        scrub: 1.2,
+        scrub: 0.6,
       },
       scale: 0.78,
       y: 90,
@@ -2862,7 +2925,7 @@ function initMarcusHero() {
         trigger: '#hero',
         start: '60% top',
         end: 'bottom top',
-        scrub: 1
+        scrub: 0.5
       },
       y: 0,
       opacity: 1,

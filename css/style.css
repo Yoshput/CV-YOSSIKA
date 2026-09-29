@@ -64,9 +64,28 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {
@@ -109,6 +128,8 @@ button {
   pointer-events: none;
   z-index: 0;
   opacity: 0.35;
+  transform: translateZ(0);
+  will-change: opacity;
   background: 
     radial-gradient(circle at 15% 20%, var(--accent-glow) 0%, transparent 45%),
     radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
@@ -261,7 +282,8 @@ button {
   position: fixed;
   top: 14px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateZ(0);
+  will-change: transform;
   width: min(calc(100% - 2rem), 820px);
   height: 56px;
   border-radius: var(--radius-full);
@@ -705,6 +727,7 @@ button {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  contain: content;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -898,6 +921,7 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
+  contain: content;
   transition: transform var(--transition), border-color var(--transition);
 }
 
@@ -1057,6 +1081,7 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
+  contain: content;
   transition: transform var(--transition), border-color var(--transition);
   display: flex;
   flex-direction: column;
@@ -2510,13 +2535,16 @@ textarea.form-control {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  width: 100%;
   height: 3px;
-  width: 0%;
   background: linear-gradient(90deg, #38bdf8 0%, #6366f1 50%, #10b981 100%);
   z-index: 99999;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(99, 102, 241, 0.4);
   pointer-events: none;
-  transition: width 0.08s linear;
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+  will-change: transform;
 }
 
 /* ── 2. Ambient Cursor Spotlight ───────────────────────────────────── */
@@ -2532,9 +2560,10 @@ textarea.form-control {
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
-  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transition: opacity 0.3s ease;
   mix-blend-mode: screen;
   opacity: 0;
+  will-change: transform;
 }
 body:hover .cursor-spotlight {
   opacity: 1;
