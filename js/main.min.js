@@ -2256,16 +2256,30 @@ window.openCaseStudy = window.openProjectModal = function(id) {
     }
   } else if (data.video && !hasHeroVideo) {
     videoSec.style.display = 'block';
-    const isMobile = (data.deviceMockup === 'iphone' || data.isMobileGallery || id === 'thrift');
-    const wrapStyle = isMobile
-      ? 'position:relative;overflow:hidden;border-radius:36px;background:#07090e;max-width:320px;margin:0 auto;box-shadow:0 25px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);'
-      : 'position:relative;overflow:hidden;border-radius:var(--radius-lg);background:#07090e;box-shadow:0 20px 50px rgba(0,0,0,0.5);max-width:960px;margin:0 auto;';
+    const isVerticalVideo = (id === 'gymplanner' || (data.videoStories && data.videoStories.length > 0));
 
-    videoWrap.innerHTML = `
-      <div class="cs-video-container" style="${wrapStyle}">
-        <video src="${data.video}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" style="width:100%;height:auto;display:block;border-radius:inherit;"></video>
-      </div>
-    `;
+    if (isVerticalVideo) {
+      videoWrap.innerHTML = `
+        <div class="iphone-17-gallery-wrap" style="max-width:320px;margin:0 auto;">
+          <div class="iphone-17-device-shell">
+            <div class="iphone-17-pill-notch"></div>
+            <div class="iphone-17-screen-area">
+              <video src="${data.video}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+            </div>
+            <div class="iphone-17-bottom-bar"></div>
+          </div>
+        </div>
+      `;
+    } else {
+      videoWrap.innerHTML = `
+        <div class="macbook-mockup-frame" style="max-width:980px;margin:0 auto;">
+          <div class="macbook-camera-notch"><span class="macbook-camera-dot"></span></div>
+          <div class="macbook-screen">
+            <video src="${data.video}" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" style="width:100%;height:auto;display:block;"></video>
+          </div>
+        </div>
+      `;
+    }
     const secVid = videoWrap.querySelector('video');
     if (secVid) {
       secVid.muted = true;
@@ -2283,34 +2297,120 @@ window.openCaseStudy = window.openProjectModal = function(id) {
   const images = data.images || [];
   const captions = (data.imageCaptions && data.imageCaptions[lang]) || [];
 
+  const isProjectMobile = Boolean(data.isMobileGallery || data.deviceMockup === 'iphone');
+
+  if (isProjectMobile) {
+    screensGrid.className = 'cs-screens-grid cs-screens-mobile-mode';
+  } else {
+    screensGrid.className = 'cs-screens-grid cs-screens-desktop-mode';
+  }
+
   images.forEach((src, idx) => {
     const screenItem = document.createElement('article');
     screenItem.className = 'cs-screen-item';
 
-    // Auto-detect landscape screens (landing page, hero showcase, banner) to span nicely
+    // Auto-detect landscape screens (landing page, hero showcase, banner, cover, figma)
+    // 'landing' & 'showcase' always = wide MacBook frame (desktop/marketing shots, multi-device spreads).
+    // Other keywords only trigger MacBook frame for non-mobile-gallery projects.
     const lowerSrc = src.toLowerCase();
-    if (lowerSrc.includes('landing') || lowerSrc.includes('showcase') || lowerSrc.includes('banner')) {
+    const isLandscape = lowerSrc.includes('landing') || lowerSrc.includes('showcase') || (!data.isMobileGallery && (
+      lowerSrc.includes('banner') || lowerSrc.includes('cover') ||
+      lowerSrc.includes('figma') || lowerSrc.includes('overview') ||
+      lowerSrc.includes('portal') || lowerSrc.includes('smart-tv') ||
+      lowerSrc.includes('dashboard')
+    ));
+
+    if (isLandscape) {
       screenItem.classList.add('is-landscape');
     }
 
     const capText = captions[idx] || `${cleanTitle} Screen ${idx + 1}`;
     const screenNum = `SCREEN ${String(idx + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`;
 
-    screenItem.innerHTML = `
-      <div class="cs-screen-header">
-        <div>
-          <div class="cs-screen-badge">${screenNum}</div>
-          <div class="cs-screen-caption">${capText}</div>
+    if (isProjectMobile && !isLandscape && data.hasBuiltInMockup) {
+      // Built-in mockup: image already has device frame baked in — show directly, no wrapper frame
+      screenItem.classList.add('cs-screen-mobile-card', 'cs-screen-prebuilt-card');
+      screenItem.innerHTML = `
+        <div class="cs-screen-header">
+          <div class="cs-screen-head-meta">
+            <span class="cs-screen-badge">${screenNum}</span>
+            <h4 class="cs-screen-caption">${capText}</h4>
+          </div>
+          <button type="button" class="cs-screen-zoom-hint" onclick="openLightbox('${src}')" aria-label="Perbesar Layar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>${isEn ? 'Zoom' : 'Perbesar'}</span>
+          </button>
         </div>
-        <div class="cs-screen-zoom-hint" onclick="openLightbox('${src}')">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-          ${isEn ? 'Click to Zoom' : 'Perbesar'}
+        <div class="cs-prebuilt-img-wrap" onclick="openLightbox('${src}')">
+          <img src="${src}" alt="${capText}" loading="lazy" decoding="async">
         </div>
-      </div>
-      <div class="cs-screen-img-wrap" onclick="openLightbox('${src}')">
-        <img src="${src}" alt="${capText}" loading="lazy" decoding="async">
-      </div>
-    `;
+      `;
+    } else if (isProjectMobile && !isLandscape) {
+      // iPhone 17 Pro Titanium Frame for portrait mobile screens
+      screenItem.classList.add('cs-screen-mobile-card');
+      screenItem.innerHTML = `
+        <div class="cs-screen-header">
+          <div class="cs-screen-head-meta">
+            <span class="cs-screen-badge">${screenNum}</span>
+            <h4 class="cs-screen-caption">${capText}</h4>
+          </div>
+          <button type="button" class="cs-screen-zoom-hint" onclick="openLightbox('${src}')" aria-label="Perbesar Layar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>${isEn ? 'Zoom' : 'Perbesar'}</span>
+          </button>
+        </div>
+        <div class="iphone-17-gallery-wrap" onclick="openLightbox('${src}')">
+          <div class="iphone-17-device-shell">
+            <div class="iphone-17-pill-notch"></div>
+            <div class="iphone-17-screen-area">
+              <img src="${src}" alt="${capText}" loading="lazy" decoding="async">
+            </div>
+            <div class="iphone-17-bottom-bar"></div>
+          </div>
+        </div>
+      `;
+    } else if (isLandscape && data.hasBuiltInMockup) {
+      // Landscape + built-in mockup: wide full-width plain image — no MacBook wrapper needed
+      screenItem.classList.add('cs-screen-desktop-card', 'cs-screen-prebuilt-landscape');
+      screenItem.innerHTML = `
+        <div class="cs-screen-header">
+          <div class="cs-screen-head-meta">
+            <span class="cs-screen-badge">${screenNum}</span>
+            <h4 class="cs-screen-caption">${capText}</h4>
+          </div>
+          <button type="button" class="cs-screen-zoom-hint" onclick="openLightbox('${src}')" aria-label="Perbesar Layar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>${isEn ? 'Zoom' : 'Perbesar'}</span>
+          </button>
+        </div>
+        <div class="cs-prebuilt-img-wrap cs-prebuilt-wide" onclick="openLightbox('${src}')">
+          <img src="${src}" alt="${capText}" loading="lazy" decoding="async">
+        </div>
+      `;
+    } else {
+      // MacBook Pro Frame for desktop / landscape web screens
+      screenItem.classList.add('cs-screen-desktop-card');
+      screenItem.innerHTML = `
+        <div class="cs-screen-header">
+          <div class="cs-screen-head-meta">
+            <span class="cs-screen-badge">${screenNum}</span>
+            <h4 class="cs-screen-caption">${capText}</h4>
+          </div>
+          <button type="button" class="cs-screen-zoom-hint" onclick="openLightbox('${src}')" aria-label="Perbesar Layar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>${isEn ? 'Zoom' : 'Perbesar'}</span>
+          </button>
+        </div>
+        <div class="macbook-gallery-wrap" onclick="openLightbox('${src}')">
+          <div class="macbook-mockup-frame">
+            <div class="macbook-camera-notch"><span class="macbook-camera-dot"></span></div>
+            <div class="macbook-screen">
+              <img src="${src}" alt="${capText}" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      `;
+    }
     screensGrid.appendChild(screenItem);
   });
 

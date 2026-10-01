@@ -1758,24 +1758,25 @@
             </div>
           </article>
 
-          <!-- MUBES HIPMI System -->
-          <article class="project-card" onclick="openProjectModal('mubes_hipmi')">
+          <!-- MacaBae - AI Smart Digital Library -->
+          <article class="project-card" onclick="openProjectModal('macabae')">
             <div class="project-media">
-              <video class="card-video-loop" src="assets/img/project-web/mubes-hipmi/mubes-preview.mp4" poster="assets/img/project-web/mubes-hipmi/mubes-poster.webp" muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338" onerror="handleMediaError(this)"></video>
+              <video class="card-video-loop" src="assets/img/project-web/maca-bae/macabae-demo.mp4" poster="assets/img/project-web/maca-bae/macabae-demo-preview.webp" muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" width="600" height="338" onerror="handleMediaError(this)"></video>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Sistem Konstitusi &amp; RAB MUBES HIPMI</h3>
+              <h3 class="project-title">MacaBae — AI Smart Digital Library</h3>
               <div class="project-tech">
-                <span class="pill pill-amber">E-Voting</span>
-                <span class="pill pill-blue">Next.js</span>
-                <span class="pill pill-green">RAB Engine</span>
+                <span class="pill pill-pink">Laravel</span>
+                <span class="pill pill-purple">Gemini AI</span>
+                <span class="pill pill-blue">MacaBot</span>
               </div>
               <div class="project-action-row">
                 <span data-i18n="projects.viewDetail">Buka Studi Kasus →</span>
-                <span style="font-size:0.8rem;color:var(--txt-muted);">BPC HIPMI ↗</span>
+                <span style="font-size:0.8rem;color:var(--txt-muted);">AI Library ↗</span>
               </div>
             </div>
           </article>
+
 
           <!-- Optik I See You -->
           <article class="project-card" onclick="openProjectModal('optik_iseeyou')">
@@ -2432,13 +2433,25 @@
     <!-- Sticky Topbar -->
     <header class="cs-topbar">
       <div class="cs-topbar-inner">
-        <a href="#" onclick="closeCaseStudy(); return false;" class="cs-brand">
-          <span>✦</span> Yossika Putra
-        </a>
+        <div class="cs-topbar-left">
+          <button type="button" onclick="closeCaseStudy()" class="cs-pinned-back-btn" aria-label="Kembali ke Portofolio">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Kembali</span>
+          </button>
+          <div class="cs-topbar-sep" aria-hidden="true"></div>
+          <a href="#" onclick="closeCaseStudy(); return false;" class="cs-brand">
+            <span class="brand-sparkle">✦</span>
+            <span>Yossika Putra</span>
+          </a>
+        </div>
         <div class="cs-pill-title" id="csTopPillTitle">PROJECT CASE STUDY</div>
         <div class="cs-topbar-actions">
-          <button onclick="closeCaseStudy()" class="btn btn-secondary btn-sm cs-back-btn">
-            BACK TO HOME ↗
+          <button type="button" onclick="closeCaseStudy()" class="cs-close-pill-btn" aria-label="Tutup Studi Kasus">
+            <span>Tutup</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
       </div>

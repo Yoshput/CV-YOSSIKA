@@ -172,6 +172,7 @@ const PROJECTS_DATA = {
     },
     actions: [
       { text: "Video Demo MUBES ↗", link: "assets/img/project-web/mubes-hipmi/mubes-demo.mp4", primary: true },
+      { text: "Buka Proyek MUBES ↗", link: "mubes-hipmi.html", primary: false },
       { text: "Buka Dokumentasi 📖", link: "/dokumentasi", primary: false }
     ]
   },
@@ -652,7 +653,16 @@ const PROJECTS_DATA = {
   ngertiindia: {
     id: "ngertiindia",
     status: "completed",
+    deviceMockup: "iphone",
     isMobileGallery: true,
+    phoneAccent: "#ec4899",
+    phoneAccentGlow: "rgba(236, 72, 153, 0.4)",
+    phoneBadges: {
+      left1: { title: "Gemini 2.5 AI", sub: "Empathetic mental health engine" },
+      left2: { title: "Couple Sync", sub: "Shared emotional timeline" },
+      right1: { title: "Mood Analytics", sub: "Dynamic habit tracking" },
+      right2: { title: "Offline PWA", sub: "Encrypted private journal" }
+    },
     title: "Ngertiin Dia — Self-Care & Couple Sync",
     role: "Lead Fullstack Dev",
     year: "2024",
@@ -829,6 +839,10 @@ const PROJECTS_DATA = {
   thrift: {
     id: "thrift",
     status: "completed",
+    isMobileGallery: true,
+    hasBuiltInMockup: true,
+    phoneAccent: "#a855f7",
+    phoneAccentGlow: "rgba(168, 85, 247, 0.4)",
     title: "Thrift Space — Mobile UI/UX Design",
     role: "UI/UX Designer",
     year: "2024",
