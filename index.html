@@ -1414,7 +1414,7 @@
   <div id="appPreloader" class="app-preloader" aria-hidden="false">
     <div class="preloader-content">
       <div class="preloader-top">
-        <span class="preloader-sparkle">✦</span>
+        <span class="status-dot-pulse" style="width:12px;height:12px;" aria-hidden="true"><span class="status-dot-ping"></span><span class="status-dot-core" style="width:8px;height:8px;"></span></span>
         <span class="preloader-brand-name">Yossika Putra</span>
       </div>
       <div class="preloader-role">Software Engineer & Network Specialist</div>
@@ -1468,6 +1468,11 @@
         </button>
 
         <!-- Command Palette Trigger (Cmd+K) -->
+        <!-- Interactive Tour Trigger -->
+        <button type="button" class="tour-nav-btn" onclick="window.startProductTour()" aria-label="Tour Website" title="Tour Website">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          <span>Tour</span>
+        </button>
         <button id="cmdPaletteBtn" class="icon-btn" aria-label="Open Command Palette (Cmd+K)" title="Quick Search (Cmd+K)" onclick="openCmdPalette()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
@@ -1594,18 +1599,18 @@
     <!-- ════ OPERATING PRINCIPLES MARQUEE (BELOW HERO) ════ -->
     <div class="operating-marquee" aria-hidden="true">
       <div class="marquee-infinite-track">
-        <span class="marquee-item">BUILD BOLD <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">SCALE RELENTLESSLY <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">THINK IN SYSTEMS <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">CODE WITH CONVICTION <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">SHIP THE FUTURE <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">ZERO COMPROMISE ARCHITECTURE <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">BUILD BOLD <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">SCALE RELENTLESSLY <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">THINK IN SYSTEMS <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">CODE WITH CONVICTION <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">SHIP THE FUTURE <span class="marquee-bullet">✦</span></span>
-        <span class="marquee-item">ZERO COMPROMISE ARCHITECTURE <span class="marquee-bullet">✦</span></span>
+        <span class="marquee-item">BUILD BOLD <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">SCALE RELENTLESSLY <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">THINK IN SYSTEMS <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">CODE WITH CONVICTION <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">SHIP THE FUTURE <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">ZERO COMPROMISE ARCHITECTURE <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">BUILD BOLD <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">SCALE RELENTLESSLY <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">THINK IN SYSTEMS <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">CODE WITH CONVICTION <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">SHIP THE FUTURE <span class="marquee-bullet">•</span></span>
+        <span class="marquee-item">ZERO COMPROMISE ARCHITECTURE <span class="marquee-bullet">•</span></span>
       </div>
     </div>
 
@@ -2443,14 +2448,14 @@
           </button>
           <div class="cs-topbar-sep" aria-hidden="true"></div>
           <a href="#" onclick="closeCaseStudy(); return false;" class="cs-brand">
-            <span class="brand-sparkle">✦</span>
+            <span class="status-dot-pulse" aria-hidden="true"><span class="status-dot-ping"></span><span class="status-dot-core"></span></span>
             <span>Yossika Putra</span>
           </a>
         </div>
-        <div class="cs-pill-title" id="csTopPillTitle">PROJECT CASE STUDY</div>
         <div class="cs-topbar-actions">
           <button type="button" onclick="closeCaseStudy()" class="cs-close-pill-btn" aria-label="Tutup Studi Kasus">
             <span>Tutup</span>
+            <kbd class="cs-esc-kbd">ESC</kbd>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>

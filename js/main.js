@@ -2023,9 +2023,17 @@ window.openCaseStudy = window.openProjectModal = function(id) {
             <div class="iphone-button iphone-vol-down"></div>
             <div class="iphone-button iphone-power-btn"></div>
             <div class="iphone-screen">
-              <div class="iphone-dynamic-island">
-                <div class="island-camera"></div>
-                <div class="island-sensor"></div>
+              <div class="iphone-status-bar">
+                <span class="iphone-status-time">9:41</span>
+                <div class="iphone-dynamic-island">
+                  <div class="island-camera"></div>
+                  <div class="island-sensor"></div>
+                </div>
+                <div class="iphone-status-icons">
+                  <svg width="15" height="11" viewBox="0 0 17 11" fill="currentColor"><path d="M1 10h2V6H1v4zm4 0h2V4H5v6zm4 0h2V2H9v8zm4 0h2V0h-2v10z"/></svg>
+                  <svg width="14" height="11" viewBox="0 0 16 12" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-4.24-4.24a6 6 0 018.48 0l1.42-1.42a8 8 0 00-11.32 0l1.42 1.42zm-2.83-2.83a10 10 0 0114.14 0l1.42-1.42a12 12 0 00-16.98 0l1.42 1.42z"/></svg>
+                  <svg width="22" height="11" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="19" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="6" rx="1.5"/><path d="M22 4.5v3a1.5 1.5 0 000-3z"/></svg>
+                </div>
               </div>
               <div class="iphone-speaker"></div>
               <div class="iphone-screen-content" id="csHeroMediaBody"></div>
@@ -3033,3 +3041,311 @@ function initMarcusHero() {
     });
   }
 }
+
+
+/* ==========================================================================
+   INTERACTIVE ONBOARDING PRODUCT TOUR (STEP-BY-STEP LUXURY GUIDE)
+   ========================================================================== */
+(function() {
+  let currentTourStep = 0;
+  let tourSteps = [];
+  let overlayEl = null;
+  let spotlightEl = null;
+  let popoverEl = null;
+
+  function getLang() {
+    return (window.I18N && window.I18N.current === 'id') ? 'id' : 'en';
+  }
+
+  function setupTourSteps() {
+    const isHome = Boolean(document.getElementById('hero') || document.querySelector('.hero-center-stage'));
+    const lang = getLang();
+
+    if (isHome) {
+      tourSteps = [
+        {
+          target: document.querySelector('.hero-center-stage') || document.getElementById('hero') || document.body,
+          title: {
+            id: 'Selamat Datang di Portofolio Interaktif',
+            en: 'Welcome to the Interactive Portfolio'
+          },
+          desc: {
+            id: 'Eksplorasi ekosistem portofolio Yossika Putra — Fullstack Software Engineer & UI/UX Specialist. Dirancang dengan standar High-End Minimalist Tech tanpa AI template slop.',
+            en: 'Explore Yossika Putra\'s interactive portfolio ecosystem. Built to High-End Minimalist Tech standards with zero AI template clutter.'
+          }
+        },
+        {
+          target: document.getElementById('about') || document.querySelector('.credentials-clean-card') || document.querySelector('.skills-marquee-wrapper') || document.getElementById('hero'),
+          title: {
+            id: 'Keahlian & Pengalaman Teruji',
+            en: 'Skills & Proven Experience'
+          },
+          desc: {
+            id: 'Lihat kredensial resmi, riwayat teknis, dan stack teknologi mutakhir mulai dari Laravel, React, Next.js, TypeScript hingga AI Integration.',
+            en: 'Inspect verified credentials, technical background, and modern stack proficiencies across Laravel, React, Next.js, TypeScript, and AI integration.'
+          }
+        },
+        {
+          target: document.getElementById('projects') || document.querySelector('.projects-grid') || document.querySelector('.project-card'),
+          title: {
+            id: 'Studi Kasus & Proyek Pilihan',
+            en: 'Featured Case Studies & Works'
+          },
+          desc: {
+            id: 'Klik kartu proyek (seperti Gym Planner, MacaBae, atau Thrift Space) untuk membuka Fullscreen Case Study interaktif beserta demo video dan arsitektur kode.',
+            en: 'Click any project card (like Gym Planner, MacaBae, or Thrift Space) to launch the interactive fullscreen case study with live demos and architecture breakdown.'
+          }
+        },
+        {
+          target: document.getElementById('contact') || document.getElementById('mobileQuickDock') || document.getElementById('siteHeader'),
+          title: {
+            id: 'Siap Berkolaborasi & Terhubung',
+            en: 'Let\'s Connect & Collaborate'
+          },
+          desc: {
+            id: 'Hubungi langsung melalui WhatsApp, LinkedIn, atau form kontak untuk diskusi proyek web, freelance, maupun peluang karir profesional.',
+            en: 'Reach out directly via WhatsApp, LinkedIn, or the message form for custom web projects, freelance contracts, and engineering roles.'
+          }
+        }
+      ];
+    } else {
+      // Projects Page
+      tourSteps = [
+        {
+          target: document.querySelector('.projects-page-hero') || document.body,
+          title: {
+            id: 'Eksplorasi Semua Proyek',
+            en: 'Explore All Projects'
+          },
+          desc: {
+            id: 'Katalog lengkap karya aplikasi web, sistem enterprise POS, integrasi AI cerdas, dan desain UI/UX oleh Yossika Putra.',
+            en: 'Complete repository of production web applications, enterprise POS systems, AI integrations, and UI/UX designs by Yossika Putra.'
+          }
+        },
+        {
+          target: document.querySelector('.projects-filter-container') || document.getElementById('allProjectsGrid'),
+          title: {
+            id: 'Filter Cepat Kategori',
+            en: 'Quick Category Filtering'
+          },
+          desc: {
+            id: 'Gunakan tombol filter untuk menyaring proyek berdasarkan kategori: Web Apps, AI, POS Systems, atau Desain Grafis.',
+            en: 'Use category chips to filter through Web Apps, AI Integrations, POS Systems, or Graphic Design showcases.'
+          }
+        },
+        {
+          target: document.getElementById('allProjectsGrid') || document.querySelector('.project-card'),
+          title: {
+            id: 'Studi Kasus Interaktif & Mockup',
+            en: 'Interactive Case Studies & Mockups'
+          },
+          desc: {
+            id: 'Klik proyek untuk membuka studi kasus lengkap dengan preview mockup iPhone 17 Pro untuk mobile dan MacBook Pro untuk web desktop.',
+            en: 'Click any project to inspect the in-depth case study, with iPhone 17 Pro mobile mockups and MacBook Pro desktop previews.'
+          }
+        },
+        {
+          target: document.getElementById('siteHeader') || document.querySelector('.site-footer'),
+          title: {
+            id: 'Navigasi & Jasa Pembuatan Web',
+            en: 'Navigation & Web Services'
+          },
+          desc: {
+            id: 'Kembali ke beranda kapan saja, atau jelajahi halaman Jasa Pembuatan Website untuk melihat paket layanan profesional.',
+            en: 'Return to Home anytime or navigate to Web Services to explore production website packages and pricing.'
+          }
+        }
+      ];
+    }
+  }
+
+  function ensureTourDOMElements() {
+    if (overlayEl) return;
+
+    overlayEl = document.createElement('div');
+    overlayEl.id = 'tourOverlay';
+    overlayEl.className = 'tour-overlay';
+    overlayEl.setAttribute('aria-hidden', 'true');
+
+    spotlightEl = document.createElement('div');
+    spotlightEl.id = 'tourSpotlight';
+    spotlightEl.className = 'tour-spotlight';
+
+    popoverEl = document.createElement('div');
+    popoverEl.id = 'tourPopover';
+    popoverEl.className = 'tour-popover';
+    popoverEl.setAttribute('role', 'dialog');
+    popoverEl.setAttribute('aria-modal', 'true');
+
+    overlayEl.appendChild(spotlightEl);
+    overlayEl.appendChild(popoverEl);
+    document.body.appendChild(overlayEl);
+
+    // Click outside popover skips
+    overlayEl.addEventListener('click', (e) => {
+      if (e.target === overlayEl) {
+        skipTour();
+      }
+    });
+
+    // Keyboard support
+    window.addEventListener('keydown', (e) => {
+      if (!overlayEl || !overlayEl.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        skipTour();
+      } else if (e.key === 'ArrowRight' || e.key === 'Enter') {
+        nextTourStep();
+      } else if (e.key === 'ArrowLeft') {
+        prevTourStep();
+      }
+    });
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      if (overlayEl && overlayEl.classList.contains('active')) {
+        renderCurrentStep();
+      }
+    });
+  }
+
+  function renderCurrentStep() {
+    setupTourSteps();
+    if (!tourSteps || tourSteps.length === 0) return;
+
+    const step = tourSteps[currentTourStep];
+    if (!step) return;
+
+    const lang = getLang();
+    const titleText = typeof step.title === 'object' ? step.title[lang] : step.title;
+    const descText = typeof step.desc === 'object' ? step.desc[lang] : step.desc;
+    const totalSteps = tourSteps.length;
+    const isLast = currentTourStep === totalSteps - 1;
+    const isFirst = currentTourStep === 0;
+
+    // Scroll target into view
+    let target = step.target;
+    if (!target || !document.body.contains(target)) {
+      target = document.body;
+    }
+
+    try {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    } catch (_) {}
+
+    setTimeout(() => {
+      const rect = target.getBoundingClientRect();
+      const padding = 10;
+      const targetTop = Math.max(8, rect.top - padding);
+      const targetLeft = Math.max(8, rect.left - padding);
+      const targetWidth = Math.min(window.innerWidth - 16, Math.max(40, rect.width + padding * 2));
+      const targetHeight = Math.min(window.innerHeight - 16, Math.max(40, rect.height + padding * 2));
+
+      // Spotlight position
+      spotlightEl.style.top = targetTop + 'px';
+      spotlightEl.style.left = targetLeft + 'px';
+      spotlightEl.style.width = targetWidth + 'px';
+      spotlightEl.style.height = targetHeight + 'px';
+
+      // Build Dots
+      let dotsHtml = '';
+      for (let i = 0; i < totalSteps; i++) {
+        dotsHtml += `<span class="tour-dot ${i === currentTourStep ? 'active' : ''}"></span>`;
+      }
+
+      // Popover Content
+      popoverEl.innerHTML = `
+        <div class="tour-header">
+          <div class="tour-badge">
+            <span>${lang === 'id' ? 'LANGKAH' : 'STEP'} ${currentTourStep + 1} / ${totalSteps}</span>
+          </div>
+          <div class="tour-dots">${dotsHtml}</div>
+          <button type="button" class="tour-close-btn" onclick="window.skipProductTour()" aria-label="Tutup Panduan">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <h3 class="tour-title">${titleText}</h3>
+        <p class="tour-desc">${descText}</p>
+        <div class="tour-footer">
+          <button type="button" class="tour-skip-btn" onclick="window.skipProductTour()">${lang === 'id' ? 'Lewati' : 'Skip Tour'}</button>
+          <div class="tour-nav-btns">
+            ${!isFirst ? `<button type="button" class="tour-prev-btn" onclick="window.prevProductTour()">${lang === 'id' ? 'Sebelumnya' : 'Back'}</button>` : ''}
+            <button type="button" class="tour-next-btn" onclick="window.nextProductTour()">${isLast ? (lang === 'id' ? 'Selesai ✓' : 'Finish ✓') : (lang === 'id' ? 'Lanjut →' : 'Next →')}</button>
+          </div>
+        </div>
+      `;
+
+      // Popover positioning
+      const popoverWidth = Math.min(440, window.innerWidth - 32);
+      const popoverHeight = popoverEl.offsetHeight || 220;
+
+      let popTop;
+      const spaceBelow = window.innerHeight - (targetTop + targetHeight);
+      const spaceAbove = targetTop;
+
+      if (spaceBelow >= popoverHeight + 20) {
+        popTop = targetTop + targetHeight + 14;
+      } else if (spaceAbove >= popoverHeight + 20) {
+        popTop = targetTop - popoverHeight - 14;
+      } else {
+        popTop = Math.max(16, (window.innerHeight - popoverHeight) / 2);
+      }
+
+      let popLeft = targetLeft + (targetWidth - popoverWidth) / 2;
+      popLeft = Math.max(16, Math.min(window.innerWidth - popoverWidth - 16, popLeft));
+
+      popoverEl.style.top = popTop + 'px';
+      popoverEl.style.left = popLeft + 'px';
+    }, 180);
+  }
+
+  window.startProductTour = function() {
+    ensureTourDOMElements();
+    currentTourStep = 0;
+    setupTourSteps();
+    overlayEl.classList.add('active');
+    overlayEl.setAttribute('aria-hidden', 'false');
+    renderCurrentStep();
+  };
+
+  window.nextProductTour = function() {
+    if (currentTourStep < tourSteps.length - 1) {
+      currentTourStep++;
+      renderCurrentStep();
+    } else {
+      finishTour();
+    }
+  };
+
+  window.prevProductTour = function() {
+    if (currentTourStep > 0) {
+      currentTourStep--;
+      renderCurrentStep();
+    }
+  };
+
+  window.skipProductTour = function() {
+    finishTour();
+  };
+
+  function finishTour() {
+    try {
+      localStorage.setItem('yossika_tour_completed', 'true');
+    } catch (_) {}
+    if (overlayEl) {
+      overlayEl.classList.remove('active');
+      overlayEl.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  // Automatic first-time trigger
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      try {
+        const completed = localStorage.getItem('yossika_tour_completed');
+        if (!completed) {
+          window.startProductTour();
+        }
+      } catch (_) {}
+    }, 1400);
+  });
+})();

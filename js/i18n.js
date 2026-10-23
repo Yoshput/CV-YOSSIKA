@@ -19,6 +19,9 @@ const I18N_DATA = {
     "nav.contact": "Contact",
     "nav.cv": "View CV",
     "nav.allWorks": "All Works",
+    "nav.tour": "Tour",
+    "caseStudy.back": "Back",
+    "caseStudy.close": "Close",
 
     // Hero
     "hero.badge": "Open for Web Projects · View Pricing →",
@@ -138,6 +141,9 @@ const I18N_DATA = {
     "nav.contact": "Kontak",
     "nav.cv": "Lihat CV",
     "nav.allWorks": "Semua Karya",
+    "nav.tour": "Tour",
+    "caseStudy.back": "Kembali",
+    "caseStudy.close": "Tutup",
 
     // Hero
     "hero.badge": "Open Jasa Pembuatan Website · Cek Harga →",
